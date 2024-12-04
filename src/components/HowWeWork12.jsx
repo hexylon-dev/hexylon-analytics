@@ -88,7 +88,7 @@ const TypingEffect = ({ text, triggerAnimation, onComplete }) => {
   }, [triggerAnimation, text, isTyping, isComplete, onComplete]);
 
   return (
-    <div className="text-xl font-normal relative z-10">
+    <div className="relative z-10">
       <span>{displayText}</span>
       {isTyping && <span className="animate-blink">|</span>}
     </div>
@@ -431,7 +431,7 @@ const HowWeWorkSection = () => {
         onEnter: () => {
           if (!typingComplete) {
             setTriggerTyping(true);
-            document.body.style.overflow = "hidden";
+            // document.body.style.overflow = "hidden";
           }
         },
         once: true,
@@ -476,6 +476,7 @@ const HowWeWorkSection = () => {
                 triggerAnimation={triggerTyping}
                 onComplete={handleTypingComplete}
               />
+              
               <div className="h-1 w-24 bg-[#FF6600] mt-1 md:mt-4 rounded-full"></div>
             </div>
           </div>

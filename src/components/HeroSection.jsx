@@ -137,12 +137,13 @@ export default function Component({ handleNavigateToContactPage }) {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-6"
+          className="text-5xl md:text-7xl font-bold text-white mb-3 min-h-[170px]"
+
         >
           Unlock Insights with{" "}
           <TypeWriter
@@ -151,7 +152,7 @@ export default function Component({ handleNavigateToContactPage }) {
           />
           {/* <span classNameF="text-[#FF6600]">AI-Powered Analytics</span> */}
         </motion.h1>
-        F
+        
         {/* add typing animatFion here with colors #FF6600 : AI-Powered Analytics , Hexylon Analytics */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
