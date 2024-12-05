@@ -8,7 +8,6 @@ import OurWorkSection from "../components/OurWork4";
 import CommitmentSection from "../components/OurCommit1";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import CardLayout from "../components/CardLayout";
 
 function Home() {
   const navigate = useNavigate();
