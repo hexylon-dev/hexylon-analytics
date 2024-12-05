@@ -16,17 +16,21 @@ function Home() {
     window.location.href = "/contact-us";
   }
 
+  const handleNavigateToBlogPage = () => {
+    window.location.href = "/blogs";
+  }
+
   return (
     <>
         <>
-          <Navbar handleNavigateToContactPage={handleNavigateToContactPage}/>
+          {/* <Navbar handleNavigateToContactPage={handleNavigateToContactPage} handleNavigateToBlogPage={handleNavigateToBlogPage}/> */}
           <HeroSection handleNavigateToContactPage={handleNavigateToContactPage}/>
           <HowWeWork />
           <WhyUs />
           <IndustriesSection />
           <OurWorkSection />
           <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-          <Footer handleNavigateToContactPage={handleNavigateToContactPage}/>
+          {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage}/> */}
         </>
     </>
   );

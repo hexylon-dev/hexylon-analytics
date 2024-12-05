@@ -1,10 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.png";
+import { NavLink, useLocation } from "react-router-dom";
 
-const Navbar = ({ handleNavigateToContactPage }) => {
+const menuItem = [
+  {
+    id: 1,
+    label: "Blog",
+    path: "blogs",
+  },
+  {
+    id: 2,
+    label: "About Us",
+    path: "About Us",
+  },
+  {
+    id: 3,
+    label: "Our Work",
+    path: "Our Work",
+  },
+  {
+    id: 4,
+    label: "Contact Us",
+    path: "Contact Us",
+  },
+];
+
+const Navbar = ({ handleNavigateToBlogPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+
+  const hash = window.location.hash;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +40,8 @@ const Navbar = ({ handleNavigateToContactPage }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  console.log(pathname, "====");
 
   const menuVariants = {
     closed: {
@@ -44,11 +73,29 @@ const Navbar = ({ handleNavigateToContactPage }) => {
     }),
   };
 
+  const handleNavigateToContactPage = () => {
+    // navigate("/contact-us");
+    window.location.href = "/contact-us";
+  };
+
   const handleNavigation = (item) => {
     if (item === "Contact Us") {
       handleNavigateToContactPage();
+    } else if (item === "Blog") {
+      handleNavigateToBlogPage();
     } else {
       window.location.href = `#${item.toLowerCase().replace(" ", "-")}`;
+    }
+    setIsOpen(false);
+  };
+
+  const handleRedirect = (label) => {
+    console.log(label, "labellabellabel");
+
+    if (label === "About Us" || label === "Our Work") {
+      window.location.href = `#${label.toLowerCase().replace(" ", "-")}`;
+    } else if (label === "Contact Us") {
+      handleNavigateToContactPage();
     }
     setIsOpen(false);
   };
@@ -73,7 +120,11 @@ const Navbar = ({ handleNavigateToContactPage }) => {
             {!scrolled ? (
               <span
                 className={`text-2xl font-bold ${
-                  scrolled ? "text-gray-900" : "text-white"
+                  scrolled
+                    ? "text-gray-900"
+                    : pathname.includes("/blog")
+                    ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
+                    : "text-white"
                 }`}
               >
                 Hexylon Analytics
@@ -87,12 +138,12 @@ const Navbar = ({ handleNavigateToContactPage }) => {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            {["About Us", "Our Work", "Contact Us"].map((item, index) => (
+            {/* {["Blog","About Us", "Our Work", "Contact Us",].map((item, index) => (
               <motion.button
                 key={item}
                 onClick={() => handleNavigation(item)}
                 className={`relative text-lg font-medium ${
-                  index === 2
+                  index === 3
                     ? "px-6 py-2 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
                     : scrolled
                     ? "text-gray-900 hover:text-[#FF6600]"
@@ -117,6 +168,56 @@ const Navbar = ({ handleNavigateToContactPage }) => {
                   />
                 )}
               </motion.button>
+            ))} */}
+
+            {menuItem.map((item, index) => (
+              <motion.div
+                key={item.id}
+                whileHover={
+                  index !== 2
+                    ? {
+                        scale: 1.05,
+                        transition: { duration: 0.2 },
+                      }
+                    : {}
+                }
+              >
+                {item.label === "About Us" ||
+                item.label === "Our Work" ||
+                item.label === "Contact Us" ? (
+                  <button
+                    onClick={() => handleRedirect(item.label)}
+                    className={`relative text-lg font-medium py-2 ${
+                      scrolled
+                        ? "text-gray-900 hover:text-[#FF6600]"
+                        : pathname.includes("/blog")
+                        ? "py-2 text-gray-900 hover:text-[#FF6600]"
+                        : "text-white hover:text-[#FF6600]"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <NavLink
+                    to={`/${item.path}`}
+                    className={({ isActive }) => {
+                      console.log(
+                        `isActive: ${isActive}, scrolled: ${scrolled}`
+                      );
+
+                      return `relative text-lg font-medium hover:text-[#FF6600] py-2 ${
+                        isActive
+                          ? "px-6 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
+                          : scrolled
+                          ? "text-gray-900 hover:text-[#FF6600]"
+                          : "text-white hover:text-[#FF6600]"
+                      }`;
+                    }}
+                  >
+                    {item.label}
+                  </NavLink>
+                )}
+              </motion.div>
             ))}
           </div>
 
