@@ -42,15 +42,15 @@ const IndustryCard = ({
       cardRef.current,
       {
         opacity: 0,
-        y: 50,
-        scale: 0.9,
+        y: 0,
+        scale: 1,
       },
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
-        delay: index * 0.2,
+        duration: 0.1,
+        delay: index,
         scrollTrigger: {
           trigger: cardRef.current,
           start: "top bottom-=100",
@@ -332,8 +332,8 @@ const IndustriesSection = () => {
 
     const clickedCard = cardsRef.current[index];
     const activeCard = activeCardRef.current;
-    const leftColumn = document.querySelector('.left-column');
-    const rightColumn = document.querySelector('.right-column');
+    // const leftColumn = document.querySelector('.left-column');
+    // const rightColumn = document.querySelector('.right-column');
 
     // Get the positions of the clicked card and the active card
     const clickedRect = clickedCard.getBoundingClientRect();
