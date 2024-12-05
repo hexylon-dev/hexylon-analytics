@@ -70,7 +70,7 @@ const FooterWithTransition = ({ handleNavigateToContactPage }) => {
       <footer className="bg-[#001830] text-white py-12 px-8">
         <div className="max-w-5xl mx-auto">
           <div className="container footer-content">
-            <div className="-mx-4 flex flex-wrap">
+            <div className="-mx-4 flex flex-wrap fade-up">
               <div className="w-full px-4  sm:w-6/12">
                 <div className="mb-10 w-full">
                   <div className="flex items-center gap-2 mb-4">
@@ -165,7 +165,7 @@ const FooterWithTransition = ({ handleNavigateToContactPage }) => {
                 </p>
               </LinkGroup>
 
-              <div className="w-full px-4  sm:w-3/12">
+              <div className="w-full px-4  sm:w-3/12 fade-up">
                 <div className="mb-10 w-full">
                   <h4 className="mb-3 sm:mb-9 text-lg font-semibold text-dark dark:text-white">
                     Connect
@@ -269,7 +269,7 @@ const FooterWithTransition = ({ handleNavigateToContactPage }) => {
 const LinkGroup = ({ children, header }) => {
   return (
     <>
-      <div className="w-full px-4 sm:w-3/12">
+      <div className="w-full px-4 sm:w-3/12 fade-up">
         <div className="mb-10 w-full">
           <h4 className="mb-3 sm:mb-9 sm:mb-2  text-lg font-semibold text-dark dark:text-white">
             {header}
