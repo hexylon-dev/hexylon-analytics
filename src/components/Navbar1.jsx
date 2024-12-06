@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.png";
 import { NavLink, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
 const menuItem = [
   {
@@ -22,7 +23,7 @@ const menuItem = [
   {
     id: 4,
     label: "Contact Us",
-    path: "Contact Us",
+    path: "contact-us",
   },
 ];
 
@@ -30,6 +31,12 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   const hash = window.location.hash;
 
@@ -90,12 +97,8 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
   };
 
   const handleRedirect = (label) => {
-    console.log(label, "labellabellabel");
-
     if (label === "About Us" || label === "Our Work") {
       window.location.href = `#${label.toLowerCase().replace(" ", "-")}`;
-    } else if (label === "Contact Us") {
-      handleNavigateToContactPage();
     }
     setIsOpen(false);
   };
@@ -109,28 +112,37 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <div className="flex items-center space-x-2">
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={handleLogoClick}
+          >
             <img
               src={logo}
               alt="Hexylon Analytics Logo"
               width={40}
               height={40}
               className="mr-2"
+              onClick={handleLogoClick}
             />
             {!scrolled ? (
               <span
                 className={`text-2xl font-bold ${
                   scrolled
                     ? "text-gray-900"
-                    : pathname.includes("/blog")
+                    : pathname.includes("/blog") ||
+                      pathname.includes("/contact-us")
                     ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
                     : "text-white"
                 }`}
+                onClick={handleLogoClick}
               >
                 Hexylon Analytics
               </span>
             ) : (
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent">
+              <span
+                onClick={handleLogoClick}
+                className="text-2xl font-bold bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
+              >
                 Hexylon Analytics
               </span>
             )}
@@ -182,15 +194,14 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                     : {}
                 }
               >
-                {item.label === "About Us" ||
-                item.label === "Our Work" ||
-                item.label === "Contact Us" ? (
+                {item.label === "About Us" || item.label === "Our Work" ? (
                   <button
                     onClick={() => handleRedirect(item.label)}
                     className={`relative text-lg font-medium py-2 ${
                       scrolled
                         ? "text-gray-900 hover:text-[#FF6600]"
-                        : pathname.includes("/blog")
+                        : pathname.includes("/blog") ||
+                          pathname.includes("/contact-us")
                         ? "py-2 text-gray-900 hover:text-[#FF6600]"
                         : "text-white hover:text-[#FF6600]"
                     }`}
@@ -201,15 +212,14 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                   <NavLink
                     to={`/${item.path}`}
                     className={({ isActive }) => {
-                      console.log(
-                        `isActive: ${isActive}, scrolled: ${scrolled}`
-                      );
-
                       return `relative text-lg font-medium hover:text-[#FF6600] py-2 ${
                         isActive
                           ? "px-6 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
                           : scrolled
                           ? "text-gray-900 hover:text-[#FF6600]"
+                          : pathname.includes("/blog") ||
+                            pathname.includes("/contact-us")
+                          ? "py-2 text-gray-900 hover:text-[#FF6600]"
                           : "text-white hover:text-[#FF6600]"
                       }`;
                     }}
@@ -249,7 +259,7 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <motion.div
             initial="closed"
@@ -280,6 +290,54 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                   >
                     {item}
                   </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence> */}
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            className="fixed top-0 right-0 w-4/5 h-screen bg-gray-900 shadow-2xl lg:hidden"
+          >
+            <div className="p-8">
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF6600] text-white"
+                >
+                  <span className="sr-only">Close menu</span>×
+                </button>
+              </div>
+              <div className="flex flex-col space-y-6">
+                {menuItem.map((item, i) => (
+                  <motion.div key={item.id} custom={i} variants={linkVariants}>
+                    {item.label === "About Us" || item.label === "Our Work" ? (
+                      <button
+                        onClick={() => handleRedirect(item.label)}
+                        className={`relative text-lg font-medium py-2 text-white`}
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <NavLink
+                        to={`/${item.path}`}
+                        className={({ isActive }) =>
+                          `text-xl font-medium ${
+                            isActive ? "text-[#FF6600]" : "text-white"
+                          } hover:text-[#FF6600] transition-colors duration-300`
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                    )}
+                  </motion.div>
                 ))}
               </div>
             </div>

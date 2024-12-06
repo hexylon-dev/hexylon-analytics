@@ -11,7 +11,7 @@ import {
   Network,
 } from "lucide-react";
 import ContactNavbar from "../components/NavbarForContact";
-import ContactFooter from "../components/FooterOfContact"
+import ContactFooter from "../components/FooterOfContact";
 
 const THEME = {
   navyBlue: "#003366",
@@ -96,7 +96,6 @@ const ContactPage = () => {
       yoyo: true,
       repeat: 1,
       onComplete: () => {
-        console.log("Form submitted:", formData);
         setFormData({
           name: "",
           companyName: "",
@@ -120,7 +119,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <ContactNavbar />
+      {/* <ContactNavbar /> */}
       <div ref={containerRef} className="min-h-screen bg-white overflow-hidden">
         {/* Decorative Circuit Pattern */}
         <svg
@@ -235,7 +234,7 @@ const ContactPage = () => {
                     name="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
-                   className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
+                    className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
                     placeholder="Your Company Name"
                     required
@@ -258,7 +257,7 @@ const ContactPage = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
+                    className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
                     placeholder="Your Email"
                     required
@@ -269,7 +268,7 @@ const ContactPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
+                    className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "150px" }}
                     placeholder="Your Phone Number"
                     required
@@ -280,7 +279,7 @@ const ContactPage = () => {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
+                    className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
                     placeholder="Your Location"
                     required
@@ -291,7 +290,7 @@ const ContactPage = () => {
                     name="industryFocus"
                     value={formData.industryFocus}
                     onChange={handleChange}
-                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
+                    className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
                     placeholder="Your Industry/Project Focus"
                     required
@@ -310,90 +309,89 @@ const ContactPage = () => {
             </form>
           </div>
 
-           {/* Contact Section */}
-        <div className="contact-section grid md:grid-cols-2 gap-8">
-          {/* Contact Information */}
-          <div className="space-y-4">
-            <h2
-              className="text-3xl font-bold"
-              style={{ color: THEME.navyBlue }}
-            >
-              Get in Touch
-            </h2>
+          {/* Contact Section */}
+          <div className="contact-section grid md:grid-cols-2 gap-8">
+            {/* Contact Information */}
+            <div className="space-y-4">
+              <h2
+                className="text-3xl font-bold"
+                style={{ color: THEME.navyBlue }}
+              >
+                Get in Touch
+              </h2>
 
-            <div className="space-y-3">
-              {[
-                {
-                  icon: MapPin,
-                  title: "Visit Us",
-                  content: "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
-                },
-                {
-                  icon: Phone,
-                  title: "Call Us",
-                  content: "+91 7990821728",
-                },
-                {
-                  icon: Mail,
-                  title: "Email Us",
-                  content: "Support@hexylon.in",
-                },
-                {
-                  icon: Building,
-                  title: "Business Hours",
-                  content: "Mon - Fri: 9:00 AM - 7:00 PM IST",
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="contact-item mx-auto flex items-center p-4 rounded-lg transition-all hover:shadow-md hover:translate-x-2 bg-white"
-                  style={{ opacity: 1 }}
-                >
+              <div className="space-y-3">
+                {[
+                  {
+                    icon: MapPin,
+                    title: "Visit Us",
+                    content:
+                      "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
+                  },
+                  {
+                    icon: Phone,
+                    title: "Call Us",
+                    content: "+91 7990821728",
+                  },
+                  {
+                    icon: Mail,
+                    title: "Email Us",
+                    content: "Support@hexylon.in",
+                  },
+                  {
+                    icon: Building,
+                    title: "Business Hours",
+                    content: "Mon - Fri: 9:00 AM - 7:00 PM IST",
+                  },
+                ].map((item, index) => (
                   <div
-                    className="ml-8 p-3 rounded-full mr-4"
-                    style={{ backgroundColor: `${THEME.navyBlue}10` }}
+                    key={index}
+                    className="contact-item mx-auto flex items-center p-4 rounded-lg transition-all hover:shadow-md hover:translate-x-2 bg-white"
+                    style={{ opacity: 1 }}
                   >
-                    <item.icon size={24} style={{ color: THEME.saffron }} />
-                  </div>
-                  <div>
-                    <h3
-                      className="font-medium"
-                      style={{ color: THEME.navyBlue }}
+                    <div
+                      className="ml-8 p-3 rounded-full mr-4"
+                      style={{ backgroundColor: `${THEME.navyBlue}10` }}
                     >
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600">{item.content}</p>
+                      <item.icon size={24} style={{ color: THEME.saffron }} />
+                    </div>
+                    <div>
+                      <h3
+                        className="font-medium"
+                        style={{ color: THEME.navyBlue }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600">{item.content}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Map */}
-          <div className="relative h-96">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
-            <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
-              <div className="w-full h-full bg-gray-100 relative">
-                <div className="absolute inset-0 bg-opacity-50 bg-gray-200">
-                <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.684982717429!2d72.55826618629733!3d23.035335962144465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f461610533%3A0xa56a93bc9468d0!2sGanesh%20Plaza%2C%20Navrangpura%20Rd%2C%20Near%20Navrangpura%20Post%20Office%2C%20Shrimali%20Society%2C%20Navrangpura%2C%20Ahmedabad%2C%20Gujarat%20380009!5e0!3m2!1sen!2sin!4v1730131237754!5m2!1sen!2sin"
-  width="600"
-  height="450"
-  style={{ border: 0 }}
-  allowFullScreen=""
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
+            {/* Map */}
+            <div className="relative h-96">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
+              <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
+                <div className="w-full h-full bg-gray-100 relative">
+                  <div className="absolute inset-0 bg-opacity-50 bg-gray-200">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.684982717429!2d72.55826618629733!3d23.035335962144465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f461610533%3A0xa56a93bc9468d0!2sGanesh%20Plaza%2C%20Navrangpura%20Rd%2C%20Near%20Navrangpura%20Post%20Office%2C%20Shrimali%20Society%2C%20Navrangpura%2C%20Ahmedabad%2C%20Gujarat%20380009!5e0!3m2!1sen!2sin!4v1730131237754!5m2!1sen!2sin"
+                      width="600"
+                      height="450"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        
-
-        </div>
         </div>
       </div>
-      <ContactFooter /> 
+      <ContactFooter />
     </>
   );
 };
