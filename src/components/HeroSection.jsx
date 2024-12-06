@@ -151,7 +151,6 @@ export default function Component({ handleNavigateToContactPage }) {
           />
           {/* <span classNameF="text-[#FF6600]">AI-Powered Analytics</span> */}
         </motion.h1>
-        F
         {/* add typing animatFion here with colors #FF6600 : AI-Powered Analytics , Hexylon Analytics */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
