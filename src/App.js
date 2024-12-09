@@ -1,17 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
-import ContactUs from "./pages/ContactUs4";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from './pages/home';
+import CareerPage from './components/CareerPage'; // Adjust path if needed
+import ApplyForm from "./components/ApplyForm";
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/careers" element={<CareerPage />} />
+        <Route path="/apply-form" element={<ApplyForm />} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
