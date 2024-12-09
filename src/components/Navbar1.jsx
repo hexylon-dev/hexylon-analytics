@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ handleNavigateToContactPage }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,10 +49,20 @@ const Navbar = ({ handleNavigateToContactPage }) => {
   const handleNavigation = (item) => {
     if (item === "Contact Us") {
       handleNavigateToContactPage();
+    } else if (item === "Careers") {
+      navigate("/careers");
     } else {
-      window.location.href = `#${item.toLowerCase().replace(" ", "-")}`;
+      const sectionId = item.toLowerCase().replace(" ", "-");
+      const targetElement = document.getElementById(sectionId);
+
+      if (targetElement) {
+        // Smooth scroll to the section
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error(`Section with id "${sectionId}" not found.`);
+      }
     }
-    setIsOpen(false);
+    setIsOpen(false); // Close mobile menu
   };
 
   return (
@@ -87,19 +99,19 @@ const Navbar = ({ handleNavigateToContactPage }) => {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            {["About Us", "Our Work", "Contact Us"].map((item, index) => (
+            {["Home", "Blog", "Careers", "Contact Us"].map((item, index) => (
               <motion.button
                 key={item}
                 onClick={() => handleNavigation(item)}
                 className={`relative text-lg font-medium ${
-                  index === 2
+                  index === 3
                     ? "px-6 py-2 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
                     : scrolled
                     ? "text-gray-900 hover:text-[#FF6600]"
                     : "text-white hover:text-[#FF6600]"
                 }`}
                 whileHover={
-                  index !== 2
+                  index !== 3
                     ? {
                         scale: 1.05,
                         transition: { duration: 0.2 },
@@ -108,7 +120,7 @@ const Navbar = ({ handleNavigateToContactPage }) => {
                 }
               >
                 {item}
-                {index !== 2 && (
+                {index !== 3 && (
                   <motion.div
                     className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF6600]"
                     initial={{ scaleX: 0 }}
@@ -167,14 +179,14 @@ const Navbar = ({ handleNavigateToContactPage }) => {
                 </button>
               </div>
               <div className="flex flex-col space-y-6">
-                {["About Us", "Our Work", "Contact Us"].map((item, i) => (
+                {["About Us", "Our Work", "Careers", "Contact Us"].map((item, i) => (
                   <motion.button
                     key={item}
                     onClick={() => handleNavigation(item)}
                     custom={i}
                     variants={linkVariants}
                     className={`text-xl font-medium ${
-                      i === 2 ? "text-[#FF6600]" : "text-white"
+                      i === 3 ? "text-[#FF6600]" : "text-white"
                     } hover:text-[#FF6600] transition-colors duration-300`}
                   >
                     {item}

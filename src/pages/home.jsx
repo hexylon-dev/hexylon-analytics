@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar1";
+import React from "react";
+import Navbar from "../components/Navbar1"; // Adjust path if needed
 import HeroSection from "../components/HeroSection";
 import HowWeWork from "../components/HowWeWork12";
 import WhyUs from "../components/WhyUs4";
@@ -13,22 +13,33 @@ function Home() {
   const navigate = useNavigate();
 
   const handleNavigateToContactPage = () => {
-    // navigate("/contact-us");
     window.location.href = "/contact-us";
-  }
+  };
+
+  const handleNavigateToCareersPage = () => {
+    navigate("/careers");
+  };
 
   return (
     <>
-        <>
-          <Navbar handleNavigateToContactPage={handleNavigateToContactPage}/>
-          <HeroSection handleNavigateToContactPage={handleNavigateToContactPage}/>
-          <HowWeWork />
-          <WhyUs />
-          <IndustriesSection />
-          <OurWorkSection />
-          <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-          <Footer handleNavigateToContactPage={handleNavigateToContactPage}/>
-        </>
+      <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
+      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
+      <HowWeWork />
+      <WhyUs />
+      <IndustriesSection />
+      <OurWorkSection />
+      <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
+      <Footer handleNavigateToContactPage={handleNavigateToContactPage} />
+
+      {/* Career Navigation Button */}
+      <div className="text-center py-8">
+        <button
+          onClick={handleNavigateToCareersPage}
+          className="bg-[#FF6600] text-white py-3 px-8 rounded-full hover:bg-[#FF8533] transition duration-300"
+        >
+          Explore Careers
+        </button>
+      </div>
     </>
   );
 }
