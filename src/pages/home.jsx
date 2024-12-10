@@ -12,9 +12,12 @@ import Footer from "../components/Footer";
 function Home() {
 
   const handleNavigateToContactPage = () => {
-    // navigate("/contact-us");
     window.location.href = "/contact-us";
-  }
+  };
+
+  const handleNavigateToCareersPage = () => {
+    navigate("/careers");
+  };
 
   const handleNavigateToBlogPage = () => {
     window.location.href = "/blogs";
@@ -22,16 +25,24 @@ function Home() {
 
   return (
     <>
-        <>
-          {/* <Navbar handleNavigateToContactPage={handleNavigateToContactPage} handleNavigateToBlogPage={handleNavigateToBlogPage}/> */}
-          <HeroSection handleNavigateToContactPage={handleNavigateToContactPage}/>
-          <HowWeWork />
-          <WhyUs />
-          <IndustriesSection />
-          <OurWorkSection />
-          <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-          {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage}/> */}
-        </>
+      <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
+      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
+      <HowWeWork />
+      <WhyUs />
+      <IndustriesSection />
+      <OurWorkSection />
+      <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
+      <Footer handleNavigateToContactPage={handleNavigateToContactPage} />
+
+      {/* Career Navigation Button */}
+      <div className="text-center py-8">
+        <button
+          onClick={handleNavigateToCareersPage}
+          className="bg-[#FF6600] text-white py-3 px-8 rounded-full hover:bg-[#FF8533] transition duration-300"
+        >
+          Explore Careers
+        </button>
+      </div>
     </>
   );
 }

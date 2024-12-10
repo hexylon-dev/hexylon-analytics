@@ -6,8 +6,10 @@ import BlogContainer from "./pages/BlogContainer";
 import Navbar from "./components/Navbar1";
 import Footer from "./components/Footer";
 import BlogDetail from "./pages/BlogDetail";
+import CareerPage from './components/CareerPage'; // Adjust path if needed
+import ApplyForm from "./components/ApplyForm";
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Navbar />
@@ -16,10 +18,12 @@ const App = () => {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/blogs" element={<BlogContainer />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
+        <Route path="/careers" element={<CareerPage />} />
+        <Route path="/apply-form" element={<ApplyForm />} />
       </Routes>
       <Footer />
     </Router>
   );
-};
+}
 
 export default App;

@@ -90,10 +90,20 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
       handleNavigateToContactPage();
     } else if (item === "Blog") {
       handleNavigateToBlogPage();
+    } else if (item === "Careers") {
+      navigate("/careers");
     } else {
-      window.location.href = `#${item.toLowerCase().replace(" ", "-")}`;
+      const sectionId = item.toLowerCase().replace(" ", "-");
+      const targetElement = document.getElementById(sectionId);
+
+      if (targetElement) {
+        // Smooth scroll to the section
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error(`Section with id "${sectionId}" not found.`);
+      }
     }
-    setIsOpen(false);
+    setIsOpen(false); // Close mobile menu
   };
 
   const handleRedirect = (label) => {
@@ -162,7 +172,7 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                     : "text-white hover:text-[#FF6600]"
                 }`}
                 whileHover={
-                  index !== 2
+                  index !== 3
                     ? {
                         scale: 1.05,
                         transition: { duration: 0.2 },
@@ -171,7 +181,7 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                 }
               >
                 {item}
-                {index !== 2 && (
+                {index !== 3 && (
                   <motion.div
                     className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF6600]"
                     initial={{ scaleX: 0 }}
@@ -278,14 +288,14 @@ const Navbar = ({ handleNavigateToBlogPage }) => {
                 </button>
               </div>
               <div className="flex flex-col space-y-6">
-                {["About Us", "Our Work", "Contact Us"].map((item, i) => (
+                {["About Us", "Our Work", "Careers", "Contact Us"].map((item, i) => (
                   <motion.button
                     key={item}
                     onClick={() => handleNavigation(item)}
                     custom={i}
                     variants={linkVariants}
                     className={`text-xl font-medium ${
-                      i === 2 ? "text-[#FF6600]" : "text-white"
+                      i === 3 ? "text-[#FF6600]" : "text-white"
                     } hover:text-[#FF6600] transition-colors duration-300`}
                   >
                     {item}
