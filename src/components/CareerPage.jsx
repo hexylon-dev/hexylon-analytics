@@ -11,15 +11,15 @@ const CareerPage = () => {
   const jobsFiltered = jobData.filter(job => job.workspace_id === '1');
 
   const handleNavigateToApplyForm = (job) => {
-    // Pass the job data to the ApplyForm page
-    navigate('/apply-form', { state: { job } });
+    // Use job_id in the URL to navigate to the ApplyForm page
+    navigate(`/apply-form/${job.job_id}`);
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <section className="bg-[#003366] text-white text-center py-20">
+      <section className="bg-[#001830] text-white text-center py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Careers at Hexylon Analytics</h1>
           <p className="text-xl md:text-2xl opacity-90">We are always looking for talented individuals to join our team.</p>

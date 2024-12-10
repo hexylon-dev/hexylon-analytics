@@ -71,10 +71,20 @@ const Navbar = () => {
     }),
   };
 
+  // Helper function to check if the "Career" tab should be active
+  const isCareerActive = pathname.startsWith("/careers") || pathname.startsWith("/apply-form");
+
+  // Determine if scroll effect should be disabled
+  const disableScrollEffect = pathname === "/blogs" || pathname === "/contact-us" || pathname.startsWith("/blogs/");
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "py-2 bg-white shadow-lg" : "py-4 bg-transparent"
+        disableScrollEffect
+          ? "py-4 bg-white shadow-lg"
+          : scrolled
+          ? "py-2 bg-white shadow-lg"
+          : "py-4 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -93,14 +103,16 @@ const Navbar = () => {
             />
             <span
               className={`text-2xl font-bold ${
-                scrolled
-                  ? "text-gray-900"
-                  : pathname === "/contact-us" || pathname === "/blog"
+                disableScrollEffect
+                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
+                  : scrolled
+                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
+                  : pathname === "/contact-us" || pathname === "/blogs"
                   ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
                   : "text-white"
               }`}
             >
-              My Company
+              Hexylon Analytics
             </span>
           </div>
 
@@ -118,9 +130,9 @@ const Navbar = () => {
                   to={`/${item.path}`}
                   className={({ isActive }) =>
                     `relative text-lg font-medium hover:text-[#FF6600] py-2 ${
-                      isActive
+                      (item.path === "careers" && isCareerActive) || isActive
                         ? "px-6 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
-                        : scrolled
+                        : scrolled || disableScrollEffect
                         ? "text-gray-900 hover:text-[#FF6600]"
                         : "text-white hover:text-[#FF6600]"
                     }`
@@ -140,19 +152,19 @@ const Navbar = () => {
             <motion.span
               animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               className={`w-6 h-0.5 ${
-                scrolled ? "bg-gray-900" : "bg-white"
+                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
               } block`}
             />
             <motion.span
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
               className={`w-6 h-0.5 ${
-                scrolled ? "bg-gray-900" : "bg-white"
+                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
               } block`}
             />
             <motion.span
               animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               className={`w-6 h-0.5 ${
-                scrolled ? "bg-gray-900" : "bg-white"
+                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
               } block`}
             />
           </button>
@@ -185,7 +197,9 @@ const Navbar = () => {
                       to={`/${item.path}`}
                       className={({ isActive }) =>
                         `text-xl font-medium ${
-                          isActive ? "text-[#FF6600]" : "text-white"
+                          (item.path === "careers" && isCareerActive) || isActive
+                            ? "text-[#FF6600]"
+                            : "text-white"
                         } hover:text-[#FF6600] transition-colors duration-300`
                       }
                     >

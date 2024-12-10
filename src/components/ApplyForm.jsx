@@ -1,66 +1,63 @@
-import React, { useState } from "react";
-import { useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import jobData from './JobData'; // Import jobData here
 import Navbar from './Navbar1'; // Import the Navbar component
-import Footer from './Footer'; // Import the Footer component
 
 const ApplyForm = () => {
-  const location = useLocation();
-  const job = location.state?.job;
-
+  const { job_id } = useParams(); // Get job_id from the URL
+  const navigate = useNavigate();
+  
+  const [job, setJob] = useState(null); // State to hold job details
   const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    phone_number: "",
-    current_address: "",
+    full_name: '',
+    email: '',
+    phone_number: '',
+    current_address: '',
     resume_file: null,
-    work_samples: "",
-    linkedin_profile: "",
-    availability: "",
-    current_company: "",
-    experience: "",
+    work_samples: '',
+    linkedin_profile: '',
+    availability: '',
+    current_company: '',
+    experience: '',
   });
+
+  useEffect(() => {
+    // Find the job from jobData based on job_id
+    const jobDetails = jobData.find(job => job.job_id === job_id);
+    if (jobDetails) {
+      setJob(jobDetails); // Set job details if found
+    } else {
+      console.error('Job not found');
+    }
+  }, [job_id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files[0],
-    });
+    setFormData({ ...formData, [name]: files[0] });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const submissionData = {
-      workspace_id: job.workspace_id,
-      job_posting_id: job.job_posting_id,
+      job_id: job.job_id,
+      job_role: job.role,
       ...formData,
     };
 
-    console.log("Form submitted with data:", submissionData);
-
-    setFormData({
-      full_name: "",
-      email: "",
-      phone_number: "",
-      current_address: "",
-      resume_file: null,
-      work_samples: "",
-      linkedin_profile: "",
-      availability: "",
-      current_company: "",
-      experience: "",
-    });
+    console.log('Form submitted with data:', submissionData);
+    // Optionally navigate after submission (for example, to a success page)
+    navigate('/careers');
   };
+
+  if (!job) {
+    return <div>Loading job details...</div>; // Loading state while fetching job
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -81,7 +78,6 @@ const ApplyForm = () => {
           {/* Job Details */}
           <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
             <h3 className="text-2xl font-semibold text-gray-800 mb-2">{job.company_name}</h3>
-            <p className="text-lg text-gray-600 mb-4">{job.location}</p>
 
             {job.role_description && (
               <div className="mb-4">
@@ -111,6 +107,7 @@ const ApplyForm = () => {
                   value={formData.full_name}
                   onChange={handleChange}
                   required
+                  placeholder="Enter your full name"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -124,6 +121,7 @@ const ApplyForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  placeholder="Enter your email"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -137,6 +135,7 @@ const ApplyForm = () => {
                   value={formData.phone_number}
                   onChange={handleChange}
                   required
+                  placeholder="Enter your phone number"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -148,6 +147,7 @@ const ApplyForm = () => {
                   name="current_company"
                   value={formData.current_company}
                   onChange={handleChange}
+                  placeholder="Enter your current company (optional)"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -161,6 +161,7 @@ const ApplyForm = () => {
                 value={formData.current_address}
                 onChange={handleChange}
                 required
+                placeholder="Enter your current address"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200 resize-none"
                 rows={3}
               ></textarea>
@@ -200,6 +201,7 @@ const ApplyForm = () => {
                 type="url"
                 value={formData.linkedin_profile}
                 onChange={handleChange}
+                placeholder="https://linkedin.com/in/your-profile"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
               />
             </div>
@@ -213,6 +215,7 @@ const ApplyForm = () => {
                   value={formData.availability}
                   onChange={handleChange}
                   required
+                  placeholder="Enter your availability"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -226,6 +229,7 @@ const ApplyForm = () => {
                   value={formData.experience}
                   onChange={handleChange}
                   required
+                  placeholder="Enter your years of experience"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF6600] transition duration-200"
                 />
               </div>
@@ -240,9 +244,6 @@ const ApplyForm = () => {
           </form>
         </div>
       </section>
-
-      {/* Footer Section */}
-      <Footer /> {/* Add Footer Component */}
     </div>
   );
 };
