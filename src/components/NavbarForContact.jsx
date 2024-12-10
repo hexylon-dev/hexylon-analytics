@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.png';
 
 const ContactNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,7 @@ const ContactNavbar = () => {
     window.location.href = '/';
   };
 
+  
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled ? 'py-2 bg-white/90 backdrop-blur-md shadow-lg' : 'py-4 bg-white'

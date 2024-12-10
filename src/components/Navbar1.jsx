@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
+import { NavLink, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ handleNavigateToContactPage }) => {
-  const navigate = useNavigate();
+const menuItem = [
+  {
+    id: 1,
+    label: "Home",
+    path: "",
+  },
+  {
+    id: 2,
+    label: "Blog",
+    path: "blogs",
+  },
+  {
+    id: 3,
+    label: "Career",
+    path: "careers",
+  },
+  {
+    id: 4,
+    label: "Contact Us",
+    path: "contact-us",
+  },
+];
+
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,25 +71,6 @@ const Navbar = ({ handleNavigateToContactPage }) => {
     }),
   };
 
-  const handleNavigation = (item) => {
-    if (item === "Contact Us") {
-      handleNavigateToContactPage();
-    } else if (item === "Careers") {
-      navigate("/careers");
-    } else {
-      const sectionId = item.toLowerCase().replace(" ", "-");
-      const targetElement = document.getElementById(sectionId);
-
-      if (targetElement) {
-        // Smooth scroll to the section
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      } else {
-        console.error(`Section with id "${sectionId}" not found.`);
-      }
-    }
-    setIsOpen(false); // Close mobile menu
-  };
-
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -74,61 +80,55 @@ const Navbar = ({ handleNavigateToContactPage }) => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <div className="flex items-center space-x-2">
+          <div
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img
               src={logo}
-              alt="Hexylon Analytics Logo"
+              alt="Logo"
               width={40}
               height={40}
               className="mr-2"
             />
-            {!scrolled ? (
-              <span
-                className={`text-2xl font-bold ${
-                  scrolled ? "text-gray-900" : "text-white"
-                }`}
-              >
-                Hexylon Analytics
-              </span>
-            ) : (
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent">
-                Hexylon Analytics
-              </span>
-            )}
+            <span
+              className={`text-2xl font-bold ${
+                scrolled
+                  ? "text-gray-900"
+                  : pathname === "/contact-us" || pathname === "/blog"
+                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
+                  : "text-white"
+              }`}
+            >
+              My Company
+            </span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            {["Home", "Blog", "Careers", "Contact Us"].map((item, index) => (
-              <motion.button
-                key={item}
-                onClick={() => handleNavigation(item)}
-                className={`relative text-lg font-medium ${
-                  index === 3
-                    ? "px-6 py-2 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
-                    : scrolled
-                    ? "text-gray-900 hover:text-[#FF6600]"
-                    : "text-white hover:text-[#FF6600]"
-                }`}
-                whileHover={
-                  index !== 3
-                    ? {
-                        scale: 1.05,
-                        transition: { duration: 0.2 },
-                      }
-                    : {}
-                }
+            {menuItem.map((item, index) => (
+              <motion.div
+                key={item.id}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.2 },
+                }}
               >
-                {item}
-                {index !== 3 && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-[#FF6600]"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                )}
-              </motion.button>
+                <NavLink
+                  to={`/${item.path}`}
+                  className={({ isActive }) =>
+                    `relative text-lg font-medium hover:text-[#FF6600] py-2 ${
+                      isActive
+                        ? "px-6 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
+                        : scrolled
+                        ? "text-gray-900 hover:text-[#FF6600]"
+                        : "text-white hover:text-[#FF6600]"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </motion.div>
             ))}
           </div>
 
@@ -175,22 +175,23 @@ const Navbar = ({ handleNavigateToContactPage }) => {
                   onClick={() => setIsOpen(false)}
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF6600] text-white"
                 >
-                  <span className="sr-only">Close menu</span>×
+                  ×
                 </button>
               </div>
               <div className="flex flex-col space-y-6">
-                {["About Us", "Our Work", "Careers", "Contact Us"].map((item, i) => (
-                  <motion.button
-                    key={item}
-                    onClick={() => handleNavigation(item)}
-                    custom={i}
-                    variants={linkVariants}
-                    className={`text-xl font-medium ${
-                      i === 3 ? "text-[#FF6600]" : "text-white"
-                    } hover:text-[#FF6600] transition-colors duration-300`}
-                  >
-                    {item}
-                  </motion.button>
+                {menuItem.map((item, i) => (
+                  <motion.div key={item.id} custom={i} variants={linkVariants}>
+                    <NavLink
+                      to={`/${item.path}`}
+                      className={({ isActive }) =>
+                        `text-xl font-medium ${
+                          isActive ? "text-[#FF6600]" : "text-white"
+                        } hover:text-[#FF6600] transition-colors duration-300`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  </motion.div>
                 ))}
               </div>
             </div>

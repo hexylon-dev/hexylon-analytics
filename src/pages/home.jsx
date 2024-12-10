@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar1"; // Adjust path if needed
+import Navbar from "../components/Navbar1";
 import HeroSection from "../components/HeroSection";
 import HowWeWork from "../components/HowWeWork12";
 import WhyUs from "../components/WhyUs4";
@@ -10,8 +10,8 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const handleNavigateToContactPage = () => {
     window.location.href = "/contact-us";
   };
@@ -19,6 +19,10 @@ function Home() {
   const handleNavigateToCareersPage = () => {
     navigate("/careers");
   };
+
+  const handleNavigateToBlogPage = () => {
+    window.location.href = "/blogs";
+  }
 
   return (
     <>
@@ -29,17 +33,8 @@ function Home() {
       <IndustriesSection />
       <OurWorkSection />
       <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-      <Footer handleNavigateToContactPage={handleNavigateToContactPage} />
+      {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
 
-      {/* Career Navigation Button */}
-      <div className="text-center py-8">
-        <button
-          onClick={handleNavigateToCareersPage}
-          className="bg-[#FF6600] text-white py-3 px-8 rounded-full hover:bg-[#FF8533] transition duration-300"
-        >
-          Explore Careers
-        </button>
-      </div>
     </>
   );
 }

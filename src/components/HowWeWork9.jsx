@@ -219,7 +219,7 @@ const HowWeWorkSection = () => {
         onEnter: () => {
           if (!typingComplete) {
             setTriggerTyping(true);
-            document.body.style.overflow = "hidden";
+            // document.body.style.overflow = "hidden";
           }
         },
         once: true,
