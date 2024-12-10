@@ -1,53 +1,57 @@
 import React from "react";
+import { CalendarIcon, UserIcon, LinkIcon } from 'lucide-react';
 
 function Blog({ blog }) {
   return (
-    <div class="max-w-4xl relative flex flex-col lg:flex-row w-full my-6 bg-white m-auto">
-      <div class="relative p-2.5 lg:w-1/3 shrink-0 overflow-hidden">
+    <article className="max-w-4xl mx-auto my-12 bg-white rounded-xl shadow-md overflow-hidden">
+    <div className="flex flex-col lg:flex-row">
+      <div className="lg:w-1/3 relative">
         <img
           src={blog.cover_image}
-          alt="card-image"
-          class="h-full w-full rounded-2xl object-cover hadow"
+          alt={blog.title}
+          className="h-64 lg:h-full w-full object-cover"
         />
       </div>
-      <div class="p-6">
-        <div className="flex g-2">
-          <div class="mb-4 py-0.5 text-xs text-gray-500 w-20">
-            {blog.audit_fields.created_at}
+      <div className="p-8 lg:w-2/3">
+        <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+          <div className="flex items-center">
+            <CalendarIcon className="w-4 h-4 mr-2" />
+            <time dateTime={blog.audit_fields.created_at}>
+              {blog.audit_fields.created_at}
+            </time>
           </div>
-          {/* <div class="mb-4 py-0.5 px-2.5 rounded-full border text-xs text-black transition-all shadow-sm w-20 text-center bg-[#D3D3D3] hover:bg-gray-400 cursor-pointer">
-            {blog.workspace_id}
-        </div> */}
+          <div className="flex items-center">
+            <UserIcon className="w-4 h-4 mr-2" />
+            <span>{blog.audit_fields.created_by}</span>
+          </div>
         </div>
-
-        <h4 class="mb-2 text-slate-800 text-xl font-semibold">{blog.title}</h4>
-        <p class="mb-8 text-slate-600 leading-normal font-light">
-          {blog.description}
-        </p>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-        <div>
-          <p className="text-sm font-semibold">
-            {blog.audit_fields.created_by}
-          </p>
-          <div className="mt-3">
-            {/* <h2 className="text-xl font-semibold mb-4">Related Links</h2> */}
-            <div className="flex flex-wrap gap-4">
-              {blog.references.map((link, index) => (
-                <a
-                  key={index}
-                  href={link}
-                  className="inline-block px-4 py-1 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300 text-blue-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {new URL(link).hostname.replace("www.", "")}
-                </a>
-              ))}
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{blog.title}</h2>
+        <p className="text-gray-600 mb-6 leading-relaxed">{blog.description}</p>
+        {blog.references.length > 0 && (
+          <>
+            <hr className="my-6 border-gray-200" />
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Related Links</h3>
+              <div className="flex flex-wrap gap-3">
+                {blog.references.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link}
+                    className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm hover:bg-blue-100 transition duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkIcon className="w-4 h-4 mr-2" />
+                    {new URL(link).hostname.replace("www.", "")}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
     </div>
+  </article>
   );
 }
 
