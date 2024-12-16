@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import jobData from './JobData'; // Import jobData here
 import Navbar from './Navbar1'; // Import the Navbar component
+import { AddApplicantApi, GetJobApi } from '../service/api';
 
 const ApplyForm = () => {
   const { job_id } = useParams(); // Get job_id from the URL
@@ -13,7 +14,7 @@ const ApplyForm = () => {
     email: '',
     phone_number: '',
     current_address: '',
-    resume_file: null,
+    resume_link: null,
     work_samples: '',
     linkedin_profile: '',
     availability: '',
@@ -21,14 +22,13 @@ const ApplyForm = () => {
     experience: '',
   });
 
+  const [jobsFiltered, setjobsFiltered] = useState([]);
+  
   useEffect(() => {
-    // Find the job from jobData based on job_id
-    const jobDetails = jobData.find(job => job.job_id === job_id);
-    if (jobDetails) {
-      setJob(jobDetails); // Set job details if found
-    } else {
-      console.error('Job not found');
-    }
+    (async () => {
+      const res = await GetJobApi(job_id);
+      setJob(res.data);
+    })();
   }, [job_id]);
 
   const handleChange = (e) => {
@@ -41,17 +41,40 @@ const ApplyForm = () => {
     setFormData({ ...formData, [name]: files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const submissionData = {
-      job_id: job.job_id,
-      job_role: job.role,
+      id: job.id,
+      role: job.role,
       ...formData,
+      job_posting_id: job_id
     };
 
-    console.log('Form submitted with data:', submissionData);
-    // Optionally navigate after submission (for example, to a success page)
+    const urls = [];
+      try {
+        // Request Body To Pass Api
+          const form = new FormData();
+          form.append('file', formData.resume_link);
+          form.append('upload_preset', 'publish_page');
+
+          const response = await fetch(
+            `https://api.cloudinary.com/v1_1/dqh3wljk0/image/upload`,
+            {
+              method: 'post',
+              body: form,
+            }
+          );
+          const urlData = await response.json();
+          urls.push(urlData?.url);
+      } catch (err) {
+        console.log(err);
+      }
+
+      submissionData.resume_link = urls[0];
+      submissionData.work_samples = [submissionData.work_samples]
+    await AddApplicantApi(submissionData);
+
     navigate('/careers');
   };
 
@@ -89,7 +112,7 @@ const ApplyForm = () => {
             <div>
               <h4 className="font-medium text-gray-800 mb-2">Qualifications:</h4>
               <ul className="list-disc list-inside text-gray-600 space-y-1">
-                {job.qualifications.split('\n').map((qual, index) => (
+                {job.qualifications.map((qual, index) => (
                   <li key={index}>{qual.trim()}</li>
                 ))}
               </ul>
@@ -168,10 +191,10 @@ const ApplyForm = () => {
             </div>
 
             <div>
-              <label htmlFor="resume_file" className="block text-sm font-medium text-gray-700 mb-1">Upload Resume (PDF)</label>
+              <label htmlFor="resume_link" className="block text-sm font-medium text-gray-700 mb-1">Upload Resume (PDF)</label>
               <input
-                id="resume_file"
-                name="resume_file"
+                id="resume_link"
+                name="resume_link"
                 type="file"
                 accept=".pdf"
                 onChange={handleFileChange}

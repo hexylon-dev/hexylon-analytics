@@ -8,11 +8,13 @@ import Footer from "./components/Footer";
 import BlogDetail from "./pages/BlogDetail";
 import CareerPage from './components/CareerPage'; // Adjust path if needed
 import ApplyForm from "./components/ApplyForm";
+import NotificationWrapper from "./components/notifiction/notifiction";
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <NotificationWrapper />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<ContactUs />} />

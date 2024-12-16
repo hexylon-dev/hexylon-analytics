@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar1'; // Adjust the path if necessary
 import jobData from './JobData'; // Adjust the path if necessary
 import { ArrowRight } from 'lucide-react';
+import { GetJobsApi } from '../service/api';
 
 const CareerPage = () => {
   const navigate = useNavigate();
 
   // Filter jobs by workspace_id 1
-  const jobsFiltered = jobData.filter(job => job.workspace_id === '1');
+  // const jobsFiltered = jobData.filter(job => job.workspace_id === '1');
 
-  const handleNavigateToApplyForm = (job) => {
+  const [jobsFiltered, setjobsFiltered] = useState([]);
+  
+  useEffect(() => {
+    (async () => {
+      const res = await GetJobsApi();
+      setjobsFiltered(res.data);
+    })();
+  }, [])
+
+  const handleNavigateToApplyForm = (id) => {
     // Use job_id in the URL to navigate to the ApplyForm page
-    navigate(`/apply-form/${job.job_id}`);
+    navigate(`/apply-form/${id}`);
   };
   
   return (
@@ -55,7 +65,7 @@ const CareerPage = () => {
               </div>
               <div className="px-6 pb-6">
                 <button
-                  onClick={() => handleNavigateToApplyForm(job)}
+                  onClick={() => handleNavigateToApplyForm(job.id)}
                   className="w-full bg-white hover:bg-[#ff6600] text-[#ff6600] hover:text-white border border-[#ff6600] font-semibold py-2 px-4 rounded transition-colors duration-300 flex items-center justify-center"
                 >
                   Apply Now
