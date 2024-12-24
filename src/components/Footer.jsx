@@ -121,10 +121,32 @@ const FooterWithTransition = () => {
                     </span>
 
                     <span className="text-gray-400">
+                    301/2 Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat - 380054
+                    </span>
+                  </p>
+                  <p className="flex items-center text-sm font-medium text-dark dark:text-white mt-2">
+                    <span className="mr-3 text-gray-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24px"
+                        height="24px"
+                      >
+                        {" "}
+                        <path
+                          d="M12,2C8.134,2,5,5.134,5,9c0,5,7,13,7,13s7-8,7-13C19,5.134,15.866,2,12,2z M12,11.5c-1.381,0-2.5-1.119-2.5-2.5 c0-1.381,1.119-2.5,2.5-2.5s2.5,1.119,2.5,2.5C14.5,10.381,13.381,11.5,12,11.5z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+
+                    <span className="text-gray-400">
                       B/410, Ganesh Plaza,Nr. Navrangpura Post Office,
                       Navrangpura, Ahmedabad, Gujarat, India - 380 009
                     </span>
+
                   </p>
+                
                 </div>
               </div>
               <LinkGroup header="Quick Links">

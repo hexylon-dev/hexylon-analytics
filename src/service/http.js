@@ -67,6 +67,7 @@ const Http = async (apiDataProps) => {
   };
 
   const handleError = async (error) => {
+    console.log(error)
     const { status, data } = error;
     if (messageSettings && !messageSettings.hideErrorMessage) {
       if (messageSettings.errorMessage !== '') {
@@ -129,7 +130,8 @@ const Http = async (apiDataProps) => {
     },
     (error) => {
       const { response } = error;
-      return handleError(response);
+      console.log(error);
+      return handleError(response ?? error);
     }
   );
 
