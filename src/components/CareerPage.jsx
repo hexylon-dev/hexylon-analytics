@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar1'; // Adjust the path if necessary
 import jobData from './JobData'; // Adjust the path if necessary
 import { ArrowRight } from 'lucide-react';
+import { GetJobsApi } from '../service/api';
 
 const CareerPage = () => {
   const navigate = useNavigate();
 
   // Filter jobs by workspace_id 1
-  const jobsFiltered = jobData.filter(job => job.workspace_id === '1');
+  // const jobsFiltered = jobData.filter(job => job.workspace_id === '1');
 
-  const handleNavigateToApplyForm = (job) => {
-    // Pass the job data to the ApplyForm page
-    navigate('/apply-form', { state: { job } });
+  const [jobsFiltered, setjobsFiltered] = useState([]);
+  
+  useEffect(() => {
+    (async () => {
+      const res = await GetJobsApi();
+      setjobsFiltered(res.data);
+    })();
+  }, [])
+
+  const handleNavigateToApplyForm = (id) => {
+    // Use job_id in the URL to navigate to the ApplyForm page
+    navigate(`/apply-form/${id}`);
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <section className="bg-[#003366] text-white text-center py-20">
+      <section className="bg-[#001830] text-white text-center py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Careers at Hexylon Analytics</h1>
           <p className="text-xl md:text-2xl opacity-90">We are always looking for talented individuals to join our team.</p>
@@ -55,7 +65,7 @@ const CareerPage = () => {
               </div>
               <div className="px-6 pb-6">
                 <button
-                  onClick={() => handleNavigateToApplyForm(job)}
+                  onClick={() => handleNavigateToApplyForm(job.id)}
                   className="w-full bg-white hover:bg-[#ff6600] text-[#ff6600] hover:text-white border border-[#ff6600] font-semibold py-2 px-4 rounded transition-colors duration-300 flex items-center justify-center"
                 >
                   Apply Now

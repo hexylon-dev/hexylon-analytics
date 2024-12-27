@@ -80,7 +80,6 @@ const OurWorkSection = () => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Network lines animation
       gsap.to(".network-line", {
         opacity: "random(0.1, 0.3)",
         duration: "random(2, 4)",
@@ -93,7 +92,6 @@ const OurWorkSection = () => {
         },
       });
 
-      // Work items animation
       gsap.fromTo(
         ".work-item",
         {
@@ -115,7 +113,6 @@ const OurWorkSection = () => {
         }
       );
 
-      // Projects animation
       gsap.fromTo(
         ".project-card",
         {
@@ -147,7 +144,6 @@ const OurWorkSection = () => {
       className="relative bg-white py-20 px-8 overflow-hidden"
       id="our-work"
     >
-      {/* Network line background */}
       {[...Array(15)].map((_, i) => (
         <div
           key={i}
@@ -206,7 +202,12 @@ const OurWorkSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`project-card ${project.className} rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group`}
+              className={`project-card ${project.className} rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer`}
+              onClick={() => {
+                if (project.title === "REequitiz: Smart Stock Market Decisions") {
+                  window.open("https://reequitiz.in/", "_blank");
+                }
+              }}
             >
               <div className="flex flex-col items-center text-center">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">

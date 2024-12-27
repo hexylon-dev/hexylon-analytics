@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 function Home() {
 
   const navigate = useNavigate();
-
   const handleNavigateToContactPage = () => {
     window.location.href = "/contact-us";
   };
@@ -34,17 +33,8 @@ function Home() {
       <IndustriesSection />
       <OurWorkSection />
       <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-      <Footer handleNavigateToContactPage={handleNavigateToContactPage} />
+      {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
 
-      {/* Career Navigation Button */}
-      <div className="text-center py-8">
-        <button
-          onClick={handleNavigateToCareersPage}
-          className="bg-[#FF6600] text-white py-3 px-8 rounded-full hover:bg-[#FF8533] transition duration-300"
-        >
-          Explore Careers
-        </button>
-      </div>
     </>
   );
 }

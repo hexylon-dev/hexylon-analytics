@@ -16,13 +16,13 @@ function Blog({ blog }) {
         <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
           <div className="flex items-center">
             <CalendarIcon className="w-4 h-4 mr-2" />
-            <time dateTime={blog.audit_fields.created_at}>
-              {blog.audit_fields.created_at}
+            <time dateTime={blog.created_at}>
+              {blog.created_at}
             </time>
           </div>
           <div className="flex items-center">
             <UserIcon className="w-4 h-4 mr-2" />
-            <span>{blog.audit_fields.created_by}</span>
+            <span>{blog.created_by}</span>
           </div>
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-4">{blog.title}</h2>
@@ -35,15 +35,15 @@ function Blog({ blog }) {
               <div className="flex flex-wrap gap-3">
                 {blog.references.map((link, index) => (
                   <a
-                    key={index}
-                    href={link}
-                    className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm hover:bg-blue-100 transition duration-300"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkIcon className="w-4 h-4 mr-2" />
-                    {new URL(link).hostname.replace("www.", "")}
-                  </a>
+                  key={index}
+                  href={link}
+                  className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm hover:bg-blue-100 transition duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkIcon className="w-4 h-4 mr-2" />
+                  {link}
+                </a>
                 ))}
               </div>
             </div>

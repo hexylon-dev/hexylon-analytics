@@ -102,6 +102,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
   useEffect(() => {
     if (isOpen) {
       // Animate modal opening
+      document.body.style.overflow = 'hidden';
       gsap.fromTo(
         modalRef.current,
         { opacity: 0 },
@@ -120,6 +121,8 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
           delay: 0.2,
         }
       );
+    } else{
+      document.body.style.overflow = 'auto';
     }
   }, [isOpen]);
 

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import ContactNavbar from "../components/NavbarForContact";
 import ContactFooter from "../components/FooterOfContact";
+import { CreateContactUsResponseApi } from "../service/api";
 
 const THEME = {
   navyBlue: "#003366",
@@ -24,12 +25,12 @@ const ContactPage = () => {
   const containerRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
-    companyName: "",
-    areaOfInterest: "",
+    company_name: "",
+    area_of_interest: "",
     email: "",
     phone: "",
-    location: "",
-    industryFocus: "",
+    address: "",
+    industry: "",
   });
 
   useGSAP(
@@ -88,8 +89,17 @@ const ContactPage = () => {
     { scope: containerRef }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await CreateContactUsResponseApi({
+        ...formData,
+        description: `${formData.area_of_interest}, ${formData.industry}`
+      });
+    }
+    catch(err) {
+      console.log(err);
+    }
     gsap.to(formRef.current, {
       scale: 0.98,
       duration: 0.1,
@@ -98,12 +108,12 @@ const ContactPage = () => {
       onComplete: () => {
         setFormData({
           name: "",
-          companyName: "",
-          areaOfInterest: "",
+          company_name: "",
+          area_of_interest: "",
           email: "",
           phone: "",
-          location: "",
-          industryFocus: "",
+          address: "",
+          industry: "",
         });
       },
     });
@@ -231,8 +241,8 @@ const ContactPage = () => {
                   , and I represent{" "}
                   <input
                     type="text"
-                    name="companyName"
-                    value={formData.companyName}
+                    name="company_name"
+                    value={formData.company_name}
                     onChange={handleChange}
                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
@@ -243,8 +253,8 @@ const ContactPage = () => {
                   can help us with{" "}
                   <input
                     type="text"
-                    name="areaOfInterest"
-                    value={formData.areaOfInterest}
+                    name="area_of_interest"
+                    value={formData.area_of_interest}
                     onChange={handleChange}
                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "250px" }}
@@ -276,19 +286,19 @@ const ContactPage = () => {
                   . Our company is currently located in{" "}
                   <input
                     type="text"
-                    name="location"
-                    value={formData.location}
+                    name="address"
+                    value={formData.address}
                     onChange={handleChange}
                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
-                    placeholder="Your Location"
+                    placeholder="Your address"
                     required
                   />
                   , and we are specifically focused on{" "}
                   <input
                     type="text"
-                    name="industryFocus"
-                    value={formData.industryFocus}
+                    name="industry"
+                    value={formData.industry}
                     onChange={handleChange}
                     className="inline-block px-2 py-1 border-b-2 focus:border-b-2 outline-none transition-colors bg-transparent"
                     style={{ borderColor: THEME.saffron, width: "200px" }}
