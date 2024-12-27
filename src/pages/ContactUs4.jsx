@@ -334,9 +334,15 @@ const ContactPage = () => {
                 {[
                   {
                     icon: MapPin,
-                    title: "Visit Us",
-                    content:
-                      "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
+                    title: "Address 1",
+                    content:"301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054",
+
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Address 2",
+                    content:"B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
+
                   },
                   {
                     icon: Phone,
@@ -380,7 +386,7 @@ const ContactPage = () => {
             </div>
 
             {/* Map */}
-            <div className="relative h-96">
+            <div className="relative h-100">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
                 <div className="w-full h-full bg-gray-100 relative">
@@ -388,7 +394,7 @@ const ContactPage = () => {
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.684982717429!2d72.55826618629733!3d23.035335962144465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f461610533%3A0xa56a93bc9468d0!2sGanesh%20Plaza%2C%20Navrangpura%20Rd%2C%20Near%20Navrangpura%20Post%20Office%2C%20Shrimali%20Society%2C%20Navrangpura%2C%20Ahmedabad%2C%20Gujarat%20380009!5e0!3m2!1sen!2sin!4v1730131237754!5m2!1sen!2sin"
                       width="600"
-                      height="450"
+                      height="100%"
                       style={{ border: 0 }}
                       allowFullScreen=""
                       loading="lazy"
