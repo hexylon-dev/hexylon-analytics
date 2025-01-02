@@ -102,7 +102,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
   useEffect(() => {
     if (isOpen) {
       // Animate modal opening
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       gsap.fromTo(
         modalRef.current,
         { opacity: 0 },
@@ -121,8 +121,8 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
           delay: 0.2,
         }
       );
-    } else{
-      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = "auto";
     }
   }, [isOpen]);
 
@@ -309,7 +309,8 @@ const HowWeWorkSection = () => {
   const [triggerTyping, setTriggerTyping] = useState(false);
   const [typingComplete, setTypingComplete] = useState(false);
   const scrollTriggerRef = useRef(null);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const steps = [
     {
       title: "Understand Your Business",
@@ -479,13 +480,229 @@ const HowWeWorkSection = () => {
                 triggerAnimation={triggerTyping}
                 onComplete={handleTypingComplete}
               />
-              
+
               <div className="h-1 w-24 bg-[#FF6600] mt-1 md:mt-4 rounded-full"></div>
             </div>
           </div>
         </div>
 
-        <div
+        <div className="flex max-w-7xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl">
+          <div className="relative w-[18rem] h-[28rem] rounded-lg mr-[99px] p-5">
+            {/* Left border */}
+            <div className="absolute left-0 top-0 w-1 h-full bg-orange-500 rounded-l-3xl"></div>
+            {/* Top border */}
+            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+            {/* Bottom border */}
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            {/* Right border with gap */}
+            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+            {/* Attach fill circle top to right border between border gap */}
+            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            {/* Right border with gap */}
+            <div className="absolute right-0 bottom-0 w-1 h-[5rem] bg-orange-500 rounded-r-3xl"></div>
+
+            <div className="absolute right-[-52px]  bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
+
+            <div className="flex flex-col items-center space-y-6 h-full justify-center">
+              {/* Light orange icon */}
+              <div className="text-orange-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-10 h-10 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+
+              {/* Title */}
+              <h2
+                className="text-xl font-bold text-white text-center"
+                style={{ margin: "0px", marginTop: "10px" }}
+              >
+                Understand
+                <br />
+                Your Business
+              </h2>
+
+              {/* Text content */}
+              <p className="max-w-sm text-center leading-relaxed text-white/90">
+                We start by sending our expert consultants to thoroughly
+                understand your business processes, challenges, and goals. This
+                deep dive allows us to tailor our AI solutions specifically to
+                your needs.
+              </p>
+
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                  setSelectedCaseStudy({
+                    title: "Global Retailer Transformation",
+                    description:
+                      "How we revolutionized inventory management for a Fortune 500 retailer",
+                    content:
+                      "Our team spent two weeks on-site, analyzing the client's existing inventory systems and supply chain processes. By understanding their unique challenges, we developed a custom AI solution that reduced stockouts by 35% and improved inventory turnover by 20%.",
+                  });
+                }}
+                className="mt-2 bg-[#003366] text-white hover:bg-[#FF6600] transition-colors duration-300 px-4 py-2 rounded-md"
+              >
+                View Case Study
+              </button>
+            </div>
+          </div>
+
+          <div className="relative w-[18rem] h-[28rem] rounded-lg  mr-[99px] p-5">
+            {/* Left border */}
+            <div className="absolute left-0 top-0 w-1 min-h-[5.5rem] bg-orange-500 rounded-l-3xl"></div>
+
+            {/* Top border */}
+            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+
+            {/* Bottom border */}
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            {/* Right border with gap */}
+            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+
+            {/* Attach fill circle top to right border between border gap */}
+            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+
+            {/* Right border with gap */}
+            <div className="absolute right-0 bottom-0 w-1 h-[5.5rem] bg-orange-500 rounded-r-3xl"></div>
+            <div className="absolute bottom-0 left-0  w-1 min-h-24 bg-orange-500 rounded-l-3xl"></div>
+
+            {/* Attach fill circle top to right border between border gap */}
+            <div className="absolute bottom-20 left-[-13px]  w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+
+            <div className="flex flex-col items-center space-y-6 h-full justify-center">
+              {/* Light orange icon */}
+              <div className="text-orange-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-10 h-10 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
+                </svg>
+              </div>
+
+              {/* Title */}
+              <h2
+                className="text-xl font-bold text-white text-center"
+                style={{ margin: "0px", marginTop: "10px" }}
+              >
+                Data Collection
+                <br />
+                and Analysis
+              </h2>
+
+              {/* Text content */}
+              <p className="max-w-sm text-center leading-relaxed text-white/90">
+                We gather and analyze your existing data, identifying patterns
+                and insights that will form the foundation of our AI models. Our
+                advanced data processing techniques ensure we extract maximum
+                value from your information.
+              </p>
+
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                  setSelectedCaseStudy({
+                    title: "Financial Services Data Optimization",
+                    description: "Enhancing fraud detection for a major bank",
+                    content:
+                      "By collecting and analyzing five years of transaction data, we identified subtle patterns of fraudulent activity. Our AI model increased fraud detection rates by 60% while reducing false positives by 40%, saving the bank millions in potential losses.",
+                  });
+                }}
+                className="mt-2 bg-[#003366] text-white hover:bg-[#FF6600] transition-colors duration-300 px-4 py-2 rounded-md"
+              >
+                View Case Study
+              </button>
+            </div>
+          </div>
+
+          <div className="relative  w-[18rem] h-[28rem] rounded-lg p-5 transform rotate-[180deg] ">
+            {/* Left border */}
+            <div className="absolute left-0 top-0 w-1 h-full bg-orange-500 rounded-l-3xl"></div>
+            {/* Top border */}
+            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+            {/* Bottom border */}
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            {/* Right border with gap */}
+            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+            {/* Attach fill circle top to right border between border gap */}
+            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            {/* Right border with gap */}
+            <div className="absolute right-0 bottom-0 w-1 min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
+            <div className="absolute right-[-52px]  bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
+            <div className="flex flex-col items-center space-y-6 h-full justify-center transform rotate-[180deg]">
+              {/* Light orange icon */}
+              <div className="text-orange-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-10 h-10 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+
+              {/* Title */}
+              <h2
+                className="text-xl font-bold text-white text-center"
+                style={{ margin: "0px", marginTop: "10px" }}
+              >
+                AI Model
+                <br />
+                Development
+              </h2>
+
+              {/* Text content */}
+              <p className="max-w-sm text-center leading-relaxed text-white/90">
+                Our team of expert data scientists and machine learning
+                engineers develop custom AI models tailored to your specific
+                needs. We use cutting-edge algorithms and techniques to ensure
+                optimal performance and accuracy.
+              </p>
+
+              <button
+                 onClick={() => {
+                  setIsModalOpen(true);
+                  setSelectedCaseStudy({
+                    title: "Healthcare Predictive Analytics",
+                    description: "Improving patient outcomes with AI",
+                    content:
+                      "We developed a neural network model that analyzes patient data to predict potential complications. This model achieved a 92% accuracy rate in identifying high-risk patients, allowing for early interventions and significantly improving patient outcomes.",
+                  },);
+                }}
+                className="mt-2 bg-[#003366] text-white hover:bg-[#FF6600] transition-colors duration-300 px-4 py-2 rounded-md"
+              >
+                View Case Study
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 transition-opacity duration-500"
           style={{ opacity: typingComplete ? 1 : 0 }}
         >
@@ -499,7 +716,13 @@ const HowWeWorkSection = () => {
               caseStudy={step.caseStudy}
             />
           ))}
-        </div>
+        </div> */}
+
+        <CaseStudyModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          caseStudy={selectedCaseStudy}
+        />
       </div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#003366]/20 to-transparent"></div>
     </div>
