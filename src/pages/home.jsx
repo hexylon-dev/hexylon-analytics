@@ -8,7 +8,7 @@ import OurWorkSection from "../components/OurWork4";
 import CommitmentSection from "../components/OurCommit1";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-
+import SSEComponent from "../pages/SSEComponent";
 function Home() {
 
   const navigate = useNavigate();
@@ -30,6 +30,7 @@ function Home() {
       <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
       <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
       <HowWeWork />
+      <SSEComponent />
       <WhyUs />
       <IndustriesSection />
       <OurWorkSection />

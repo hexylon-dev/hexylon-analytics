@@ -8,18 +8,19 @@ import Footer from "./components/Footer";
 import BlogDetail from "./pages/BlogDetail";
 import CareerPage from './components/CareerPage'; // Adjust path if needed
 import ApplyForm from "./components/ApplyForm";
-
+import SnakeCurve from "./components/SnakeCurve";
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<SnakeCurve />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/blogs" element={<BlogContainer />} />
         <Route path="/blogs/:id" element={<BlogDetail />} />
         <Route path="/careers" element={<CareerPage />} />
-        <Route path="/apply-form" element={<ApplyForm />} />
+
       </Routes>
       <Footer />
     </Router>
