@@ -1,0 +1,53 @@
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl font-bold text-orange-400 mb-6"
+          >
+            Empowering Your Business with <TypeWriter words={["AI Solutions.", "Data Analytics.", "Innovative Technology."]} className="text-white" />
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-lg text-gray-300 mb-8"
+          >
+            Unlock insights and drive decisions with our cutting-edge AI-powered tools and services.
+          </motion.p>
+          <motion.button
+            onClick={handleNavigateToContactPage}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="px-6 py-3 bg-orange-600 text-white font-semibold rounded hover:bg-orange-700 transition"
+          >
+            Get Started
+          </motion.button>
+        </motion.div>
+      </div>
+
+      <div className="py-20">
+        <h2 className="text-3xl font-bold text-center text-white mb-12">
+          Our Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="bg-gray-800 p-6 rounded-lg text-center"
+            >
+              <feature.icon className="text-orange-400 w-12 h-12 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-gray-400">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
