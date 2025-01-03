@@ -453,7 +453,7 @@ const HowWeWorkSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-gray-50 min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden py-20"
+      className=" min-h-screen  relative overflow-hidden py-20"
     >
       <div className="absolute inset-0 opacity-10">
         <div
@@ -467,41 +467,30 @@ const HowWeWorkSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div ref={headerRef} className="relative mb-8 md:mb-16">
-          <div className="absolute -left-4 -top-4 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse">
-            {" "}
-          </div>
-          <div className="absolute -right-4 -bottom-4 w-32 h-32 bg-orange-100 rounded-full opacity-50 animate-pulse delay-150"></div>
-
-          <div className="relative z-10 bg-gradient-to-r from-[#003366] to-[#004d99] rounded-2xl shadow-xl p-2 md:p-4 transform hover:scale-[1.02] transition-all duration-300">
-            <HexagonAnimation />
-            <div className="flex flex-col gap-3 mt-0 md:mt-0 md:gap-6 items-start max-w-4xl mx-auto text-white">
-              <TypingEffect
-                text="Our methodology is grounded in understanding your unique challenges, finding opportunities for improvement, and crafting customized AI solutions. Here's how we make it happen:"
-                triggerAnimation={triggerTyping}
-                onComplete={handleTypingComplete}
-              />
-
-              <div className="h-1 w-24 bg-[#FF6600] mt-1 md:mt-4 rounded-full"></div>
-            </div>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0056A6] text-center">
+            Our Process
+          </h2>
+          <p className="mt-3 text-lg text-white text-center">
+          Leveraging cutting-edge technology to redefine workflows and achieve seamless integration.
+          </p>
         </div>
 
         <div className="flex max-w-7xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl">
           <div className="relative w-[18rem] h-[28rem] rounded-lg mr-[99px] p-5">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-1 h-full bg-orange-500 rounded-l-3xl"></div>
+            <div className="absolute left-0 top-0 w-1 h-[100%] bg-orange-500 rounded-l-3xl animate-draw-height-line"></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+            <div className="absolute right-0 top-0 w-1 h-[5rem] bg-orange-500 rounded-tr-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full "></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 bottom-0 w-1 h-[5rem] bg-orange-500 rounded-r-3xl"></div>
+            <div className="absolute right-0 bottom-0 w-1 h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
 
-            <div className="absolute right-[-52px]  bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
+            <div className="absolute right-[-52px] bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] animate-draw-height-line"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
