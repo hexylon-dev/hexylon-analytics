@@ -44,28 +44,26 @@ const TypeWriter = ({ words, className }) => {
 
 const DarkCard = ({ icon: Icon, title, description }) => {
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
+    <div className="relative w-full h-full">
       <div className="relative">
-        {/* Orange/Coral tab at top with blur effect */}
+        {/* Orange/Coral tab and blur effects remain unchanged */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-[#ff7a33] rounded-b-lg before:absolute before:inset-0 before:blur-xl before:bg-[#ff7a33]/50 before:-z-10" />
-        
-        {/* Multiple blur layers for stronger effect */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-3 blur-2xl bg-[#ff6600]/60" />
         <div className="absolute top-1 left-1/2 -translate-x-1/2 w-32 h-4 blur-3xl bg-[#ff6600]/40" />
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 blur-[40px] bg-[#ff6600]/30" />
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 blur-[50px] bg-[#ff6600]/20" />
       </div>
       
-      {/* Main card - updated padding and aspect ratio */}
-      <div className="mt-[2px] w-full aspect-[16/10] sm:aspect-[16/9] bg-[#1a1a1a] rounded-[28px] border border-[#333333]/30 shadow-xl p-4 sm:p-8">
-        <div className="flex flex-col items-center h-full justify-center">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FF6600] rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+      {/* Updated card with increased height */}
+      <div className="mt-[2px] w-full aspect-[16/13] sm:aspect-[16/12] bg-[#1a1a1a] rounded-[28px] border border-[#333333]/30 shadow-xl p-4 sm:p-6">
+        <div className="flex flex-col items-center h-full justify-center space-y-4 sm:space-y-5">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FF6600] rounded-lg flex items-center justify-center shrink-0">
             <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </div>
-          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3 text-center">
+          <h3 className="text-base sm:text-lg font-semibold text-white text-center">
             {title}
           </h3>
-          <p className="text-sm sm:text-base text-gray-300 text-center max-w-md">
+          <p className="text-xs sm:text-sm text-gray-300 text-center max-w-[250px] sm:max-w-[300px]">
             {description}
           </p>
         </div>
@@ -222,7 +220,7 @@ export default function Component({ handleNavigateToContactPage }) {
                 ctx.beginPath();
                 ctx.moveTo(particle.x, particle.y);
                 ctx.lineTo(otherParticle.x, otherParticle.y);
-                ctx.strokeStyle = `rgba(255, 102, 0, ${0.2 - (distance / connectionDistance) * 0.2})`;
+                ctx.strokeStyle = `rgba(255, 102, 0, ${0.3 - (distance / connectionDistance) * 0.2})`;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
               }
@@ -256,18 +254,18 @@ export default function Component({ handleNavigateToContactPage }) {
   const features = [
     {
       icon: Shield,
-      title: "Customized AI",
-      description: "Tailored AI solutions designed specifically for your business needs and goals."
+      title: "Bespoke AI Solutions",
+      description: "Customized AI solutions designed specifically to address your business challenges and objectives, ensuring optimal performance and measurable results. We create personalized models that align with your goals, driving innovation and efficiency."
     },
     {
       icon: Lightbulb,
-      title: "Expert Consultancy",
-      description: "Guidance from experienced consultants throughout your AI transformation journey."
+      title: "Expert Guidance & Support",
+      description: "Work with industry-leading consultants who bring deep expertise and experience, guiding you through every stage of your AI transformation journey. From initial strategy sessions to implementation and scaling, we provide continuous support to ensure success."
     },
     {
       icon: Users,
-      title: "End-to-End Service",
-      description: "Complete support from initial consultation through deployment and beyond."
+      title: "Complete AI Lifecycle Support",
+      description: "Receive complete support from the initial consultation to deployment and beyond. Our end-to-end services guarantee that your AI solutions are seamlessly integrated, continuously optimized, and evolve with your business needs, ensuring sustained growth and value."
     }
   ];
 
@@ -289,9 +287,9 @@ export default function Component({ handleNavigateToContactPage }) {
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
       
       {/* Updated scroll percentage indicator */}
-      <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
+      {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
         {(scrollPercentage * 100).toFixed(1)}%
-      </div>
+      </div> */}
 
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <motion.div 

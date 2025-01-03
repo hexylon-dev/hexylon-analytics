@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
 import ScrollDown from "../assets/svgs/ScrollDown";
-
+import HeaderSVG from "../assets/svgs/HeaderSVG";
 export default function HexylonLanding({ handleNavigateToContactPage, title, description }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -61,16 +61,16 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
 
       {/* Scroll percentage indicator */}
-      <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
+      {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
         {(scrollPercentage * 100).toFixed(1)}%
-      </div>
+      </div> */}
 
       <motion.div
         style={{ scale, opacity, y }}
         className="relative z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
       >
         {/* Right Arrow - Updated positioning */}
-        <div className="absolute top-40 right-4 md:top-[170px] md:right-[120px]">
+        <div className="absolute top-[150px] right-4 md:top-[170px] md:right-[120px]">
           <div className="bg-[#141414] p-2 md:p-3 rounded-full shadow-lg hover:bg-[#1a1a1a] transition-colors duration-300">
             <RightArrow className="w-6 h-6 md:w-10 md:h-10 text-[#0066ff]" />
           </div>
@@ -88,10 +88,10 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
               transition: "background-color 0.3s, transform 0.3s",
               color: "white",
               boxShadow: "0 4px 14px rgba(0, 0, 0, 0.2)",
-              marginTop: "90px",
-              "@media (min-width: 768px)": {
+              marginTop: "70px",
+              "@media (min-width: 1000px)": {
                 padding: "12px 36px",
-                marginTop: "100px"
+                marginTop: "-100px"
               }
             }}
             onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
@@ -115,10 +115,10 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
               color: "white",
               textAlign: "center",
               paddingLeft: "0.5rem",
-              marginTop: "-90px",
+              marginTop: "-100px",
               "@media (min-width: 768px)": {
                 paddingLeft: "1.5rem",
-                marginTop: "-135px"
+                marginTop: "-250px"
               }
             }}
             dangerouslySetInnerHTML={{ __html: title }}
