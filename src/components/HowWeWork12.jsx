@@ -142,7 +142,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
         {/* Header section with gradient line and close button */}
         <div className="sticky top-0 bg-white pt-6 px-6 pb-4 border-b border-gray-100">
           <div className="flex item-center justify-center">
-            <div className="w-[98%] my-auto h-1 bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
+            <div className="w-[98%] my-auto h-[0.5px] bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
             <div className="my-auto flex items-center justify-center ml-4">
               <button
                 onClick={onClose}
@@ -251,7 +251,7 @@ const WorkCard = ({ title, description, number, icon, caseStudy }) => {
 
         <div className="relative z-10">
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl font-bold text-[#003366] bg-blue-50 w-14 h-14 rounded-full flex items-center justify-center">
+            <span className="text-4xl font-bold text-[#003366] bg-blue-50 w-[0.5px]4 h-[0.5px]4 rounded-full flex items-center justify-center">
               {number}
             </span>
           </div>
@@ -291,7 +291,7 @@ const WorkCard = ({ title, description, number, icon, caseStudy }) => {
           </button>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#003366] to-[#FF6600] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[0.5px] bg-gradient-to-r from-[#003366] to-[#FF6600] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
       </div>
 
       <CaseStudyModal
@@ -319,7 +319,7 @@ const HowWeWorkSection = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-16 h-16 text-[#003366]"
+          className="w-[0.5px]6 h-[0.5px]6 text-[#003366]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -347,7 +347,7 @@ const HowWeWorkSection = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-16 h-16 text-[#003366]"
+          className="w-[0.5px]6 h-[0.5px]6 text-[#003366]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -374,7 +374,7 @@ const HowWeWorkSection = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-16 h-16 text-[#003366]"
+          className="w-[0.5px]6 h-[0.5px]6 text-[#003366]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -401,7 +401,7 @@ const HowWeWorkSection = () => {
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-16 h-16 text-[#003366]"
+          className="w-[0.5px]6 h-[0.5px]6 text-[#003366]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -465,7 +465,7 @@ const HowWeWorkSection = () => {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="max-w-12xl mx-auto px-4 md:px-8">
         <div ref={headerRef} className="relative mb-8 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0056A6] text-center">
             Our Process
@@ -475,29 +475,29 @@ const HowWeWorkSection = () => {
           </p>
         </div>
 
-        <div className="flex max-w-7xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl">
+        <div className="flex max-w-12xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl">
           <div className="relative w-[18rem] h-[28rem] rounded-lg mr-[99px] p-5">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-1 h-[100%] bg-orange-500 rounded-l-3xl animate-draw-height-line"></div>
+            <div className="absolute left-0 top-0 w-[0.5px] h-[100%] bg-orange-500 rounded-l-3xl animate-draw-height-line"></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
+            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
+            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 top-0 w-1 h-[5rem] bg-orange-500 rounded-tr-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
+            <div className="absolute right-0 top-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-tr-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full "></div>
+            <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full "></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 bottom-0 w-1 h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
+            <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
 
-            <div className="absolute right-[-52px] bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] animate-draw-height-line"></div>
+            <div className="absolute right-[-52px] bottom-[4.3rem] w-[0.5px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] animate-draw-height-line"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
               <div className="text-orange-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-10 h-10 text-white"
+                  className="w-[0.5px]0 h-[0.5px]0 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -549,32 +549,32 @@ const HowWeWorkSection = () => {
 
           <div className="relative w-[18rem] h-[28rem] rounded-lg  mr-[99px] p-5">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-1 min-h-[5.5rem] bg-orange-500 rounded-l-3xl"></div>
+            <div className="absolute left-0 top-0 w-[0.5px] min-h-[5.5rem] bg-orange-500 rounded-l-3xl"></div>
 
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl"></div>
 
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+            <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
 
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
             {/* Right border with gap */}
-            <div className="absolute right-0 bottom-0 w-1 h-[5.5rem] bg-orange-500 rounded-r-3xl"></div>
-            <div className="absolute bottom-0 left-0  w-1 min-h-24 bg-orange-500 rounded-l-3xl"></div>
+            <div className="absolute right-0 bottom-0 w-[0.5px] h-[5.5rem] bg-orange-500 rounded-r-3xl"></div>
+            <div className="absolute bottom-0 left-0  w-[0.5px] min-h-24 bg-orange-500 rounded-l-3xl"></div>
 
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute bottom-20 left-[-13px]  w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute bottom-20 left-[-3px]  w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
               <div className="text-orange-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-10 h-10 text-white"
+                  className="w-[0.5px]0 h-[0.5px]0 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -625,24 +625,24 @@ const HowWeWorkSection = () => {
 
           <div className="relative  w-[18rem] h-[28rem] rounded-lg p-5 transform rotate-[180deg] ">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-1 h-full bg-orange-500 rounded-l-3xl"></div>
+            <div className="absolute left-0 top-0 w-[0.5px] h-full bg-orange-500 rounded-l-3xl"></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-1 bg-orange-500 rounded-tl-3xl"></div>
+            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl"></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-1 bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 top-0 w-1 min-h-24 bg-orange-500 rounded-tr-3xl"></div>
+            <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-13px] top-20 w-[2rem] h-[2rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 bottom-0 w-1 min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
-            <div className="absolute right-[-52px]  bottom-[4.3rem] w-1 h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
+            <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
+            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[0.5px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
             <div className="flex flex-col items-center space-y-6 h-full justify-center transform rotate-[180deg]">
               {/* Light orange icon */}
               <div className="text-orange-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-10 h-10 text-white"
+                  className="w-[0.5px]0 h-[0.5px]0 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
