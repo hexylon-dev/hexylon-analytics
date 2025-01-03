@@ -486,11 +486,12 @@ const HowWeWorkSection = () => {
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-tr-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
             {/* Attach fill circle top to right border between border gap */}
+            {/* start animation need to be here */}
             <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full "></div>
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
 
-            <div className="absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line"></div>
+            <div className="absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line-cross-line"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
@@ -549,17 +550,18 @@ const HowWeWorkSection = () => {
 
           <div className="relative w-[18rem] h-[28rem] rounded-lg  mr-[99px] p-5">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-[0.5px] min-h-[5.5rem] bg-orange-500 rounded-l-3xl"></div>
+            <div className="absolute left-0 top-0 w-[0.5px] min-h-[5.5rem] bg-orange-500 rounded-l-3xl  "></div>
 
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl"></div>
+            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
 
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
 
             {/* Attach fill circle top to right border between border gap */}
+            {/* end animation need to be here */}
             <div className="absolute right-[-3px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
             {/* Right border with gap */}
@@ -627,16 +629,16 @@ const HowWeWorkSection = () => {
             {/* Left border */}
             <div className="absolute left-0 top-0 w-[0.5px] h-full bg-orange-500 rounded-l-3xl"></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl"></div>
+            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl"></div>
+            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
             {/* Attach fill circle top to right border between border gap */}
             <div className="absolute right-[-4px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
-            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] "></div>
+            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line-cross-line"></div>
             <div className="flex flex-col items-center space-y-6 h-full justify-center transform rotate-[180deg]">
               {/* Light orange icon */}
               <div className="text-orange-400">

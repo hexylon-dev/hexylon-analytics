@@ -120,3 +120,23 @@ scrollbar-hidden::-webkit-scrollbar {
 .animate-draw-height-5rem-line-top-to-bottom {
   animation: draw-height-5rem-line-top-to-bottom 2s ease-in-out forwards;
 }
+
+
+@keyframes drawHeightLineCrossLine {
+  0% {
+    height: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    height: 19.2rem;
+    transform: rotate(0deg);
+  }
+  100% {
+    height: 19.2rem;
+    transform: rotate(18.7deg);
+  }
+}
+
+.animate-draw-height-line-cross-line {
+  animation: drawHeightLineCrossLine 1s ease-in-out forwards;
+}
