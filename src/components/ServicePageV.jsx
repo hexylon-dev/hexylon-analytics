@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
 import ScrollDown from "../assets/svgs/ScrollDown";
-
+import HeaderSVG from "../assets/svgs/HeaderSVG";
 export default function HexylonLanding({ handleNavigateToContactPage, title, description }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
