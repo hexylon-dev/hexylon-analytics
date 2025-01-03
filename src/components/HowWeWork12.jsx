@@ -311,6 +311,8 @@ const HowWeWorkSection = () => {
   const scrollTriggerRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
+  const objervRef = useRef(null); // Reference to the section
+  const [isVisible, setIsVisible] = useState(false);
   const steps = [
     {
       title: "Understand Your Business",
@@ -450,6 +452,30 @@ const HowWeWorkSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log("objervRef", objervRef.current);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          console.log("entry", entry);
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing after it's visible
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% of the element is visible
+    );
+
+    if (objervRef.current) {
+      observer.observe(objervRef.current);
+    }
+
+    return () => {
+      if (objervRef.current) {
+        observer.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <div
       ref={sectionRef}
@@ -475,23 +501,23 @@ const HowWeWorkSection = () => {
           </p>
         </div>
 
-        <div className="flex max-w-12xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl">
-          <div className="relative w-[18rem] h-[28rem] rounded-lg mr-[99px] p-5">
+        <div ref={objervRef} className="flex flex-col lg:flex-row max-w-12xl min-h-[30rem] justify-center items-center mx-auto bg-black rounded-2xl p-4 gap-8 lg:gap-0">
+          <div className="relative w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5">
             {/* Left border */}
-            <div className="absolute left-0 top-0 w-[0.5px] h-[100%] bg-orange-500 rounded-l-3xl animate-draw-height-line"></div>
+            <div className={`absolute left-0 top-0 w-[0.5px] h-[100%] bg-orange-500 rounded-l-3xl ${isVisible ? "animate-draw-height-line" : ""}`}></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 top-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-tr-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
+            <div className={`absolute right-0 top-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-tr-3xl ${isVisible ? "animate-draw-height-5rem-line-bottom-to-top" : ""}`}></div>
             {/* Attach fill circle top to right border between border gap */}
             {/* start animation need to be here */}
             <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full "></div>
             {/* Right border with gap */}
-            <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
+            <div className={`absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl ${isVisible ? "animate-draw-height-5rem-line-bottom-to-top" : ""}`}></div>
 
-            <div className="absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line-cross-line"></div>
+            <div className={`absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] ${isVisible ? "animate-draw-height-line-cross-line" : ""} hidden md:block`}></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
@@ -547,16 +573,16 @@ const HowWeWorkSection = () => {
               </button>
             </div>
           </div>
-
-          <div className="relative w-[18rem] h-[28rem] rounded-lg  mr-[99px] p-5">
+{/* center card */}
+          <div className="relative w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5">
             {/* Left border */}
             <div className="absolute left-0 top-0 w-[0.5px] min-h-[5.5rem] bg-orange-500 rounded-l-3xl  "></div>
 
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
 
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
 
@@ -625,21 +651,21 @@ const HowWeWorkSection = () => {
             </div>
           </div>
 
-          <div className="relative  w-[18rem] h-[28rem] rounded-lg p-5 transform rotate-[180deg] ">
+          <div className="relative w-[18rem] h-[28rem] rounded-lg p-5 transform lg:rotate-[180deg]">
             {/* Left border */}
             <div className="absolute left-0 top-0 w-[0.5px] h-full bg-orange-500 rounded-l-3xl"></div>
             {/* Top border */}
-            <div className="absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 top-0 w-full h-[0.5px] bg-orange-500 rounded-tl-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
             {/* Bottom border */}
-            <div className="absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl animate-draw-width-line"></div>
+            <div className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${isVisible ? "animate-draw-width-line" : ""}`}></div>
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
             {/* Attach fill circle top to right border between border gap */}
             <div className="absolute right-[-4px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
-            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line-cross-line"></div>
-            <div className="flex flex-col items-center space-y-6 h-full justify-center transform rotate-[180deg]">
+            <div className={`absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] ${isVisible ? "animate-draw-height-line-cross-line" : ""} hidden md:block`}></div>
+            <div className="flex flex-col items-center space-y-6 h-full justify-center transform lg:rotate-[180deg] rotate-0">
               {/* Light orange icon */}
               <div className="text-orange-400">
                 <svg
