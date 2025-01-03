@@ -222,7 +222,7 @@ export default function Component({ handleNavigateToContactPage }) {
                 ctx.beginPath();
                 ctx.moveTo(particle.x, particle.y);
                 ctx.lineTo(otherParticle.x, otherParticle.y);
-                ctx.strokeStyle = `rgba(255, 102, 0, ${0.2 - (distance / connectionDistance) * 0.2})`;
+                ctx.strokeStyle = `rgba(255, 102, 0, ${0.3 - (distance / connectionDistance) * 0.2})`;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
               }
@@ -289,9 +289,9 @@ export default function Component({ handleNavigateToContactPage }) {
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
       
       {/* Updated scroll percentage indicator */}
-      <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
+      {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
         {(scrollPercentage * 100).toFixed(1)}%
-      </div>
+      </div> */}
 
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
