@@ -136,11 +136,11 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
     >
       <div
         ref={contentRef}
-        className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+        className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header section with gradient line and close button */}
-        <div className="sticky top-0 bg-white pt-6 px-6 pb-4 border-b border-gray-100">
+        <div className="sticky top-0 bg-black pt-6 px-6 pb-4 border-b border-gray-100">
           <div className="flex item-center justify-center">
             <div className="w-[98%] my-auto h-[0.5px] bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
             <div className="my-auto flex items-center justify-center ml-4">
@@ -175,7 +175,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
           <p className="text-lg text-gray-600 mb-4 font-medium">
             {caseStudy.description}
           </p>
-          <div className="bg-gray-50 p-6 rounded-xl">
+          <div className="bg-black p-6 rounded-xl">
             <p className="text-gray-700 leading-relaxed">{caseStudy.content}</p>
           </div>
 
@@ -543,26 +543,25 @@ const HowWeWorkSection = () => {
                 className="text-xl font-bold text-white text-center"
                 style={{ margin: "0px", marginTop: "10px" }}
               >
-                Understand
+                Business Strategy & 
                 <br />
-                Your Business
+                Analysis
               </h2>
 
               {/* Text content */}
               <p className="max-w-sm text-center leading-relaxed text-white/90">
-                We start by sending our expert consultants to thoroughly
-                understand your business processes, challenges, and goals. This
-                deep dive allows us to tailor our AI solutions specifically to
-                your needs.
+              Unlock business growth through expert analysis and actionable strategies.
+              Leverage data-driven insights for optimized business performance and success.
+
               </p>
 
               <button
                 onClick={() => {
                   setIsModalOpen(true);
                   setSelectedCaseStudy({
-                    title: "Global Retailer Transformation",
+                    title: "In-Depth Business Analysis for Tailored Strategies",
                     description:
-                      "How we revolutionized inventory management for a Fortune 500 retailer",
+                      "We begin by deploying expert consultants to assess your business, identify challenges, and define your goals. This comprehensive analysis helps us design custom AI solutions aligned with your business needs, ensuring maximum efficiency and performance.",
                     content:
                       "Our team spent two weeks on-site, analyzing the client's existing inventory systems and supply chain processes. By understanding their unique challenges, we developed a custom AI solution that reduced stockouts by 35% and improved inventory turnover by 20%.",
                   });
@@ -621,25 +620,23 @@ const HowWeWorkSection = () => {
                 className="text-xl font-bold text-white text-center"
                 style={{ margin: "0px", marginTop: "10px" }}
               >
-                Data Collection
+                Custom AI Model &
                 <br />
-                and Analysis
+                Data Insights
               </h2>
 
               {/* Text content */}
               <p className="max-w-sm text-center leading-relaxed text-white/90">
-                We gather and analyze your existing data, identifying patterns
-                and insights that will form the foundation of our AI models. Our
-                advanced data processing techniques ensure we extract maximum
-                value from your information.
+              Transforming data into actionable insights with customized AI models.
+              Unlock business potential with AI-driven data analysis and tailored strategies.
               </p>
 
               <button
                 onClick={() => {
                   setIsModalOpen(true);
                   setSelectedCaseStudy({
-                    title: "Financial Services Data Optimization",
-                    description: "Enhancing fraud detection for a major bank",
+                    title: "Unlocking Data Insights to Drive Strategic Growth",
+                    description: "We gather and analyze your business data, uncovering hidden patterns and insights that inform the development of tailored AI models. Our advanced data processing techniques maximize the value of your data, driving meaningful business transformation.",
                     content:
                       "By collecting and analyzing five years of transaction data, we identified subtle patterns of fraudulent activity. Our AI model increased fraud detection rates by 60% while reducing false positives by 40%, saving the bank millions in potential losses.",
                   });
@@ -689,25 +686,23 @@ const HowWeWorkSection = () => {
                 className="text-xl font-bold text-white text-center"
                 style={{ margin: "0px", marginTop: "10px" }}
               >
-                AI Model
+                AI System 
                 <br />
-                Development
+                Integration to Deploy
               </h2>
 
               {/* Text content */}
               <p className="max-w-sm text-center leading-relaxed text-white/90">
-                Our team of expert data scientists and machine learning
-                engineers develop custom AI models tailored to your specific
-                needs. We use cutting-edge algorithms and techniques to ensure
-                optimal performance and accuracy.
+              Seamlessly integrating AI into your systems, from design to deployment.
+              Delivering complete end-to-end AI solutions for operational excellence.
               </p>
 
               <button
                  onClick={() => {
                   setIsModalOpen(true);
                   setSelectedCaseStudy({
-                    title: "Healthcare Predictive Analytics",
-                    description: "Improving patient outcomes with AI",
+                    title: "Complete AI System Integration for Seamless Performance",
+                    description: "We specialize in integrating custom AI models into your existing business systems, ensuring smooth operations and enhanced performance. Our end-to-end approach includes rigorous testing and continuous improvement, ensuring your systems evolve alongside your business.",
                     content:
                       "We developed a neural network model that analyzes patient data to predict potential complications. This model achieved a 92% accuracy rate in identifying high-risk patients, allowing for early interventions and significantly improving patient outcomes.",
                   },);
