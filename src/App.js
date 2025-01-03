@@ -9,7 +9,7 @@ import BlogDetail from "./pages/BlogDetail";
 import CareerPage from './components/CareerPage'; // Adjust path if needed
 import ApplyForm from "./components/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
-
+import ServicePageV from "./components/ServicePageV";
 function App() {
   return (
     <Router>
@@ -22,6 +22,8 @@ function App() {
         <Route path="/blogs/:id" element={<BlogDetail />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
+        <Route path="/services" element={<ServicePageV  title="AI and ML <br /> Service" 
+  description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
       </Routes>
       <Footer />
     </Router>
