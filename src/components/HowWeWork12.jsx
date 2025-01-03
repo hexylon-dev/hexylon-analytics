@@ -490,7 +490,7 @@ const HowWeWorkSection = () => {
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl animate-draw-height-5rem-line-bottom-to-top"></div>
 
-            <div className="absolute right-[-52px] bottom-[4.3rem] w-[0.5px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] animate-draw-height-line"></div>
+            <div className="absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] animate-draw-height-line"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
@@ -560,14 +560,14 @@ const HowWeWorkSection = () => {
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
 
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute right-[-3px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] h-[5.5rem] bg-orange-500 rounded-r-3xl"></div>
             <div className="absolute bottom-0 left-0  w-[0.5px] min-h-24 bg-orange-500 rounded-l-3xl"></div>
 
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute bottom-20 left-[-3px]  w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute bottom-[5.9rem] left-[-3px]  w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
             <div className="flex flex-col items-center space-y-6 h-full justify-center">
               {/* Light orange icon */}
@@ -633,10 +633,10 @@ const HowWeWorkSection = () => {
             {/* Right border with gap */}
             <div className="absolute right-0 top-0 w-[0.5px] min-h-24 bg-orange-500 rounded-tr-3xl"></div>
             {/* Attach fill circle top to right border between border gap */}
-            <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
+            <div className="absolute right-[-4px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
             {/* Right border with gap */}
             <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
-            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[0.5px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[20deg] "></div>
+            <div className="absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] "></div>
             <div className="flex flex-col items-center space-y-6 h-full justify-center transform rotate-[180deg]">
               {/* Light orange icon */}
               <div className="text-orange-400">
