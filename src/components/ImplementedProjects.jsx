@@ -86,16 +86,11 @@ const ImplementedProjects = () => {
         zIndex: 2
       }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
-          <h4 style={{ 
-            fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', 
-            fontWeight: '700', 
-            color: 'black', 
-            marginBottom: 'clamp(0.75rem, 2vw, 1rem)' 
-          }}>
+        <h2 className="2xl:text-7xl md:text-6xl text-4xl font-bold uppercase  mb-4 text-black pb-2 inline-block text-center w-[100%]">
             Implemented Projects by Hexylon
-          </h4>
+          </h2>
           <p style={{ 
-            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)', 
+            fontSize: 'clamp(2rem, 2.5vw, 1.125rem)', 
             color: '#ff6600' 
           }}>
             Turning Vision into Reality with AI-Powered Solutions

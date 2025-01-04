@@ -9,7 +9,7 @@ const menuItems = [
   { id: 3, label: "Service", path: "services", isDropdown: true },
   { id: 4, label: "Technologies", path: "technologies" },
   { id: 5, label: "About Us", path: "about" },
-  { id: 6, label: "Our Work", path: "work" },
+  { id: 6, label: "Our Work", path: "our-work" },
 ];
 
 const serviceDropdownItems = [

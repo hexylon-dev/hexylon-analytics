@@ -44,9 +44,9 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4 w-full">
       <div className="w-full max-w-[90vw]">
-        <h1 className="text-4xl font-bold text-white text-center mb-12">
+      <h2 className="2xl:text-7xl md:text-6xl text-4xl font-bold uppercase  mb-4 text-white pb-2 inline-block text-center w-[100%]">
           AI Methodology of Hexylon
-        </h1>
+        </h2>
         <h2 className="text-xl text-gray-400 text-center mb-8">
           Transforming Ideas into Actionable AI with Our Proven Methodology Content
         </h2>

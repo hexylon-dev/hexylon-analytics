@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
 import ImplementedProjects from "./ImplementedProjects";
 import Page from "./Page";
+import OurWorkUnique from "./OurWorkUnique";
 import ScrollDown from "../assets/svgs/ScrollDown";
 import HeaderSVG from "../assets/svgs/HeaderSVG";
 // import ServicePage2 from "./ServicePage2";
@@ -196,6 +197,7 @@ export default function HexylonLanding({
         </motion.div>
       </div>
       <Page />
+      <OurWorkUnique />
       <ImplementedProjects />
                           </>
   );
