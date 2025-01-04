@@ -10,81 +10,89 @@ export const ComputerVision = () => {
         heroSection: {
           title: "Computer Vision and AI Solutions",
           tagline: "Unlock the Power of AI-Driven Vision. Transform Data into Actionable Insights.",
-          content: "Computer vision, powered by artificial intelligence (AI), is revolutionizing industries by enabling machines to \"see\" and understand the visual world. Our computer vision solutions use advanced AI algorithms to analyze images, videos, and real-time data to enhance decision-making, automate processes, and improve security. From healthcare applications and security systems to autonomous vehicles and retail, our AI-driven computer vision technologies provide your business with unparalleled capabilities to optimize operations, improve customer experience, and drive innovation in the digital age.",
+          content: "Computer vision, powered by artificial intelligence (AI), is revolutionizing industries by enabling machines to 'see' and understand the visual world. Our computer vision solutions use advanced AI algorithms to analyze images, videos, and real-time data to enhance decision-making, automate processes, and improve security. From healthcare applications and security systems to autonomous vehicles and retail, our AI-driven computer vision technologies provide your business with unparalleled capabilities to optimize operations, improve customer experience, and drive innovation in the digital age.",
         },
     
         // second section
         problemStatement: {
             title: "Why Computer Vision in AI is Crucial for Modern Businesses",
-          Content: "In a world driven by visual data, businesses need to leverage AI-powered computer vision to stay competitive and efficient. Without computer vision powered by AI, businesses miss out on automation, valuable insights, and the potential for enhanced productivity.",
+          Content: "In a world driven by visual data, businesses need to leverage AI-powered computer vision to stay competitive and efficient. Computer vision solutions solve challenges such as:",
           benefits: [
             {
-              description: "Enhancing Security: Use AI-based vision systems for real-time surveillance, threat detection, and access control"
+              description: "Use AI-based vision systems for real-time surveillance, threat detection, and access control."
             },
             {
-              description: "Automating Processes: Reduce human error and manual labour by automating image and video analysis for quality control, inventory management, and more"
+              description: "Reduce human error and manual labour by automating image and video analysis for quality control, inventory management, and more."
             },
             {
-              description: "Improving Healthcare: Enable accurate medical imaging analysis for faster diagnostics and treatment"
+              description: "Enable accurate medical imaging analysis for faster diagnostics and treatment."
             },
             {
-              description: "Streamlining Operations: Apply AI vision to analyze visual data in manufacturing, retail, and logistics for optimization and efficiency"
+              description: "Apply AI vision to analyze visual data in manufacturing, retail, and logistics for optimization and efficiency."
             }
           ],
         },
     
         // third section
         keyFeatures: {
-          title: "Unlock the Benefits of Custom AI Models",
+          title: "Transform Your Operations with AI-Driven Computer Vision",
           features: [
             {
-              name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              name: "AI-Based Object Detection",
+              description: " Automatically identify objects in images and videos to streamline decision-making and process automation."
             },
             {
-              name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              name: "Facial Recognition Systems",
+              description: "Enhance security and user authentication with accurate AI-driven facial recognition."
             },
             {
-              name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
+              name: "Real-Time Surveillance",
+              description: " Monitor video feeds to detect anomalies and improve security."
             },
             {
-              name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
+              name: "Healthcare Imaging",
+              description: "Use AI to analyze X-rays and MRIs for faster, more accurate diagnoses."
+            },
+            {
+              name: "Inventory & Quality Control",
+              description: "Track inventory and detect product defects for improved quality control."
+            },
+            {
+              name: "Autonomous Vehicles & Robotics",
+              description: "Enable vehicles and robots to navigate environments safely with AI-powered vision."
             }
           ],
         },
     
         // fourth section
         workflow: {
-          title: "How Custom AI Models Work for Your Business",
-          Content: "Our custom AI model development follows a clear, efficient process to ensure optimal outcomes:",
+          title: "How AI-Driven Computer Vision Works",
+          Content: "Our computer vision technology relies on advanced AI, machine learning, and deep learning techniques to interpret and analyze visual data. Here’s a simplified overview:",
           steps: [
             {
               icon: "clipboard",
-              name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              name: "Data Collection and Preprocessing",
+              description: " Capture images, videos, and sensor data for analysis. Clean and prepare this visual data for further processing."
             },
             {
               icon: "binary",
-              name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              name: "Model Training and AI Algorithms",
+              description: "Train deep learning models such as convolutional neural networks (CNNs) to recognize patterns, objects, and features in images and videos."
             },
             {
               icon: "trending",
-              name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              name: "Visual Analysis and Object Detection",
+              description: "Use algorithms to detect and classify objects, facial features, or anomalies in real-time visual data."
             },
             {
               icon: "target",
-              name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              name: "Output Generation and Decision Making",
+              description: " Extract insights, such as automated actions or alerts, based on visual data analysis."
             },
             {
               icon: "refresh",
               name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
+              description: " Update AI models to improve accuracy over time with new visual data and patterns."
             }
           ],
         },
@@ -129,52 +137,52 @@ export const ComputerVision = () => {
         },
     
         whyHexylon: {
-          title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+          title: "Why Choose Hexylon Analytics for Computer Vision and AI Solutions?",
           content:
             "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
           reasons: [
             {
               id: 1,
-              title: "Tailored Predictive Models",
+              title: "Tailored Solutions",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "We offer customized computer vision applications to address your unique challenges.",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "End-to-End Support",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "From consultation to deployment, Hexylon Analytics provides full lifecycle support.",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "Scalability",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                "Our solutions grow with your business, from small applications to enterprise-level deployments.",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Industry Expertise",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "With years of experience, we deliver solutions tailored to your industry's needs.",
               image: img4,
             },
             {
               id: 5,
-              title: "Innovation Hub",
+              title: "Proven Results",
               description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
+                "Hexylon Analytics' solutions have helped businesses automate processes, enhance security, and improve decision-making, driving tangible results.",
               image: img2,
             },
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: "Transform Your Business with AI-Driven Computer Vision Today",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Leverage the power of AI and computer vision to automate processes, enhance security, and gain actionable insights.",
         },
     
         faqs: [

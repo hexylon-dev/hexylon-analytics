@@ -72,17 +72,7 @@ const SalesForecastingSVG = ({content}) => {
       >
         {content.description}
       </text>
-      <text
-        x="400"
-        y="275"
-        fontFamily="Arial, sans-serif"
-        fontSize="18"
-        fill="#cccccc"
-        textAnchor="middle"
-        opacity="0.8"
-      >
-        {content.description}
-      </text>
+     
     </svg>
   );
 };

@@ -15,19 +15,16 @@ export const CustomAIModels = () => {
         // second section
         problemStatement: {
             title: "Why Custom AI Models Matter to Your Business",
-          Content: "In today's competitive market, businesses that adopt custom AI models gain a significant edge. These models are crucial for:",
+          Content: "In today’s competitive market, businesses that adopt custom AI models gain a significant edge. These models are crucial for:",
           benefits: [
             {
-              description: "Personalized Customer Experiences: Understand customer behaviors and preferences to provide tailored services and enhance satisfaction"
+              description: "Understand customer behaviors and preferences to provide tailored services and enhance satisfaction."
             },
             {
-              description: "Optimized Operations: Improve operational efficiency by automating workflows and optimizing resource allocation using AI-driven solutions"
+              description: "Improve operational efficiency by automating workflows and optimizing resource allocation using AI-driven solutions."
             },
             {
-              description: "Data-Driven Decision Making: Unlock hidden insights within your data to support informed and strategic decisions"
-            },
-            {
-              description: "Custom AI models are key to leveraging advanced machine learning algorithms and AI tools to solve complex business problems, enhance productivity, and increase profitability"
+              description: "Unlock hidden insights within your data to support informed and strategic decisions."
             }
           ],
         },
@@ -38,19 +35,19 @@ export const CustomAIModels = () => {
           features: [
             {
               name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making."
             },
             {
               name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability."
             },
             {
               name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
+              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty."
             },
             {
               name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
+              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time."
             }
           ],
         },
@@ -63,27 +60,27 @@ export const CustomAIModels = () => {
             {
               icon: "clipboard",
               name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              description: "We gather clean, reliable data from various sources for accuracy."
             },
             {
               icon: "binary",
               name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs."
             },
             {
               icon: "trending",
               name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              description: "The model is trained with historical data to ensure accurate predictions."
             },
             {
               icon: "target",
               name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              description: "We integrate the model into your systems to improve operations and decision-making."
             },
             {
               icon: "refresh",
               name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
+              description: "We update the model regularly to adapt to new data and enhance performance."
             }
           ],
         },
@@ -132,52 +129,52 @@ export const CustomAIModels = () => {
         },
     
         whyHexylon: {
-          title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+          title: "Why Choose Us for Custom AI Model Development?",
           content:
-            "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
+            "At Hexylon Analytics, we specialize in creating custom AI models tailored to your specific business needs. Here's why businesses trust us:",
           reasons: [
             {
               id: 1,
-              title: "Tailored Predictive Models",
+              title: "Expertise in AI & Machine Learning",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "We have years of experience in developing cutting-edge AI models and machine learning solutions.",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "Tailored Solutions",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "We design AI models to solve your unique business challenges, from predictive analytics to resource optimization.",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "End-to-End Support",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                "We offer full-cycle services—from model development to deployment and continuous optimization.",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Proven Track Record",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "We’ve helped businesses across diverse industries harness the power of AI to drive growth and improve operational efficiency.",
               image: img4,
             },
             {
               id: 5,
-              title: "Innovation Hub",
+              title: "Results-Driven Approach",
               description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
+                "Our AI models are designed to deliver measurable results, including improved customer satisfaction, optimized operations, and enhanced profitability.",
               image: img2,
             },
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: " Unlock the Power of Custom AI Models for Your Business",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Ready to take your business to the next level with custom AI models? Let us help you create personalized AI solutions that enhance efficiency, drive innovation, and improve decision-making. Contact us today to learn how we can transform your business with custom AI models!",
         },
     
         faqs: [
