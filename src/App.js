@@ -12,7 +12,11 @@ import Header from './components/Blogs/HeaderBlog';
 import ResourceCard from './components/Blogs/ResourceCard';
 import { resources } from './Data/resources';
 import BlogPage from './pages/BlogPage';
-
+import PosterPage from './components/poster1';
+import SalesCard from './components/SalesCard';
+import ServiceV3 from './components/ServiceV3';
+import ImplementedProjects from './components/ImplementedProjects';
+import OurWorkV from './components/OurWorkV';
 function App() {
   return (
     <Router>
@@ -34,12 +38,17 @@ function App() {
             </main>
           </div>
         } />
+        <Route path="/sales-card" element={<SalesCard />} />
+        <Route path="/service-v3" element={<ServiceV3 title = "TRANSFORM YOUR BUSINESS WITH PREDICTIVE ANALYTICS" description = "Predictive Analytics is a scalable and user-friendly tool, ideal for businesses of all sizes."/>} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
         <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
+        <Route path="/poster" element={<PosterPage title = "UNLOCK THE POWER OF PREDICTIVE ANALYTICS FOR BUSINESS SUCCESS" description="Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability." />} />
+        <Route path="/implemented-projects" element={<ImplementedProjects />} />
+        <Route path="/our-work" element={<OurWorkV />} />
       </Routes>
       <Footer />
     </Router>
