@@ -6,8 +6,14 @@ import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
 function OurWork() {
   return (
     <div className="bg-black relative ">
-      <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5 pt-28 max-w-[1500px] lg:flex-row flex-col">
-        <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-2xl">
+      <div className="text-[#2182DF] text-4xl text-center mt-20 max-w-7xl mx-auto">
+          <h1> Our Work </h1>
+          <div className="text-gray-100 text-2xl text-center mt-5">
+          Transforming business operations with automation and real-time dashboards, empowering digital presence through custom websites and platforms like Reequitiz, and delivering personalized education with AI-driven learning paths and career guidance.
+          </div>
+        </div>
+      <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5 pt-28 max-w-[1600px] lg:flex-row flex-col  justify-center m-auto">
+        <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
           <h2 className="mt-2 font-semibold text-2xl text-white">
             Transforming Business Operations
           </h2>
@@ -25,8 +31,7 @@ function OurWork() {
             </div>
           </div>
         </div>
-
-        <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-2xl">
+        <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
           <h2 className="mt-2 font-semibold text-2xl text-white">
             Web Development & Empowering Platforms
           </h2>
@@ -47,8 +52,8 @@ function OurWork() {
         </div>
       </div>
 
-      <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5  max-w-[1500px] lg:flex-row flex-col">
-        <div className="block rounded-3xl border border-[#2182DF] p-4 sm:col-span-2 xl:w-[50%] lg:w-[45%] w-[94%] ">
+      <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5  max-w-[1600px] lg:flex-row flex-col justify-center m-auto">
+        <div className="block rounded-3xl border border-[#2182DF] p-4 sm:col-span-2 xl:w-[50%] lg:w-[45%] w-[94%]">
           <h2 className="mt-2 font-semibold text-2xl text-white">
             AI-Driven Personalized Learning
           </h2>
@@ -67,7 +72,7 @@ function OurWork() {
             </div>
           </div>
         </div>
-        <div className="self-center ">
+        <div className="block self-center min-w-4xl">
           <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md ">
             <div className="absolute inset-0 rounded-md bg-black  blur-md transition-all group-hover:blur-lg" />
             <div className="relative flex items-center space-x-2 text-blue-500">
