@@ -1,218 +1,251 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.png";
-import { NavLink, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import newlogo from "../assets/newlogo.png";
 
-const menuItem = [
+const menuItems = [
+  { id: 1, label: "Home", path: "" },
+  { id: 2, label: "Blog", path: "blogs" },
+  { id: 3, label: "Service", path: "services", isDropdown: true },
+  { id: 4, label: "Technologies", path: "technologies" },
+  { id: 5, label: "About Us", path: "about" },
+  { id: 6, label: "Our Work", path: "work" },
+];
+
+const serviceDropdownItems = [
   {
     id: 1,
-    label: "Home",
-    path: "",
+    label: "Predictive Analytics Solutions Develpment",
+    path: "services/web-development",
   },
   {
     id: 2,
-    label: "Blog",
-    path: "blogs",
+    label: "Natural Language Processing (NLP)",
+    path: "services/mobile-app",
   },
-  {
-    id: 3,
-    label: "Career",
-    path: "careers",
-  },
+  { id: 3, label: "Computer Vision", path: "services/ui-ux-design" },
   {
     id: 4,
-    label: "Contact Us",
-    path: "contact-us",
+    label: "Recommendation Systems",
+    path: "services/digital-marketing",
+  },
+  { id: 5, label: "Custom AI Models", path: "services/cloud-solutions" },
+  {
+    id: 5,
+    label: "Automated Machine Learning (AutoML)",
+    path: "services/cloud-solutions",
+  },
+  {
+    id: 6,
+    label: "AI-Powered Data Analytics",
+    path: "services/cloud-solutions",
+  },
+  { id: 7, label: "Conversational AI", path: "services/cloud-solutions" },
+  {
+    id: 8,
+    label: "AI for Process Automation",
+    path: "services/cloud-solutions",
   },
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const menuVariants = {
-    closed: {
-      x: "100%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-    open: {
-      x: "0%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
+  const toggleServiceDropdown = () => {
+    setIsServiceDropdownOpen((prev) => !prev);
   };
 
-  const linkVariants = {
-    closed: { x: 50, opacity: 0 },
-    open: (i) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        delay: i * 0.1,
-      },
-    }),
+
+  const bodyStopScroll = () => {
+    
+      document.body.style.overflow = "hidden";
   };
 
-  // Helper function to check if the "Career" tab should be active
-  const isCareerActive = pathname.startsWith("/careers") || pathname.startsWith("/apply-form");
+  const bodyEnableScroll = () => {
+    
+    document.body.style.overflow = "auto";
+};
 
-  // Determine if scroll effect should be disabled
-  const disableScrollEffect = pathname === "/blogs" || pathname === "/contact-us" || pathname.startsWith("/blogs/");
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        disableScrollEffect
-          ? "py-4 bg-white shadow-lg"
-          : scrolled
-          ? "py-2 bg-white shadow-lg"
-          : "py-4 bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          {/* Logo Section */}
-          <div
-            className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <img
-              src={logo}
-              alt="Logo"
-              width={40}
-              height={40}
-              className="mr-2"
-            />
-            <span
-              className={`text-2xl font-bold ${
-                disableScrollEffect
-                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
-                  : scrolled
-                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
-                  : pathname === "/contact-us" || pathname === "/blogs"
-                  ? "bg-gradient-to-r from-[#003366] to-[#FF6600] bg-clip-text text-transparent"
-                  : "text-white"
-              }`}
-            >
-              Hexylon Analytics
-            </span>
-          </div>
+    <div className="fixed w-full z-50 px-4" onMouseEnter={bodyStopScroll} onMouseLeave={bodyEnableScroll}>
+      <header
+        className={`transition-all duration-500 ${
+          isScrolled ? "mt-2" : "mt-2"
+        }`}
+      >
+        <nav
+          className={`mx-auto backdrop-blur-xl border md:rounded-full rounded-2xl bg-[#5E5E5E]/20 ${
+            isScrolled
+              ? "max-w-6xl bg-[#5E5E5E]/80 border-[#4361ee]/20 shadow-lg"
+              : "max-w-7xl border-[#5E5E5E]"
+          } transition-all duration-300`}
+        >
+          <div className="px-6 py-4 flex items-center justify-between">
+            <NavLink to="/" className="flex items-center">
+              <img
+                src={newlogo}
+                alt="Vidhyarhi Ai Logo"
+                className="h-8 w-auto"
+              />
+            </NavLink>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {menuItem.map((item, index) => (
-              <motion.div
-                key={item.id}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
+            <div className="hidden md:flex items-center gap-8">
+              {menuItems.map((item) =>
+                item.isDropdown ? (
+                  <div
+                    key={item.id}
+                    className="relative text-white/70 hover:text-[#FF7A33] text-sm font-medium"
+                    onMouseEnter={() => setIsServiceDropdownOpen(true)}
+                  >
+                    <span className="cursor-pointer flex items-center">
+                      {item.label}
+                      <ChevronDown className="w-4 h-4 ml-2" />
+                    </span>
+                    {/* {isServiceDropdownOpen && (
+                      <div
+                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-96 max-h-60 overflow-y-auto"
+                        onMouseLeave={() => setIsServiceDropdownOpen(false)}
+                      >
+                        {serviceDropdownItems.map((service) => (
+                          <NavLink
+                            key={service.id}
+                            to={`/${service.path}`}
+                            className={({ isActive }) =>
+                              `block px-4 py-2 text-sm rounded-lg ${
+                                isActive ? "text-[#FF7A33]" : "text-white/70"
+                              } hover:text-[#FF7A33]`
+                            }
+                          >
+                            {service.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    )} */}
+
+                    {isServiceDropdownOpen && (
+                      <div
+                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-96 max-h-60 overflow-y-scroll scrollbar-hidden"
+                        onMouseLeave={() => setIsServiceDropdownOpen(false)}
+                      >
+                        {serviceDropdownItems.map((service) => (
+                          <NavLink
+                            key={service.id}
+                            to={`/${service.path}`}
+                            className={({ isActive }) =>
+                              `block px-4 py-2 text-sm rounded-lg ${
+                                isActive ? "text-[#FF7A33]" : "text-white/70"
+                              } hover:text-[#FF7A33]`
+                            }
+                          >
+                            {service.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    key={item.id}
+                    to={`/${item.path}`}
+                    className={({ isActive }) =>
+                      `text-sm font-medium ${
+                        isActive ? "text-[#FF7A33]" : "text-white/70"
+                      } hover:text-[#FF7A33]`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                )
+              )}
+            </div>
+
+            <div>
+              <NavLink
+                to="/contact-us"
+                className="md:block hidden px-6 py-2 bg-gradient-to-r from-[#FF6600] to-[#FF8533] text-white text-sm font-medium rounded-xl  hover:bg-[#FF8533]/50"
               >
-                <NavLink
-                  to={`/${item.path}`}
-                  className={({ isActive }) =>
-                    `relative text-lg font-medium hover:text-[#FF6600] py-2 ${
-                      (item.path === "careers" && isCareerActive) || isActive
-                        ? "px-6 bg-[#FF6600] text-white rounded-full hover:bg-[#FF8533] transition-colors duration-300"
-                        : scrolled || disableScrollEffect
-                        ? "text-gray-900 hover:text-[#FF6600]"
-                        : "text-white hover:text-[#FF6600]"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              </motion.div>
-            ))}
+                Contact Us
+              </NavLink>
+            </div>
+            <button
+              className="md:hidden text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center space-y-1.5 focus:outline-none"
-          >
-            <motion.span
-              animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className={`w-6 h-0.5 ${
-                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
-              } block`}
-            />
-            <motion.span
-              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              className={`w-6 h-0.5 ${
-                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
-              } block`}
-            />
-            <motion.span
-              animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className={`w-6 h-0.5 ${
-                scrolled || disableScrollEffect ? "bg-gray-900" : "bg-white"
-              } block`}
-            />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            className="fixed top-0 right-0 w-4/5 h-screen bg-gray-900 shadow-2xl lg:hidden"
-          >
-            <div className="p-8">
-              <div className="flex justify-end mb-8">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF6600] text-white"
-                >
-                  ×
-                </button>
-              </div>
-              <div className="flex flex-col space-y-6">
-                {menuItem.map((item, i) => (
-                  <motion.div key={item.id} custom={i} variants={linkVariants}>
-                    <NavLink
-                      to={`/${item.path}`}
-                      className={({ isActive }) =>
-                        `text-xl font-medium ${
-                          (item.path === "careers" && isCareerActive) || isActive
-                            ? "text-[#FF6600]"
-                            : "text-white"
-                        } hover:text-[#FF6600] transition-colors duration-300`
-                      }
+          {isMenuOpen && (
+            <div className="md:hidden px-6 py-4 space-y-4 border-t border-[#4361ee]/20">
+              {menuItems.map((item) =>
+                item.isDropdown ? (
+                  <div key={item.id} className="space-y-2">
+                    <span
+                      className="block text-white/70 font-medium flex items-center cursor-pointer hover:text-[#FF7A33]"
+                      onClick={toggleServiceDropdown}
                     >
                       {item.label}
-                    </NavLink>
-                  </motion.div>
-                ))}
-              </div>
+                      <ChevronDown className="w-4 h-4 ml-2" />
+                    </span>
+                    {isServiceDropdownOpen && (
+                      <div className="pl-4 space-y-2 max-h-60 overflow-y-auto">
+                        {serviceDropdownItems.map((service) => (
+                          <NavLink
+                            key={service.id}
+                            to={`/${service.path}`}
+                            className={({ isActive }) =>
+                              `block font-medium ${
+                                isActive ? "text-[#FF7A33]" : "text-white/70"
+                              } hover:text-[#FF7A33]`
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {service.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <NavLink
+                    key={item.id}
+                    to={`/${item.path}`}
+                    className={({ isActive }) =>
+                      `block font-medium ${
+                        isActive ? "text-[#FF7A33]" : "text-white/70"
+                      } hover:text-[#FF7A33] `
+                    }
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </NavLink>
+                )
+              )}
+              <NavLink
+                to="/contact-us"
+                className="block px-6 py-2 bg-gradient-to-r from-[#FF6600] to-[#FF8533] text-white text-sm font-medium rounded-xl  hover:bg-[#FF8533]/50"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Us
+              </NavLink>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+          )}
+        </nav>
+      </header>
+    </div>
   );
 };
 
