@@ -2,19 +2,25 @@ import React from "react";
 import OurWorkBusinessOperation from "../assets/svgs/OurWorkBusinessOperation";
 import OurWorkWebDevelopment from "../assets/svgs/OurWorkWebDevelopment";
 import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
+import { useNavigate } from "react-router-dom";
 
 function OurWork() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-black relative ">
       <div className="text-[#2182DF] text-4xl text-center mt-20 max-w-7xl mx-auto">
-          <h1> Our Work </h1>
-          <div className="text-gray-100 text-2xl text-center mt-5">
-          Transforming business operations with automation and real-time dashboards, empowering digital presence through custom websites and platforms like Reequitiz, and delivering personalized education with AI-driven learning paths and career guidance.
-          </div>
+        <h1> Our Work </h1>
+        <div className="text-gray-100 text-lg text-center mt-5">
+          Transforming business operations with automation and real-time
+          dashboards, empowering digital presence through custom websites and
+          platforms like Reequitiz, and delivering personalized education with
+          AI-driven learning paths and career guidance.
         </div>
+      </div>
       <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5 pt-28 max-w-[1600px] lg:flex-row flex-col  justify-center m-auto">
         <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
-          <h2 className="mt-2 font-semibold text-2xl text-white">
+          <h2 className="mt-2 font-semibold xl:text-2xl text-xl xl:text-left text-center text-white">
             Transforming Business Operations
           </h2>
           <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
@@ -32,8 +38,8 @@ function OurWork() {
           </div>
         </div>
         <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
-          <h2 className="mt-2 font-semibold text-2xl text-white">
-            Web Development & Empowering Platforms
+        <h2 className="mt-2 font-semibold xl:text-2xl text-xl xl:text-left text-center text-white">
+        Web Development & Empowering Platforms
           </h2>
           <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
             <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[350px] w-full xl:text-left text-center ">
@@ -54,8 +60,8 @@ function OurWork() {
 
       <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5  max-w-[1600px] lg:flex-row flex-col justify-center m-auto">
         <div className="block rounded-3xl border border-[#2182DF] p-4 sm:col-span-2 xl:w-[50%] lg:w-[45%] w-[94%]">
-          <h2 className="mt-2 font-semibold text-2xl text-white">
-            AI-Driven Personalized Learning
+        <h2 className="mt-2 font-semibold xl:text-2xl text-xl xl:text-left text-center text-white">
+        AI-Driven Personalized Learning
           </h2>
           <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
             <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[450px] w-full xl:text-left text-center ">
@@ -76,7 +82,14 @@ function OurWork() {
           <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md ">
             <div className="absolute inset-0 rounded-md bg-black  blur-md transition-all group-hover:blur-lg" />
             <div className="relative flex items-center space-x-2 text-blue-500">
-              <span className="text-lg">read more</span>
+              <span
+                className="text-lg"
+                onClick={() => {
+                  navigate("/our-work");
+                }}
+              >
+                read more
+              </span>
               <svg
                 className="w-4 h-4"
                 fill="none"
