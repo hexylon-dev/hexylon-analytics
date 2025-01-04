@@ -4,7 +4,7 @@ import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
-
+import image from "../assets/nlp.jpg";
 export const NaturalLanguage = () => {
   const naturalLanguage = {
     heroSection: {
@@ -137,6 +137,7 @@ export const NaturalLanguage = () => {
 
     whyHexylon: {
       title: "Why Choose Our NLP Solutions?",
+      constantImage: image,
       content:
         " We specialize in leveraging the power of NLP to optimize business processes and create more meaningful interactions with customers. Here’s why you should choose us:",
       reasons: [

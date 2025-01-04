@@ -23,7 +23,8 @@ import { AIforProcessAutomation } from "./pages/AIforProcessAutomation";
 import { ConversationalAI } from "./pages/ConversationalAI";
 import OurWork from "./pages/OurWork";
 import OurWorkV from "./components/OurWorkV"
-
+import ParticleAvatar from "./components/avatar"
+import AboutUs from "./pages/AboutUs"
 function App() {
   return (
     <Router>
@@ -49,6 +50,7 @@ function App() {
   
         <Route path="/" element={<Home />} />
         <Route path="/our-work" element={<OurWorkV />} />
+        <Route path="/about-us" element={<AboutUs />} />
 
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
@@ -116,8 +118,16 @@ function App() {
             <ConversationalAI/>
           }
         />
+
+<Route
+          path="*"
+          element={
+            <Home/>
+          }
+        />
         {/* <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} /> */}
       </Routes>
+      <ParticleAvatar />
       <Footer />
     </Router>
   );

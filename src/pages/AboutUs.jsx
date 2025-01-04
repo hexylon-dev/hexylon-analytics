@@ -1,34 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
-import ImplementedProjects from "./ImplementedProjects";
-import Page from "./Page";
-import OurWorkUnique from "./OurWorkUnique";
-import ScrollDown from "../assets/svgs/ScrollDown";
-import HeaderSVG from "../assets/svgs/HeaderSVG";
-// import ServicePage2 from "./ServicePage2";
-// import PosterPage from "./PosterPage";
-// import PredictiveAnalytics from "./PredictiveAnalytics";
-// import Carousel from "./Carousel";
-import ServiceV3 from "./ServiceV3";
+import PosterPage from "../components/PosterPage";
+import MissionCard from "../components/About Us/mission";
+import HexylonServices from "../components/About Us/weDo";
+import WhyUs from "../components/About Us/whyUs";
+
 const heroSection = {
-      title: "Best Custom \nAI Development Company in Ahmedabad",
-      tagline:
-        "Revolutionizing Businesses with Innovative AI Solutions, Intelligent Automation, and Real-Time Insights",
-      content:
-        "Hexylon Analytics stands as the best AI developer company, specializing in custom AI development designed to revolutionize businesses across diverse sectors. Our expertise in innovative AI solutions, intelligent automation, and intuitive dashboards enables organizations to streamline operations, optimize HR, Sales, and Purchasing functions, and gain actionable insights in real time.",
-    };
-export default function HexylonLanding({
-//   heroSection,
-//   problemStatement,
-//   keyFeatures,
-//   workflow,
-//   caseStudies,
-//   technologyStack,
-//   whyHexylon,
-//   callToAction,
-//   faqs,
-}) {
+  title: "Transforming Data into Insightful Solutions",
+  tagline:
+    "Empowering Businesses with Advanced Analytics for Smarter Decision-Making",
+  content:
+    "At Hexylon Analytics, we specialize in harnessing the power of AI, machine learning, and big data to deliver actionable insights that drive business success. Our mission is to help organizations unlock the potential of their data, enabling them to make informed decisions, optimize operations, and enhance customer engagement. With a dedicated team of experts and a commitment to innovation, we provide tailored analytics solutions that cater to diverse industries, ensuring that every client’s unique needs are met with precision and expertise. Join us in shaping a data-driven future that leads to tangible results and transformative growth.",
+};
+
+const callToAction = {
+  title : "Ready to take your business to the next level with AI-powered business analytics? "
+  ,content : "Contact us today to learn how our cloud data analytics, predictive analytics solutions, and machine learning tools can help your organization thrive.",
+}
+
+
+export default function HexylonLanding(
+  {
+    //   heroSection,
+    //   problemStatement,
+    //   keyFeatures,
+    //   workflow,
+    //   caseStudies,
+    //   technologyStack,
+    //   whyHexylon,
+    //   callToAction,
+    //   faqs,
+  }
+) {
   const { title, tagline, content } = heroSection;
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -65,10 +69,10 @@ export default function HexylonLanding({
           className="absolute inset-0 z-0"
           style={{
             background: `
-            radial-gradient(circle at left, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at center, rgba(80, 80, 80, 0.1) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at right, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%)
-          `,
+          radial-gradient(circle at left, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
+          radial-gradient(circle at center, rgba(80, 80, 80, 0.1) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
+          radial-gradient(circle at right, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%)
+        `,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
           }}
@@ -79,9 +83,9 @@ export default function HexylonLanding({
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
-          `,
+          linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+        `,
             backgroundSize: "8rem 8rem",
           }}
         />
@@ -90,8 +94,8 @@ export default function HexylonLanding({
 
         {/* Scroll percentage indicator */}
         {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
-        {(scrollPercentage * 100).toFixed(1)}%
-      </div> */}
+      {(scrollPercentage * 100).toFixed(1)}%
+    </div> */}
         <br />
         <br />
         {/* <br /> */}
@@ -127,7 +131,7 @@ export default function HexylonLanding({
               onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
               onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
             >
-              OUR WORK
+              About Us
               <span className="ml-1">›</span>
             </button>
           </div>
@@ -163,11 +167,11 @@ export default function HexylonLanding({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="service-description text-base sm:text-lg md:text-xl lg:text-2xl 
-              max-w-[80%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] 
-              ml-auto mr-4 sm:mr-8 md:mr-12 lg:mr-16 
-              text-right text-[#d1d5db] 
-              px-4 sm:px-6 md:px-8
-              -mt-4 md:mt-10"
+            max-w-[80%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] 
+            ml-auto mr-4 sm:mr-8 md:mr-12 lg:mr-16 
+            text-right text-[#d1d5db] 
+            px-4 sm:px-6 md:px-8
+            -mt-4 md:mt-10"
               style={{
                 lineHeight: "1.6",
                 letterSpacing: "0.01em",
@@ -182,10 +186,10 @@ export default function HexylonLanding({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl 
-              max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] 
-              mx-auto text-center text-[#d1d5db]/90
-              px-4 sm:px-6 md:px-8 
-              mt-4 md:mt-8"
+            max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] 
+            mx-auto text-center text-[#d1d5db]/90
+            px-4 sm:px-6 md:px-8 
+            mt-4 md:mt-8"
               style={{
                 lineHeight: "1.6",
                 letterSpacing: "0.01em",
@@ -195,10 +199,13 @@ export default function HexylonLanding({
             </motion.p>
           </div>
         </motion.div>
-      </div>
-      <Page />
-      <OurWorkUnique />
-      <ImplementedProjects />
-                          </>
+      </div> 
+      <MissionCard />
+      <HexylonServices />
+      {/* <WhyUs /> */}
+      <PosterPage callToAction={callToAction}/>
+    </>
   );
 }
+
+

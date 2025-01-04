@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import RightArrow from '../assets/svgs/RightArrow';
+import { useNavigate } from 'react-router-dom';
 
 const PosterPage = ({ callToAction }) => {
   const { title, content,  } = callToAction;
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white flex items-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
       <div className="absolute top-8 right-4 sm:top-12 sm:right-8 lg:top-32 lg:right-12 transform hover:scale-110 transition-transform duration-300">
@@ -29,7 +31,8 @@ const PosterPage = ({ callToAction }) => {
           {/* <p className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 sm:mb-8 bg-gradient-to-r from-[#FF6B2B] to-[#FF8F5C] bg-clip-text text-transparent">
             {"ctaText"}
           </p> */}
-          <button className="group bg-[#FF6B2B] hover:bg-[#FF8F5C] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+          <button className="group bg-[#FF6B2B] hover:bg-[#FF8F5C] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg" 
+          onClick={() => navigate("/contact-us")}>
             Contact us 
             <ArrowUpRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>

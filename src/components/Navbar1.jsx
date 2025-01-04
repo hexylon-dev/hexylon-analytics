@@ -7,8 +7,8 @@ const menuItems = [
   { id: 1, label: "Home", path: "" },
   { id: 2, label: "Blog", path: "blogs" },
   { id: 3, label: "Service", path: "services", isDropdown: true },
-  { id: 4, label: "Technologies", path: "technologies" },
-  { id: 5, label: "About Us", path: "about" },
+  // { id: 4, label: "Technologies", path: "technologies" },
+  { id: 5, label: "About Us", path: "about-us" },
   { id: 6, label: "Our Work", path: "our-work" },
 ];
 

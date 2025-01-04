@@ -4,6 +4,7 @@ import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
+import image from "../assets/comai.jpg";
 export const ConversationalAI = () => {
     const conversationalAI = {
         heroSection: {
@@ -133,6 +134,7 @@ export const ConversationalAI = () => {
     
         whyHexylon: {
           title: "Why Choose Us for Your Conversational AI Solutions?",
+          constantImage: image,
           content:
             "At Hexylon Analytic, we specialize in providing tailored conversational AI solutions that meet the unique needs of your business. Here’s why we’re the ideal partner:",
           reasons: [

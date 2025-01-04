@@ -4,6 +4,7 @@ import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
+import image from "../assets/aipowered.jpg";
 
 export const AIPoweredDataAnalytics = () => {
     const aiPoweredDataAnalytics = {
@@ -133,6 +134,7 @@ export const AIPoweredDataAnalytics = () => {
     
         whyHexylon: {
           title: "Why Choose Us for AI-Powered Data Analytics Solutions",
+          constantImage: image, 
           content:
             "At Hexylon Analytics, we specialize in providing AI-powered data analytics solutions tailored to your business’s needs. Here’s why we are your ideal partner:",
           reasons: [

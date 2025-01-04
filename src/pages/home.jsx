@@ -37,7 +37,6 @@ function Home() {
         <HowWeWork />
         <OurServices />
         <OurWork />
-        <ParticleAvatar />
         <CallToAction />
         {/* <WhyUs /> */}
         {/* <IndustriesSection /> */}

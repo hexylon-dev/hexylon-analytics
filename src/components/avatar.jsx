@@ -1,6 +1,7 @@
-import React, { useRef, useMemo, useState } from "react";
+import React, { useRef, useMemo, useState , useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import {api} from "./CallToAction";
 
 function ParticleSystem({ isLoading, onTransitionComplete }) {
   const pointsRef = useRef(null);
@@ -133,34 +134,334 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
   );
 }
 
-function ChatScreen({ closeChat }) {
+export function ShowAvatar() {
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-20 flex items-center justify-center">
-      <div className="bg-white w-3/4 h-1/2 p-6 rounded-lg shadow-lg flex flex-col">
-        <button
-          className="bg-gray-500 text-white p-2 rounded"
-          onClick={closeChat}
-        >
-          Close
-        </button>
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Chat Screen</h2>
-        <div className="bg-white p-4 rounded mb-4 h-full overflow-y-auto">
-          <p className="text-gray-700">Welcome to the chat!</p>
-        </div>
-        <div className="flex">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            className="flex-grow p-2 border rounded-l"
-          />
-          <button className="bg-orange-500 text-white px-4 py-2 rounded-r">
-            Send
-          </button>
-        </div>
+    <>
+      <div className="w-full h-full flex justify-center items-center">
+        <Canvas camera={{ position: [0, 0, 2], fov: 60 }}>
+          <ambientLight intensity={0.5} />
+          <ParticleSystem isLoading={false} onTransitionComplete={() => {}} />
+        </Canvas>
       </div>
-    </div>
+    </>
   );
 }
+
+
+function ChatScreen({ closeChat }) {
+  const [projectIdea, setProjectIdea] = useState('')
+  const [showChat, setShowChat] = useState(false)
+  const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef(null)
+  
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages]);
+
+  const handleStreamResponse = async (content) => {
+    setIsLoading(true);
+    let finalFullText = ''; // Store the final `full_text`
+  
+    try {
+      await api.streamResponse(
+        { role: 'user', content },
+        (data) => {
+          // Check if `data.full_text` exists and update it
+          if (data.full_text) {
+            finalFullText = data.full_text;
+          }
+        },
+        (error) => {
+          console.error("Stream error:", error);
+          setIsLoading(false);
+        },
+        () => {
+          console.log("Stream completed");
+          if (finalFullText) {
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: prev.length + 1,
+                text: finalFullText, // Display the final `full_text`
+                sender: 'admin',
+                isStreaming: false,
+              },
+            ]);
+          }
+          setIsLoading(false);
+        }
+      );
+    } catch (error) {
+      console.error("Error in streaming:", error);
+      setIsLoading(false);
+    }
+  };
+  
+  
+  
+  
+  const handleSendProjectIdea = async () => {
+    if (projectIdea.trim()) {
+      setMessages([{ id: 1, text: projectIdea, sender: 'user' }])
+      setShowChat(true)
+      await handleStreamResponse(projectIdea)
+    }
+  }
+
+  const handleSendMessage = async () => {
+    if (newMessage.trim() && !isLoading) {
+      setMessages(prev => [...prev, { id: prev.length + 1, text: newMessage, sender: 'user' }])
+      const messageToSend = newMessage
+      setNewMessage('')
+      await handleStreamResponse(messageToSend)
+    }
+  }
+
+    return (
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-lg text-white shadow-xl">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full overflow-hidden">
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MWSML4vrVMASbwcXtBNuWIf19oYgmy.png"
+                alt="Company Logo"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <h2 className="text-xl font-semibold">Chat with Hex</h2>
+          </div>
+          <button
+            onClick={closeChat}
+            className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Chat Content */}
+        <div className="h-[400px] p-4 space-y-4 overflow-y-auto custom-scrollbar">
+          {messages && messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex ${
+                message.sender === "user" ? "justify-end" : "justify-start"
+              }`}
+            >
+              {/* Avatar */}
+              {message.sender !== "user" && (
+                <div className="h-[50px] w-[50px] rounded-full overflow-hidden flex-shrink-0 mr-3">
+                  <ShowAvatar />
+                </div>
+              )}
+
+              {/* Message Bubble */}
+              <div
+                className={`max-w-[80%] rounded-lg p-3 ${
+                  message.sender === "user"
+                    ? "bg-[#FF6600] text-white"
+                    : "bg-[#252525] text-gray-200"
+                } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
+              >
+                {message.text}
+              </div>
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input Area */}
+        <div className="p-4 border-t border-zinc-800">
+          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Type your message..."
+              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white placeholder:text-zinc-400 focus:outline-none focus:border-orange-500 transition-colors"
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              disabled={isLoading}
+            />
+            <button
+              onClick={handleSendMessage}
+              disabled={isLoading}
+              className={`bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors ${
+                isLoading ? "cursor-not-allowed opacity-50" : ""
+              }`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #27272a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #3f3f46;
+          border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #52525b;
+        }
+      `}</style>
+    </div>
+    )
+
+}
+
+// function ChatScreen({ closeChat }) {
+//   const messages = [];
+//   return (
+//     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
+//       <div className="w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-lg text-white shadow-xl">
+//         {/* Header */}
+//         <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+//           <div className="flex items-center gap-3">
+//             <div className="h-10 w-10 rounded-full overflow-hidden">
+//               <img
+//                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MWSML4vrVMASbwcXtBNuWIf19oYgmy.png"
+//                 alt="Company Logo"
+//                 className="h-full w-full object-cover"
+//               />
+//             </div>
+//             <h2 className="text-xl font-semibold">Chat with Hex</h2>
+//           </div>
+//           <button
+//             onClick={closeChat}
+//             className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
+//           >
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               width="20"
+//               height="20"
+//               viewBox="0 0 24 24"
+//               fill="none"
+//               stroke="currentColor"
+//               strokeWidth="2"
+//               strokeLinecap="round"
+//               strokeLinejoin="round"
+//             >
+//               <path d="M18 6L6 18M6 6l12 12" />
+//             </svg>
+//           </button>
+//         </div>
+
+//         {/* Chat Content */}
+//         <div className="h-[400px] p-4 space-y-4 overflow-y-auto custom-scrollbar">
+//           {messages.map((message) => (
+//             <div
+//               key={message.id}
+//               className={`flex ${
+//                 message.sender === "user" ? "justify-end" : "justify-start"
+//               }`}
+//             >
+//               {/* Avatar */}
+//               {message.sender !== "user" && (
+//                 <div className="h-[50px] w-[50px] rounded-full overflow-hidden flex-shrink-0 mr-3">
+//                   <ShowAvatar />
+//                 </div>
+//               )}
+
+//               {/* Message Bubble */}
+//               <div
+//                 className={`max-w-[80%] rounded-lg p-3 ${
+//                   message.sender === "user"
+//                     ? "bg-blue-600 text-white"
+//                     : "bg-[#252525] text-gray-200"
+//                 } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
+//               >
+//                 {message.text}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Input Area */}
+//         <div className="p-4 border-t border-zinc-800">
+//           "
+//           <form className="flex gap-2">
+//             <input
+//               type="text"
+//               placeholder="Type your message..."
+//               className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white placeholder:text-zinc-400 focus:outline-none focus:border-orange-500 transition-colors"
+//             />
+//             <button
+//               type="submit"
+//               className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+//             >
+//               <svg
+//                 xmlns="http://www.w3.org/2000/svg"
+//                 width="16"
+//                 height="16"
+//                 viewBox="0 0 24 24"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 strokeWidth="2"
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//               >
+//                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+//               </svg>
+//             </button>
+//           </form>
+//         </div>
+//       </div>
+
+//       <style jsx global>{`
+//         .custom-scrollbar::-webkit-scrollbar {
+//           width: 6px;
+//         }
+//         .custom-scrollbar::-webkit-scrollbar-track {
+//           background: #27272a;
+//         }
+//         .custom-scrollbar::-webkit-scrollbar-thumb {
+//           background: #3f3f46;
+//           border-radius: 3px;
+//         }
+//         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+//           background: #52525b;
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }
 
 export default function ParticleAvatar() {
   // debugger
@@ -172,9 +473,9 @@ export default function ParticleAvatar() {
   };
 
   const closeChat = () => {
-    console.log("showChat : " , showChat  )
+    console.log("showChat : ", showChat);
     setShowChat(false);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (
@@ -195,12 +496,11 @@ export default function ParticleAvatar() {
           )}
         </div>
       </div>
-      {showChat && 
-      <div className="">
-        <ChatScreen closeChat={closeChat} />
-      </div>
-      }
+      {showChat && (
+        <div className="">
+          <ChatScreen closeChat={closeChat} />
+        </div>
+      )}
     </>
   );
 }
-

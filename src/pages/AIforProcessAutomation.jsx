@@ -4,7 +4,7 @@ import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
-
+import image from "../assets/aiprocess.jpg"
 
 export const AIforProcessAutomation = () => {
     const aiForProcessAutomation = {
@@ -126,6 +126,7 @@ export const AIforProcessAutomation = () => {
     
         whyHexylon: {
           title: "Partner with Experts in AI for Process Automation",
+          constantImage: image,
           content:
             "Why businesses trust us for their automation needs:",
           reasons: [
