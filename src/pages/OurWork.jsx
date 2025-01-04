@@ -3,8 +3,10 @@ import OurWorkBusinessOperation from "../assets/svgs/OurWorkBusinessOperation";
 import OurWorkWebDevelopment from "../assets/svgs/OurWorkWebDevelopment";
 import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
 import OurWorkUnique from "../components/OurWorkUnique";
+import { useNavigate } from "react-router-dom";
 
 function OurWork() {
+  const navigate = useNavigate();
   return (
     <>
     <div className="bg-black relative ">
@@ -77,7 +79,7 @@ function OurWork() {
         <div className="block self-center min-w-4xl">
           <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md ">
             <div className="absolute inset-0 rounded-md bg-black  blur-md transition-all group-hover:blur-lg" />
-            <div className="relative flex items-center space-x-2 text-blue-500">
+            <div className="relative flex items-center space-x-2 text-blue-500" onClick={() => navigate("/our-work")}>
               <span className="text-lg">read more</span>
               <svg
                 className="w-4 h-4"

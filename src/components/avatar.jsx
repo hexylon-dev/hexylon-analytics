@@ -10,7 +10,7 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
   const time = useRef(0);
 
   const particles = useMemo(() => {
-    const particleCount = 1000;
+    const particleCount = 1400;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const hexagonPositions = new Float32Array(particleCount * 3);
@@ -45,9 +45,9 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
       // colors[i * 3 + 1] = 0.3 + 0.3 * colorT;
       // colors[i * 3 + 2] = 0.0 + 0.2 * colorT;
       // 255,102,0
-      colors[i * 3] = 17 / 255; // Red (255)
-      colors[i * 3 + 1] = 24 / 255; // Green (102)
-      colors[i * 3 + 2] = 39 / 255; // Blue (0)
+      colors[i * 3] = (17 / 255) * 0.7; // Red (darkened)
+      colors[i * 3 + 1] = (24 / 255) * 0.7; // Green (darkened)
+      colors[i * 3 + 2] = (39 / 255) * 0.7; // Blue (darkened)
       // rgb(17,24,39)
     }
 
@@ -197,7 +197,7 @@ export default function ParticleAvatar() {
       </div>
       {showChat && 
       <div className="">
-<ChatScreen closeChat={closeChat} />
+        <ChatScreen closeChat={closeChat} />
       </div>
       }
     </>

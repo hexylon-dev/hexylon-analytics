@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import OurServices from "../components/OurServices";
 import OurWork from "./OurWork";
 import ParticleAvatar from "../components/avatar";
+import CallToAction from "../components/CallToAction";
 
 function Home() {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function Home() {
         <OurServices />
         <OurWork />
         <ParticleAvatar />
+        <CallToAction />
         {/* <WhyUs /> */}
         {/* <IndustriesSection /> */}
         {/* <OurWorkSection /> */}

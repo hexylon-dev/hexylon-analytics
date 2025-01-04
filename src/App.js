@@ -22,7 +22,7 @@ import { AIPoweredDataAnalytics } from "./pages/AIPoweredDataAnalytics";
 import { AIforProcessAutomation } from "./pages/AIforProcessAutomation";
 import { ConversationalAI } from "./pages/ConversationalAI";
 import OurWork from "./pages/OurWork";
-
+import OurWorkV from "./components/OurWorkV"
 
 function App() {
   return (
@@ -45,11 +45,10 @@ function App() {
             </main>
           </div>
         } />
-        <Route path="/sales-card" element={<SalesCard />} />
-        <Route path="/service-v3" element={<ServiceV3 title = "TRANSFORM YOUR BUSINESS WITH PREDICTIVE ANALYTICS" description = "Predictive Analytics is a scalable and user-friendly tool, ideal for businesses of all sizes."/>} />
-        <Route path="/blog/:id" element={<BlogPage />} />
+         <Route path="/blog/:id" element={<BlogPage />} />
+  
         <Route path="/" element={<Home />} />
-        {/* <Route path="/work" element={<OurWork />} /> */}
+        <Route path="/our-work" element={<OurWorkV />} />
 
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
