@@ -193,73 +193,82 @@ const ContactPage = () => {
             </p>
           </div>
 
-          {/* Form Section - Updated padding and layout */}
+          {/* Form Section */}
           <div className="form-container relative max-w-4xl mx-auto mb-12 sm:mb-24">
-            <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-4 sm:p-8 border border-[#FF6600]/20">
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-[#FF6600]/20 
+                            shadow-[0_0_15px_rgba(255,102,0,0.1)] hover:shadow-[0_0_20px_rgba(255,102,0,0.15)] 
+                            transition-all duration-300">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Form Header */}
-                <div className="text-center mb-6 sm:mb-8">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Get Started</h3>
-                  <p className="text-sm sm:text-base text-gray-400">Fill out the form below to connect with us</p>
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-white mb-2 bg-clip-text text-transparent 
+                                bg-gradient-to-r from-[#FF6600] to-[#FF8533]">
+                    Get Started
+                  </h3>
+                  <p className="text-gray-400">Fill out the form below to connect with us</p>
                 </div>
 
-                {/* Grid layout updated for mobile */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {/* Grid layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name Input */}
-                  <div className="form-group">
-                    <label className="block text-[#FF6600] text-sm mb-2">Name</label>
+                  <div className="form-group relative">
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Name</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
-                               focus:outline-none focus:border-[#FF6600] transition-colors"
+                      className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
+                               focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
+                               transition-all duration-300 hover:border-[#FF6600]/40"
                       placeholder="John Doe"
                       required
                     />
                   </div>
 
                   {/* Company Name Input */}
-                  <div className="form-group">
-                    <label className="block text-[#FF6600] text-sm mb-2">Company</label>
+                  <div className="form-group relative">
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Company</label>
                     <input
                       type="text"
                       name="company_name"
                       value={formData.company_name}
                       onChange={handleChange}
-                      className="w-full bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
-                               focus:outline-none focus:border-[#FF6600] transition-colors"
+                      className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
+                               focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
+                               transition-all duration-300 hover:border-[#FF6600]/40"
                       placeholder="Company Name"
                       required
                     />
                   </div>
 
                   {/* Email Input */}
-                  <div className="form-group">
-                    <label className="block text-[#FF6600] text-sm mb-2">Email</label>
+                  <div className="form-group relative">
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Email</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
-                               focus:outline-none focus:border-[#FF6600] transition-colors"
+                      className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
+                               focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
+                               transition-all duration-300 hover:border-[#FF6600]/40"
                       placeholder="john@example.com"
                       required
                     />
                   </div>
 
                   {/* Phone Input */}
-                  <div className="form-group">
-                    <label className="block text-[#FF6600] text-sm mb-2">Phone</label>
+                  <div className="form-group relative">
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Phone</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
-                               focus:outline-none focus:border-[#FF6600] transition-colors"
+                      className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
+                               focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
+                               transition-all duration-300 hover:border-[#FF6600]/40"
                       placeholder="Your Phone Number"
                       required
                     />
@@ -267,14 +276,15 @@ const ContactPage = () => {
                 </div>
 
                 {/* Area of Interest - Full Width */}
-                <div className="form-group">
-                  <label className="block text-[#FF6600] text-sm mb-2">Area of Interest</label>
+                <div className="form-group relative">
+                  <label className="block text-[#FF6600] text-sm mb-2 font-medium">Area of Interest</label>
                   <textarea
                     name="area_of_interest"
                     value={formData.area_of_interest}
                     onChange={handleChange}
-                    className="w-full bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
-                             focus:outline-none focus:border-[#FF6600] transition-colors h-24 resize-none"
+                    className="w-full h-24 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 py-3 text-white 
+                             focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
+                             transition-all duration-300 hover:border-[#FF6600]/40 resize-none"
                     placeholder="Tell us what you're interested in..."
                     required
                   />
@@ -283,11 +293,14 @@ const ContactPage = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#FF6600] to-[#FF8533] py-4 rounded-lg text-white 
-                           font-medium transition-all hover:scale-[1.02] hover:shadow-lg 
-                           active:scale-[0.98] active:opacity-90"
+                  className="w-full h-12 bg-gradient-to-r from-[#FF6600] to-[#FF8533] rounded-lg text-white 
+                           font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,102,0,0.3)] 
+                           hover:scale-[1.02] active:scale-[0.98] active:opacity-90 
+                           relative overflow-hidden group"
                 >
-                  Send Message
+                  <span className="relative z-10">Send Message</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF8533] to-[#FF6600] opacity-0 
+                                group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
               </form>
             </div>
@@ -308,8 +321,14 @@ const ContactPage = () => {
                     icon: MapPin,
                     title: "Visit Us",
                     content: [
-                      "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
-                      "301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054"
+                      {
+                        label: "Office 1",
+                        address: "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009"
+                      },
+                      {
+                        label: "Office 2",
+                        address: "301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054"
+                      }
                     ]
                   },
                   {
@@ -347,9 +366,12 @@ const ContactPage = () => {
                         {item.title}
                       </h3>
                       {Array.isArray(item.content) ? (
-                        <div className="space-y-2">
-                          {item.content.map((address, i) => (
-                            <p key={i} className="text-white">{address}</p>
+                        <div className="space-y-4">
+                          {item.content.map((office, i) => (
+                            <div key={i} className="space-y-1">
+                              <h4 className="text-[#FF6600] font-medium">{office.label}</h4>
+                              <p className="text-white">{office.address}</p>
+                            </div>
                           ))}
                         </div>
                       ) : (

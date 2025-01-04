@@ -53,14 +53,14 @@ const FooterWithTransition = () => {
 
   const handleNavigation = (item) => {
     switch (item) {
-      case "Contact Us":
+      case "Contact":
         navigate("/contact-us");
         break;
       case "Blog":
         navigate("/blogs"); // Adjust to your blog route
         break;
-      case "Careers":
-        navigate("/careers"); // Adjust to your careers route
+      case "work":
+        navigate("/our-work"); // Adjust to your careers route
         break;
       case "Home":
         navigate("/");
@@ -174,9 +174,9 @@ const FooterWithTransition = () => {
               <li>
                 <p
                   className="hover:text-orange-600 transition-colors cursor-pointer"
-                  onClick={() => handleNavigation("Careers")}
+                  onClick={() => handleNavigation("work")}
                 >
-                  Careers
+                  Our Work
                 </p>
               </li>
               <li>

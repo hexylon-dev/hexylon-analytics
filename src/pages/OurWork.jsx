@@ -2,9 +2,11 @@ import React from "react";
 import OurWorkBusinessOperation from "../assets/svgs/OurWorkBusinessOperation";
 import OurWorkWebDevelopment from "../assets/svgs/OurWorkWebDevelopment";
 import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
+import OurWorkUnique from "../components/OurWorkUnique";
 
 function OurWork() {
   return (
+    <>
     <div className="bg-black relative ">
       <div className="text-[#2182DF] text-4xl text-center mt-20 max-w-7xl mx-auto">
           <h1> Our Work </h1>
@@ -95,6 +97,7 @@ function OurWork() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
