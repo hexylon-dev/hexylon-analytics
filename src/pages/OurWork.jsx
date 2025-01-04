@@ -2,9 +2,11 @@ import React from "react";
 import OurWorkBusinessOperation from "../assets/svgs/OurWorkBusinessOperation";
 import OurWorkWebDevelopment from "../assets/svgs/OurWorkWebDevelopment";
 import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
+import OurWorkUnique from "../components/OurWorkUnique";
 
 function OurWork() {
   return (
+    <>
     <div className="bg-black relative ">
       <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5 pt-28 max-w-[1500px] lg:flex-row flex-col">
         <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-2xl">
@@ -90,6 +92,7 @@ function OurWork() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
