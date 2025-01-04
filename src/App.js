@@ -17,6 +17,8 @@ import SalesCard from './components/SalesCard';
 import ServiceV3 from './components/ServiceV3';
 import ImplementedProjects from './components/ImplementedProjects';
 import OurWorkV from './components/OurWorkV';
+import OurWork from "./pages/OurWork";
+
 function App() {
   return (
     <Router>
@@ -42,6 +44,8 @@ function App() {
         <Route path="/service-v3" element={<ServiceV3 title = "TRANSFORM YOUR BUSINESS WITH PREDICTIVE ANALYTICS" description = "Predictive Analytics is a scalable and user-friendly tool, ideal for businesses of all sizes."/>} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
+        <Route path="/work" element={<OurWork />} />
+
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
