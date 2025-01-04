@@ -13,6 +13,7 @@ import Header from './components/Blogs/HeaderBlog';
 import ResourceCard from './components/Blogs/ResourceCard';
 import { resources } from './Data/resources';
 import BlogPage from './pages/BlogPage';
+import ContactSection from "./components/contactSectionR";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
         <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
         <Route path="/servicesr" element={<ServicePageR/>}/>
+        <Route path="/contactsection" element={<ContactSection/>}/>
       </Routes>
       <Footer />
     </Router>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Shield, Lightbulb, Users } from "lucide-react";
+import ContactSection from "./contactSectionR";
 
 const TypeWriter = ({ words, className }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -284,7 +285,7 @@ export default function Component({ handleNavigateToContactPage }) {
         }}
       />
 
-      <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
+      <canvas ref={canvasRef} className="fixed z-0 inset-0 w-full h-full" />
       
       {/* Updated scroll percentage indicator */}
       {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
@@ -386,6 +387,8 @@ export default function Component({ handleNavigateToContactPage }) {
           </div>
         </div>
       </div>
+      <ContactSection/>
     </div>
+    
   );
 }
