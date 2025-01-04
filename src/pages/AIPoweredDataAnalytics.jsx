@@ -35,56 +35,60 @@ export const AIPoweredDataAnalytics = () => {
     
         // third section
         keyFeatures: {
-          title: "Unlock the Benefits of Custom AI Models",
+          title: "Unlock the Full Potential of Your Data with AI-Powered Analytics",
           features: [
             {
+              name: "Automated Data Analysis",
+              description: "Eliminate manual data processing by automating data cleaning, organization, and analysis."
+            },
+            {
               name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              description: "Leverage advanced AI algorithms to forecast trends, predict market shifts, and optimize decision-making."
             },
             {
-              name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              name: "Real-Time Monitoring",
+              description: "Stay ahead of the curve with AI tools that provide up-to-the-minute insights and reports for instant action."
             },
             {
-              name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
-            },
+                name: "Cost Savings",
+                description: "Reduce reliance on large teams of data scientists by utilizing AI to automate the most time-consuming aspects of data analysis."
+                },
             {
-              name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
-            }
+                name: "Custom Solutions",
+                description: "Tailor AI analytics models to your specific industry and business needs, from customer behavior prediction to resource optimization."
+                },
           ],
         },
     
         // fourth section
         workflow: {
-          title: "How Custom AI Models Work for Your Business",
-          Content: "Our custom AI model development follows a clear, efficient process to ensure optimal outcomes:",
+          title: "How AI-Powered Data Analytics Works for Your Business",
+          Content: "AI-powered data analytics streamlines the data analysis process by leveraging advanced machine learning models and AI technologies:",
           steps: [
             {
               icon: "clipboard",
-              name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              name: "Data Collection & Integration",
+              description: "Collect data from a variety of sources, including internal and external systems, for a unified analysis platform."
             },
             {
               icon: "binary",
-              name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              name: "Data Processing & Preprocessing:",
+              description: "AI tools automate the cleaning, categorization, and processing of data, ensuring it's ready for deep analysis."
             },
             {
               icon: "trending",
-              name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              name: "Model Development & Training:",
+              description: "AI algorithms automatically select and train the most appropriate machine learning models based on your business goals and data."
             },
             {
               icon: "target",
-              name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              name: "Insights Generation",
+              description: "AI-driven platforms generate predictive insights and key performance indicators (KPIs) that guide your decision-making."
             },
             {
               icon: "refresh",
-              name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
+              name: "Ongoing Optimization:",
+              description: "As new data flows in, AI systems continuously retrain the models, ensuring insights remain up-to-date and relevant."
             }
           ],
         },
@@ -128,52 +132,46 @@ export const AIPoweredDataAnalytics = () => {
         },
     
         whyHexylon: {
-          title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+          title: "Why Choose Us for AI-Powered Data Analytics Solutions",
           content:
-            "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
+            "At Hexylon Analytics, we specialize in providing AI-powered data analytics solutions tailored to your business’s needs. Here’s why we are your ideal partner:",
           reasons: [
             {
               id: 1,
-              title: "Tailored Predictive Models",
+              title: "Expert AI and Data Science Team",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "Our team of experts brings deep knowledge in AI, machine learning, and data analytics, ensuring top-tier solutions for your business.",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "Customizable Analytics Models",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "We design AI models that address your unique business challenges, from predictive analytics to operational efficiency.",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "End-to-End Service",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                "From data collection and model training to deployment and ongoing support, we are with you every step of the way.",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Proven Results",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "Our clients have successfully unlocked valuable business insights, increased efficiency, and driven growth through AI-powered analytics.",
               image: img4,
             },
-            {
-              id: 5,
-              title: "Innovation Hub",
-              description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
-              image: img2,
-            },
+         
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: "Start Unlocking the Power of AI-Powered Data Analytics Today",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Are you ready to unlock the full potential of AI-powered data analytics? Contact us today to learn how we can help you make smarter decisions, improve operational efficiency, and drive growth. Let’s transform your data into actionable insights for your business success!",
         },
     
         faqs: [

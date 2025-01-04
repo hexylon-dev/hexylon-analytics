@@ -15,7 +15,7 @@ export const AutoML = () => {
         // second section
         problemStatement: {
             title: "Why AutoML is Essential for Your Business",
-          Content: "In an era driven by data, businesses that fail to adopt automation risk falling behind.",
+          Content: "In an era driven by data, businesses that fail to adopt automation risk falling behind. AutoML offers the following advantages:",
           benefits: [
             {
               description: "Data-Driven Decision Making: Automatically generate models that reveal insights hidden in your data, helping you make informed decisions"
@@ -34,23 +34,27 @@ export const AutoML = () => {
     
         // third section
         keyFeatures: {
-          title: "Unlock the Benefits of Custom AI Models",
+          title: "Unlock the Benefits of AutoML",
           features: [
             {
-              name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              name: "Simplified Model Building",
+              description: " AutoML platforms, like Microsoft Azure AutoML and Google AutoML, help you automate the process of building and deploying machine learning models with ease."
             },
             {
-              name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              name: "Advanced Algorithms",
+              description: "Leverage powerful machine learning and deep learning models, optimized through AutoML frameworks for better performance and efficiency."
             },
             {
-              name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
+              name: "Automated Hyperparameter Tuning",
+              description: "Automatically adjust parameters to improve the model’s performance, saving time and effort."
             },
             {
-              name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
+              name: "Quick Time to Market",
+              description: "Speed up the process of deploying AI solutions, helping you gain faster insights and remain competitive in your industry."
+            },
+            {
+              name: "Cost-Efficiency",
+              description: "Reduce the need for hiring highly specialized data scientists by automating much of the machine learning pipeline."
             }
           ],
         },
@@ -62,28 +66,28 @@ export const AutoML = () => {
           steps: [
             {
               icon: "clipboard",
-              name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              name: "Data Collection & Preprocessing",
+              description: " Gather data from various sources and prepare it automatically for use in model development."
             },
             {
               icon: "binary",
-              name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              name: "Model Selection & Training",
+              description: "AutoML platforms automatically select the most appropriate machine learning algorithms for your data and business goals."
             },
             {
               icon: "trending",
-              name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              name: "Model Evaluation & Tuning",
+              description: "AutoML tools fine-tune models using automated hyperparameter optimization to deliver the best possible performance."
             },
             {
               icon: "target",
               name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              description: "Once trained, the model is deployed to your production environment, enabling real-time insights and automation."
             },
             {
               icon: "refresh",
               name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
+              description: "As new data is collected, AutoML platforms automatically retrain models to maintain their accuracy over time"
             }
           ],
         },
@@ -133,46 +137,39 @@ export const AutoML = () => {
           reasons: [
             {
               id: 1,
-              title: "Tailored Predictive Models",
+              title: "Expertise in AutoML & Data Science",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "Our team has deep experience in machine learning and AutoML, ensuring top-quality solutions.",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "Customized Solutions",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "We design AutoML models that align with your specific business goals, whether it’s predictive analytics or customer insights.",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "End-to-End Support",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                "We provide complete services, from model development to deployment and ongoing optimization.",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Proven Success",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "Our AutoML solutions have empowered businesses to streamline processes and boost efficiency.",
               image: img4,
-            },
-            {
-              id: 5,
-              title: "Innovation Hub",
-              description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
-              image: img2,
-            },
+            },  
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: "Unlock the Full Potential of AutoML for Your Business",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Ready to leverage the power of AutoML for your business? Contact us today to learn how we can help you automate machine learning processes, optimize operations, and drive innovation. With AutoML, the future of data-driven success is at your fingertips!",
         },
     
         faqs: [
