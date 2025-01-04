@@ -44,26 +44,22 @@ const TypeWriter = ({ words, className }) => {
 
 const DarkCard = ({ icon: Icon, title, description }) => {
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full  md:h-[400px] flex flex-col items-center">
       <div className="relative">
-        {/* Orange/Coral tab and blur effects remain unchanged */}
+        {/* Blur effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-[#ff7a33] rounded-b-lg before:absolute before:inset-0 before:blur-xl before:bg-[#ff7a33]/50 before:-z-10" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-3 blur-2xl bg-[#ff6600]/60" />
-        <div className="absolute top-1 left-1/2 -translate-x-1/2 w-32 h-4 blur-3xl bg-[#ff6600]/40" />
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 blur-[40px] bg-[#ff6600]/30" />
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 blur-[50px] bg-[#ff6600]/20" />
       </div>
-      
-      {/* Updated card with increased height */}
-      <div className="mt-[2px] w-full aspect-[16/13] sm:aspect-[16/12] bg-[#1a1a1a] rounded-[28px] border border-[#333333]/30 shadow-xl p-4 sm:p-6">
-        <div className="flex flex-col items-center h-full justify-center space-y-4 sm:space-y-5">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FF6600] rounded-lg flex items-center justify-center shrink-0">
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+
+      {/* Card */}
+      <div className="mt-[2px] w-full h-full bg-[#1a1a1a] rounded-[28px] border border-[#333333]/30 shadow-xl p-6 flex flex-col items-center justify-between">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-12 h-12 bg-[#FF6600] rounded-lg flex items-center justify-center shrink-0">
+            <Icon className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-base sm:text-lg font-semibold text-white text-center">
+          <h3 className="text-xl md:text-2xl font-semibold text-white text-center">
             {title}
           </h3>
-          <p className="text-xs sm:text-sm text-gray-300 text-center max-w-[250px] sm:max-w-[300px]">
+          <p className="text-sm md:text-lg text-gray-300 text-center max-w-[250px] sm:max-w-[300px]">
             {description}
           </p>
         </div>
@@ -343,49 +339,53 @@ export default function Component({ handleNavigateToContactPage }) {
         </motion.div>
       </div>
 
-      <div id="why-choose-us" className="relative z-10 min-h-screen bg-transparent py-12 sm:py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-16"
-          >
-            <div className="relative inline-block">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-                Why Choose <span className="text-[#FF6600]">Hexylon</span>
-              </h2>
-              <div 
-                className="absolute bottom-0 left-0 w-full h-0.5 bg-white transition-colors duration-300"
-                style={{
-                  backgroundColor: scrollPercentage > 0.04 && scrollPercentage <= 0.15 
-                    ? '#FF6600' 
-                    : '#1a1a1a'
-                }}
-              />
-            </div>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4 sm:px-0">
-              We combine cutting-edge technology with deep industry expertise to deliver
-              solutions that drive real business value.
-            </p>
-          </motion.div>
+      <div
+  id="why-choose-us"
+  className="relative z-10 h-screen bg-transparent max-w-7xl mx-auto py-12 sm:py-20 px-4 flex flex-col"
+>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="text-center mb-10 sm:mb-16"
+  >
+    <div className="relative inline-block">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+        Why Choose <span className="text-[#FF6600]">Hexylon</span>
+      </h2>
+      <div
+        className="absolute bottom-0 left-0 w-full h-0.5 bg-white transition-colors duration-300"
+        style={{
+          backgroundColor:
+            scrollPercentage > 0.04 && scrollPercentage <= 0.15
+              ? '#FF6600'
+              : '#1a1a1a',
+        }}
+      />
+    </div>
+    <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4 sm:px-0">
+      We combine cutting-edge technology with deep industry expertise to deliver
+      solutions that drive real business value.
+    </p>
+  </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-0">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <DarkCard {...feature} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-2 sm:px-0 flex-grow">
+    {features.map((feature, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="h-full"
+      >
+        <DarkCard {...feature} />
+      </motion.div>
+    ))}
+  </div>
+</div>
+
     </div>
   );
 }
