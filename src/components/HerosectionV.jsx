@@ -274,7 +274,7 @@ export default function Component({ handleNavigateToContactPage }) {
   return (
     <div ref={containerRef} className="bg-black">
       {/* Increased grid size from 4rem to 8rem */}
-      {/* <div 
+      <div 
         className="fixed inset-0 z-0"
         style={{
           backgroundImage: `
@@ -284,9 +284,9 @@ export default function Component({ handleNavigateToContactPage }) {
           `,
           backgroundSize: '8rem 8rem, 8rem 8rem, 100% 100%',
         }}
-      /> */}
+      />
 
-      {/* <canvas ref={canvasRef} className="fixed inset-0 w-full h-[500px] " /> */}
+      <canvas ref={canvasRef} className="fixed inset-0 w-full h-[500px] " />
       
       {/* Updated scroll percentage indicator */}
       <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg border border-[#FF6600] text-sm sm:text-base z-0">

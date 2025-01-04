@@ -20,50 +20,6 @@ import ServiceCardNaturalLanguage from "../assets/svgs/ServiceCardNaturalLanguag
 import ServiceCardConversationalAI from "../assets/svgs/ServiceCardConversationalAI";
 import ServiceCardAIforProcessAutomation from "../assets/svgs/ServiceCardAIforProcessAutomation";
 
-// const items = [
-//   {
-//     id: "section1",
-//     title: "Predictive Analytics Solutions Development",
-//     iconSvg: <ServicePredictiveAnalytics />,
-//   },
-//   {
-//     id: "section2",
-//     title: "Natural Language Processing (NLP)",
-//     iconSvg: <NaturalLanguage />,
-//   },
-//   {
-//     id: "section3",
-//     title: "Computer Vision",
-//     iconSvg: <ServiceComputerVision />,
-//   },
-//   {
-//     id: "section4",
-//     title: "Recommendation Systems",
-//     iconSvg: <ServiceRecommendationSystems />,
-//   },
-//   { id: "section5", title: "Custom AI Models", iconSvg: <ServiceCustomAI /> },
-//   {
-//     id: "section6",
-//     title: "Automated Machine Learning (AutoML)",
-//     iconSvg: <AutoML />,
-//   },
-//   {
-//     id: "section7",
-//     title: "AI-Powered Data Analytics",
-//     iconSvg: <ServiceNaturalLanguage />,
-//   },
-//   {
-//     id: "section8",
-//     title: "Conversational AI",
-//     iconSvg: <ServiceConversationalAI />,
-//   },
-//   {
-//     id: "section9",
-//     title: "AI for Process Automation",
-//     iconSvg: <ServiceAIforProcessAutomation />,
-//   },
-// ];
-
 const items = [
   {
     id: 1,
@@ -77,7 +33,7 @@ const items = [
     id: 2,
     title: "Natural Language Processing (NLP)",
     iconSvg: <NaturalLanguage />,
-    cardImg: <ServviceCardNaturalLanguage />,
+    cardImg: <ServviceCardNaturalLanguage  />,
     description:
       "Hexylon delivers cutting-edge Natural Language Processing (NLP) solutions to transform your business. Using AI-driven models like GPT and BERT, we automate tasks, enhance customer experiences, and extract actionable insights from unstructured data. Our services include AI-powered chatbots, sentiment analysis, text classification, and language translation, helping businesses streamline operations and personalize interactions. Using advanced technologies like SpaCy and top cloud-based AI platforms, we deliver scalable, tailored NLP solutions that ensure accuracy, efficiency, and impactful results. With Hexylon, unlock the power of language to boost efficiency, improve decision-making, and drive measurable growth. Contact us today to revolutionize your operations with NLP.",
   },
@@ -98,7 +54,7 @@ const items = [
       "Hexylon Analytics delivers advanced AI-driven recommendation systems that personalize user experiences and boost business outcomes. Our machine learning-based engines use collaborative filtering, content-based filtering, and predictive analytics to optimize product suggestions, content recommendations, and mobile app experiences. These smart algorithms enhance user engagement, increase conversions, and improve customer satisfaction. By analyzing user behaviour and preferences, our recommendation systems provide tailored, data-driven solutions for industries like e-commerce, media, and entertainment. Our scalable, customizable recommendation engines will help your business stay competitive, engaging users with dynamic, personalized content that drives results. Contact Hexylon Analytics to enhance your business with powerful AI-powered recommendations.",
   },
   {
-    id: "section5",
+    id: 5,
     title: "Custom AI Models",
     iconSvg: <ServiceCustomAI />,
     cardImg: <ServiceCardCustomAI />,
@@ -106,7 +62,7 @@ const items = [
       "Elevate your business with our tailored custom AI models, designed to optimize operations, enhance customer experiences, and drive innovation. Our machine learning and deep learning expertise empowers businesses with predictive insights, automated processes, and scalable solutions. From personalized customer experiences to operational efficiency, our custom AI models deliver actionable results. Contact us today to unlock the full potential of your data with our custom AI model development services!",
   },
   {
-    id: "section6",
+    id: 6,
     title: "Automated Machine Learning (AutoML)",
     iconSvg: <AutoML />,
     cardImg: <ServiceCardAutoML />,
@@ -114,7 +70,7 @@ const items = [
       "Transform your business with our cutting-edge AutoML solutions. By automating the entire machine learning pipeline—from data preprocessing and model selection to deployment and ongoing optimization—our solutions empower you to unlock valuable insights faster. With AutoML, you can automate decision-making, improve operational efficiency, and scale your business effortlessly. Whether you're looking to predict trends, optimize resources, or enhance customer experiences, AutoML enables data-driven growth. Reach out today to start your journey with AutoML and unlock the full potential of your data!",
   },
   {
-    id: "section7",
+    id: 7,
     title: "AI-Powered Data Analytics",
     iconSvg: <ServiceNaturalLanguage />,
     cardImg: <ServiceCardNaturalLanguage />,
@@ -122,7 +78,7 @@ const items = [
       "Our AI-powered data analytics solutions automate complex data workflows, allowing you to make data-driven decisions faster and more accurately. With AI, you can uncover trends, predict outcomes, and optimize business processes, all while saving time and costs. Let's help you unlock the power of your data and drive better outcomes for your business.",
   },
   {
-    id: "section8",
+    id: 8,
     title: "Conversational AI",
     iconSvg: <ServiceConversationalAI />,
     cardImg: <ServiceCardConversationalAI />,
@@ -130,7 +86,7 @@ const items = [
       "Our conversational AI solutions help businesses automate and enhance customer engagement, deliver personalized experiences, and drive operational efficiency. Whether through chatbots, virtual assistants, or voice solutions, we enable businesses to stay ahead with AI-powered communication systems. Let us show you how conversational AI can revolutionize your customer interactions and business outcomes.",
   },
   {
-    id: "section9",
+    id: 9,
     title: "AI for Process Automation",
     iconSvg: <ServiceAIforProcessAutomation />,
     cardImg: <ServiceCardAIforProcessAutomation />,
@@ -138,62 +94,101 @@ const items = [
       "Hexylon Analytics is a leading provider of AI-powered process automation solutions designed to revolutionize business operations. In today’s fast-paced world, efficiency and accuracy are crucial to maintaining a competitive edge, and Hexylon Analytics leverages advanced artificial intelligence to streamline workflows, reduce costs, and boost productivity. By automating repetitive tasks, optimizing workflows, and enhancing scalability, businesses can focus on innovation and strategic growth. With solutions that minimize human error, speed up processes, and provide actionable insights, Hexylon Analytics ensures operational excellence across various industries.",
   },
 ];
+
 const OurServices = () => {
   const [activeSections, setActiveSections] = useState([]);
   const sectionRefs = useRef([]);
   const scrollContainerRef = useRef(null);
+  const [currentSection, setCurrentSection] = useState(null);
+  const [activeId, setActiveId] = useState(1);
 
   console.log(activeSections, "activeSections");
 
+  // useEffect(() => {
+  //   const options = {
+  //     root: scrollContainerRef.current,
+  //     rootMargin: "0px",
+  //     threshold: 0.6, // Section must be at least 60% visible to become active
+  //   };
+
+  //   console.log(sectionRefs.current, "sectionRefs");
+
+  //   const observer = new IntersectionObserver((entries) => {
+  //     console.log(observer, "entries");
+
+  //     let mostVisibleSection = null;
+  //     let maxRatio = 0;
+
+  //     console.log(mostVisibleSection, "mostVisibleSection");
+
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+  //         mostVisibleSection = entry.target.id;
+  //         maxRatio = entry.intersectionRatio; // Track the most visible section
+  //       }
+  //     });
+
+  //     if (mostVisibleSection) {
+  //       setActiveSections([mostVisibleSection]); // Set only the most visible section as active
+  //     }
+  //   }, options);
+
+  //   sectionRefs.current.forEach((section) => {
+  //     console.log(section, "section");
+
+  //     if (section) observer.observe(section);
+  //   });
+
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
+
   useEffect(() => {
     const options = {
-      root: scrollContainerRef.current,
-      rootMargin: "0px",
-      threshold: 0.6, // Section must be at least 60% visible to become active
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // Element is considered visible when 50% is in view
     };
 
-    console.log(sectionRefs.current, "sectionRefs");
-
-    const observer = new IntersectionObserver((entries) => {
-      console.log(observer, "entries");
-
-      let mostVisibleSection = null;
-      let maxRatio = 0;
-
-      console.log(mostVisibleSection, "mostVisibleSection");
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-          mostVisibleSection = entry.target.id;
-          maxRatio = entry.intersectionRatio; // Track the most visible section
+    const callback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          setCurrentSection(sectionId);
+          setActiveId(sectionId);
+          console.log(`Current visible section: ${sectionId}`);
         }
       });
+    };
 
-      if (mostVisibleSection) {
-        setActiveSections([mostVisibleSection]); // Set only the most visible section as active
-      }
-    }, options);
+    const observer = new IntersectionObserver(callback, options);
 
-    sectionRefs.current.forEach((section) => {
-      console.log(section, "section");
-
-      if (section) observer.observe(section);
+    // Observe all sections
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
     });
 
     return () => {
-      observer.disconnect();
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
     };
   }, []);
 
   console.log(activeSections, "activeSections");
 
-  const isActive = (itemId) => activeSections.includes(itemId);
+  const isActive = (itemId) => {
+    // console.log(itemId <= activeId , itemId , activeId)
+    return itemId <= activeId;
+  };
+
 
   return (
     <>
-      <div className="w-full justify-start hidden lg:flex">
+      <div className="relative bg-black z-10 w-full justify-start hidden lg:flex">
         <div className="w-[13%]"></div>
-        <div className="sticky top-0 self-start bg-transparent max-w-[520px]  h-screen">
+        <div className="sticky top-[70px] 2xl:top-0 self-start bg-transparent max-w-[520px]  h-screen">
           <div className="w-full p-2 max-h-[calc(100vh-70px)]  ">
             <h2 className="text-3xl md:text-4xl font-bold text-orange-600  uppercase mb-10 ml-2">
               OUR SERVICES
@@ -238,11 +233,13 @@ const OurServices = () => {
         >
           {items.map((section, index) => (
             <div
-              key={section.id}
-              id={section.id}
-              ref={(el) => (sectionRefs.current[index] = el)}
-              className="h-content mb-1 flex justify-center items-center "
-            >
+            key={section.id}
+            id={`${section.id}`}
+            ref={(el) => (sectionRefs.current[index] = el)}
+            className={`h-content mb-1 flex justify-center items-center ${
+              currentSection === `section-${section.id}` ? 'border-2 border-blue-500' : ''
+            }`}
+          >
               <div className="flex flex-col max-w-7xl ml-auto bg-[transparent] shadow-xl  h-full w-full border border-[#374151]">
                 <figure className="flex justify-center items-center ">
                   {section.cardImg}
@@ -281,7 +278,7 @@ const OurServices = () => {
           ))}
         </div>
       </div>
-      <div className="md:hidden flex flex-col">
+      <div className="lg:hidden relative bg-black z-10 flex flex-col">
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600  uppercase my-12 text-center">
           OUR SERVICES
         </h2>
