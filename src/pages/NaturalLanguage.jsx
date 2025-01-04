@@ -142,7 +142,7 @@ export const NaturalLanguage = () => {
     },
 
     whyHexylon: {
-      title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+      title: "Why Choose Our NLP Solutions?",
       content:
         "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
       reasons: [

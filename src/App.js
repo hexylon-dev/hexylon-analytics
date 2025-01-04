@@ -21,6 +21,8 @@ import { CustomAIModels } from "./pages/CustomAIModels";
 import { AIPoweredDataAnalytics } from "./pages/AIPoweredDataAnalytics";
 import { AIforProcessAutomation } from "./pages/AIforProcessAutomation";
 import { ConversationalAI } from "./pages/ConversationalAI";
+import OurWork from "./pages/OurWork";
+
 
 function App() {
   return (
@@ -34,8 +36,8 @@ function App() {
             <main className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
                 {resources.map((resource) => (
-                  <ResourceCard
-                    key={resource.id}
+                  <ResourceCard 
+                    key={resource.id} 
                     {...resource}
                   />
                 ))}
@@ -45,6 +47,8 @@ function App() {
         } />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
+        <Route path="/work" element={<OurWork />} />
+
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
@@ -111,6 +115,7 @@ function App() {
             <ConversationalAI/>
           }
         />
+        {/* <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} /> */}
       </Routes>
       <Footer />
     </Router>
