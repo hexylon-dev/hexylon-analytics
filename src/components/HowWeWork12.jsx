@@ -131,22 +131,23 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm border-orange-400"
       onClick={onClose}
     >
       <div
         ref={contentRef}
-        className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+        className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative border-[#FF6600] border-2"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header section with gradient line and close button */}
-        <div className="sticky top-0 bg-black pt-6 px-6 pb-4 border-b border-gray-100">
+        <div className="sticky top-0 bg-black pt-6 px-6 pb-4 border-b border-[#FF6600]">
           <div className="flex item-center justify-center">
-            <div className="w-[98%] my-auto h-[0.5px] bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
+          <div className="w-[98%] my-auto h-[2px] bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
+
             <div className="my-auto flex items-center justify-center ml-4">
               <button
                 onClick={onClose}
-                className=" text-gray-500 hover:text-gray-700 transition-colors"
+                className=" text-gray-500 hover:text-[#FF6600] transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -169,18 +170,22 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
 
         {/* Content section */}
         <div className="px-6 py-4">
-          <h2 className="text-3xl font-bold text-[#003366] mb-2">
+          <h2 className="text-3xl font-bold text-[#FF6600] mb-2">
             {caseStudy.title}
           </h2>
-          <p className="text-lg text-gray-600 mb-4 font-medium">
+          <p className="text-lg text-[#FFFFFF] mb-4 font-medium">
             {caseStudy.description}
           </p>
-          <div className="bg-black p-6 rounded-xl">
-            <p className="text-gray-700 leading-relaxed">{caseStudy.content}</p>
-          </div>
+          <h2 className="text-3xl font-bold text-[#FF6600] mb-2">
+            {caseStudy.subTitle}
+          </h2>
+          <p className="text-lg text-[#FFFFFF] mb-4 font-medium">
+            {caseStudy.subDescription}
+          </p>
+         
 
           <div className="mt-6 flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
+            <div className="flex items-center gap-2 bg-black border-[#003366] border-2 px-4 py-2 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-[#003366]"
@@ -199,7 +204,7 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
                 Results Achieved
               </span>
             </div>
-            <div className="flex items-center gap-2 bg-orange-50 px-4 py-2 rounded-full">
+            <div className="flex items-center gap-2 bg-black border-[#FF6600] border-2 px-4 py-2 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-[#FF6600]"
@@ -562,6 +567,10 @@ const HowWeWorkSection = () => {
                     title: "In-Depth Business Analysis for Tailored Strategies",
                     description:
                       "We begin by deploying expert consultants to assess your business, identify challenges, and define your goals. This comprehensive analysis helps us design custom AI solutions aligned with your business needs, ensuring maximum efficiency and performance.",
+                    subTitle:
+                    "Real-World Example of Business Impact",
+                    subDescription:
+                    "For example, our team recently spent two weeks onsite, analyzing a client's inventory and supply chain processes. By understanding their unique challenges, we created a bespoke AI solution that significantly improved their inventory management and reduced operational disruptions, showing how strategic business analysis can directly enhance performance.",
                     content:
                       "Our team spent two weeks on-site, analyzing the client's existing inventory systems and supply chain processes. By understanding their unique challenges, we developed a custom AI solution that reduced stockouts by 35% and improved inventory turnover by 20%.",
                   });
@@ -637,6 +646,11 @@ const HowWeWorkSection = () => {
                   setSelectedCaseStudy({
                     title: "Unlocking Data Insights to Drive Strategic Growth",
                     description: "We gather and analyze your business data, uncovering hidden patterns and insights that inform the development of tailored AI models. Our advanced data processing techniques maximize the value of your data, driving meaningful business transformation.",
+                    subTitle:
+                    "Real-World Example of Business Impact",
+                    subDescription:
+                    "For example, our team recently spent two weeks onsite, analyzing a client's inventory and supply chain processes. By understanding their unique challenges, we created a bespoke AI solution that significantly improved their inventory management and reduced operational disruptions, showing how strategic business analysis can directly enhance performance.",
+                   
                     content:
                       "By collecting and analyzing five years of transaction data, we identified subtle patterns of fraudulent activity. Our AI model increased fraud detection rates by 60% while reducing false positives by 40%, saving the bank millions in potential losses.",
                   });
@@ -703,6 +717,11 @@ const HowWeWorkSection = () => {
                   setSelectedCaseStudy({
                     title: "Complete AI System Integration for Seamless Performance",
                     description: "We specialize in integrating custom AI models into your existing business systems, ensuring smooth operations and enhanced performance. Our end-to-end approach includes rigorous testing and continuous improvement, ensuring your systems evolve alongside your business.",
+                    subTitle:
+                    "Real-World Example of Business Impact",
+                    subDescription:
+                    "For example, our team recently spent two weeks onsite, analyzing a client's inventory and supply chain processes. By understanding their unique challenges, we created a bespoke AI solution that significantly improved their inventory management and reduced operational disruptions, showing how strategic business analysis can directly enhance performance.",
+                   
                     content:
                       "We developed a neural network model that analyzes patient data to predict potential complications. This model achieved a 92% accuracy rate in identifying high-risk patients, allowing for early interventions and significantly improving patient outcomes.",
                   },);
