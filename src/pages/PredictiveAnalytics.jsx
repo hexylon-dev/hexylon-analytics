@@ -1,155 +1,233 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import RightArrow from "../assets/svgs/RightArrow";
-import ScrollDown from "../assets/svgs/ScrollDown";
-import HeaderSVG from "../assets/svgs/HeaderSVG";
+import React from "react";
+import ServicePageV from "../components/ServicePageV";
+import img1 from "../assets/img1.webp";
+import img2 from "../assets/img2.webp";
+import img3 from "../assets/img3.webp";
+import img4 from "../assets/img4.webp";
 
+export const PredictiveAnalytics = () => {
+  const predictiveAnalytics = {
+// fisrt section
 
-export const PredictiveAnalytics = ({ title, description }) => {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
+    heroSection: {
+      title: "Predictive Analytics Solutions Development",
+      tagline:
+        "Forecast the Future, Elevate Your Strategy with Predictive Analytics",
+      content:
+        "Predictive Analytics transforms your business by unlocking actionable insights from data. Our solutions help you forecast trends, optimize processes, and reduce risks with AI-driven tools and machine learning algorithms. Gain a competitive edge with data-powered strategies designed to enhance efficiency, increase profitability, and support sustainable growth.",
+    },
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+// second section
+    problemStatement: {
+      title: "Why Predictive Analytics is Important",
+      Content:"Predictive Analytics is vital for modern businesses aiming to thrive in a competitive, data-driven world. It helps organizations make informed decisions by:",
+      benefits: [
+        {description:"Anticipating customers needs to improve demand planning and streamline inventory management"},
+        {description:"Boosting operational efficiency by leveraging predictive insights for smarter resource allocation"},
+        {description:"Cutting costs by identifying inefficiencies and optimizing workflows"},
+      ],
+    },
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+// third section
+    keyFeatures: {
+      title: "Transform Your Business with Predictive Analytics",
+      features: [
+        {
+          name: "Sales and Market Forecasting",
+          description:
+            "Leverage historical data to predict sales trends, market movements, and customer demands for proactive decision-making",
+        },
+        {
+          name: "Risk Assessment and Management",
+          description:
+            "Identify and mitigate potential risks, ensuring business continuity and stability",
+        },
+        {
+          name: "Resource Optimization",
+          description:
+            "Optimize inventory and resource allocation, reducing waste while enhancing customer satisfaction",
+        },
+        {
+          name: "Customer Behavior Insights",
+          description:
+            "Understand and predict customer preferences and behaviors to personalize services and boost loyalty",
+        },
+      ],
+    },
 
-  const [scrollPercentage, setScrollPercentage] = useState(0);
+// fourth section
+    workflow: {
+      title: "How Predictive Analytics Works",
+      Content:"Predictive analytics uses data science and machine learning algorithms to predict future outcomes. Here’s how it works:",
+      steps: [
+        {
+          icon: "clipboard",
+          name: "Data Collection & Preparation",
+          description:
+            "Collect and clean historical data from multiple sources to ensure accuracy and reliability",
+        },
+        {
+          icon: "binary",
+          name: "Algorithm Selection & Modelling",
+          description:
+            "Use machine learning models and statistical algorithms to uncover patterns and trends",
+        },
+        {
+          icon: "trending",
+          name: "Outcome Forecasting",
+          description:
+            "Apply predictive models to forecast key business metrics",
+        },
+        {
+          icon: "target",
+          name: "Actionable Decision-Making",
+          description:
+            "Utilize the insights from forecasts to optimize strategies and improve efficiency",
+        },
+        {
+          icon: "refresh",
+          name: "Continuous Improvement",
+          description:
+            "Regularly update and refine models with new data to maintain accuracy",
+        },
+        {
+          icon: "chart",
+          name: "Data Visualization & Insights Communication",
+          description:
+            "Present analysis results through intuitive visualizations and dashboards",
+        },
+      ],
+    },
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
-      setScrollPercentage(currentScroll / scrollHeight);
-    };
+    caseStudies: [
+      {
+        industry: "Logistics Industry",
+        focus: "Route Optimization",
+        challenge:
+          "A logistics firm struggled with inefficient route planning, leading to high fuel costs and delayed deliveries",
+        solution:
+          "We deployed a predictive analytics model analyzing traffic patterns, delivery times, and seasonal trends to optimize delivery routes in real-time",
+        results: [
+          "20% Reduction in fuel costs",
+          "30% Faster delivery times",
+          "25% Increase in customer satisfaction",
+        ],
+      },
+      {
+        industry: "Retail Industry",
+        focus: "Demand Forecasting",
+        challenge:
+          "A retail company struggled with inventory overstock and demand prediction",
+        solution:
+          "Our AI-driven demand forecasting models integrated real-time sales data and historical patterns for accurate inventory management",
+        results: [
+          "15% Reduction in inventory costs",
+          "20% Improvement in order accuracy",
+          "Significant growth in customer satisfaction scores",
+        ],
+      },
+    ],
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    technologyStack: {
+      title: "Advanced Technologies Powering Predictive Analytics",
+      technologies: {
+        pythonLibraries: ["Scikit-learn", "TensorFlow", "Keras"],
+        dataProcessingTools: ["Pandas", "NumPy"],
+        cloudPlatforms: [
+          "AWS Forecast",
+          "Azure Machine Learning",
+          "Google Cloud AI",
+        ],
+        visualizationTools: ["Tableau", "Power BI"],
+      },
+    },
+
+    whyHexylon: {
+      title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+      content: "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here’s why companies trust us:",
+      reasons: [
+        {
+          id: 1,
+          title: "Tailored Predictive Models",
+          description: "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+          image: img1,
+        },
+        {
+          id: 2,
+          title: "Comprehensive Support",
+          description: "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+          image: img2,
+        },
+        {
+          id: 3,
+          title: "Scalable Solutions",
+          description: "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+          image: img3,
+        },
+        {
+          id: 4,
+          title: "Data Analytics",
+          description: "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+          image: img4,
+        },
+        {
+          id: 5,
+          title: "Innovation Hub",
+          description: "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
+          image: img2,
+        },
+      ],
+    },
+
+    callToAction: {
+      title: "Unlock the Power of Predictive Analytics for Business Success",
+      content:
+        "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+    },
+
+    faqs: [
+      {
+        question: "Predictive Analytics for Competitive Edge",
+        answer:
+          "In today's fast-paced market, staying ahead requires anticipating changes. Predictive Analytics gives businesses a competitive edge by analyzing trends, forecasting demand, and enabling proactive decisions to quickly adapt to customer needs and market shifts.",
+      },
+      {
+        question: "The Role of Big Data in Predictive Analytics",
+        answer:
+          "Big Data powers Predictive Analytics by enabling accurate predictions from vast datasets. It helps businesses uncover insights, identify growth opportunities, and scale efficiently, handling both structured and unstructured data seamlessly.",
+      },
+      {
+        question: "Predictive Maintenance with IoT Integration",
+        answer:
+          "Integrating Predictive Analytics with IoT enables Predictive Maintenance, reducing downtime, cutting costs, and improving efficiency by predicting equipment failures. It's ideal for industries like manufacturing, logistics, and utilities.",
+      },
+      {
+        question: "Data Visualization in Predictive Analytics",
+        answer:
+          "Data visualization tools like Tableau and Power BI bring Predictive Analytics to life. They present complex data in an easy-to-understand format, allowing businesses to uncover actionable insights at a glance.",
+      },
+      {
+        question: "The Impact of Predictive Analytics on SMBs",
+        answer:
+          "Predictive Analytics is no longer exclusive to large corporations. Small and medium-sized businesses (SMBs) can now access cost-effective, scalable solutions to gain a competitive advantage.",
+      },
+    ],
+  };
 
   return (
-    <div ref={containerRef} className="relative min-h-screen overflow-hidden">
+    <div className="relative  min-h-screen overflow-hidden">
       {/* Scoped Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: `
-            radial-gradient(circle at left, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at center, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at right, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%)
-          `,
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed"
-        }}
+      <ServicePageV
+      heroSection={predictiveAnalytics.heroSection}
+      problemStatement={predictiveAnalytics.problemStatement}
+      keyFeatures={predictiveAnalytics.keyFeatures}
+      workflow={predictiveAnalytics.workflow}
+      caseStudies={predictiveAnalytics.caseStudies}
+      technologyStack={predictiveAnalytics.technologyStack}
+      whyHexylon={predictiveAnalytics.whyHexylon}
+      callToAction={predictiveAnalytics.callToAction}
+      faqs={predictiveAnalytics.faqs}
       />
-
-      {/* Grid lines */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "4rem 4rem"
-        }}
-      />
-
-      <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
-
-      {/* Scroll percentage indicator */}
-      {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
-        {(scrollPercentage * 100).toFixed(1)}%
-      </div> */}
-
-      <motion.div
-        style={{ scale, opacity, y }}
-        className="relative z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
-      >
-        {/* Right Arrow - Updated positioning */}
-        <div className="absolute top-[150px] right-4 md:top-[170px] md:right-[120px]">
-          <div className="bg-[#141414] p-2 md:p-3 rounded-full shadow-lg hover:bg-[#1a1a1a] transition-colors duration-300">
-            <RightArrow className="w-6 h-6 md:w-10 md:h-10 text-[#0066ff]" />
-          </div>
-        </div>
-
-        {/* Service Button - Updated margin */}
-        <div className="mb-16 md:mb-32">
-          <button
-            className="service-button"
-            style={{
-              background: "linear-gradient(135deg, #ff7755, #ff9966)",
-              padding: "8px 24px",
-              borderRadius: "9999px",
-              fontWeight: "600",
-              transition: "background-color 0.3s, transform 0.3s",
-              color: "white",
-              boxShadow: "0 4px 14px rgba(0, 0, 0, 0.2)",
-              marginTop: "70px",
-              "@media (min-width: 1000px)": {
-                padding: "12px 36px",
-                marginTop: "-100px"
-              }
-            }}
-            onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-            onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-          >
-            SERVICE
-            <span className="ml-1">›</span>
-          </button>
-        </div>
-
-        {/* Main Content - Updated margins */}
-        <div className="grid grid-cols-1 gap-8 md:gap-16 mt-16 md:mt-0">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="service-title text-4xl md:text-8xl"
-            style={{
-              lineHeight: "1.2",
-              fontFamily: "serif",
-              color: "white",
-              textAlign: "center",
-              paddingLeft: "0.5rem",
-              marginTop: "-100px",
-              "@media (min-width: 768px)": {
-                paddingLeft: "1.5rem",
-                marginTop: "-250px"
-              }
-            }}
-            dangerouslySetInnerHTML={{ __html: title }}
-          >
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="service-description text-lg md:text-xl lg:text-2xl"
-            style={{
-              color: "rgb(209, 213, 219)",
-              maxWidth: "28rem",
-              margin: "0 auto",
-              textAlign: "center",
-              marginRight: "8px",
-              padding: "0 1rem"
-            }}
-          >
-            {description}
-          </motion.p>
-        </div>
-
-        {/* Scroll Indicator - Updated positioning */}
-        <div className="absolute top-[540px] right-1/2 transform translate-x-1/2 md:top-[480px] md:right-[590px] md:transform-none">
-          <ScrollDown className="w-6 h-6 md:w-10 md:h-10 text-[#0066ff]" />
-        </div>
-      </motion.div>
     </div>
   );
 };

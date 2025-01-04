@@ -28,21 +28,21 @@ function App() {
       <Navbar />
       <NotificationWrapper />
       <Routes>
-        <Route
-          path="/blogs"
-          element={
-            <div className="min-h-screen bg-[#111] text-white">
-              <Header />
-              <main className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
-                  {resources.map((resource) => (
-                    <ResourceCard key={resource.id} {...resource} />
-                  ))}
-                </div>
-              </main>
-            </div>
-          }
-        />
+        <Route path="/blogs" element={
+          <div className="min-h-screen bg-[#111] text-white">
+            <Header />
+            <main className="container mx-auto px-4 py-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
+                {resources.map((resource) => (
+                  <ResourceCard
+                    key={resource.id}
+                    {...resource}
+                  />
+                ))}
+              </div>
+            </main>
+          </div>
+        } />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<ContactUs />} />
@@ -60,82 +60,55 @@ function App() {
         <Route
           path="/services/predictive-analytics"
           element={
-            <PredictiveAnalytics
-              title="Predictive Analytics"
-              description=" Forecast the Future, Elevate Your Strategy with Predictive Analytics."
-            />
+            <PredictiveAnalytics/>
           }
         />
         <Route
           path="/services/natural-language"
           element={
-            <NaturalLanguage
-              title="Natural Language Processing"
-              description="Unlock Language Insights with AI-Driven NLP Tools. Transform Data into Strategy."
-            />
+            <NaturalLanguage />
           }
         />
         <Route
           path="/services/computer-vision"
           element={
-            <ComputerVision
-              title="Computer Vision"
-              description="Unlock the Power of AI-Driven Vision. Transform Data into Actionable Insights."
-            />
+            <ComputerVision/>
           }
         />
         <Route
           path="/services/recommendation-systems"
           element={
-            <RecommendationSystems
-              title="Recommendation Systems"
-              description="Harness the Power of Smart Recommendations to Drive Conversions and Enhance User Experiences"
-            />
+            <RecommendationSystems/>
           }
         />
         <Route
-          path="/services/automl"
+          path="/services/automated-machine-learning"
           element={
-            <AutoML
-              title="Auto ML"
-              description="Automate Machine Learning and Drive Business Success with AutoML."
-            />
+            <AutoML/>
           }
         />
         <Route
           path="/services/custom-ai-models"
           element={
-            <CustomAIModels
-              title="Custom AI Models"
-              description="Custom AI Models to Drive Innovation and Efficiency"
-            />
+            <CustomAIModels/>
           }
         />
         <Route
           path="/services/ai-powered-data-analytics"
           element={
-            <AIPoweredDataAnalytics
-              title="AI Powered Data Analytics"
-              description="Unlock Business Insights, Boost Efficiency, and Make Smarter Decisions with AI-Driven Data Analytics."
-            />
+            <AIPoweredDataAnalytics />
           }
         />
         <Route
           path="/services/ai-for-process-automation"
           element={
-            <AIforProcessAutomation
-              title="AI for Process Automation"
-              description="Automate Tasks, Enhance Efficiency, and Drive Business Growth with Cutting-Edge AI Solutions"
-            />
+            <AIforProcessAutomation />
           }
         />
         <Route
           path="/services/conversational-ai"
           element={
-            <ConversationalAI
-              title="Conversational AI"
-              description="Enhance Customer Experience, Boost Efficiency, and Drive Growth with AI-Powered Solutions."
-            />
+            <ConversationalAI/>
           }
         />
       </Routes>
