@@ -1,17 +1,16 @@
 import React from 'react';
-import SalesForecastingSVG from './SalesCard';
+import SalesForecastingSVG from '../assets/svgs/SalesForecastingSVG';
 import { motion } from 'framer-motion'; // Make sure to install framer-motion
 
-const ServiceV3 = ({ 
-  title,
-  description
-}) => {
+const ServiceV3 = ({ keyFeatures }) => {
+    console.log(keyFeatures);
   // Split the first word for gradient effect
-  const words = title.split(' ');
+  const words = keyFeatures.title.split(' ');
   const firstWord = words[0];
   const restOfTitle = words.slice(1).join(' ');
 
-  const cards = Array(4).fill(null);
+  // Replace static cards array with features length
+  const cards = keyFeatures.features;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,7 +69,7 @@ const ServiceV3 = ({
             transition={{ delay: 0.4 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed px-4"
           >
-            {description}
+            {/* Add description text here if needed */}
           </motion.p>
         </motion.div>
 
@@ -81,7 +80,7 @@ const ServiceV3 = ({
           animate="visible"
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-14 mt-8 sm:mt-12 md:mt-16 px-2 sm:px-4"
         >
-          {cards.map((_, index) => (
+          {cards.map((feature, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
@@ -100,7 +99,13 @@ const ServiceV3 = ({
               {/* Responsive card content */}
               <div className="relative p-4 sm:p-6 md:p-8 h-full">
                 <div className="transform group-hover:scale-105 transition-transform duration-300">
-                  <SalesForecastingSVG />
+                  <SalesForecastingSVG content={feature} />
+                  {/* <h3 className="text-xl sm:text-2xl font-bold mt-4 mb-2 text-white">
+                    {feature.name}
+                  </h3> */}
+                  {/* <p className="text-gray-400 text-sm sm:text-base">
+                    {feature.description}
+                  </p> */}
                 </div>
               </div>
 

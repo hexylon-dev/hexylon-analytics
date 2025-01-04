@@ -63,7 +63,7 @@ function OurWork() {
             <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[450px] w-full xl:text-left text-center ">
               Our Education AI system is designed to create customized learning
               paths that adapt to each student's unique needs and strengths.
-              Offering multilingual support, interactive learning environments,
+               Offering multilingual support, interactive learning environments,
               and continuous progress tracking, it ensures a tailored
               educational journey. The platform also includes career
               assessments, providing students with clarity and guidance as they

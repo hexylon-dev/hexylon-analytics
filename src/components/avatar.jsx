@@ -163,6 +163,7 @@ function ChatScreen({ closeChat }) {
 }
 
 export default function ParticleAvatar() {
+  // debugger
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
 
