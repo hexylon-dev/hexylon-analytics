@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Sparkles, GraduationCap, TrendingUp } from "lucide-react";
+import { Sparkles, GraduationCap, TrendingUp, Lightbulb } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -194,7 +194,7 @@ const OurWorkSection = () => {
           Our Projects
           <span className="block h-1 w-20 bg-[#FF6600] mx-auto mt-4" />
         </h2>
-
+        
         <div
           ref={projectsRef}
           className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
@@ -223,6 +223,8 @@ const OurWorkSection = () => {
             </div>
           ))}
         </div>
+
+      
       </div>
     </div>
   );
