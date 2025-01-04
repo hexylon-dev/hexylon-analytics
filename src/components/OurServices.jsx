@@ -188,7 +188,7 @@ const OurServices = () => {
     <>
       <div className="relative bg-black z-10 w-full justify-start hidden lg:flex">
         <div className="w-[13%]"></div>
-        <div className="sticky top-[70px] 2xl:top-0 self-start bg-transparent max-w-[520px]  h-screen">
+        <div className="sticky top-[70px]  self-start bg-transparent max-w-[520px]  h-screen">
           <div className="w-full p-2 max-h-[calc(100vh-70px)]  ">
             <h2 className="text-3xl md:text-4xl font-bold text-orange-600  uppercase mb-10 ml-2">
               OUR SERVICES
