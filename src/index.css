@@ -42,7 +42,8 @@ body {
   animation-delay: 2s;
 }
 
-.scrollbar-hidden::-webkit-scrollbar {
+
+scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 
@@ -50,3 +51,93 @@ body {
   -ms-overflow-style: none;  /* for Internet Explorer 10+ */
   scrollbar-width: none;  /* for Firefox */
 }
+
+
+@keyframes draw-width-line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-draw-width-line {
+  animation: draw-width-line 2s ease-in-out forwards;
+}
+
+
+@keyframes draw-height-line {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+
+.animate-draw-height-line {
+  animation: draw-height-line 2s ease-in-out forwards;
+}
+
+
+@keyframes draw-height-5rem-line-bottom-to-top {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 5rem;
+  }
+}
+
+@keyframes draw-height-5rem-line-top-to-bottom {
+  0% {
+    height: 5rem;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes draw-height-line-animated {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 19.2rem;
+  }
+}
+
+.animate-draw-height-line {
+  animation: draw-height-animated 2s ease-in-out forwards;
+}
+
+.animate-draw-height-5rem-line-bottom-to-top {
+  animation: draw-height-5rem-line-bottom-to-top 2s ease-in-out forwards;
+}
+
+.animate-draw-height-5rem-line-top-to-bottom {
+  animation: draw-height-5rem-line-top-to-bottom 2s ease-in-out forwards;
+}
+
+
+@keyframes drawHeightLineCrossLine {
+  0% {
+    height: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    height: 19.2rem;
+    transform: rotate(0deg);
+  }
+  100% {
+    height: 19.2rem;
+    transform: rotate(18.7deg);
+  }
+}
+
+.animate-draw-height-line-cross-line {
+  animation: drawHeightLineCrossLine 1s ease-in-out forwards;
+}
+

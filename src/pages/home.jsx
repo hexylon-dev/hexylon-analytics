@@ -29,11 +29,10 @@ function Home() {
       <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
       <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
       <HowWeWork />
-      <WhyUs />
-      <IndustriesSection />
-      <OurWorkSection />
-      <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-      {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
+      {/* <WhyUs /> */}
+      {/* <IndustriesSection /> */}
+      {/* <OurWorkSection /> */}
+      {/* <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} /> */}
 
     </>
   );
