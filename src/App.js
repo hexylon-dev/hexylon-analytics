@@ -13,6 +13,7 @@ import Header from './components/Blogs/HeaderBlog';
 import ResourceCard from './components/Blogs/ResourceCard';
 import { resources } from './Data/resources';
 import BlogPage from './pages/BlogPage';
+import OurWork from "./pages/OurWork";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
         } />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
+        <Route path="/work" element={<OurWork />} />
+
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
