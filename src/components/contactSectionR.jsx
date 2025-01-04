@@ -149,10 +149,10 @@ export default function ContactSection() {
 
   if (showChat) {
     return (
-      <div className="min-h-screen bg-black p-4 sm:p-8">
+      <div className="z-10 relative min-h-screen bg-black p-4 sm:p-8">
         <div className="max-w-4xl mx-auto bg-[#1a1a1a] rounded-lg overflow-hidden">
           <div className="bg-[#252525] p-4 flex items-center justify-between">
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Project Discussion</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Chat With Hex</h2>
             <button 
               onClick={() => setShowChat(false)}
               className="text-gray-400 hover:text-white transition-colors"
@@ -209,7 +209,7 @@ export default function ContactSection() {
   }
 
   return (
-    <div className="min-h-screen bg-black px-4 sm:p-8 flex flex-col items-center justify-center">
+    <div className="z-10 relative min-h-screen bg-transparent px-4 sm:p-8 flex flex-col items-center justify-center">
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-4 max-w-3xl leading-tight">
         <span className="bg-gradient-to-r from-[#FF7A33] to-[#FFFFFF] text-transparent bg-clip-text">
           CONTACT US FOR A

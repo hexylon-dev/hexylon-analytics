@@ -27,13 +27,7 @@ function Home() {
   return (
     <>
       <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
-      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
-      <HowWeWork />
-      <WhyUs />
-      <IndustriesSection />
-      <OurWorkSection />
-      <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
-      <ContactSection />
+      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />      
       {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
 
     </>
