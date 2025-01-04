@@ -8,9 +8,8 @@ import OurWorkSection from "../components/OurWork4";
 import CommitmentSection from "../components/OurCommit1";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import ContactSection from "../components/contactSectionR";
-function Home() {
 
+function Home() {
   const navigate = useNavigate();
   const handleNavigateToContactPage = () => {
     window.location.href = "/contact-us";
@@ -22,12 +21,17 @@ function Home() {
 
   const handleNavigateToBlogPage = () => {
     window.location.href = "/blogs";
-  }
+  };
 
   return (
     <>
       <Navbar handleNavigateToContactPage={handleNavigateToContactPage} />
-      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />      
+      <HeroSection handleNavigateToContactPage={handleNavigateToContactPage} />
+      <HowWeWork />
+      <WhyUs />
+      <IndustriesSection />
+      <OurWorkSection />
+      <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} />
       {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
 
     </>

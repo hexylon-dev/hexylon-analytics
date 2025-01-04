@@ -1,23 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
+import ImplementedProjects from "./ImplementedProjects";
+import Page from "./Page";
+import OurWorkUnique from "./OurWorkUnique";
 import ScrollDown from "../assets/svgs/ScrollDown";
 import HeaderSVG from "../assets/svgs/HeaderSVG";
-import ServicePage2 from "./ServicePage2";
-import PosterPage from "./PosterPage";
-import PredictiveAnalytics from "./PredictiveAnalytics";
-import Carousel from "./Carousel";
+// import ServicePage2 from "./ServicePage2";
+// import PosterPage from "./PosterPage";
+// import PredictiveAnalytics from "./PredictiveAnalytics";
+// import Carousel from "./Carousel";
 import ServiceV3 from "./ServiceV3";
+const heroSection = {
+      title: "Best Custom \nAI Development Company in Ahmedabad",
+      tagline:
+        "Revolutionizing Businesses with Innovative AI Solutions, Intelligent Automation, and Real-Time Insights",
+      content:
+        "Hexylon Analytics stands as the best AI developer company, specializing in custom AI development designed to revolutionize businesses across diverse sectors. Our expertise in innovative AI solutions, intelligent automation, and intuitive dashboards enables organizations to streamline operations, optimize HR, Sales, and Purchasing functions, and gain actionable insights in real time.",
+    };
 export default function HexylonLanding({
-  heroSection,
-  problemStatement,
-  keyFeatures,
-  workflow,
-  caseStudies,
-  technologyStack,
-  whyHexylon,
-  callToAction,
-  faqs,
+//   heroSection,
+//   problemStatement,
+//   keyFeatures,
+//   workflow,
+//   caseStudies,
+//   technologyStack,
+//   whyHexylon,
+//   callToAction,
+//   faqs,
 }) {
   const { title, tagline, content } = heroSection;
   const containerRef = useRef(null);
@@ -90,7 +100,7 @@ export default function HexylonLanding({
           className="relative max-w-7xl min-h-screen mx-auto z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
         >
           {/* Right Arrow - Updated positioning */}
-          <div className="absolute top-[20vh] right-4 md:top-[25vh] md:right-[8rem]">
+          <div className="absolute top-[20vh] right-4 md:top-[13vh] md:right-[8rem]">
             <div className="p-1 sm:p-2 md:p-3 rounded-full shadow-lg transition-colors duration-300">
               <RightArrow className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#0066ff]" />
             </div>
@@ -117,7 +127,7 @@ export default function HexylonLanding({
               onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
               onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
             >
-              SERVICE
+              OUR WORK
               <span className="ml-1">›</span>
             </button>
           </div>
@@ -186,21 +196,9 @@ export default function HexylonLanding({
           </div>
         </motion.div>
       </div>
-      <div className="relative  overflow-hidden">
-        <ServicePage2 problemStatement={problemStatement} />
-      </div>
-      <div className="relative  overflow-hidden">
-        <ServiceV3 keyFeatures={keyFeatures} />
-      </div>
-      <div className="relative  overflow-hidden">
-        <PredictiveAnalytics workflow={workflow} />
-      </div>
-      <div className="relative  overflow-hidden">
-        <Carousel carouselData={whyHexylon} />
-      </div>
-      <div className="relative  overflow-hidden">
-        <PosterPage callToAction={callToAction} />
-      </div>
-    </>
+      <Page />
+      <OurWorkUnique />
+      <ImplementedProjects />
+                          </>
   );
 }

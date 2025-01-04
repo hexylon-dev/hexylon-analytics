@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import ContactUs from "./pages/ContactUs4";
 import Navbar from "./components/Navbar1";
 import Footer from "./components/Footer";
-import CareerPage from './components/CareerPage';
+import CareerPage from "./components/CareerPage";
 import ApplyForm from "./components/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
 import ServicePageV from "./components/ServicePageV";
@@ -14,6 +14,21 @@ import ResourceCard from './components/Blogs/ResourceCard';
 import { resources } from './Data/resources';
 import BlogPage from './pages/BlogPage';
 import ContactSection from "./components/contactSectionR";
+import Header from "./components/Blogs/HeaderBlog";
+import ResourceCard from "./components/Blogs/ResourceCard";
+import { resources } from "./Data/resources";
+import BlogPage from "./pages/BlogPage";
+import { PredictiveAnalytics } from "./pages/PredictiveAnalytics";
+import { NaturalLanguage } from "./pages/NaturalLanguage";
+import { ComputerVision } from "./pages/ComputerVision";
+import { RecommendationSystems } from "./pages/RecommendationSystems";
+import { AutoML } from "./pages/AutoML";
+import { CustomAIModels } from "./pages/CustomAIModels";
+import { AIPoweredDataAnalytics } from "./pages/AIPoweredDataAnalytics";
+import { AIforProcessAutomation } from "./pages/AIforProcessAutomation";
+import { ConversationalAI } from "./pages/ConversationalAI";
+import OurWork from "./pages/OurWork";
+
 
 function App() {
   return (
@@ -36,14 +51,79 @@ function App() {
             </main>
           </div>
         } />
+        <Route path="/sales-card" element={<SalesCard />} />
+        <Route path="/service-v3" element={<ServiceV3 title = "TRANSFORM YOUR BUSINESS WITH PREDICTIVE ANALYTICS" description = "Predictive Analytics is a scalable and user-friendly tool, ideal for businesses of all sizes."/>} />
         <Route path="/blog/:id" element={<BlogPage />} />
         <Route path="/" element={<Home />} />
+        {/* <Route path="/work" element={<OurWork />} /> */}
+
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
-        <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
-        <Route path="/servicesr" element={<ServicePageR/>}/>
-        <Route path="/contactsection" element={<ContactSection/>}/>
+        <Route
+          path="/services"
+          element={
+            <ServicePageV
+              title="AI and ML <br /> Service"
+              description="Anticipating customers needs to improve demand planning and streamline inventory management."
+            />
+          }
+        />
+        <Route
+          path="/services/predictive-analytics"
+          element={
+            <PredictiveAnalytics/>
+          }
+        />
+        <Route
+          path="/services/natural-language"
+          element={
+            <NaturalLanguage />
+          }
+        />
+        <Route
+          path="/services/computer-vision"
+          element={
+            <ComputerVision/>
+          }
+        />
+        <Route
+          path="/services/recommendation-systems"
+          element={
+            <RecommendationSystems/>
+          }
+        />
+        <Route
+          path="/services/automated-machine-learning"
+          element={
+            <AutoML/>
+          }
+        />
+        <Route
+          path="/services/custom-ai-models"
+          element={
+            <CustomAIModels/>
+          }
+        />
+        <Route
+          path="/services/ai-powered-data-analytics"
+          element={
+            <AIPoweredDataAnalytics />
+          }
+        />
+        <Route
+          path="/services/ai-for-process-automation"
+          element={
+            <AIforProcessAutomation />
+          }
+        />
+        <Route
+          path="/services/conversational-ai"
+          element={
+            <ConversationalAI/>
+          }
+        />
+        {/* <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} /> */}
       </Routes>
       <Footer />
     </Router>
