@@ -10,7 +10,7 @@ export const AIforProcessAutomation = () => {
     const aiForProcessAutomation = {
         heroSection: {
           title: "Why Revolutionize Operations with AI for Process Automation?",
-          tagline: "Automate Tasks, Enhance Efficiency, and Drive Business Growth with Cutting-Edge AI Solutions",
+          tagline: " Automate Tasks, Enhance Efficiency, and Drive Business Growth with Cutting-Edge AI Solutions",
           content: "In an era where efficiency is key to staying competitive, AI for process automation is revolutionizing how businesses operate. By leveraging artificial intelligence, organizations can automate repetitive tasks, optimize workflows, and focus on strategic growth. Our AI-powered solutions empower businesses to reduce errors, cut operational costs, and enhance productivity, delivering unparalleled value across industries. From streamlining customer service to automating data entry, the possibilities are limitless. Embrace the future with AI for process automation and unlock your business's true potential.",
         },
     
@@ -36,57 +36,57 @@ export const AIforProcessAutomation = () => {
     
         // third section
         keyFeatures: {
-          title: "Unlock the Benefits of Custom AI Models",
+          title: "Transform Your Operations with AI-Powered Automation",
           features: [
             {
-              name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              name: "Workflow Automation",
+              description: "Streamline repetitive tasks like data entry, invoicing, and customer service."
             },
             {
-              name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              name: "Predictive Insights:",
+              description: " Use AI to predict workflow bottlenecks and optimize resources proactively."
             },
             {
-              name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
+              name: "Real-Time Decision Making:",
+              description: "Implement AI-driven tools to analyze data and provide actionable insights instantly "
             },
             {
-              name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
+              name: "Enhanced Accuracy",
+              description: "Reduce errors and improve quality with machine-learning algorithms"
+            },
+            {
+              name: "Cost Optimization:",
+              description: " Save on labour costs and operational inefficiencies through intelligent automation"
             }
           ],
         },
     
         // fourth section
         workflow: {
-          title: "How Custom AI Models Work for Your Business",
-          Content: "Our custom AI model development follows a clear, efficient process to ensure optimal outcomes:",
+          title: "How AI for Process Automation Revolutionizes Workflows",
+          Content: "AI for process automation combines advanced algorithms, machine learning, and natural language processing to simplify complex workflows:",
           steps: [
             {
               icon: "clipboard",
-              name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              name: "Task Identification",
+              description: "AI analyzes processes to identify repetitive, time-consuming tasks."
             },
             {
               icon: "binary",
-              name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              name: "Automation Design",
+              description: "Tailored automation workflows are created to fit specific business needs."
             },
             {
               icon: "trending",
-              name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              name: "Implementation",
+              description: "AI systems integrate with existing tools and platforms to execute tasks seamlessly."
             },
             {
               icon: "target",
-              name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              name: "Monitoring & Optimization",
+              description: "AI continuously monitors processes, making adjustments for efficiency and scalability."
             },
-            {
-              icon: "refresh",
-              name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
-            }
+       
           ],
         },
     
@@ -125,52 +125,45 @@ export const AIforProcessAutomation = () => {
         },
     
         whyHexylon: {
-          title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+          title: "Partner with Experts in AI for Process Automation",
           content:
-            "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
+            "Why businesses trust us for their automation needs:",
           reasons: [
             {
               id: 1,
               title: "Tailored Predictive Models",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "Customized strategies to meet your unique business challenges.",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "Expertise",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "A team of AI specialists with proven experience in automation.",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "Comprehensive Support",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                "End-to-end services from consultation to implementation and maintenance.",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Proven Results",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "Success stories across multiple industries demonstrate our impact.",
               image: img4,
-            },
-            {
-              id: 5,
-              title: "Innovation Hub",
-              description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
-              image: img2,
             },
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: " Embrace the Future with AI for Process Automation",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Ready to revolutionize your business operations? Contact us today to explore how AI for process automation can drive efficiency and growth. Let’s create smarter workflows and unlock your business’s full potential.",
         },
     
         faqs: [
