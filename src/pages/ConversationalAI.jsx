@@ -34,56 +34,60 @@ export const ConversationalAI = () => {
     
         // third section
         keyFeatures: {
-          title: "Unlock the Benefits of Custom AI Models",
+          title: "Unlock the Full Potential of Conversational AI",
           features: [
             {
-              name: "Predictive Analytics",
-              description: "Leverage historical data and AI algorithms to forecast trends, customer behavior, and market shifts for proactive decision-making"
+              name: "Automated Customer Support",
+              description: "Handle repetitive customer service inquiries automatically, freeing up human agents to tackle more complex issues"
             },
             {
-              name: "Resource Optimization",
-              description: "Automate processes and optimize operations to reduce waste, increase efficiency, and improve profitability"
+              name: "Voice & Text-Based Interaction",
+              description: "Whether through voice assistants like Siri or chatbots on your website, conversational AI can facilitate interactions across multiple communication channels"
             },
             {
-              name: "Enhanced Customer Insights",
-              description: "Gain a deeper understanding of customer needs and personalize experiences to build loyalty"
+              name: "Natural Language Understanding (NLU)",
+              description: "AI can understand and process natural language, allowing it to engage in fluid, human-like conversations with customers"
             },
             {
-              name: "Scalability",
-              description: "Build AI models that grow with your business, adapting to new challenges and opportunities in real time"
-            }
+              name: "24/7 Availability",
+              description: "Unlike human agents, AI-powered solutions are available around the clock, ensuring your business is always responsive to customer needs"
+            },
+            {
+              name: "Cost Efficiency",
+              description: "Automate repetitive tasks like scheduling, FAQs, and lead generation, reducing the need for large customer support teams"
+            },
           ],
         },
     
         // fourth section
         workflow: {
-          title: "How Custom AI Models Work for Your Business",
-          Content: "Our custom AI model development follows a clear, efficient process to ensure optimal outcomes:",
+          title: "How Does Conversational AI Work?",
+          Content: "Conversational AI uses advanced technology to interact naturally with humans",
           steps: [
             {
               icon: "clipboard",
               name: "Data Collection",
-              description: "We gather clean, reliable data from various sources for accuracy"
+              description: "Gathers insights from customer inquiries and preferences"
             },
             {
               icon: "binary",
-              name: "Model Design",
-              description: "We create tailored AI models using machine learning and deep learning algorithms specific to your needs"
+              name: "Natural Language Processing (NLP)",
+              description: "Understands and responds to human language in text and voice formats"
             },
             {
               icon: "trending",
-              name: "Training & Testing",
-              description: "The model is trained with historical data to ensure accurate predictions"
+              name: "Machine Learning (ML)",
+              description: "Learns and improves with each interaction to grasp intent and context better"
             },
             {
               icon: "target",
-              name: "Deployment & Integration",
-              description: "We integrate the model into your systems to improve operations and decision-making"
+              name: "Response Generation",
+              description: "Provides accurate responses based on context and data"
             },
             {
               icon: "refresh",
-              name: "Continuous Improvement",
-              description: "We update the model regularly to adapt to new data and enhance performance"
+              name: "Omnichannel Support",
+              description: "Operates seamlessly across websites, apps, social media, and voice-enabled devices"
             }
           ],
         },
@@ -128,52 +132,45 @@ export const ConversationalAI = () => {
         },
     
         whyHexylon: {
-          title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
+          title: "Why Choose Us for Your Conversational AI Solutions?",
           content:
-            "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
+            "At Hexylon Analytic, we specialize in providing tailored conversational AI solutions that meet the unique needs of your business. Here’s why we’re the ideal partner:",
           reasons: [
             {
               id: 1,
-              title: "Tailored Predictive Models",
+              title: "Expert Team",
               description:
-                "We create customized solutions to align with your goals, delivering accurate predictions and actionable insights.",
+                "Our team of AI experts has extensive experience in natural language processing, machine learning, and chatbot development",
               image: img1,
             },
             {
               id: 2,
-              title: "Comprehensive Support",
+              title: "Customized Solutions",
               description:
-                "Our team provides end-to-end support, ensuring seamless integration and optimal performance of your solutions.",
+                "We create AI-powered systems that are designed to address your specific business requirements, from customer service to sales support",
               image: img2,
             },
             {
               id: 3,
-              title: "Scalable Solutions",
+              title: "End-to-End Service",
               description:
-                "Build and deploy solutions that grow with your business, maintaining efficiency at any scale.",
+                " From initial consultation to deployment and ongoing support, we provide a seamless experience to help you get the most out of conversational AI",
               image: img3,
             },
             {
               id: 4,
-              title: "Data Analytics",
+              title: "Proven Impact",
               description:
-                "Transform raw data into meaningful insights with our advanced analytics capabilities.",
+                "Our solutions have helped businesses improve efficiency, enhance customer satisfaction, and drive growth",
               image: img4,
-            },
-            {
-              id: 5,
-              title: "Innovation Hub",
-              description:
-                "Stay ahead of the curve with cutting-edge technologies and innovative approaches to problem-solving.",
-              image: img2,
-            },
+            }
           ],
         },
     
         callToAction: {
-          title: "Unlock the Power of Predictive Analytics for Business Success",
+          title: "Ready to Transform Your Business with Conversational AI?",
           content:
-            "Harness the power of predictive analytics to make smarter, data-driven decisions and accelerate growth. Let's work together to uncover opportunities, optimize operations, and maximize profitability.",
+            "Are you ready to integrate conversational AI into your business? Contact us today to learn how our AI-driven solutions can enhance your customer interactions, increase operational efficiency, and drive business growth",
         },
     
         faqs: [
