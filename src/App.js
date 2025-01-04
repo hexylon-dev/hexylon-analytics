@@ -8,6 +8,7 @@ import CareerPage from './components/CareerPage';
 import ApplyForm from "./components/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
 import ServicePageV from "./components/ServicePageV";
+import ServicePageR from "./components/ServicePageR"
 import Header from './components/Blogs/HeaderBlog';
 import ResourceCard from './components/Blogs/ResourceCard';
 import { resources } from './Data/resources';
@@ -40,6 +41,7 @@ function App() {
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
         <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
+        <Route path="/servicesr" element={<ServicePageR/>}/>
       </Routes>
       <Footer />
     </Router>
