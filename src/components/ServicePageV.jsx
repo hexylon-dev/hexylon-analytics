@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import RightArrow from "../assets/svgs/RightArrow";
 import ScrollDown from "../assets/svgs/ScrollDown";
 import HeaderSVG from "../assets/svgs/HeaderSVG";
-export default function HexylonLanding({ handleNavigateToContactPage, title, description }) {
+export default function HexylonLanding({ handleNavigateToContactPage, title, description, metaDescription }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -31,15 +31,15 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
   }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen overflow-hidden">
+    <div ref={containerRef} className="relative  overflow-hidden">
       {/* Scoped Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(circle at left, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at center, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%),
-            radial-gradient(circle at right, rgba(80, 80, 80, 0.8) 0%, rgba(40, 40, 40, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%)
+            radial-gradient(circle at left, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
+            radial-gradient(circle at center, rgba(80, 80, 80, 0.1) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%),
+            radial-gradient(circle at right, rgba(80, 80, 80, 0.4) 0%, rgba(40, 40, 40, 0.3) 30%, rgba(0, 0, 0, 0.9) 100%)
           `,
           backgroundSize: "cover",
           backgroundAttachment: "fixed"
@@ -54,7 +54,7 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
             linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
           `,
-          backgroundSize: "4rem 4rem"
+          backgroundSize: "8rem 8rem"
         }}
       />
 
@@ -64,14 +64,16 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
       {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
         {(scrollPercentage * 100).toFixed(1)}%
       </div> */}
-
+      <br />
+      <br />
+      {/* <br /> */}
       <motion.div
         style={{ scale, opacity, y }}
-        className="relative z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
+        className="relative max-w-7xl min-h-screen mx-auto z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
       >
         {/* Right Arrow - Updated positioning */}
-        <div className="absolute top-[150px] right-4 md:top-[170px] md:right-[120px]">
-          <div className="bg-[#141414] p-2 md:p-3 rounded-full shadow-lg hover:bg-[#1a1a1a] transition-colors duration-300">
+        <div className="absolute top-[20vh] right-4 md:top-[25vh] md:right-[8rem]">
+          <div className="p-2 md:p-3 rounded-full shadow-lg transition-colors duration-300">
             <RightArrow className="w-6 h-6 md:w-10 md:h-10 text-[#0066ff]" />
           </div>
         </div>
@@ -102,8 +104,8 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
           </button>
         </div>
 
-        {/* Main Content - Updated margins */}
-        <div className="grid grid-cols-1 gap-8 md:gap-16 mt-16 md:mt-0">
+        {/* Main Content - Description moved higher */}
+        <div className="grid grid-cols-1 gap-4 md:gap-8 mt-8 md:mt-0">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,37 +117,54 @@ export default function HexylonLanding({ handleNavigateToContactPage, title, des
               color: "white",
               textAlign: "center",
               paddingLeft: "0.5rem",
-              marginTop: "-100px",
+              marginTop: "-10vh",
               "@media (min-width: 768px)": {
                 paddingLeft: "1.5rem",
-                marginTop: "-250px"
+                marginTop: "-15vh"
+              },
+              "@media (min-width: 1024px)": {
+                marginTop: "-20vh"
               }
             }}
             dangerouslySetInnerHTML={{ __html: title }}
-          >
-          </motion.h1>
+          />
 
+          {/* Original description - moved up, right aligned */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="service-description text-lg md:text-xl lg:text-2xl"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="service-description text-base sm:text-lg md:text-xl lg:text-2xl 
+              max-w-[80%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] 
+              ml-auto mr-4 sm:mr-8 md:mr-12 lg:mr-16 
+              text-right text-[#d1d5db] 
+              px-4 sm:px-6 md:px-8
+              -mt-4 md:-mt-8"
             style={{
-              color: "rgb(209, 213, 219)",
-              maxWidth: "28rem",
-              margin: "0 auto",
-              textAlign: "center",
-              marginRight: "8px",
-              padding: "0 1rem"
+              lineHeight: "1.6",
+              letterSpacing: "0.01em"
             }}
           >
             {description}
           </motion.p>
-        </div>
 
-        {/* Scroll Indicator - Updated positioning */}
-        <div className="absolute top-[540px] right-1/2 transform translate-x-1/2 md:top-[480px] md:right-[590px] md:transform-none">
-          <ScrollDown className="w-6 h-6 md:w-10 md:h-10 text-[#0066ff]" />
+          {/* Centered Meta Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl 
+              max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] 
+              mx-auto text-center text-[#d1d5db]/90
+              px-4 sm:px-6 md:px-8 
+              mt-4 md:mt-8"
+            style={{
+              lineHeight: "1.6",
+              letterSpacing: "0.01em"
+            }}
+          >
+            {metaDescription}
+          </motion.p>
         </div>
       </motion.div>
     </div>
