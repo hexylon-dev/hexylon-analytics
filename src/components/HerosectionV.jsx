@@ -172,7 +172,7 @@ export default function Component({ handleNavigateToContactPage }) {
         setScrollPercentage(scrollPercentage);
         
         // Check if scroll is at 0% or beyond 8%
-        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.04;
+        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.09;
         
         particles.forEach((particle, i) => {
           if (shouldBeRandom) {
@@ -194,12 +194,12 @@ export default function Component({ handleNavigateToContactPage }) {
             if (particle.x < 0 || particle.x > canvas.width) particle.velocity.x *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.velocity.y *= -1;
           } else {
-            // Move towards hexagon formation
+            // Move towards hexagon formation with increased speed (0.02 -> 0.1)
             const targetX = particle.targetX;
             const targetY = particle.targetY + (scrollOffset * 0.5);
   
-            particle.x += (targetX - particle.x) * 0.02;
-            particle.y += (targetY - particle.y) * 0.02;
+            particle.x += (targetX - particle.x) * 0.1;
+            particle.y += (targetY - particle.y) * 0.1;
           }
   
           // Draw particle
