@@ -101,29 +101,21 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // Animate modal opening
       document.body.style.overflow = "hidden";
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3 }
-      );
-      gsap.fromTo(
-        contentRef.current,
-        {
-          y: 50,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          delay: 0.2,
-        }
-      );
+      if (modalRef.current) {
+        modalRef.current.style.opacity = "1";
+      }
+      if (contentRef.current) {
+        contentRef.current.style.transform = "translateY(0)";
+        contentRef.current.style.opacity = "1";
+      }
     } else {
       document.body.style.overflow = "auto";
     }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -131,98 +123,84 @@ const CaseStudyModal = ({ isOpen, onClose, caseStudy }) => {
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm border-orange-400"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 opacity-0 transition-opacity duration-300"
       onClick={onClose}
     >
       <div
         ref={contentRef}
-        className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative border-[#FF6600] border-2"
+        className="bg-[#1A1A1A] rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative transform translate-y-4 opacity-0 transition-all duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header section with gradient line and close button */}
-        <div className="sticky top-0 bg-black pt-6 px-6 pb-4 border-b border-[#FF6600]">
-          <div className="flex item-center justify-center">
-          <div className="w-[98%] my-auto h-[2px] bg-gradient-to-r from-[#003366] to-[#FF6600] rounded-full"></div>
-
-            <div className="my-auto flex items-center justify-center ml-4">
-              <button
-                onClick={onClose}
-                className=" text-gray-500 hover:text-[#FF6600] transition-colors"
+        {/* Header with close button */}
+        <div className="relative">
+          <div className="absolute top-4 right-4">
+            <button
+              onClick={onClose}
+              className="text-white/60 hover:text-white transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
+          <div className="w-full h-2 bg-[#FF6600]" />
         </div>
 
         {/* Content section */}
-        <div className="px-6 py-4">
-          <h2 className="text-3xl font-bold text-[#FF6600] mb-2">
+        <div className="px-12 py-8">
+          <h1 className="text-4xl font-bold text-white mb-6">
             {caseStudy.title}
-          </h2>
-          <p className="text-lg text-[#FFFFFF] mb-4 font-medium">
+          </h1>
+          
+          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
             {caseStudy.description}
           </p>
-          <h2 className="text-3xl font-bold text-[#FF6600] mb-2">
+
+          <h2 className="text-3xl font-bold text-white mb-6">
             {caseStudy.subTitle}
           </h2>
-          <p className="text-lg text-[#FFFFFF] mb-4 font-medium">
+          
+          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
             {caseStudy.subDescription}
           </p>
-         
 
-          <div className="mt-6 flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 bg-black border-[#003366] border-2 px-4 py-2 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-[#003366]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                />
-              </svg>
-              <span className="text-[#003366] font-medium">
-                Results Achieved
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-black border-[#FF6600] border-2 px-4 py-2 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-[#FF6600]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span className="text-[#FF6600] font-medium">
-                Implementation Time
-              </span>
-            </div>
+          <div className="flex flex-wrap gap-6 mt-8">
+            {/* Results Button */}
+            <button className="group relative px-8 py-3 rounded-full border-2 border-[#0066CC] hover:border-[#0066CC]/80 transition-all duration-300 overflow-hidden">
+              <span className="absolute inset-0 bg-gradient-to-r from-[#0066CC] to-[#0088FF] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              <div className="relative flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#0066CC] group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                <span className="font-semibold text-[#0066CC] group-hover:text-white transition-colors duration-300">
+                  Result Achieved
+                </span>
+              </div>
+            </button>
+            
+            {/* Implementation Button */}
+            <button className="group relative px-8 py-3 rounded-full border-2 border-[#FF6600] hover:border-[#FF6600]/80 transition-all duration-300 overflow-hidden">
+              <span className="absolute inset-0 bg-gradient-to-r from-[#FF6600] to-[#FF8533] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              <div className="relative flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#FF6600] group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-semibold text-[#FF6600] group-hover:text-white transition-colors duration-300">
+                  Implementation Time
+                </span>
+              </div>
+            </button>
           </div>
         </div>
       </div>
