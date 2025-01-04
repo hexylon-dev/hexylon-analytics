@@ -172,7 +172,7 @@ export default function Component({ handleNavigateToContactPage }) {
         setScrollPercentage(scrollPercentage);
         
         // Check if scroll is at 0% or beyond 8%
-        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.09;
+        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.16;
         
         particles.forEach((particle, i) => {
           if (shouldBeRandom) {

@@ -25,8 +25,8 @@ function App() {
             <main className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
                 {resources.map((resource) => (
-                  <ResourceCard 
-                    key={resource.id} 
+                  <ResourceCard
+                    key={resource.id}
                     {...resource}
                   />
                 ))}
@@ -39,7 +39,15 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
-        <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
+        <Route path="/services" element={
+          <div className=" min-h-screen">
+            <ServicePageV
+              title="AI and ML <br /> Service"
+              description="Anticipating customers needs to improve demand planning and streamline inventory management."
+              metaDescription="Leverage AI and Machine Learning solutions to transform your business operations, enhance customer experience, and drive data-driven decisions."
+            />
+          </div>
+        } />
       </Routes>
       <Footer />
     </Router>
