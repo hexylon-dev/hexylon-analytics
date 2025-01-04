@@ -5,6 +5,7 @@ import ContactUs from "./pages/ContactUs4";
 import Navbar from "./components/Navbar1";
 import Footer from "./components/Footer";
 import CareerPage from './components/CareerPage';
+import BlogDetail from "./pages/BlogDetail";
 import ApplyForm from "./components/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
 import ServicePageV from "./components/ServicePageV";
