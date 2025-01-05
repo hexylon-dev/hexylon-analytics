@@ -76,7 +76,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="fixed w-full z-50 px-4" onMouseEnter={bodyStopScroll} onMouseLeave={bodyEnableScroll}>
+    <div className="fixed w-full z-50 px-4">
       <header
         className={`transition-all duration-500 ${
           isScrolled ? "mt-2" : "mt-2"

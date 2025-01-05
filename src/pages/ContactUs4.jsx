@@ -92,10 +92,9 @@ const ContactPage = () => {
     try {
       await CreateContactUsResponseApi({
         ...formData,
-        description: `${formData.area_of_interest}, ${formData.industry}`
+        description: `${formData.area_of_interest}, ${formData.industry}`,
       });
-    }
-    catch(err) {
+    } catch (err) {
       console.log(err);
     }
     gsap.to(formRef.current, {
@@ -152,15 +151,45 @@ const ContactPage = () => {
                 strokeDashoffset="600"
                 opacity="0.4"
               />
-              
+
               {/* Connection dots at vertices */}
               <circle cx="60" cy="0" r="2" fill={THEME.saffron} opacity="0.3" />
-              <circle cx="90" cy="17.32" r="2" fill={THEME.saffron} opacity="0.3" />
-              <circle cx="90" cy="52" r="2" fill={THEME.saffron} opacity="0.3" />
-              <circle cx="60" cy="69.28" r="2" fill={THEME.saffron} opacity="0.3" />
-              <circle cx="30" cy="52" r="2" fill={THEME.saffron} opacity="0.3" />
-              <circle cx="30" cy="17.32" r="2" fill={THEME.saffron} opacity="0.3" />
-              
+              <circle
+                cx="90"
+                cy="17.32"
+                r="2"
+                fill={THEME.saffron}
+                opacity="0.3"
+              />
+              <circle
+                cx="90"
+                cy="52"
+                r="2"
+                fill={THEME.saffron}
+                opacity="0.3"
+              />
+              <circle
+                cx="60"
+                cy="69.28"
+                r="2"
+                fill={THEME.saffron}
+                opacity="0.3"
+              />
+              <circle
+                cx="30"
+                cy="52"
+                r="2"
+                fill={THEME.saffron}
+                opacity="0.3"
+              />
+              <circle
+                cx="30"
+                cy="17.32"
+                r="2"
+                fill={THEME.saffron}
+                opacity="0.3"
+              />
+
               {/* Inner circuit lines */}
               <path
                 className="circuit-line"
@@ -177,13 +206,14 @@ const ContactPage = () => {
           <rect width="100%" height="100%" fill="url(#circuit)" />
         </svg>
 
-     
-
         {/* Main Content - Updated padding for mobile */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 mt-16 sm:mt-24">
           {/* Hero Section - Updated text sizes */}
           <div className="text-center mb-8 sm:mb-16">
-            <h1 className="hero-text text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6" style={{ color: THEME.white }}>
+            <h1
+              className="hero-text text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
+              style={{ color: THEME.white }}
+            >
               <span>Let's Connect </span>
               <span style={{ color: THEME.saffron }}>& Innovate</span>
             </h1>
@@ -195,24 +225,32 @@ const ContactPage = () => {
 
           {/* Form Section */}
           <div className="form-container relative max-w-4xl mx-auto mb-12 sm:mb-24">
-            <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-[#FF6600]/20 
+            <div
+              className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-[#FF6600]/20 
                             shadow-[0_0_15px_rgba(255,102,0,0.1)] hover:shadow-[0_0_20px_rgba(255,102,0,0.15)] 
-                            transition-all duration-300">
+                            transition-all duration-300"
+            >
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Form Header */}
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2 bg-clip-text text-transparent 
-                                bg-gradient-to-r from-[#FF6600] to-[#FF8533]">
+                  <h3
+                    className="text-2xl font-bold text-white mb-2 bg-clip-text text-transparent 
+                                bg-gradient-to-r from-[#FF6600] to-[#FF8533]"
+                  >
                     Get Started
                   </h3>
-                  <p className="text-gray-400">Fill out the form below to connect with us</p>
+                  <p className="text-gray-400">
+                    Fill out the form below to connect with us
+                  </p>
                 </div>
 
                 {/* Grid layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name Input */}
                   <div className="form-group relative">
-                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Name</label>
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">
+                      Name
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -228,7 +266,9 @@ const ContactPage = () => {
 
                   {/* Company Name Input */}
                   <div className="form-group relative">
-                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Company</label>
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">
+                      Company
+                    </label>
                     <input
                       type="text"
                       name="company_name"
@@ -244,7 +284,9 @@ const ContactPage = () => {
 
                   {/* Email Input */}
                   <div className="form-group relative">
-                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Email</label>
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">
+                      Email
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -260,7 +302,9 @@ const ContactPage = () => {
 
                   {/* Phone Input */}
                   <div className="form-group relative">
-                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">Phone</label>
+                    <label className="block text-[#FF6600] text-sm mb-2 font-medium">
+                      Phone
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -277,7 +321,9 @@ const ContactPage = () => {
 
                 {/* Area of Interest - Full Width */}
                 <div className="form-group relative">
-                  <label className="block text-[#FF6600] text-sm mb-2 font-medium">Area of Interest</label>
+                  <label className="block text-[#FF6600] text-sm mb-2 font-medium">
+                    Area of Interest
+                  </label>
                   <textarea
                     name="area_of_interest"
                     value={formData.area_of_interest}
@@ -299,8 +345,10 @@ const ContactPage = () => {
                            relative overflow-hidden group"
                 >
                   <span className="relative z-10">Send Message</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF8533] to-[#FF6600] opacity-0 
-                                group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-[#FF8533] to-[#FF6600] opacity-0 
+                                group-hover:opacity-100 transition-opacity duration-300"
+                  ></div>
                 </button>
               </form>
             </div>
@@ -310,7 +358,10 @@ const ContactPage = () => {
           <div className="contact-section grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Contact Information */}
             <div className="space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-bold text-center lg:text-left" style={{ color: THEME.white }}>
+              <h2
+                className="text-2xl sm:text-3xl font-bold text-center lg:text-left"
+                style={{ color: THEME.white }}
+              >
                 Get in Touch
               </h2>
 
@@ -323,13 +374,15 @@ const ContactPage = () => {
                     content: [
                       {
                         label: "Office 1",
-                        address: "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009"
+                        address:
+                          "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
                       },
                       {
                         label: "Office 2",
-                        address: "301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054"
-                      }
-                    ]
+                        address:
+                          "301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054",
+                      },
+                    ],
                   },
                   {
                     icon: Phone,
@@ -358,7 +411,7 @@ const ContactPage = () => {
                     >
                       <item.icon size={24} style={{ color: THEME.saffron }} />
                     </div>
-                    <div className="text-center sm:text-left">
+                    <div className="text-center sm:text-center md:text-left sm:mx-auto md:mx-0 w-full">
                       <h3
                         className="font-medium"
                         style={{ color: THEME.saffron }}
@@ -369,7 +422,9 @@ const ContactPage = () => {
                         <div className="space-y-4">
                           {item.content.map((office, i) => (
                             <div key={i} className="space-y-1">
-                              <h4 className="text-[#FF6600] font-medium">{office.label}</h4>
+                              <h4 className="text-[#FF6600] font-medium">
+                                {office.label}
+                              </h4>
                               <p className="text-white">{office.address}</p>
                             </div>
                           ))}
