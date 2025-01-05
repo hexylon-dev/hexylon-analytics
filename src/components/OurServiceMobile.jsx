@@ -23,6 +23,7 @@ import blue from "../assets/particle.png";
 const accordionData = [
   {
     id: 1,
+    path: "/services/predictive-analytics",
     title: "Predictive Analytics Solutions Development",
     iconSvg: <ServicePredictiveAnalytics />,
     description:
@@ -30,6 +31,7 @@ const accordionData = [
   },
   {
     id: 2,
+    path: "/services/natural-language",
     title: "Natural Language Processing (NLP)",
     iconSvg: <NaturalLanguage />,
     description:
@@ -37,6 +39,7 @@ const accordionData = [
   },
   {
     id: 3,
+    path: "/services/computer-vision",
     title: "Computer Vision",
     iconSvg: <ServiceComputerVision />,
     description:
@@ -44,42 +47,48 @@ const accordionData = [
   },
   {
     id: 4,
+    path: "/services/recommendation-systems",
     title: "Recommendation Systems",
     iconSvg: <ServiceRecommendationSystems />,
     description:
       "Hexylon Analytics delivers advanced AI-driven recommendation systems that personalize user experiences and boost business outcomes. Our machine learning-based engines use collaborative filtering, content-based filtering, and predictive analytics to optimize product suggestions, content recommendations, and mobile app experiences. These smart algorithms enhance user engagement, increase conversions, and improve customer satisfaction. By analyzing user behaviour and preferences, our recommendation systems provide tailored, data-driven solutions for industries like e-commerce, media, and entertainment. Our scalable, customizable recommendation engines will help your business stay competitive, engaging users with dynamic, personalized content that drives results. Contact Hexylon Analytics to enhance your business with powerful AI-powered recommendations.",
   },
   {
-    id: "section5",
+    id: 5,
     title: "Custom AI Models",
+    path: "/services/custom-ai-models",
     iconSvg: <ServiceCustomAI />,
     description:
       "Elevate your business with our tailored custom AI models, designed to optimize operations, enhance customer experiences, and drive innovation. Our machine learning and deep learning expertise empowers businesses with predictive insights, automated processes, and scalable solutions. From personalized customer experiences to operational efficiency, our custom AI models deliver actionable results. Contact us today to unlock the full potential of your data with our custom AI model development services!",
   },
   {
-    id: "section6",
+    id: 6,
     title: "Automated Machine Learning (AutoML)",
+    path: "/services/automated-machine-learning",
     iconSvg: <AutoML />,
     description:
       "Transform your business with our cutting-edge AutoML solutions. By automating the entire machine learning pipeline—from data preprocessing and model selection to deployment and ongoing optimization—our solutions empower you to unlock valuable insights faster. With AutoML, you can automate decision-making, improve operational efficiency, and scale your business effortlessly. Whether you're looking to predict trends, optimize resources, or enhance customer experiences, AutoML enables data-driven growth. Reach out today to start your journey with AutoML and unlock the full potential of your data!",
   },
   {
-    id: "section7",
+    id: 7,
     title: "AI-Powered Data Analytics",
+    path: "/services/ai-powered-data-analytics",
     iconSvg: <ServiceNaturalLanguage />,
     description:
       "Our AI-powered data analytics solutions automate complex data workflows, allowing you to make data-driven decisions faster and more accurately. With AI, you can uncover trends, predict outcomes, and optimize business processes, all while saving time and costs. Let's help you unlock the power of your data and drive better outcomes for your business.",
   },
   {
-    id: "section8",
+    id: 8,
     title: "Conversational AI",
+    path: "/services/conversational-ai",
     iconSvg: <ServiceConversationalAI />,
     description:
       "Our conversational AI solutions help businesses automate and enhance customer engagement, deliver personalized experiences, and drive operational efficiency. Whether through chatbots, virtual assistants, or voice solutions, we enable businesses to stay ahead with AI-powered communication systems. Let us show you how conversational AI can revolutionize your customer interactions and business outcomes.",
   },
   {
-    id: "section9",
+    id: 9,
     title: "AI for Process Automation",
+    path: "/services/ai-for-process-automation",
     iconSvg: <ServiceAIforProcessAutomation />,
     description:
       "Hexylon Analytics is a leading provider of AI-powered process automation solutions designed to revolutionize business operations. In today’s fast-paced world, efficiency and accuracy are crucial to maintaining a competitive edge, and Hexylon Analytics leverages advanced artificial intelligence to streamline workflows, reduce costs, and boost productivity. By automating repetitive tasks, optimizing workflows, and enhancing scalability, businesses can focus on innovation and strategic growth. With solutions that minimize human error, speed up processes, and provide actionable insights, Hexylon Analytics ensures operational excellence across various industries.",

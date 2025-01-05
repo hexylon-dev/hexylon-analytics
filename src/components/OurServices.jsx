@@ -71,7 +71,6 @@ const items = [
     id: 6,
     title: "Automated Machine Learning (AutoML)",
     paht:"/services/automated-machine-learning",
-    path:"/services/ai-for-process-automation",
     iconSvg: <AutoML />,
     cardImg: <ServiceCardAutoML />,
     description:

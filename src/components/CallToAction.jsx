@@ -4,7 +4,7 @@ import { X, Send } from 'lucide-react'
 import Sent from "../assets/icons/sent"
 import {ShowAvatar} from "./avatar";
 
-const API_BASE_URL = 'http://192.168.1.22:8000'
+const API_BASE_URL = 'https://grateful-shortly-tick.ngrok-free.app/'
 let FullText = "";
 export const api = {
     streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {
@@ -64,9 +64,6 @@ export const api = {
       }
     }
   };
-
-
-
 
 export default function ContactSection() {
   const [projectIdea, setProjectIdea] = useState('')

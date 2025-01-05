@@ -172,7 +172,7 @@ export default function HexylonLanding({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl 
-              max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] 
+              max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] 
               mx-auto text-center text-[#d1d5db]/90
               px-4 sm:px-6 md:px-8 
               mt-4 md:mt-8"
