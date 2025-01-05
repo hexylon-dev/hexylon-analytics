@@ -1,23 +1,18 @@
 import React from 'react';
 
-const SalesForecastingSVG = ({content}) => {
+const SalesForecastingSVG = ({ content }) => {
   return (
-    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 800 400"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto' }}
+    >
       {/* Background with gradient */}
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style={{ stopColor: '#1a1a1a', stopOpacity: 1 }} />
           <stop offset="100%" style={{ stopColor: '#2d2d2d', stopOpacity: 1 }} />
         </linearGradient>
-
-        {/* Glowing effect for the icon */}
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
       {/* Main background */}
@@ -37,42 +32,42 @@ const SalesForecastingSVG = ({content}) => {
         strokeWidth="2"
       />
 
-      {/* Icon */}
-      {/* <g transform="translate(400, 120)" filter="url(#glow)">
-        <circle cx="0" cy="0" r="40" fill="#2a2a2a" />
-        <path
-          d="M -15 10 L 0 -15 L 15 10 M 0 -15 L 0 15"
-          stroke="#ffffff"
-          fill="none"
-          strokeWidth="3"
-        />
-        <circle cx="0" cy="0" r="25" stroke="#ffffff40" fill="none" strokeWidth="1" />
-      </g> */}
-
-      {/* Text */}
-      <text
-        x="400"
-        y="200"
-        fontFamily="Arial, sans-serif"
-        fontSize="32"
-        fill="white"
-        textAnchor="middle"
-        fontWeight="bold"
-      >
-        {content.name}
-      </text>
-      <text
-        x="400"
-        y="250"
-        fontFamily="Arial, sans-serif"
-        fontSize="18"
-        fill="#cccccc"
-        textAnchor="middle"
-        opacity="0.8"
-      >
-        {content.description}
-      </text>
-     
+      {/* Text with wrapping */}
+      <foreignObject x="50" y="150" width="700" height="200">
+        <div
+          xmlns="http://www.w3.org/1999/xhtml"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100%',
+            color: 'white',
+            fontFamily: 'Arial, sans-serif',
+            textAlign: 'center',
+            padding: '10px',
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 'clamp(20px, 5vw, 36px)', // Ensure font size is at least 20px and scales up
+              fontWeight: 'bold',
+              margin: '0',
+            }}
+          >
+            {content.name}
+          </h1>
+          <p
+            style={{
+              fontSize: 'clamp(14px, 3vw, 20px)', // Ensure font size is at least 14px and scales up
+              opacity: 0.8,
+              margin: '0',
+            }}
+          >
+            {content.description}
+          </p>
+        </div>
+      </foreignObject>
     </svg>
   );
 };
