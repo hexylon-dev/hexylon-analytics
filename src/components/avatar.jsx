@@ -463,24 +463,58 @@ function ChatScreen({ closeChat }) {
 //   );
 // }
 
+
 export default function ParticleAvatar() {
-  // debugger
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleTransitionComplete = () => {
     setShowChat(true);
   };
 
   const closeChat = () => {
-    console.log("showChat : ", showChat);
     setShowChat(false);
     setIsLoading(false);
   };
 
+  // Check for phone screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed (768px for phones)
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isMobile) {
+        setIsScrolled(window.scrollY > 0); // Only set isScrolled on mobile
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobile]);
+
   return (
     <>
-      <div className="fixed w-[200px] h-[200px] bottom-0 right-0 z-10">
+      <div
+        className={`fixed w-[200px] h-[200px] z-10 transition-all duration-500 ${
+          isMobile && isScrolled
+            ? "top-0 left-1/2 transform -translate-x-1/2"
+            : "bottom-0 right-0"
+        }`}
+      >
         <div
           className="relative w-full h-full flex items-center justify-center"
           onClick={() => setIsLoading(true)}
@@ -504,3 +538,5 @@ export default function ParticleAvatar() {
     </>
   );
 }
+
+
