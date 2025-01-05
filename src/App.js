@@ -55,7 +55,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
-        <Route
+        {/* <Route
           path="/services"
           element={
             <ServicePageV
@@ -63,7 +63,7 @@ function App() {
               description="Anticipating customers needs to improve demand planning and streamline inventory management."
             />
           }
-        />
+        /> */}
         <Route
           path="/services/predictive-analytics"
           element={

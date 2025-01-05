@@ -19,6 +19,7 @@ import ServiceCardAutoML from "../assets/svgs/ServiceCardAutoML";
 import ServiceCardNaturalLanguage from "../assets/svgs/ServiceCardNaturalLanguage";
 import ServiceCardConversationalAI from "../assets/svgs/ServiceCardConversationalAI";
 import ServiceCardAIforProcessAutomation from "../assets/svgs/ServiceCardAIforProcessAutomation";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -26,6 +27,7 @@ const items = [
     title: "Predictive Analytics Solutions Development",
     iconSvg: <ServicePredictiveAnalytics />,
     cardImg: <ServiceCardPredictiveAnalytics />,
+    path: "/services/predictive-analytics",
     description:
       "Unlock actionable insights and drive business growth with Hexylon's Predictive Analytics Solutions. Using advanced AI, machine learning, and data science, we forecast trends, optimize processes, and mitigate risks. Our tailored solutions empower businesses to enhance efficiency, streamline resource allocation, and improve customer satisfaction. From sales forecasting and risk management to personalized customer insights, our tools ensure sustainable growth and profitability. Powered by technologies like Python, TensorFlow, and cloud platforms, Hexylon delivers scalable, data-driven strategies. Partner with us to make smarter decisions, adapt to market changes, and achieve measurable results with cutting-edge predictive analytics. Contact us today!",
   },
@@ -34,12 +36,14 @@ const items = [
     title: "Natural Language Processing (NLP)",
     iconSvg: <NaturalLanguage />,
     cardImg: <ServviceCardNaturalLanguage  />,
+    path: "/services/natural-language",
     description:
       "Hexylon delivers cutting-edge Natural Language Processing (NLP) solutions to transform your business. Using AI-driven models like GPT and BERT, we automate tasks, enhance customer experiences, and extract actionable insights from unstructured data. Our services include AI-powered chatbots, sentiment analysis, text classification, and language translation, helping businesses streamline operations and personalize interactions. Using advanced technologies like SpaCy and top cloud-based AI platforms, we deliver scalable, tailored NLP solutions that ensure accuracy, efficiency, and impactful results. With Hexylon, unlock the power of language to boost efficiency, improve decision-making, and drive measurable growth. Contact us today to revolutionize your operations with NLP.",
   },
   {
     id: 3,
     title: "Computer Vision",
+    path: "/services/computer-vision",
     iconSvg: <ServiceComputerVision />,
     cardImg: <ServiceCardComputerVision />,
     description:
@@ -48,6 +52,7 @@ const items = [
   {
     id: 4,
     title: "Recommendation Systems",
+    path: "/services/recommendation-systems",
     iconSvg: <ServiceRecommendationSystems />,
     cardImg: <ServiceCardRecommendationSystems />,
     description:
@@ -58,12 +63,15 @@ const items = [
     title: "Custom AI Models",
     iconSvg: <ServiceCustomAI />,
     cardImg: <ServiceCardCustomAI />,
+    path: "/services/custom-ai-models",
     description:
       "Elevate your business with our tailored custom AI models, designed to optimize operations, enhance customer experiences, and drive innovation. Our machine learning and deep learning expertise empowers businesses with predictive insights, automated processes, and scalable solutions. From personalized customer experiences to operational efficiency, our custom AI models deliver actionable results. Contact us today to unlock the full potential of your data with our custom AI model development services!",
   },
   {
     id: 6,
     title: "Automated Machine Learning (AutoML)",
+    paht:"/services/automated-machine-learning",
+    path:"/services/ai-for-process-automation",
     iconSvg: <AutoML />,
     cardImg: <ServiceCardAutoML />,
     description:
@@ -72,6 +80,7 @@ const items = [
   {
     id: 7,
     title: "AI-Powered Data Analytics",
+    path:"/services/ai-powered-data-analytics",
     iconSvg: <ServiceNaturalLanguage />,
     cardImg: <ServiceCardNaturalLanguage />,
     description:
@@ -80,6 +89,7 @@ const items = [
   {
     id: 8,
     title: "Conversational AI",
+    path: "/services/conversational-ai",
     iconSvg: <ServiceConversationalAI />,
     cardImg: <ServiceCardConversationalAI />,
     description:
@@ -88,6 +98,7 @@ const items = [
   {
     id: 9,
     title: "AI for Process Automation",
+    path:"/services/ai-for-process-automation",
     iconSvg: <ServiceAIforProcessAutomation />,
     cardImg: <ServiceCardAIforProcessAutomation />,
     description:
@@ -101,6 +112,8 @@ const OurServices = () => {
   const scrollContainerRef = useRef(null);
   const [currentSection, setCurrentSection] = useState(null);
   const [activeId, setActiveId] = useState(1);
+
+  const navigate = useNavigate();
 
   console.log(activeSections, "activeSections");
 
@@ -255,7 +268,7 @@ const OurServices = () => {
                     <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md ">
                       <div className="absolute inset-0 rounded-md bg-black  blur-md transition-all group-hover:blur-lg" />
                       <div className="relative flex items-center space-x-2 text-blue-500">
-                        <span className="text-lg">read more</span>
+                        <span className="text-lg" onClick={() => navigate(section.path)}>read more</span>
                         <svg
                           className="w-4 h-4"
                           fill="none"

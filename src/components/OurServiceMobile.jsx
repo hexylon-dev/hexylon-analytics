@@ -17,7 +17,7 @@ import ServiceConversationalAI from "../assets/svgs/ServiceConversationalAI";
 import ServiceAIforProcessAutomation from "../assets/svgs/ServiceAIforProcessAutomation";
 import ServiceNaturalLanguage from "../assets/svgs/ServiceNaturalLanguage";
 import ServiceCardPredictiveAnalytics from "../assets/svgs/ServiceCardPredictiveAnalytics";
-
+import { Navigate, useNavigate } from "react-router-dom";
 import blue from "../assets/particle.png";
 
 const accordionData = [
@@ -88,6 +88,7 @@ const accordionData = [
 
 export default function OurServicesMobile() {
   const [openItem, setOpenItem] = useState(accordionData[0]?.id);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-3xl mx-auto p-4 space-y-4">
@@ -134,7 +135,7 @@ export default function OurServicesMobile() {
            <div className="w-full flex justify-center mt-5">
            <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md">
               <div className="absolute inset-0 rounded-md bg-blue-500/20 blur-md transition-all group-hover:blur-lg" />
-              <div className="relative flex items-center space-x-2 text-blue-500">
+              <div className="relative flex items-center space-x-2 text-blue-500" onClick={() => navigate(item.path)}>
                 <span className="text-lg">read more</span>
                 <svg
                   className="w-4 h-4"
