@@ -89,7 +89,7 @@ const Navbar = () => {
               : "max-w-7xl border-[#5E5E5E]"
           } transition-all duration-300`}
         >
-          <div className="px-6 py-4 flex items-center justify-between">
+          <div className="px-6 md:py-0 py-4 flex items-center justify-between">
             <NavLink to="/" className="flex items-center">
               <img
                 src={newlogo}
@@ -98,14 +98,13 @@ const Navbar = () => {
               />
             </NavLink>
 
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-0">
               {menuItems.map((item) =>
                 item.isDropdown ? (
                   <div
                     key={item.id}
-                    className="relative text-white/70 hover:text-[#FF7A33] text-sm font-medium"
-                    onMouseEnter={() => setIsServiceDropdownOpen(true)}
-                  >
+                    className="relative text-white/70 hover:text-[#FF7A33] text-sm font-medium px-5 py-6"
+                    onMouseEnter={() => setIsServiceDropdownOpen(true)} onMouseLeave={() => setIsServiceDropdownOpen(false)}>
                     <span className="cursor-pointer flex items-center">
                       {item.label}
                       <ChevronDown className="w-4 h-4 ml-2" />
@@ -133,7 +132,7 @@ const Navbar = () => {
 
                     {isServiceDropdownOpen && (
                       <div
-                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-96 max-h-60 overflow-y-scroll scrollbar-hidden"
+                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-96 lg:max-h-60  overflow-y-scroll scrollbar-hidden"
                         onMouseLeave={() => setIsServiceDropdownOpen(false)}
                       >
                         {serviceDropdownItems.map((service) => (
@@ -159,7 +158,7 @@ const Navbar = () => {
                     className={({ isActive }) =>
                       `text-sm font-medium ${
                         isActive ? "text-[#FF7A33]" : "text-white/70"
-                      } hover:text-[#FF7A33]`
+                      } hover:text-[#FF7A33] px-5 py-6`
                     }
                   >
                     {item.label}
