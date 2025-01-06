@@ -20,6 +20,7 @@ import ServiceCardNaturalLanguage from "../assets/svgs/ServiceCardNaturalLanguag
 import ServiceCardConversationalAI from "../assets/svgs/ServiceCardConversationalAI";
 import ServiceCardAIforProcessAutomation from "../assets/svgs/ServiceCardAIforProcessAutomation";
 import { Navigate, useNavigate } from "react-router-dom";
+import ServiceCardAIPoweredDataAnalytics from "../assets/svgs/ServiceCardAIPoweredDataAnalytics";
 
 const items = [
   {
@@ -35,7 +36,7 @@ const items = [
     id: 2,
     title: "Natural Language Processing (NLP)",
     iconSvg: <NaturalLanguage />,
-    cardImg: <ServviceCardNaturalLanguage  />,
+    cardImg: <ServviceCardNaturalLanguage className="w-[80%]" />,
     path: "/services/natural-language",
     description:
       "Hexylon delivers cutting-edge Natural Language Processing (NLP) solutions to transform your business. Using AI-driven models like GPT and BERT, we automate tasks, enhance customer experiences, and extract actionable insights from unstructured data. Our services include AI-powered chatbots, sentiment analysis, text classification, and language translation, helping businesses streamline operations and personalize interactions. Using advanced technologies like SpaCy and top cloud-based AI platforms, we deliver scalable, tailored NLP solutions that ensure accuracy, efficiency, and impactful results. With Hexylon, unlock the power of language to boost efficiency, improve decision-making, and drive measurable growth. Contact us today to revolutionize your operations with NLP.",
@@ -45,7 +46,7 @@ const items = [
     title: "Computer Vision",
     path: "/services/computer-vision",
     iconSvg: <ServiceComputerVision />,
-    cardImg: <ServiceCardComputerVision />,
+    cardImg: <ServiceCardComputerVision className="w-[85%]" />,
     description:
       "Hexylon Analytics offers cutting-edge AI-driven computer vision solutions to help businesses unlock actionable insights and optimize operations. Using advanced algorithms, deep learning, and real-time image and video analysis, we enhance security, improve healthcare, and automate processes. Our services include AI-powered object detection, facial recognition, real-time surveillance, healthcare imaging, and autonomous vehicle vision systems. With robust technologies like OpenCV, TensorFlow, and Nvidia CUDA, we provide scalable, customized solutions to meet your industry needs. Leverage the power of computer vision to drive efficiency, security, and innovation in your business. Contact us to revolutionize your operations with AI-driven vision technology.",
   },
@@ -54,7 +55,7 @@ const items = [
     title: "Recommendation Systems",
     path: "/services/recommendation-systems",
     iconSvg: <ServiceRecommendationSystems />,
-    cardImg: <ServiceCardRecommendationSystems />,
+    cardImg: <ServiceCardRecommendationSystems className="w-[85%]" />,
     description:
       "Hexylon Analytics delivers advanced AI-driven recommendation systems that personalize user experiences and boost business outcomes. Our machine learning-based engines use collaborative filtering, content-based filtering, and predictive analytics to optimize product suggestions, content recommendations, and mobile app experiences. These smart algorithms enhance user engagement, increase conversions, and improve customer satisfaction. By analyzing user behaviour and preferences, our recommendation systems provide tailored, data-driven solutions for industries like e-commerce, media, and entertainment. Our scalable, customizable recommendation engines will help your business stay competitive, engaging users with dynamic, personalized content that drives results. Contact Hexylon Analytics to enhance your business with powerful AI-powered recommendations.",
   },
@@ -62,7 +63,7 @@ const items = [
     id: 5,
     title: "Custom AI Models",
     iconSvg: <ServiceCustomAI />,
-    cardImg: <ServiceCardCustomAI />,
+    cardImg: <ServiceCardCustomAI className="w-[90%]" />,
     path: "/services/custom-ai-models",
     description:
       "Elevate your business with our tailored custom AI models, designed to optimize operations, enhance customer experiences, and drive innovation. Our machine learning and deep learning expertise empowers businesses with predictive insights, automated processes, and scalable solutions. From personalized customer experiences to operational efficiency, our custom AI models deliver actionable results. Contact us today to unlock the full potential of your data with our custom AI model development services!",
@@ -70,18 +71,18 @@ const items = [
   {
     id: 6,
     title: "Automated Machine Learning (AutoML)",
-    paht:"/services/automated-machine-learning",
+    paht: "/services/automated-machine-learning",
     iconSvg: <AutoML />,
-    cardImg: <ServiceCardAutoML />,
+    cardImg: <ServiceCardAutoML className="w-[80%]" />,
     description:
       "Transform your business with our cutting-edge AutoML solutions. By automating the entire machine learning pipeline—from data preprocessing and model selection to deployment and ongoing optimization—our solutions empower you to unlock valuable insights faster. With AutoML, you can automate decision-making, improve operational efficiency, and scale your business effortlessly. Whether you're looking to predict trends, optimize resources, or enhance customer experiences, AutoML enables data-driven growth. Reach out today to start your journey with AutoML and unlock the full potential of your data!",
   },
   {
     id: 7,
     title: "AI-Powered Data Analytics",
-    path:"/services/ai-powered-data-analytics",
+    path: "/services/ai-powered-data-analytics",
     iconSvg: <ServiceNaturalLanguage />,
-    cardImg: <ServiceCardNaturalLanguage />,
+    cardImg: <ServiceCardAIPoweredDataAnalytics className="w-[80%]" />,
     description:
       "Our AI-powered data analytics solutions automate complex data workflows, allowing you to make data-driven decisions faster and more accurately. With AI, you can uncover trends, predict outcomes, and optimize business processes, all while saving time and costs. Let's help you unlock the power of your data and drive better outcomes for your business.",
   },
@@ -90,16 +91,16 @@ const items = [
     title: "Conversational AI",
     path: "/services/conversational-ai",
     iconSvg: <ServiceConversationalAI />,
-    cardImg: <ServiceCardConversationalAI />,
+    cardImg: <ServiceCardConversationalAI className="w-[80%]" />,
     description:
       "Our conversational AI solutions help businesses automate and enhance customer engagement, deliver personalized experiences, and drive operational efficiency. Whether through chatbots, virtual assistants, or voice solutions, we enable businesses to stay ahead with AI-powered communication systems. Let us show you how conversational AI can revolutionize your customer interactions and business outcomes.",
   },
   {
     id: 9,
     title: "AI for Process Automation",
-    path:"/services/ai-for-process-automation",
+    path: "/services/ai-for-process-automation",
     iconSvg: <ServiceAIforProcessAutomation />,
-    cardImg: <ServiceCardAIforProcessAutomation />,
+    cardImg: <ServiceCardAIforProcessAutomation className="w-[80%]" />,
     description:
       "Hexylon Analytics is a leading provider of AI-powered process automation solutions designed to revolutionize business operations. In today’s fast-paced world, efficiency and accuracy are crucial to maintaining a competitive edge, and Hexylon Analytics leverages advanced artificial intelligence to streamline workflows, reduce costs, and boost productivity. By automating repetitive tasks, optimizing workflows, and enhancing scalability, businesses can focus on innovation and strategic growth. With solutions that minimize human error, speed up processes, and provide actionable insights, Hexylon Analytics ensures operational excellence across various industries.",
   },
@@ -159,12 +160,12 @@ const OurServices = () => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.5 // Element is considered visible when 50% is in view
+      rootMargin: "0px",
+      threshold: 0.5, // Element is considered visible when 50% is in view
     };
 
     const callback = (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
           setCurrentSection(sectionId);
@@ -194,7 +195,6 @@ const OurServices = () => {
     // console.log(itemId <= activeId , itemId , activeId)
     return itemId <= activeId;
   };
-
 
   return (
     <>
@@ -245,15 +245,17 @@ const OurServices = () => {
         >
           {items.map((section, index) => (
             <div
-            key={section.id}
-            id={`${section.id}`}
-            ref={(el) => (sectionRefs.current[index] = el)}
-            className={`h-content mb-1 flex justify-center items-center ${
-              currentSection === `section-${section.id}` ? 'border-2 border-blue-500' : ''
-            }`}
-          >
+              key={section.id}
+              id={`${section.id}`}
+              ref={(el) => (sectionRefs.current[index] = el)}
+              className={`h-content mb-1 flex justify-center items-center ${
+                currentSection === `section-${section.id}`
+                  ? "border-2 border-blue-500"
+                  : ""
+              }`}
+            >
               <div className="flex flex-col max-w-7xl ml-auto bg-[transparent] shadow-xl  h-full w-full border border-[#374151]">
-                <figure className="flex justify-center items-center ">
+                <figure className="flex justify-center items-center xl:pl-[5rem] pl-[2rem] py-12 ">
                   {section.cardImg}
                 </figure>
                 <div className="flex flex-col p-8  items-center w-full h-full">
@@ -267,7 +269,12 @@ const OurServices = () => {
                     <button className="group relative px-6 py-2 bg-black border border-blue-500 rounded-md ">
                       <div className="absolute inset-0 rounded-md bg-black  blur-md transition-all group-hover:blur-lg" />
                       <div className="relative flex items-center space-x-2 text-blue-500">
-                        <span className="text-lg" onClick={() => navigate(section.path)}>read more</span>
+                        <span
+                          className="text-lg"
+                          onClick={() => navigate(section.path)}
+                        >
+                          read more
+                        </span>
                         <svg
                           className="w-4 h-4"
                           fill="none"
