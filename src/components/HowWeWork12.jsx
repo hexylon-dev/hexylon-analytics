@@ -440,7 +440,7 @@ const HowWeWorkSection = () => {
               {/* Right border with gap */}
               <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
               <div
-                className={`absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] ${
+                className={`absolute right-[-52px]  bottom-[3.4rem] w-[2px] h-[19.8rem] bg-orange-500 rounded-r-3xl transform rotate-[19deg] ${
                   isVisible ? "animate-draw-height-line-cross-line" : ""
                 } hidden md:block`}
               ></div>
