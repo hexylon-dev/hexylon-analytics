@@ -4,8 +4,8 @@ import { X, Send } from 'lucide-react'
 import Sent from "../assets/icons/sent"
 import {ShowAvatar} from "./avatar";
 
-const API_BASE_URL = 'https://grateful-shortly-tick.ngrok-free.app/'
-let FullText = "";
+const API_BASE_URL = 'http://192.168.1.22:6001'
+let LastIndex = null;
 export const api = {
     streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {
       try {
@@ -34,30 +34,12 @@ export const api = {
           }
   
           buffer += decoder.decode(value, { stream: true });
-          const messages = buffer.split('\n\n');
-          buffer = messages.pop() || '';
-  
-          for (const message of messages) {
-            if (message.startsWith('data: ')) {
-              try {
-                const data = JSON.parse(message.slice(6));
-                
-                if (data.error) {
-                  onError(new Error(data.error));
-                  return;
-                }
-  
-                onChunk(data);
-  
-                if (data.finished) {
-                  onComplete();
-                  return;
-                }
-              } catch (e) {
-                console.error('Error parsing SSE message:', e);
-              }
-            }
-          }
+          
+        //   const messages = buffer.split('\n\n');
+        // console.log({messages});
+        onChunk(buffer);
+
+        // buffer = messages.pop() |  | '';
         }
       } catch (error) {
         onError(error);
@@ -71,6 +53,7 @@ export default function ContactSection() {
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingMsg , setisLoadingMsg] = useState(false);
   const messagesEndRef = useRef(null)
   
   const projectTypes = [
@@ -87,64 +70,115 @@ export default function ContactSection() {
     scrollToBottom()
   }, [messages]);
 
-  const handleStreamResponse = async (content) => {
-    setIsLoading(true);
-    let finalFullText = ''; // Store the final `full_text`
-  
-    try {
-      await api.streamResponse(
-        { role: 'user', content },
-        (data) => {
-          // Check if `data.full_text` exists and update it
-          if (data.full_text) {
-            finalFullText = data.full_text;
-          }
-        },
-        (error) => {
-          console.error("Stream error:", error);
-          setIsLoading(false);
-        },
-        () => {
-          console.log("Stream completed");
-          if (finalFullText) {
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: prev.length + 1,
-                text: finalFullText, // Display the final `full_text`
-                sender: 'admin',
-                isStreaming: false,
-              },
-            ]);
-          }
-          setIsLoading(false);
-        }
-      );
-    } catch (error) {
-      console.error("Error in streaming:", error);
-      setIsLoading(false);
-    }
+  const handleStreamResponse = ({ role, content }, onChunk, onError = () => {}, onComplete) => {
+    api.streamResponse(
+      { role, content },
+      (data) => {
+        console.log("ris2:", data);
+        onChunk(data);
+
+        // if (data && data.text) {
+        //   console.log("ris:", data, data.text);
+        //   // Accumulate text chunks in a single variable
+        // }
+      },
+      (error) => {
+        console.error('Streaming error:', error);
+        onError(error); // Call the onError callback if provided
+      },
+      () => {
+        LastIndex = null;
+        console.log(LastIndex , " :  LastIndex = null;")
+        // Once the streaming is completed, call the onComplete callback
+        onComplete();
+      }
+    );
   };
-  
-  
-  
   
   const handleSendProjectIdea = async () => {
     if (projectIdea.trim()) {
-      setMessages([{ id: 1, text: projectIdea, sender: 'user' }])
-      setShowChat(true)
-      await handleStreamResponse(projectIdea)
+      setisLoadingMsg(true);
+      setMessages([{ id: 1, text: projectIdea, sender: 'user' }]);
+      setShowChat(true);
+  
+      let fullMessage = ''; // Store the full message
+  
+      await handleStreamResponse(
+        { role: 'user', content: projectIdea },
+        (data) => {
+          setisLoadingMsg(false);
+            console.log("data fin : " , data)
+          fullMessage = data; // Accumulate the full message
+          if(!LastIndex){
+            LastIndex = messages.length + 1;
+            console.log({LastIndex  } , "kmv okvn")
+            setMessages((prev) => [
+                ...prev,
+                { id: prev.length + 1, text: fullMessage, sender: 'assistant' }, // Update with full message
+              ]);
+          }else{
+            console.log({LastIndex  } , "kmv 1")
+            setMessages((prev) => [
+                ...prev.slice(0, -1),
+                { id: LastIndex , text: fullMessage, sender: 'assistant' }, // Update with full message
+              ]);
+          }
+         
+        },
+        (error) => {
+          console.error('Error during streaming', error);
+        },
+        () => {
+        LastIndex = null;
+          console.log('Streaming completed');
+        }
+      );
     }
-  }
+  };
 
   const handleSendMessage = async () => {
     if (newMessage.trim() && !isLoading) {
-      setMessages(prev => [...prev, { id: prev.length + 1, text: newMessage, sender: 'user' }])
-      const messageToSend = newMessage
-      setNewMessage('')
-      await handleStreamResponse(messageToSend)
+      setMessages((prev) => [
+        ...prev,
+        { id: prev.length + 1, text: newMessage, sender: 'user' },
+      ]);
+      setisLoadingMsg(true);
+      const messageToSend = newMessage;
+      setNewMessage('');
+  
+      let fullMessage = ''; // Store the full message
+  
+      await handleStreamResponse(
+        { role: 'user', content: messageToSend },
+        (data) => {
+          setisLoadingMsg(false);
+            console.log("data fin : " , data)
+            fullMessage = data; // Accumulate the full message
+            if(!LastIndex){
+              LastIndex = messages.length;
+              console.log({LastIndex  } , "kmv okvn")
+              setMessages((prev) => [
+                  ...prev,
+                  { id: prev.length + 1, text: fullMessage, sender: 'assistant' }, // Update with full message
+                ]);
+            }else{
+              console.log({LastIndex  } , "kmv 1")
+              setMessages((prev) => [
+                  ...prev.slice(0, -1),
+                  { id: LastIndex , text: fullMessage, sender: 'assistant' }, // Update with full message
+                ]);
+            }  
+        },
+        (error) => {
+          console.error('Error during streaming', error);
+        },
+        () => {
+            LastIndex = null;
+          console.log('Streaming completed');
+        }
+      );
     }
-  }
+  };
 
   const closeChat = () => {
     setShowChat(false);
@@ -206,7 +240,7 @@ export default function ContactSection() {
               <div
                 className={`max-w-[80%] rounded-lg p-3 ${
                   message.sender === "user"
-                    ? "bg-[#FF6600]-600 text-white"
+                    ? "bg-[#FF6600] text-white"
                     : "bg-[#252525] text-gray-200"
                 } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
               >
@@ -214,6 +248,19 @@ export default function ContactSection() {
               </div>
             </div>
           ))}
+
+           {/* Skeleton Loading */}
+  {isLoadingMsg && (
+    <div className="flex space-y-4 flex-col">
+      {/* Skeleton for received message */}
+      <div className="flex items-start space-x-3">
+        {/* Skeleton Avatar */}
+        <div className="h-[50px] w-[50px] rounded-full bg-gray-700 animate-pulse" />
+        {/* Skeleton Message Bubble */}
+        <div className="bg-gray-700 animate-pulse rounded-lg p-3 w-[60%] h-[20px]" />
+      </div>
+    </div>
+  )}
           <div ref={messagesEndRef} />
         </div>
 

@@ -1,8 +1,49 @@
 import React, { useRef, useMemo, useState , useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import {api} from "./CallToAction";
+let LastIndex = null;
+const API_BASE_URL = 'http://192.168.1.22:6001'
 
+const api = {
+    streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/generate/stream`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ role, content }),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+  
+        while (true) {
+          const { done, value } = await reader.read();
+          
+          if (done) {
+            onComplete();
+            break;
+          }
+  
+          buffer += decoder.decode(value, { stream: true });
+          
+        //   const messages = buffer.split('\n\n');
+        // console.log({messages});
+        onChunk(buffer);
+
+        // buffer = messages.pop() |  | '';
+        }
+      } catch (error) {
+        onError(error);
+      }
+    }
+  };
 function ParticleSystem({ isLoading, onTransitionComplete }) {
   const pointsRef = useRef(null);
   const targetPositions = useRef(null);
@@ -154,7 +195,8 @@ function ChatScreen({ closeChat }) {
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const messagesEndRef = useRef(null)
+  const messagesEndRef = useRef(null);
+  const [isLoadingMsg , setisLoadingMsg] = useState(false);
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -164,64 +206,74 @@ function ChatScreen({ closeChat }) {
     scrollToBottom()
   }, [messages]);
 
-  const handleStreamResponse = async (content) => {
-    setIsLoading(true);
-    let finalFullText = ''; // Store the final `full_text`
-  
-    try {
-      await api.streamResponse(
-        { role: 'user', content },
-        (data) => {
-          // Check if `data.full_text` exists and update it
-          if (data.full_text) {
-            finalFullText = data.full_text;
-          }
-        },
-        (error) => {
-          console.error("Stream error:", error);
-          setIsLoading(false);
-        },
-        () => {
-          console.log("Stream completed");
-          if (finalFullText) {
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: prev.length + 1,
-                text: finalFullText, // Display the final `full_text`
-                sender: 'admin',
-                isStreaming: false,
-              },
-            ]);
-          }
-          setIsLoading(false);
-        }
-      );
-    } catch (error) {
-      console.error("Error in streaming:", error);
-      setIsLoading(false);
-    }
+  const handleStreamResponse = ({ role, content }, onChunk, onError = () => {}, onComplete) => {
+    api.streamResponse(
+      { role, content },
+      (data) => {
+        console.log("ris2:", data);
+        onChunk(data);
+
+        // if (data && data.text) {
+        //   console.log("ris:", data, data.text);
+        //   // Accumulate text chunks in a single variable
+        // }
+      },
+      (error) => {
+        console.error('Streaming error:', error);
+        onError(error); // Call the onError callback if provided
+      },
+      () => {
+        LastIndex = null;
+        console.log(LastIndex , " :  LastIndex = null;")
+        // Once the streaming is completed, call the onComplete callback
+        onComplete();
+      }
+    );
   };
   
-  
-  
-  
-  const handleSendProjectIdea = async () => {
-    if (projectIdea.trim()) {
-      setMessages([{ id: 1, text: projectIdea, sender: 'user' }])
-      setShowChat(true)
-      await handleStreamResponse(projectIdea)
-    }
-  }
-
   const handleSendMessage = async () => {
     if (newMessage.trim() && !isLoading) {
-      setMessages(prev => [...prev, { id: prev.length + 1, text: newMessage, sender: 'user' }])
-      const messageToSend = newMessage
-      setNewMessage('')
-      await handleStreamResponse(messageToSend)
+      setMessages((prev) => [
+        ...prev,
+        { id: prev.length + 1, text: newMessage, sender: 'user' },
+      ]);
+      setisLoadingMsg(true);
+      const messageToSend = newMessage;
+      setNewMessage('');
+  
+      let fullMessage = ''; // Store the full message
+  
+      await handleStreamResponse(
+        { role: 'user', content: messageToSend },
+        (data) => {
+          setisLoadingMsg(false);
+            console.log("data fin : " , data)
+            fullMessage = data; // Accumulate the full message
+            if(!LastIndex){
+              LastIndex = messages.length === 0 ?  1 : messages.length  ;
+              console.log({LastIndex  } , "kmv okvn")
+              setMessages((prev) => [
+                  ...prev,
+                  { id: prev.length + 1, text: fullMessage, sender: 'assistant' }, // Update with full message
+                ]);
+            }else{
+              console.log({LastIndex  } , "kmv 1")
+              setMessages((prev) => [
+                  ...prev.slice(0, -1),
+                  { id: LastIndex , text: fullMessage, sender: 'assistant' }, // Update with full message
+                ]);
+            }  
+        },
+        (error) => {
+          console.error('Error during streaming', error);
+        },
+        () => {
+            LastIndex = null;
+          console.log('Streaming completed');
+        }
+      );
     }
-  }
+  };
 
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
@@ -286,6 +338,18 @@ function ChatScreen({ closeChat }) {
               </div>
             </div>
           ))}
+           {/* Skeleton Loading */}
+  {isLoadingMsg && (
+    <div className="flex space-y-4 flex-col">
+      {/* Skeleton for received message */}
+      <div className="flex items-start space-x-3">
+        {/* Skeleton Avatar */}
+        <div className="h-[50px] w-[50px] rounded-full bg-gray-700 animate-pulse" />
+        {/* Skeleton Message Bubble */}
+        <div className="bg-gray-700 animate-pulse rounded-lg p-3 w-[60%] h-[20px]" />
+      </div>
+    </div>
+  )}
           <div ref={messagesEndRef} />
         </div>
 
