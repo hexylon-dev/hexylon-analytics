@@ -132,7 +132,7 @@ const Navbar = () => {
 
                     {isServiceDropdownOpen && (
                       <div
-                        className="absolute left-0 mt-1 bg-[#5E5E5E] rounded-lg shadow-lg w-96 lg:max-h-60  overflow-y-scroll scrollbar-hidden"
+                        className="absolute left-0 mt-0 bg-[#5E5E5E] rounded-lg shadow-lg w-96 lg:max-h-60  overflow-y-scroll scrollbar-hidden"
                         onMouseLeave={() => setIsServiceDropdownOpen(false)}
                       >
                         {serviceDropdownItems.map((service) => (
