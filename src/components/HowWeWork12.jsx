@@ -244,7 +244,7 @@ const HowWeWorkSection = () => {
               ></div>
               {/* Bottom border */}
               <div
-                className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${
+                className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 ${
                   isVisible ? "animate-draw-width-line" : ""
                 }`}
               ></div>
@@ -259,13 +259,13 @@ const HowWeWorkSection = () => {
               <div className="absolute right-[-3px] top-20 w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full "></div>
               {/* Right border with gap */}
               <div
-                className={`absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl ${
-                  isVisible ? "animate-draw-height-5rem-line-bottom-to-top" : ""
+                className={`absolute right-0 bottom-0 w-[0.5px] h-[5.04rem] bg-orange-500  rounded-l-xl  ${
+                  isVisible ? "animate-draw-height-5-04rem--line-bottom-to-top" : ""
                 }`}
               ></div>
 
               <div
-                className={`absolute right-[-50px] bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[19deg] ${
+                className={`absolute right-[-50px] bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-full transform rotate-[19deg] ${
                   isVisible ? "animate-draw-height-line-cross-line" : ""
                 } hidden lg:block`}
               ></div>
@@ -330,7 +330,7 @@ const HowWeWorkSection = () => {
             {/* center card */}
             <div className="relative w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5">
               {/* Left border */}
-              <div className="absolute left-0 top-0 w-[0.5px] min-h-[5rem] bg-orange-500 rounded-l-3xl  "></div>
+              <div className="absolute left-0 top-0 w-[0.5px] min-h-[4.9rem] bg-orange-500 rounded-r-full  "></div>
 
               {/* Top border */}
               <div
@@ -341,7 +341,7 @@ const HowWeWorkSection = () => {
 
               {/* Bottom border */}
               <div
-                className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${
+                className={`absolute left-0 bottom-0 w-[99.99%] h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${
                   isVisible ? "animate-draw-width-line" : ""
                 }`}
               ></div>
@@ -353,7 +353,7 @@ const HowWeWorkSection = () => {
               <div className="absolute right-[-3px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
               {/* Right border with gap */}
-              <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl"></div>
+              <div className="absolute right-[1px] bottom-0 w-[0.5px] h-[4.9rem] bg-orange-500"></div>
               <div className="absolute bottom-0 left-0  w-[0.5px] min-h-24 bg-orange-500 rounded-l-3xl"></div>
 
               {/* Attach fill circle top to right border between border gap */}
@@ -429,7 +429,7 @@ const HowWeWorkSection = () => {
               ></div>
               {/* Bottom border */}
               <div
-                className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${
+                className={`absolute left-0 bottom-0 w-full h-[0.5px] bg-orange-500 ${
                   isVisible ? "animate-draw-width-line" : ""
                 }`}
               ></div>
@@ -438,9 +438,9 @@ const HowWeWorkSection = () => {
               {/* Attach fill circle top to right border between border gap */}
               <div className="absolute right-[-4px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
               {/* Right border with gap */}
-              <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5.1rem]  bg-orange-500 rounded-r-3xl"></div>
+              <div className="absolute right-0 bottom-[-1px] w-[0.5px] h-[5.10rem] bg-orange-500"></div>
               <div
-                className={`absolute right-[-50px]  bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[19deg] ${
+                className={`absolute right-[-51px]  bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-full transform rotate-[19deg] ${
                   isVisible ? "animate-draw-height-line-cross-line" : ""
                 } hidden lg:block`}
               ></div>
