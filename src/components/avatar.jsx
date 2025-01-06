@@ -1,6 +1,8 @@
 import React, { useRef, useMemo, useState , useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import ReactMarkdown from 'react-markdown'
+import MarkdownRenderer from "./MarkdownRenderer";
 let LastIndex = null;
 const API_BASE_URL = 'http://192.168.1.22:6001'
 
@@ -332,7 +334,7 @@ function ChatScreen({ closeChat }) {
                     : "bg-[#252525] text-gray-200"
                 } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
               >
-                {message.text}
+                 <MarkdownRenderer content={message.text} />  
               </div>
             </div>
           ))}
