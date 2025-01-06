@@ -9,29 +9,32 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
   const originalPositions = useRef(null);
   const animationProgress = useRef(0);
   const time = useRef(0);
-
   const particles = useMemo(() => {
-    const particleCount = 1400;
+    const particleCount = 1000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const hexagonPositions = new Float32Array(particleCount * 3);
-
+  
+    // Convert hex color #FF6600 to RGB values
+    const color = new THREE.Color("#FF6600");
+  
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.random() * Math.PI;
       const r = 0.8 + Math.random() * 0.2;
-
+  
+      // Set random sphere-like positions
       positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = r * Math.cos(phi);
       positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-
+  
       // Calculate hexagon positions
       const sideIndex = Math.floor(i / (particleCount / 6));
       const t = (i % (particleCount / 6)) / (particleCount / 6);
       const angle = (sideIndex / 6) * Math.PI * 2;
       const nextAngle = ((sideIndex + 1) / 6) * Math.PI * 2;
       const hexRadius = 1.5;
-
+  
       hexagonPositions[i * 3] =
         THREE.MathUtils.lerp(Math.cos(angle), Math.cos(nextAngle), t) *
         hexRadius;
@@ -39,46 +42,40 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
         THREE.MathUtils.lerp(Math.sin(angle), Math.sin(nextAngle), t) *
         hexRadius;
       hexagonPositions[i * 3 + 2] = 0;
-
-      // Orange color palette
-      // const colorT = Math.random();
-      // colors[i * 3] = 0.8 + 0.2 * colorT;
-      // colors[i * 3 + 1] = 0.3 + 0.3 * colorT;
-      // colors[i * 3 + 2] = 0.0 + 0.2 * colorT;
-      // 255,102,0
-      colors[i * 3] = (17 / 255) * 0.7; // Red (darkened)
-      colors[i * 3 + 1] = (24 / 255) * 0.7; // Green (darkened)
-      colors[i * 3 + 2] = (39 / 255) * 0.7; // Blue (darkened)
-      // rgb(17,24,39)
+  
+      // Set color using Three.js Color object
+      colors[i * 3] = color.r;     // Red
+      colors[i * 3 + 1] = color.g; // Green
+      colors[i * 3 + 2] = color.b; // Blue
     }
-
+  
     originalPositions.current = positions.slice();
     targetPositions.current = hexagonPositions;
-
+  
     return { positions, colors, particleCount };
   }, []);
-
+  
   useFrame(() => {
     if (pointsRef.current) {
       time.current += 0.01;
       const positions = pointsRef.current.geometry.attributes.position.array;
-
+  
       if (isLoading) {
         animationProgress.current += (1 - animationProgress.current) * 0.05;
       } else {
         animationProgress.current += (0 - animationProgress.current) * 0.05;
       }
-
+  
       for (let i = 0; i < particles.particleCount; i++) {
         const idx = i * 3;
         const originalX = originalPositions.current[idx];
         const originalY = originalPositions.current[idx + 1];
         const originalZ = originalPositions.current[idx + 2];
-
+  
         const targetX = targetPositions.current[idx];
         const targetY = targetPositions.current[idx + 1];
         const targetZ = targetPositions.current[idx + 2];
-
+  
         positions[idx] = THREE.MathUtils.lerp(
           originalX,
           targetX,
@@ -95,15 +92,16 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
           animationProgress.current
         );
       }
-
+  
       pointsRef.current.rotation.z += 0.005;
       pointsRef.current.geometry.attributes.position.needsUpdate = true;
-
+  
       if (animationProgress.current > 0.99 && isLoading) {
         onTransitionComplete();
       }
     }
   });
+  
 
   return (
     <points ref={pointsRef}>
@@ -122,13 +120,13 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        vertexColors
         size={0.03}
         sizeAttenuation={true}
         transparent
         opacity={0.8}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
+        color="#FF6600"
       />
     </points>
   );
