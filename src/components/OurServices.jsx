@@ -21,6 +21,7 @@ import ServiceCardConversationalAI from "../assets/svgs/ServiceCardConversationa
 import ServiceCardAIforProcessAutomation from "../assets/svgs/ServiceCardAIforProcessAutomation";
 import { Navigate, useNavigate } from "react-router-dom";
 import ServiceCardAIPoweredDataAnalytics from "../assets/svgs/ServiceCardAIPoweredDataAnalytics";
+import ServiceAiPowerDataAnalyst from "../assets/svgs/ServiceAiPowerDataAnalyst";
 
 const items = [
   {
