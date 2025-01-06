@@ -265,9 +265,9 @@ const HowWeWorkSection = () => {
               ></div>
 
               <div
-                className={`absolute right-[-52px] bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] ${
+                className={`absolute right-[-50px] bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[19deg] ${
                   isVisible ? "animate-draw-height-line-cross-line" : ""
-                } hidden md:block`}
+                } hidden lg:block`}
               ></div>
 
               <div className="flex flex-col items-center space-y-6 h-full justify-center">
@@ -330,7 +330,7 @@ const HowWeWorkSection = () => {
             {/* center card */}
             <div className="relative w-[18rem] h-[28rem] rounded-lg lg:mr-[99px] p-5">
               {/* Left border */}
-              <div className="absolute left-0 top-0 w-[0.5px] min-h-[5.5rem] bg-orange-500 rounded-l-3xl  "></div>
+              <div className="absolute left-0 top-0 w-[0.5px] min-h-[5rem] bg-orange-500 rounded-l-3xl  "></div>
 
               {/* Top border */}
               <div
@@ -353,7 +353,7 @@ const HowWeWorkSection = () => {
               <div className="absolute right-[-3px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
 
               {/* Right border with gap */}
-              <div className="absolute right-0 bottom-0 w-[0.5px] h-[5.5rem] bg-orange-500 rounded-r-3xl"></div>
+              <div className="absolute right-0 bottom-0 w-[0.5px] h-[5rem] bg-orange-500 rounded-r-3xl"></div>
               <div className="absolute bottom-0 left-0  w-[0.5px] min-h-24 bg-orange-500 rounded-l-3xl"></div>
 
               {/* Attach fill circle top to right border between border gap */}
@@ -438,11 +438,11 @@ const HowWeWorkSection = () => {
               {/* Attach fill circle top to right border between border gap */}
               <div className="absolute right-[-4px] top-[5.9rem] w-[0.5rem] h-[0.5rem] bg-orange-500 rounded-full"></div>
               {/* Right border with gap */}
-              <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5rem]  bg-orange-500 rounded-r-3xl"></div>
+              <div className="absolute right-0 bottom-0 w-[0.5px] min-h-[5.1rem]  bg-orange-500 rounded-r-3xl"></div>
               <div
-                className={`absolute right-[-52px]  bottom-[4.3rem] w-[2px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[18.7deg] ${
+                className={`absolute right-[-50px]  bottom-[4.5rem] w-[1px] h-[19.2rem] bg-orange-500 rounded-r-3xl transform rotate-[19deg] ${
                   isVisible ? "animate-draw-height-line-cross-line" : ""
-                } hidden md:block`}
+                } hidden lg:block`}
               ></div>
               <div className="flex flex-col items-center space-y-6 h-full justify-center transform lg:rotate-[180deg] rotate-0">
                 {/* Light orange icon */}
