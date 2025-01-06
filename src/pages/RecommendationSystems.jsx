@@ -5,6 +5,7 @@ import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/extra.jpg";
+import four from "../assets/4.png"
 export const RecommendationSystems = () => {
     const recommendationSystems = {
         heroSection: {
@@ -139,7 +140,7 @@ export const RecommendationSystems = () => {
     
         whyHexylon: {
           title: "Why Choose Our Recommendation System Solutions?",
-          constantImage: image,
+          constantImage: four,
           content:
             "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
           reasons: [

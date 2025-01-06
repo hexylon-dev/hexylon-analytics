@@ -5,7 +5,7 @@ import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/computervision.jpg";
-
+import three from "../assets/3.png"
 export const ComputerVision = () => {
     const computerVision = {
         heroSection: {
@@ -141,7 +141,7 @@ export const ComputerVision = () => {
           title: "Why Choose Hexylon Analytics for Computer Vision and AI Solutions?",
           content:
             "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
-          constantImage: image,
+          constantImage: three,
           reasons: [
             {
               id: 1,
