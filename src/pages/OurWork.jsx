@@ -10,9 +10,9 @@ function OurWork() {
   return (
     <>
     <div className="bg-black relative ">
-      <div className="text-[#2182DF] text-4xl text-center mt-20 max-w-7xl mx-auto">
+      <div className="text-[#2182DF] text-2xl md:text-4xl text-center mt-20 max-w-7xl mx-auto">
           <h1> Our Work </h1>
-          <div className="text-gray-100 text-2xl text-center mt-5">
+          <div className="text-gray-100 text-lg  md:text-2xl text-center mt-5">
           Transforming business operations with automation and real-time dashboards, empowering digital presence through custom websites and platforms like Reequitiz, and delivering personalized education with AI-driven learning paths and career guidance.
           </div>
         </div>

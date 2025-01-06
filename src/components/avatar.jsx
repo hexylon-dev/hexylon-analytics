@@ -51,7 +51,7 @@ function ParticleSystem({ isLoading, onTransitionComplete }) {
   const animationProgress = useRef(0);
   const time = useRef(0);
   const particles = useMemo(() => {
-    const particleCount = 1000;
+    const particleCount = 2000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const hexagonPositions = new Float32Array(particleCount * 3);
@@ -572,7 +572,7 @@ export default function ParticleAvatar() {
       <div
         className={`fixed w-[200px] h-[200px] z-10 transition-all duration-500 ${
           isMobile && isScrolled
-            ? "top-0 left-1/2 transform -translate-x-1/2"
+            ? "top-[-60px] left-1/2 transform -translate-x-1/2 z-50"
             : "bottom-0 right-0"
         }`}
       >
