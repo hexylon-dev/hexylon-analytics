@@ -12,6 +12,9 @@ module.exports = {
         'spin-slow': 'spin 8s linear infinite',
         'gradient-x': 'gradient-x 15s ease infinite',
       },
+      screens: {
+        '4xl': '2400px',
+      },
       keyframes: {
         float: {
           '0%, 100%': {
