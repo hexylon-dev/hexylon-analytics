@@ -4,7 +4,7 @@ import { X, Send } from 'lucide-react'
 import Sent from "../assets/icons/sent"
 import {ShowAvatar} from "./avatar";
 
-const API_BASE_URL = 'http://192.168.1.22:6001'
+const API_BASE_URL = 'https://grateful-shortly-tick.ngrok-free.app'
 let LastIndex = null;
 export const api = {
     streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {

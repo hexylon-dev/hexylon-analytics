@@ -4,7 +4,7 @@ import * as THREE from "three";
 import ReactMarkdown from 'react-markdown'
 import MarkdownRenderer from "./MarkdownRenderer";
 let LastIndex = null;
-const API_BASE_URL = 'http://192.168.1.22:6001'
+const API_BASE_URL = 'https://grateful-shortly-tick.ngrok-free.app'
 
 const api = {
     streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {
