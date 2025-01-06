@@ -342,7 +342,7 @@ const HowWeWorkSection = () => {
               {/* Bottom border */}
               <div
                 className={`absolute left-0 bottom-0 w-[99.99%] h-[0.5px] bg-orange-500 rounded-bl-3xl rounded-br-3xl ${
-                  isVisible ? "animate-draw-width-line" : ""
+                  isVisible ? "animate-draw-width-line-99-99" : ""
                 }`}
               ></div>
               {/* Right border with gap */}
