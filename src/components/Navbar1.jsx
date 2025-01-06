@@ -104,8 +104,7 @@ const Navbar = () => {
                   <div
                     key={item.id}
                     className="relative text-white/70 hover:text-[#FF7A33] text-sm font-medium"
-                    onMouseEnter={() => setIsServiceDropdownOpen(true)}
-                  >
+                    onMouseEnter={() => setIsServiceDropdownOpen(true)} onMouseLeave={() => setIsServiceDropdownOpen(false)}>
                     <span className="cursor-pointer flex items-center">
                       {item.label}
                       <ChevronDown className="w-4 h-4 ml-2" />
@@ -133,7 +132,7 @@ const Navbar = () => {
 
                     {isServiceDropdownOpen && (
                       <div
-                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-96 max-h-60 overflow-y-scroll scrollbar-hidden"
+                        className="absolute left-0 mt-1 bg-[#5E5E5E] rounded-lg shadow-lg w-96 lg:max-h-60  overflow-y-scroll scrollbar-hidden"
                         onMouseLeave={() => setIsServiceDropdownOpen(false)}
                       >
                         {serviceDropdownItems.map((service) => (
