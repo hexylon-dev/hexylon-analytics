@@ -211,11 +211,13 @@ const OurServices = () => {
                 key={index}
                 className={`relative flex items-center gap-4 pb-8`}
               >
-                <div
-                  className={`absolute left-7 top-12 bottom-0 w-1 transition-all duration-300 ease-in-out ${
-                    isActive(item.id) ? "bg-blue-500" : "bg-blue-500/20"
-                  }`}
-                />
+                {item.id !== 9 && (
+                  <div
+                    className={`absolute left-7 top-12 bottom-0 w-1 transition-all duration-300 ease-in-out ${
+                      isActive(item.id) ? "bg-blue-500" : "bg-blue-500/20"
+                    }`}
+                  />
+                )}
 
                 <div
                   className={`flex items-center justify-center relative w-[60px] h-[60px] rounded-full border-2 outline outline-offset-2 outline-[#0A0A0A] bg-[#5F5F5F] shadow-[inset_0px_-6px_4px_rgba(0,0,0,0.25)] transition-all duration-300 ease-in-out ${
