@@ -181,6 +181,10 @@ export default function ContactSection() {
     }
   };
 
+  const redirectToContactUs = () => {
+    window.location.href = '/contact-us'; // Redirect to Contact Us page
+  }
+
   const closeChat = () => {
     setShowChat(false);
   }
@@ -207,20 +211,11 @@ export default function ContactSection() {
       </p>
 
       <div className="relative w-full max-w-2xl mb-6 px-4 sm:px-0">
-        <input
-          type="text"
-          value={projectIdea}
-          onChange={(e) => setProjectIdea(e.target.value)}
-          placeholder="Enter your project idea..."
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#1a1a1a] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
-        />
         <button 
-          onClick={handleSendProjectIdea}
-          className="absolute right-6 sm:right-4 top-1/2 -translate-y-1/2"
+          onClick={redirectToContactUs}
+          className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#FF7A33] rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
         >
-          <div className="relative">
-          <Sent />
-          </div>
+          Contact Us
         </button>
       </div>
 
