@@ -1,160 +1,111 @@
-import { Settings, Maximize2 } from "lucide-react";
-import OurWorkCustomSolution from "../assets/svgs/OurWorkCustomSolution";
-import OurWorkScalable from "../assets/svgs/OurWorkScalable";
-import OurWorkResultOriented from "../assets/svgs/OurWorkResultOriented";
-import OurWorkClientCentric from "../assets/svgs/OurWorkClientCentric";
-import OurWorkContinuousImprovement from "../assets/svgs/OurWorkContinuousImprovement";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Settings, Maximize2, Target, RefreshCw, Users } from 'lucide-react';
 
-const items = [
+const features = [
   {
-    title: "Custom-Fit Solutions",
+    title: 'Custom-Fit Solutions',
     description:
-      "We build AI tools that are perfectly aligned with your business objectives, ensuring a smooth integration into your existing processes without disruption.",
-    icon: <OurWorkCustomSolution />,
+      'We build AI tools that are perfectly aligned with your business objectives, ensuring a smooth integration into your existing processes without disruption.',
+    icon: Settings,
+    gradient: 'from-violet-500 to-indigo-600',
   },
   {
-    title: "Scalable",
+    title: 'Scalable',
     description:
-      "Our solutions are built to evolve with your business, adapting to new challenges and opportunities as you grow.",
-    icon: <OurWorkScalable />,
+      'Our solutions are built to evolve with your business, adapting to new challenges and opportunities as you grow.',
+    icon: Maximize2,
+    gradient: 'from-blue-500 to-cyan-600',
   },
   {
-    title: "Result-Oriented",
+    title: 'Result-Oriented',
     description:
-      "We focus on delivering measurable outcomes, whether it's streamlining workflows, enhancing productivity, or improving decision-making through real-time insights.",
-    icon: <OurWorkResultOriented />,
+      'We focus on delivering measurable outcomes, whether it\'s streamlining workflows, enhancing productivity, or improving decision-making through real-time insights.',
+    icon: Target,
+    gradient: 'from-emerald-500 to-teal-600',
   },
   {
-    title: "Continuous Improvement",
+    title: 'Continuous Improvement',
     description:
-      "We constantly refine and optimize AI models based on real-world feedback, ensuring your solutions stay effective and up-to-date.",
-    icon: <OurWorkResultOriented />,
+      'We constantly refine and optimize AI models based on real-world feedback, ensuring your solutions stay effective and up-to-date.',
+    icon: RefreshCw,
+    gradient: 'from-orange-500 to-red-600',
   },
-
   {
-    title: "Client-Centric",
+    title: 'Client-Centric',
     description:
-      "Our dedicated support and personalized approach ensure that we're with you every step of the way, helping you achieve long-term success.",
-    icon: <OurWorkClientCentric />,
+      'Our dedicated support and personalized approach ensure that we\'re with you every step of the way, helping you achieve long-term success.',
+    icon: Users,
+    gradient: 'from-pink-500 to-rose-600',
   },
 ];
 
+const FeatureCard = ({ feature, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      viewport={{ once: true, margin: "-50px" }}
+      className="relative group w-full"
+    >
+      <div className="relative z-10 p-6 sm:p-8 bg-black/50 backdrop-blur-xl border border-neutral-800 rounded-2xl transition-all duration-500 hover:border-neutral-600 hover:transform hover:scale-[1.02] sm:hover:scale-105 hover:shadow-2xl hover:shadow-neutral-900">
+        <div className={`inline-flex p-2 sm:p-3 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4 sm:mb-6 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+          <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-neutral-400 transition-all duration-300">{feature.title}</h3>
+        <p className="text-sm sm:text-base text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">{feature.description}</p>
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-900/20 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
+    </motion.div>
+  );
+};
+
 export default function OurWorkUnique() {
   return (
-    <div className="bg-black text-white px-6 py-12 min-h-screen">
-      <h2 className="2xl:text-7xl md:text-6xl text-4xl font-bold uppercase  mb-4 text-white pb-2 inline-block text-center w-[100%]">
-        What Makes Us Unique{" "}
-      </h2>
-      <p className="md:text-lg text-sm  font-semibold  text-[#ABABAB] text-center mb-12">
-        Unique, Scalable, and Results-Driven AI that Grows with You
-      </p>
-      <div className="max-w-[1500px] mx-auto">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-0">
-          {/* Custom-Fit Solutions Card */}
-          <div className="px-3 border border-t-0 border-[#606060] py-10 relative ">
-            <div className="absolute top-[6.7rem] left-0 h-[40px] w-[6px] bg-white rounded-tr-3xl rounded-br-3xl"></div>
-            <div className="max-w-[400px] m-auto relative">
-              <div className="mb-6">
-                <OurWorkCustomSolution
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1}
-                />
-              </div>
-              <h2 className="md:text-2xl text-xl font-semibold mb-4 ">
-                Custom-Fit Solutions
-              </h2>
+    <section className="relative bg-black overflow-hidden py-16 sm:py-24 lg:py-32 px-4 sm:px-6">
+      {/* Enhanced background gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#1a1a1a,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_50%,#1a1a1a,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_50%,#1a1a1a,transparent_50%)]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-200 to-neutral-400 mb-4 sm:mb-6 lg:mb-8 px-4"
+          >
+            What Makes Us Unique
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed px-4"
+          >
+            Unique, Scalable, and Results-Driven AI that Grows with You
+          </motion.p>
+        </div>
 
-              <p className="text-[#868686] md:text-lg text-normal leading-relaxed">
-                We build AI tools that are perfectly aligned with your business
-                objectives, ensuring a smooth integration into your existing
-                processes without disruption.
-              </p>
-            </div>
+        <div className="grid gap-6 sm:gap-8">
+          {/* First row - 3 cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {features.slice(0, 3).map((feature, index) => (
+              <FeatureCard key={feature.title} feature={feature} index={index} />
+            ))}
           </div>
-
-          <div className="px-3 border border-t-0 border-[#606060] py-10  relative">
-          <div className="absolute top-[6.7rem] left-0 h-[40px] w-[6px] bg-white rounded-tr-3xl rounded-br-3xl"></div>
-
-            <div className="max-w-[400px] m-auto">
-              <div className="mb-6">
-                <OurWorkScalable
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1}
-                />
-              </div>
-              <h2 className="md:text-2xl text-xl font-semibold mb-4">
-                Scalable
-              </h2>
-              <p className="text-[#868686] md:text-lg text-normal leading-relaxed">
-                Our solutions are built to evolve with your business, adapting
-                to new challenges and opportunities as you grow.
-              </p>
-            </div>
+          
+          {/* Second row - 2 cards centered */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:w-full lg:w-3/4 mx-auto">
+            {features.slice(3).map((feature, index) => (
+              <FeatureCard key={feature.title} feature={feature} index={index + 3} />
+            ))}
           </div>
-
-          <div className="px-3 border border-t-0     border-[#606060] py-10  relative">
-          <div className="absolute top-[6.7rem] left-0 h-[40px] w-[6px] bg-white rounded-tr-3xl rounded-br-3xl"></div>
-
-            <div className="max-w-[400px] m-auto">
-              <div className="mb-6">
-                <OurWorkResultOriented
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1}
-                />
-              </div>
-              <h2 className="md:text-2xl text-xl font-semibold mb-4">
-                Result-Oriented
-              </h2>
-              <p className="text-[#868686] text-lg md:text-lg text-normal leading-relaxed">
-                We focus on delivering measurable outcomes, whether it's
-                streamlining workflows, enhancing productivity, or improving
-                decision-making through real-time insights.
-              </p>
-            </div>
-          </div>
-
-          <div className="px-3 border border-t-0 lg:border-b-0 border-b-[1px]  border-[#606060] py-10  relative">
-          <div className="absolute top-[6.7rem] left-0 h-[40px] w-[6px] bg-white rounded-tr-3xl rounded-br-3xl"></div>
-
-            <div className="max-w-[400px] m-auto">
-              <div className="mb-6">
-                <OurWorkContinuousImprovement
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1}
-                />
-              </div>
-              <h2 className="md:text-2xl text-xl font-semibold mb-4">
-                Continuous Improvement{" "}
-              </h2>
-              <p className="text-[#868686] md:text-lg text-normal leading-relaxed">
-                We constantly refine and optimize AI models based on real-world
-                feedback, ensuring your solutions stay effective and up-to-date.
-              </p>
-            </div>
-          </div>
-
-          <div className="px-3 border border-t-0 border-b-0 border-[#606060] py-10  relative">
-            <div className="absolute top-[6.7rem] left-0 h-[40px] w-[4px] bg-white"></div>
-            <div className="max-w-[400px] m-auto">
-              <div className="mb-6">
-                <OurWorkClientCentric
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1}
-                />
-              </div>
-              <h2 className="md:text-2xl text-xl font-semibold mb-4">
-                Client-Centric
-              </h2>
-              <p className="text-[#868686] md:text-lg text-normal leading-relaxed">
-                Our dedicated support and personalized approach ensure that
-                we're with you every step of the way, helping you achieve
-                long-term success.
-              </p>
-            </div>
-          </div>
-          <div className="px-3 border border-t-0 border-b-0 border-[#606060] py-10 "></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

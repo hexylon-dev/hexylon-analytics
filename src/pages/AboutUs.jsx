@@ -131,7 +131,7 @@ export default function HexylonLanding(
       onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
       onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
     >
-      SERVICE
+      About Us
       <span className="ml-1">›</span>
     </button>
   </div>
