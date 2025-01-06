@@ -112,9 +112,9 @@ const Navbar = () => {
         <nav
           className={`mx-auto backdrop-blur-xl border md:rounded-full rounded-2xl bg-[#5E5E5E]/20  ${
             isScrolled
-              ? "max-w-6xl bg-[#5E5E5E]/80 border-[#4361ee]/20 shadow-lg"
-              : "max-w-7xl border-[#5E5E5E]"
-          } transition-all duration-300`}
+              ? "max-w-6xl shadow-lg border"
+              : "max-w-7xl border-4"
+          } transition-all duration-300  border-gray-900`}
         >
           <div className="px-6 md:py-0 py-4 flex items-center justify-between relative ">
             <NavLink to="/" className="flex items-center">
@@ -141,16 +141,16 @@ const Navbar = () => {
 
                     {isServiceDropdownOpen && (
                       <div
-                        className="absolute left-1/2 transform -translate-x-1/2 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg p-3 xl:max-w-4xl lg:max-w-2xl xl max-w-xl w-full"
+                        className="absolute left-1/2 transform -translate-x-1/2 mt-5 bg-black border border-orange-500/50 border-t-0 rounded-lg shadow-lg p-3 xl:max-w-4xl lg:max-w-2xl xl max-w-xl w-full"
                         onMouseLeave={() => setIsServiceDropdownOpen(false)}
                       >
-                        <div className="grid grid-cols-3 lg:gap-4 gap-2">
+                        <div className="grid grid-cols-2 lg:gap-4 gap-2">
                           {serviceDropdownItems.map((service) => (
                             <NavLink
                               key={service.id}
                               to={`/${service.path}`}
                               className={({ isActive }) =>
-                                `flex items-center space-x-2 lg:px-2 px-1 py-2 text-sm rounded-lg ${
+                                `flex items-center space-x-2 lg:px-2 px-1 py-2 text-lg rounded-lg ${
                                   isActive
                                     ? "text-[#FF7A33] bg-[#FF7A33]/10"
                                     : "text-white/70"
@@ -212,7 +212,7 @@ const Navbar = () => {
           </div>
 
           {isMenuOpen && (
-            <div className="md:hidden px-6 py-4 space-y-4 border-t border-[#4361ee]/20">
+            <div className="md:hidden px-2 py-4 space-y-4  border-[#4361ee]/20">
               {menuItems.map((item) =>
                 item.isDropdown ? (
                   <div key={item.id} className="space-y-2">
@@ -225,16 +225,16 @@ const Navbar = () => {
                     </span>
                     {isServiceDropdownOpen && (
                       <div
-                        className="absolute left-0 mt-2 bg-[#5E5E5E] rounded-lg shadow-lg w-full p-1 max-h-60 overflow-y-auto"
+                        className="relative left-0 mt-2 bg-[#000] border border-gray-900 border-t-0 rounded-lg shadow-lg w-full p-1 max-h-60 overflow-y-auto"
                         onMouseLeave={() => setIsServiceDropdownOpen(false)}
                       >
-                        <div className="grid grid-cols-2 gap-1">
+                        <div className="grid grid-cols-1 gap-1">
                           {serviceDropdownItems.map((service) => (
                             <NavLink
                               key={service.id}
                               to={`/${service.path}`}
                               className={({ isActive }) =>
-                                `flex items-center space-x-1 px-1 py-2 text-xs rounded-lg ${
+                                `flex items-center space-x-1 px-1 py-2 text-[1.1rem] rounded-lg ${
                                   isActive
                                     ? "text-[#FF7A33] bg-[#FF7A33]/10"
                                     : "text-white/70"
