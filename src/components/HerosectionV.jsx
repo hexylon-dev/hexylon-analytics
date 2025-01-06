@@ -303,6 +303,7 @@ export default function Component({ handleNavigateToContactPage }) {
             className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 min-h-[120px] sm:min-h-[170px]"
           >
             Unlock Insights with{" "}
+            <br/>
             <TypeWriter
               words={["AI-Powered Analytics", "Hexylon Analytics"]}
               className="text-[#FF6600]"
@@ -334,7 +335,7 @@ export default function Component({ handleNavigateToContactPage }) {
               Get Started
             </button>
             <a
-              href="#why-choose-us"
+              href="/about-us"
               className="border-2 border-[#FF6600] text-[#FF6600] hover:bg-[#FF6600] hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold transition-colors duration-300 w-full sm:w-auto"
             >
               Learn More
