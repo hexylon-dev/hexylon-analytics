@@ -260,7 +260,7 @@ const ContactPage = () => {
                       className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
                                focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
                                transition-all duration-300 hover:border-[#FF6600]/40"
-                      placeholder="John Doe"
+                      placeholder="Enter Your Name Here"
                       required
                     />
                   </div>
@@ -296,7 +296,7 @@ const ContactPage = () => {
                       className="w-full h-12 bg-black/30 border border-[#FF6600]/20 rounded-lg px-4 text-white 
                                focus:outline-none focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/50 
                                transition-all duration-300 hover:border-[#FF6600]/40"
-                      placeholder="john@example.com"
+                      placeholder="email@example.com"
                       required
                     />
                   </div>

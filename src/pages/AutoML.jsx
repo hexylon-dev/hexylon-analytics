@@ -5,7 +5,7 @@ import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/automl.jpg";
-
+import six from "../assets/6.png"
 export const AutoML = () => {
     const automl = {
         heroSection: {
@@ -134,7 +134,7 @@ export const AutoML = () => {
     
         whyHexylon: {
           title: "Why Choose Hexylon? Our Expertise in Predictive Analytics and AI",
-          constantImage: image,
+          constantImage: six,
           content:
             "At Hexylon, we specialize in predictive analytics, AI, and machine learning to help businesses make smarter decisions and drive growth. Here's why companies trust us:",
           reasons: [
