@@ -92,7 +92,8 @@ const ContactPage = () => {
     try {
       await CreateContactUsResponseApi({
         ...formData,
-        description: `${formData.area_of_interest}, ${formData.industry}`,
+        workspace_id : "2d258123-b62f-4662-9a24-145dff11331a",
+        description: `${formData.area_of_interest}`,
       });
     } catch (err) {
       console.log(err);

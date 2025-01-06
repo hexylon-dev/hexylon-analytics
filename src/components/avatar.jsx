@@ -4,48 +4,274 @@ import * as THREE from "three";
 import ReactMarkdown from 'react-markdown'
 import MarkdownRenderer from "./MarkdownRenderer";
 let LastIndex = null;
-const API_BASE_URL = 'https://grateful-shortly-tick.ngrok-free.app'
+const API_BASE_URL = 'http://192.168.1.22:6001'
 
 const api = {
-    streamResponse: async ({ role, content }, onChunk, onError, onComplete) => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/generate/stream`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ role, content }),
-        });
-  
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+  streamResponse: async ({ role, content }, onChunk, onError, onComplete, abortController) => {
+    const { signal } = abortController; // Use the signal from the provided AbortController
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/generate/stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ role, content }),
+        // signal, // Pass the abort signal to fetch
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          onComplete();
+          break;
         }
-  
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
-  
-        while (true) {
-          const { done, value } = await reader.read();
-          
-          if (done) {
-            onComplete();
-            break;
-          }
-  
-          buffer += decoder.decode(value, { stream: true });
-          
-        //   const messages = buffer.split('\n\n');
-        // console.log({messages});
+
+        buffer += decoder.decode(value, { stream: true });
+
         onChunk(buffer);
 
-        // buffer = messages.pop() |  | '';
+        // If the abort signal is triggered, stop the stream
+        if (signal.aborted) {
+          reader.cancel();
+          onComplete();
+          break;
         }
-      } catch (error) {
+      }
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        console.log('Streaming aborted');
+      } else {
         onError(error);
       }
     }
-  };
+  },
+};
+
+// Usage
+// const abortController = new AbortController(); // Correct way to create an AbortController
+
+// // When you want to stop the stream, call abort() on the controller
+// abortController.abort(); // This will trigger the abortSignal
+
+// // Call the streamResponse function, passing the abortController
+// api.streamResponse(
+//   {
+//     role: 'user',
+//     content: 'Hello, World!',
+//   },
+//   (chunk) => { console.log(chunk); },
+//   (error) => { console.error(error); },
+//   () => { console.log('Streaming complete!'); },
+//   abortController // Pass the abortController (not signal)
+// );
+
+  export function ChatScreen({ closeChat, initialMessage = '' }) {
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const messagesEndRef = useRef(null);
+    const [isStreaming, setIsStreaming] = useState(false);
+    const [abortController, setAbortController] = useState(null);
+    const [isLoadingMsg, setIsLoadingMsg] = useState(false);
+    const [lastIndex, setLastIndex] = useState(null);
+  
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+  
+    useEffect(() => {
+      scrollToBottom();
+    }, [messages]);
+  
+    useEffect(() => {
+      if (initialMessage.trim()) {
+        setNewMessage(initialMessage);
+        handleSendMessage();
+      }
+    }, [initialMessage]);
+  
+    const handleStreamResponse = ({ role, content }, onChunk, onError = () => {}, onComplete, controller) => {
+      setIsStreaming(true);
+      api.streamResponse(
+        { role, content },
+        (data) => {
+          console.log('Data:', data);
+          onChunk(data);
+        },
+        (error) => {
+          console.error('Streaming error:', error);
+          onError(error);
+          setIsStreaming(false);
+        },
+        onComplete, controller
+      );
+    };
+  
+    const handleSendMessage = async () => {
+      if (newMessage.trim() && !isLoading) {
+        setMessages((prev) => [
+          ...prev,
+          { id: prev.length + 1, text: newMessage, sender: 'user' },
+        ]);
+        setIsLoadingMsg(true);
+  
+        const controller = new AbortController();
+        setAbortController(controller);
+  
+        const messageToSend = newMessage;
+        setNewMessage('');
+  
+        let fullMessage = '';
+  
+        await handleStreamResponse(
+          { role: 'user', content: messageToSend },
+          (data) => {
+            setIsLoadingMsg(false);
+            fullMessage = data;
+            if (lastIndex === null) {
+              setLastIndex(messages.length);
+              setMessages((prev) => [
+                ...prev,
+                { id: prev.length + 1, text: fullMessage, sender: 'assistant' },
+              ]);
+            } else {
+              setMessages((prev) => [
+                ...prev.slice(0, -1),
+                { id: lastIndex, text: fullMessage, sender: 'assistant' },
+              ]);
+            }
+          },
+          (error) => {
+            console.error('Error during streaming', error);
+          },
+          () => {
+            setLastIndex(null);
+            setAbortController(null);
+            setIsStreaming(false);
+          },
+          controller
+        );
+      }
+    };
+  
+    const handlePauseStream = () => {
+      console.log("call pus")
+      if (abortController) {
+        abortController.abort();
+        setAbortController(null);
+        setIsStreaming(false);
+      }
+    };
+  
+    return (
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
+        <div className="w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-lg text-white shadow-xl">
+          <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-full overflow-hidden">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MWSML4vrVMASbwcXtBNuWIf19oYgmy.png"
+                  alt="Company Logo"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <h2 className="text-xl font-semibold">Chat with Hex</h2>
+            </div>
+            <button
+              onClick={closeChat}
+              className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+  
+          <div className="h-[400px] p-4 space-y-4 overflow-y-auto custom-scrollbar">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                {message.sender !== 'user' && (
+                  <div className="h-[50px] w-[50px] rounded-full overflow-hidden flex-shrink-0 mr-3">
+                    <ShowAvatar />
+                  </div>
+                )}
+                <div
+                  className={`max-w-[80%] rounded-lg p-3 ${message.sender === 'user' ? 'bg-[#FF6600] text-white' : 'bg-[#252525] text-gray-200'}`}
+                >
+                  <MarkdownRenderer content={message.text} />
+                </div>
+              </div>
+            ))}
+  
+            {isLoadingMsg && (
+              <div className="flex space-y-4 flex-col">
+                <div className="flex items-start space-x-3">
+                  <div className="h-[50px] w-[50px] rounded-full bg-gray-700 animate-pulse" />
+                  <div className="bg-gray-700 animate-pulse rounded-lg p-3 w-[60%] h-[20px]" />
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+  
+          <div className="p-4 border-t border-zinc-800">
+            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                placeholder="Type your message..."
+                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white placeholder:text-zinc-400 focus:outline-none focus:border-orange-500 transition-colors"
+                onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                disabled={isLoading}
+              />
+              <button
+                onClick={isStreaming ? handlePauseStream : handleSendMessage}
+                disabled={isLoading}
+                className={`bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
+              >
+                {isStreaming ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="6" y1="4" x2="6" y2="20" />
+                    <line x1="18" y1="4" x2="18" y2="20" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+
 function ParticleSystem({ isLoading, onTransitionComplete }) {
   const pointsRef = useRef(null);
   const targetPositions = useRef(null);
@@ -189,343 +415,8 @@ export function ShowAvatar() {
 }
 
 
-function ChatScreen({ closeChat }) {
-  const [projectIdea, setProjectIdea] = useState('')
-  const [showChat, setShowChat] = useState(false)
-  const [messages, setMessages] = useState([])
-  const [newMessage, setNewMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const messagesEndRef = useRef(null);
-  const [isLoadingMsg , setisLoadingMsg] = useState(false);
-  
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
 
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages]);
 
-  const handleStreamResponse = ({ role, content }, onChunk, onError = () => {}, onComplete) => {
-    api.streamResponse(
-      { role, content },
-      (data) => {
-        console.log("ris2:", data);
-        onChunk(data);
-
-        // if (data && data.text) {
-        //   console.log("ris:", data, data.text);
-        //   // Accumulate text chunks in a single variable
-        // }
-      },
-      (error) => {
-        console.error('Streaming error:', error);
-        onError(error); // Call the onError callback if provided
-      },
-      () => {
-        LastIndex = null;
-        console.log(LastIndex , " :  LastIndex = null;")
-        // Once the streaming is completed, call the onComplete callback
-        onComplete();
-      }
-    );
-  };
-  
-  const handleSendMessage = async () => {
-    if (newMessage.trim() && !isLoading) {
-      setMessages((prev) => [
-        ...prev,
-        { id: prev.length + 1, text: newMessage, sender: 'user' },
-      ]);
-      setisLoadingMsg(true);
-      const messageToSend = newMessage;
-      setNewMessage('');
-  
-      let fullMessage = ''; // Store the full message
-  
-      await handleStreamResponse(
-        { role: 'user', content: messageToSend },
-        (data) => {
-          setisLoadingMsg(false);
-            console.log("data fin : " , data)
-            fullMessage = data; // Accumulate the full message
-            if(!LastIndex){
-              LastIndex = messages.length === 0 ?  1 : messages.length  ;
-              console.log({LastIndex  } , "kmv okvn")
-              setMessages((prev) => [
-                  ...prev,
-                  { id: prev.length + 1, text: fullMessage, sender: 'assistant' }, // Update with full message
-                ]);
-            }else{
-              console.log({LastIndex  } , "kmv 1")
-              setMessages((prev) => [
-                  ...prev.slice(0, -1),
-                  { id: LastIndex , text: fullMessage, sender: 'assistant' }, // Update with full message
-                ]);
-            }  
-        },
-        (error) => {
-          console.error('Error during streaming', error);
-        },
-        () => {
-            LastIndex = null;
-          console.log('Streaming completed');
-        }
-      );
-    }
-  };
-
-    return (
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-lg text-white shadow-xl">
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-zinc-800">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full overflow-hidden">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MWSML4vrVMASbwcXtBNuWIf19oYgmy.png"
-                alt="Company Logo"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <h2 className="text-xl font-semibold">Chat with Hex</h2>
-          </div>
-          <button
-            onClick={closeChat}
-            className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Chat Content */}
-        <div className="h-[400px] p-4 space-y-4 overflow-y-auto custom-scrollbar">
-          {messages && messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${
-                message.sender === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              {/* Avatar */}
-              {message.sender !== "user" && (
-                <div className="h-[50px] w-[50px] rounded-full overflow-hidden flex-shrink-0 mr-3">
-                  <ShowAvatar />
-                </div>
-              )}
-
-              {/* Message Bubble */}
-              <div
-                className={`max-w-[80%] rounded-lg p-3 ${
-                  message.sender === "user"
-                    ? "bg-[#FF6600] text-white"
-                    : "bg-[#252525] text-gray-200"
-                } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
-              >
-                 <MarkdownRenderer content={message.text} />  
-              </div>
-            </div>
-          ))}
-           {/* Skeleton Loading */}
-  {isLoadingMsg && (
-    <div className="flex space-y-4 flex-col">
-      {/* Skeleton for received message */}
-      <div className="flex items-start space-x-3">
-        {/* Skeleton Avatar */}
-        <div className="h-[50px] w-[50px] rounded-full bg-gray-700 animate-pulse" />
-        {/* Skeleton Message Bubble */}
-        <div className="bg-gray-700 animate-pulse rounded-lg p-3 w-[60%] h-[20px]" />
-      </div>
-    </div>
-  )}
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Input Area */}
-        <div className="p-4 border-t border-zinc-800">
-          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white placeholder:text-zinc-400 focus:outline-none focus:border-orange-500 transition-colors"
-              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-              disabled={isLoading}
-            />
-            <button
-              onClick={handleSendMessage}
-              disabled={isLoading}
-              className={`bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors ${
-                isLoading ? "cursor-not-allowed opacity-50" : ""
-              }`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #27272a;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #3f3f46;
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #52525b;
-        }
-      `}</style>
-    </div>
-    )
-
-}
-
-// function ChatScreen({ closeChat }) {
-//   const messages = [];
-//   return (
-//     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-4">
-//       <div className="w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-lg text-white shadow-xl">
-//         {/* Header */}
-//         <div className="flex items-center justify-between p-4 border-b border-zinc-800">
-//           <div className="flex items-center gap-3">
-//             <div className="h-10 w-10 rounded-full overflow-hidden">
-//               <img
-//                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MWSML4vrVMASbwcXtBNuWIf19oYgmy.png"
-//                 alt="Company Logo"
-//                 className="h-full w-full object-cover"
-//               />
-//             </div>
-//             <h2 className="text-xl font-semibold">Chat with Hex</h2>
-//           </div>
-//           <button
-//             onClick={closeChat}
-//             className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
-//           >
-//             <svg
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="20"
-//               height="20"
-//               viewBox="0 0 24 24"
-//               fill="none"
-//               stroke="currentColor"
-//               strokeWidth="2"
-//               strokeLinecap="round"
-//               strokeLinejoin="round"
-//             >
-//               <path d="M18 6L6 18M6 6l12 12" />
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Chat Content */}
-//         <div className="h-[400px] p-4 space-y-4 overflow-y-auto custom-scrollbar">
-//           {messages.map((message) => (
-//             <div
-//               key={message.id}
-//               className={`flex ${
-//                 message.sender === "user" ? "justify-end" : "justify-start"
-//               }`}
-//             >
-//               {/* Avatar */}
-//               {message.sender !== "user" && (
-//                 <div className="h-[50px] w-[50px] rounded-full overflow-hidden flex-shrink-0 mr-3">
-//                   <ShowAvatar />
-//                 </div>
-//               )}
-
-//               {/* Message Bubble */}
-//               <div
-//                 className={`max-w-[80%] rounded-lg p-3 ${
-//                   message.sender === "user"
-//                     ? "bg-blue-600 text-white"
-//                     : "bg-[#252525] text-gray-200"
-//                 } ${message.isStreaming ? "border-l-4 border-green-500" : ""}`}
-//               >
-//                 {message.text}
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Input Area */}
-//         <div className="p-4 border-t border-zinc-800">
-//           "
-//           <form className="flex gap-2">
-//             <input
-//               type="text"
-//               placeholder="Type your message..."
-//               className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white placeholder:text-zinc-400 focus:outline-none focus:border-orange-500 transition-colors"
-//             />
-//             <button
-//               type="submit"
-//               className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
-//             >
-//               <svg
-//                 xmlns="http://www.w3.org/2000/svg"
-//                 width="16"
-//                 height="16"
-//                 viewBox="0 0 24 24"
-//                 fill="none"
-//                 stroke="currentColor"
-//                 strokeWidth="2"
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//               >
-//                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-//               </svg>
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-
-//       <style jsx global>{`
-//         .custom-scrollbar::-webkit-scrollbar {
-//           width: 6px;
-//         }
-//         .custom-scrollbar::-webkit-scrollbar-track {
-//           background: #27272a;
-//         }
-//         .custom-scrollbar::-webkit-scrollbar-thumb {
-//           background: #3f3f46;
-//           border-radius: 3px;
-//         }
-//         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-//           background: #52525b;
-//         }
-//       `}</style>
-//     </div>
-//   );
-// }
 
 export default function ParticleAvatar() {
   const [isLoading, setIsLoading] = useState(false);

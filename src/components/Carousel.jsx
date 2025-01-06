@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function Carousel({ carouselData }) {
   const { title, content, reasons, constantImage } = carouselData;
-  console.log(carouselData);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {

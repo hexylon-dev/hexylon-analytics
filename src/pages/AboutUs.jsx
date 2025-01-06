@@ -104,11 +104,11 @@ export default function HexylonLanding(
   className="relative max-w-7xl min-h-screen mx-auto z-10 flex flex-col px-4 sm:px-6 lg:px-8 pt-32 md:pt-0"
 >
   {/* Right Arrow - Updated positioning */}
-  <div className="absolute top-[20vh] right-4 md:top-[25vh] md:right-[8rem]">
+  {/* <div className="absolute top-[20vh] right-4 md:top-[25vh] md:right-[8rem]">
     <div className="p-1 sm:p-2 md:p-3 rounded-full shadow-lg transition-colors duration-300">
       <RightArrow className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#0066ff]" />
     </div>
-  </div>
+  </div> */}
 
   {/* Service Button - Updated margin */}
   <div className="mb-16 md:mb-32">

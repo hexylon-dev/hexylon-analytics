@@ -127,7 +127,7 @@ function App() {
         />
         {/* <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} /> */}
       </Routes>
-      <ParticleAvatar />
+      {/* <ParticleAvatar /> */}
       <Footer />
     </Router>
   );
