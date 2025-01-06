@@ -5,7 +5,8 @@ import PosterPage from "../components/PosterPage";
 import MissionCard from "../components/About Us/mission";
 import HexylonServices from "../components/About Us/weDo";
 import WhyUs from "../components/About Us/whyUs";
-
+import AboutUsV from "../components/AboutUsV";
+import AboutUs5 from "../components/AboutUs5";
 const heroSection = {
   title: "Transforming Data into Insightful Solutions",
   tagline:
@@ -197,6 +198,8 @@ export default function HexylonLanding(
       </div> 
       <MissionCard />
       <HexylonServices />
+      <AboutUsV />
+      <AboutUs5 />
       {/* <WhyUs /> */}
       <PosterPage callToAction={callToAction}/>
     </>
