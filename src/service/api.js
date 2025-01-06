@@ -8,6 +8,14 @@ export const CreateContactUsResponseApi = (body) => {
   });
 };
 
+export const OnlyMailSendToContactUs = (body) => {
+  return http.post({
+    url: '/contactus_responses/send-email',
+    data: body,
+    messageSettings: {hideSuccessMessage: true}
+  })
+}
+
 export const GetCareerApi = () => {
     return http.post({
       url: '/list-job-postings',
