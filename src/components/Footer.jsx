@@ -160,8 +160,8 @@ const FooterWithTransition = () => {
               <div className="flex gap-2">
                 <MapPin className="w-5 h-5" />
                 <div>
-                  <p>301/1, Parshwa Tower-2, 901, Sarkhej -</p>
-                  <p>Gandhinagar Hwy, near Dakvan II,</p>
+                  <p>301/2, Parshwa Tower, Sarkhej -</p>
+                  <p>Gandhinagar Hwy, Nr. Pakwan II,</p>
                   <p>Bodakdev, Ahmedabad, Gujarat 380054</p>
                 </div>
               </div>
