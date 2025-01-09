@@ -4,8 +4,9 @@ import Home from "./pages/home";
 import ContactUs from "./pages/ContactUs4";
 import Navbar from "./components/Navbar1";
 import Footer from "./components/Footer";
-import CareerPage from "./components/CareerPage";
-import ApplyForm from "./components/ApplyForm";
+import CareerPage from "./pages/CareerPageV";
+
+import ApplyForm from "./pages/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
 import ServicePageV from "./components/ServicePageV";
 import Header from "./components/Blogs/HeaderBlog";
@@ -25,6 +26,7 @@ import OurWork from "./pages/OurWork";
 import OurWorkV from "./components/OurWorkV"
 import ParticleAvatar from "./components/avatar"
 import AboutUs from "./pages/AboutUs"
+// import ApplyForm from "./pages/ApplyForm";
 function App() {
   return (
     <Router>
@@ -51,9 +53,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/our-work" element={<OurWorkV />} />
         <Route path="/about-us" element={<AboutUs />} />
-
-        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/careers" element={<CareerPage />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        {/* <Route path="/careers" element={<CareerPage />} /> */}
+
+        <Route path="/apply-form" element={<ApplyForm />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
         {/* <Route
           path="/services"
