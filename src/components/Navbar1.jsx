@@ -19,6 +19,7 @@ const menuItems = [
   // { id: 4, label: "Technologies", path: "technologies" },
   { id: 5, label: "About Us", path: "about-us" },
   { id: 6, label: "Our Work", path: "our-work" },
+  { id: 7, label: "Career", path: "careers" },
 ];
 
 const serviceDropdownItems = [

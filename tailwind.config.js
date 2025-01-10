@@ -43,6 +43,10 @@ module.exports = {
           }
         },
       },
+      colors: {
+        'primary': '#ff6600',
+        'primary-light': '#ff8533',
+      }
     },
   },
   plugins: [],

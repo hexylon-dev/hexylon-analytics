@@ -67,8 +67,8 @@ const Http = async (apiDataProps) => {
   };
 
   const handleError = async (error) => {
-    console.log(error)
-    const { status, data } = error;
+    console.log("vvvvvvvvvvvv",error)
+    const { status, data } = error.data;
     if (messageSettings && !messageSettings.hideErrorMessage) {
       if (messageSettings.errorMessage !== '') {
         Notification({

@@ -419,6 +419,7 @@ export function ShowAvatar() {
 
 
 export default function ParticleAvatar() {
+  const avatarRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -429,8 +430,14 @@ export default function ParticleAvatar() {
   };
 
   const closeChat = () => {
-    setShowChat(false);
-    setIsLoading(false);
+    const chatElement = document.querySelector('.genie-effect');
+    chatElement.classList.add('closing');
+    
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+      setShowChat(false);
+      setIsLoading(false);
+    }, 500); // Match this with animation duration
   };
 
   // Check for phone screen size
@@ -460,9 +467,25 @@ export default function ParticleAvatar() {
     };
   }, [isMobile]);
 
+  const handleAvatarClick = () => {
+    const avatarElement = avatarRef.current;
+    const avatarRect = avatarElement.getBoundingClientRect();
+    
+    // Store more precise positioning variables
+    document.documentElement.style.setProperty('--avatar-bottom', `${window.innerHeight - avatarRect.bottom}px`);
+    document.documentElement.style.setProperty('--avatar-right', `${window.innerWidth - avatarRect.right}px`);
+    document.documentElement.style.setProperty('--avatar-width', `${avatarRect.width}px`);
+    document.documentElement.style.setProperty('--avatar-height', `${avatarRect.height}px`);
+    document.documentElement.style.setProperty('--avatar-x', `${avatarRect.left}px`);
+    document.documentElement.style.setProperty('--avatar-y', `${avatarRect.top}px`);
+    
+    setIsLoading(true);
+  };
+
   return (
     <>
       <div
+        ref={avatarRef}
         className={`fixed w-[200px] h-[200px] z-10 transition-all duration-500 ${
           isMobile && isScrolled
             ? "top-[-60px] left-1/2 transform -translate-x-1/2 z-50"
@@ -470,8 +493,8 @@ export default function ParticleAvatar() {
         }`}
       >
         <div
-          className="relative w-full h-full flex items-center justify-center"
-          onClick={() => setIsLoading(true)}
+          className="relative w-full h-full flex items-center justify-center cursor-pointer"
+          onClick={handleAvatarClick}
         >
           {!showChat && (
             <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
@@ -485,10 +508,246 @@ export default function ParticleAvatar() {
         </div>
       </div>
       {showChat && (
-        <div className="">
-          <ChatScreen closeChat={closeChat} />
+        <div className={`genie-effect fixed inset-0 z-50 ${isMobile ? 'mobile-view' : ''}`}>
+          <div className="genie-content">
+            <div className="genie-inner">
+              <div className="chat-container bg-black/80 backdrop-blur-sm w-full max-w-2xl mx-auto">
+                <ChatScreen closeChat={closeChat} />
+              </div>
+            </div>
+          </div>
         </div>
       )}
+
+      <style jsx global>{`
+        .genie-effect {
+          perspective: 2000px;
+          transform-style: preserve-3d;
+          pointer-events: none;
+        }
+
+        .genie-content {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .genie-inner {
+          width: 100%;
+          height: 100%;
+          transform-origin: bottom right;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: genieEffect 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .chat-container {
+          pointer-events: auto;
+          transform-origin: bottom right;
+          animation: genieCurve 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        @keyframes genieEffect {
+          0% {
+            clip-path: polygon(
+              100% 100%,
+              100% 100%,
+              100% 100%,
+              100% 100%
+            );
+            transform: 
+              translate3d(var(--avatar-right), var(--avatar-bottom), 0)
+              scale3d(0.1, 0.1, 1);
+          }
+          30% {
+            clip-path: polygon(
+              50% 100%,
+              100% 100%,
+              100% 0%,
+              80% 0%
+            );
+          }
+          100% {
+            clip-path: polygon(
+              0% 100%,
+              100% 100%,
+              100% 0%,
+              0% 0%
+            );
+            transform: 
+              translate3d(0, 0, 0)
+              scale3d(1, 1, 1);
+          }
+        }
+
+        @keyframes genieCurve {
+          0% {
+            border-radius: 0 0 50% 0;
+            transform: scaleX(0.1);
+          }
+          50% {
+            border-radius: 0 0 30% 0;
+            transform: scaleX(1.2);
+          }
+          100% {
+            border-radius: 16px;
+            transform: scaleX(1);
+          }
+        }
+
+        .genie-effect.closing .genie-inner {
+          animation: genieEffectClose 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .genie-effect.closing .chat-container {
+          animation: genieCurveClose 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes genieEffectClose {
+          0% {
+            clip-path: polygon(
+              0% 100%,
+              100% 100%,
+              100% 0%,
+              0% 0%
+            );
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+          }
+          70% {
+            clip-path: polygon(
+              50% 100%,
+              100% 100%,
+              100% 0%,
+              80% 0%
+            );
+          }
+          100% {
+            clip-path: polygon(
+              100% 100%,
+              100% 100%,
+              100% 100%,
+              100% 100%
+            );
+            transform: 
+              translate3d(var(--avatar-right), var(--avatar-bottom), 0)
+              scale3d(0.1, 0.1, 1);
+          }
+        }
+
+        @keyframes genieCurveClose {
+          0% {
+            border-radius: 16px;
+            transform: scaleX(1);
+          }
+          50% {
+            border-radius: 0 0 30% 0;
+            transform: scaleX(1.2);
+          }
+          100% {
+            border-radius: 0 0 50% 0;
+            transform: scaleX(0.1);
+          }
+        }
+
+        /* Mobile animations */
+        .mobile-view .genie-inner {
+          animation: mobileGenieEffect 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-origin: top center;
+        }
+
+        .mobile-view .chat-container {
+          transform-origin: top center;
+          animation: mobileCurve 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes mobileGenieEffect {
+          0% {
+            clip-path: polygon(
+              0 0,
+              100% 0,
+              100% 0,
+              0 0
+            );
+            transform: translateY(-100%);
+          }
+          100% {
+            clip-path: polygon(
+              0 0,
+              100% 0,
+              100% 100%,
+              0 100%
+            );
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes mobileCurve {
+          0% {
+            border-radius: 0 0 24px 24px;
+            transform: translateY(-100%);
+          }
+          100% {
+            border-radius: 0;
+            transform: translateY(0);
+          }
+        }
+
+        /* Mobile closing animations */
+        .mobile-view.closing .genie-inner {
+          animation: mobileGenieEffectClose 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-view.closing .chat-container {
+          animation: mobileCurveClose 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes mobileGenieEffectClose {
+          0% {
+            clip-path: polygon(
+              0 0,
+              100% 0,
+              100% 100%,
+              0 100%
+            );
+            transform: translateY(0);
+          }
+          100% {
+            clip-path: polygon(
+              0 0,
+              100% 0,
+              100% 0,
+              0 0
+            );
+            transform: translateY(-100%);
+          }
+        }
+
+        @keyframes mobileCurveClose {
+          0% {
+            border-radius: 0;
+            transform: translateY(0);
+          }
+          100% {
+            border-radius: 0 0 24px 24px;
+            transform: translateY(-100%);
+          }
+        }
+
+        /* Make chat container full screen on mobile */
+        @media (max-width: 768px) {
+          .chat-container {
+            max-width: 100%;
+            height: 100vh;
+            border-radius: 0;
+          }
+        }
+      `}</style>
     </>
   );
 }
