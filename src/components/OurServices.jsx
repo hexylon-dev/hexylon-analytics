@@ -72,7 +72,7 @@ const items = [
   {
     id: 6,
     title: "Automated Machine Learning (AutoML)",
-    paht: "/services/automated-machine-learning",
+    path: "/services/automated-machine-learning",
     iconSvg: <AutoML className="w-7 h-7" />,
     cardImg: <ServiceCardAutoML className="w-[80%]" />,
     description:

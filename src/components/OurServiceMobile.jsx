@@ -153,7 +153,7 @@ const accordionData = [
   {
     id: 6,
     title: "Automated Machine Learning (AutoML)",
-    paht: "/services/automated-machine-learning",
+    path:"/services/automated-machine-learning",
     iconSvg: <AutoML />,
     cardImg: <ServiceCardAutoML/>,
     description:
