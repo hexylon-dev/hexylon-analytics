@@ -87,7 +87,7 @@ export const resources = [
 
         The future of customer experience with AI is promising. As AI technology continues to evolve, businesses will have even more opportunities to provide hyper-personalized experiences that feel intuitive and human. Hexylon Analytics is at the forefront of this transformation, empowering businesses with innovative AI solutions that enhance customer engagement and drive success.
 
-        ## Conclusion
+        ### Conclusion
 
         Incorporating AI-powered personalization into your customer experience strategy is no longer just a trend – it’s a necessity for staying competitive in today’s digital world. Hexylon Analytics is committed to helping businesses leverage the power of AI to enhance customer journeys, improve customer engagement, and deliver real-time personalization that leads to lasting relationships with customers.
 
