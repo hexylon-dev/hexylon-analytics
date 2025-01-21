@@ -55,8 +55,8 @@ const renderContent = (content) => {
 export const resources = [
     {
         id: 1,
-        title: 'How AI is Transforming the Manufacturing Sector: A Deep Dive into Hexylon’s Innovative Approach',
-        description: 'Discover how AI in manufacturing and Hexylon manufacturing solutions are streamlining operations. Learn about manufacturing AI solutions, AI-driven production, and AI-powered quality control for improved efficiency and profitability.',
+        title: 'How AI is Transforming HealthCare: A Deep Dive into Hexylon’s Solutions for 2024',
+        description: 'Revolitionizing Healthcare with AI: Hexylon’s 2024 Guide',
         image: blog1,
         link: '/blog/1',
         date: 'March 15, 2024',
