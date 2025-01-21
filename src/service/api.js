@@ -8,6 +8,14 @@ export const CreateContactUsResponseApi = (body) => {
   });
 };
 
+export const OnlyMailSendToContactUs = (body) => {
+  return http.post({
+    url: '/contactus_responses/send-email',
+    data: body,
+    messageSettings: {hideSuccessMessage: true}
+  })
+}
+
 export const GetCareerApi = () => {
     return http.post({
       url: '/list-job-postings',
@@ -31,7 +39,7 @@ export const GetJobApi = (id) => {
 
 export const GetJobsApi = (q) => {
     return http.get({
-      url: '/list-job-postings',
+      url: 'v1/list-job-postings/a5a98e56-7703-446f-b00f-2f8c19861e9b',
       messageSettings: { hideSuccessMessage: true },
     });
   };
@@ -45,8 +53,13 @@ export const GetBlogApi = (id) => {
 
 export const AddApplicantApi = (body) => {
     return http.post({
-      url: `/applicants`,
+      url: `v1/applicants`,
     data: body,
+    config: {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
     messageSettings: { successMessage: 'Job added successfully.' },
     });
   };

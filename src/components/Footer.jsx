@@ -13,11 +13,13 @@ import {
 } from "lucide-react";
 import logo from "../assets/logo.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import {OnlyMailSendToContactUs} from "../service/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FooterWithTransition = () => {
   const sectionRef = useRef(null);
+  const emailRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation(); // Track the current route location
 
@@ -69,6 +71,20 @@ const FooterWithTransition = () => {
         break;
     }
   };
+
+  const clickOnsubscribe = async () => {
+    try{
+      if(emailRef.current){
+        await OnlyMailSendToContactUs({
+          email: emailRef.current.value ,
+          workspace_id : "2d258123-b62f-4662-9a24-145dff11331a",
+        });
+        emailRef.current.value = "";
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <footer className="bg-[#171717] text-gray-300 py-12 px-4 md:px-6  relative z-5">
@@ -144,8 +160,8 @@ const FooterWithTransition = () => {
               <div className="flex gap-2">
                 <MapPin className="w-5 h-5" />
                 <div>
-                  <p>301/1, Parshwa Tower-2, 901, Sarkhej -</p>
-                  <p>Gandhinagar Hwy, near Dakvan II,</p>
+                  <p>301/2, Parshwa Tower, Sarkhej -</p>
+                  <p>Gandhinagar Hwy, Nr. Pakwan II,</p>
                   <p>Bodakdev, Ahmedabad, Gujarat 380054</p>
                 </div>
               </div>
@@ -198,11 +214,12 @@ const FooterWithTransition = () => {
             </h3>
             <div className="space-y-2">
               <input
+                ref={emailRef}
                 type="email"
                 placeholder="Enter Your Email Address"
                 className="bg-black border-gray-700 text-white placeholder:text-gray-500 p-3 rounded-md w-full mb-2"
               />
-              <button className=" bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-md">
+              <button className=" bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-md" onClick={clickOnsubscribe}>
                 Subscribe
               </button>
             </div>

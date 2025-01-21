@@ -5,7 +5,7 @@ import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/coustomeai.jpg";
-
+import five from "../assets/5.png"
 export const CustomAIModels = () => {
     const customAIModels = {
         heroSection: {
@@ -134,7 +134,7 @@ export const CustomAIModels = () => {
           title: "Why Choose Us for Custom AI Model Development?",
           content:
             "At Hexylon Analytics, we specialize in creating custom AI models tailored to your specific business needs. Here's why businesses trust us:",
-            constantImage: image,
+            constantImage: five,
           reasons: [
             {
               id: 1,

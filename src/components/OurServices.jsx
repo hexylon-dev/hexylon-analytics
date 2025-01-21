@@ -21,12 +21,13 @@ import ServiceCardConversationalAI from "../assets/svgs/ServiceCardConversationa
 import ServiceCardAIforProcessAutomation from "../assets/svgs/ServiceCardAIforProcessAutomation";
 import { Navigate, useNavigate } from "react-router-dom";
 import ServiceCardAIPoweredDataAnalytics from "../assets/svgs/ServiceCardAIPoweredDataAnalytics";
+import ServiceAiPowerDataAnalyst from "../assets/svgs/ServiceAiPowerDataAnalyst";
 
 const items = [
   {
     id: 1,
     title: "Predictive Analytics Solutions Development",
-    iconSvg: <ServicePredictiveAnalytics />,
+    iconSvg: <ServicePredictiveAnalytics className="w-7 h-7" />,
     cardImg: <ServiceCardPredictiveAnalytics />,
     path: "/services/predictive-analytics",
     description:
@@ -35,7 +36,7 @@ const items = [
   {
     id: 2,
     title: "Natural Language Processing (NLP)",
-    iconSvg: <NaturalLanguage />,
+    iconSvg: <NaturalLanguage className="w-7 h-7" />,
     cardImg: <ServviceCardNaturalLanguage className="w-[80%]" />,
     path: "/services/natural-language",
     description:
@@ -45,7 +46,7 @@ const items = [
     id: 3,
     title: "Computer Vision",
     path: "/services/computer-vision",
-    iconSvg: <ServiceComputerVision />,
+    iconSvg: <ServiceComputerVision className="w-7 h-7" />,
     cardImg: <ServiceCardComputerVision className="w-[85%]" />,
     description:
       "Hexylon Analytics offers cutting-edge AI-driven computer vision solutions to help businesses unlock actionable insights and optimize operations. Using advanced algorithms, deep learning, and real-time image and video analysis, we enhance security, improve healthcare, and automate processes. Our services include AI-powered object detection, facial recognition, real-time surveillance, healthcare imaging, and autonomous vehicle vision systems. With robust technologies like OpenCV, TensorFlow, and Nvidia CUDA, we provide scalable, customized solutions to meet your industry needs. Leverage the power of computer vision to drive efficiency, security, and innovation in your business. Contact us to revolutionize your operations with AI-driven vision technology.",
@@ -54,7 +55,7 @@ const items = [
     id: 4,
     title: "Recommendation Systems",
     path: "/services/recommendation-systems",
-    iconSvg: <ServiceRecommendationSystems />,
+    iconSvg: <ServiceRecommendationSystems className="w-7 h-7" />,
     cardImg: <ServiceCardRecommendationSystems className="w-[85%]" />,
     description:
       "Hexylon Analytics delivers advanced AI-driven recommendation systems that personalize user experiences and boost business outcomes. Our machine learning-based engines use collaborative filtering, content-based filtering, and predictive analytics to optimize product suggestions, content recommendations, and mobile app experiences. These smart algorithms enhance user engagement, increase conversions, and improve customer satisfaction. By analyzing user behaviour and preferences, our recommendation systems provide tailored, data-driven solutions for industries like e-commerce, media, and entertainment. Our scalable, customizable recommendation engines will help your business stay competitive, engaging users with dynamic, personalized content that drives results. Contact Hexylon Analytics to enhance your business with powerful AI-powered recommendations.",
@@ -62,7 +63,7 @@ const items = [
   {
     id: 5,
     title: "Custom AI Models",
-    iconSvg: <ServiceCustomAI />,
+    iconSvg: <ServiceCustomAI className="w-7 h-7" />,
     cardImg: <ServiceCardCustomAI className="w-[90%]" />,
     path: "/services/custom-ai-models",
     description:
@@ -71,8 +72,8 @@ const items = [
   {
     id: 6,
     title: "Automated Machine Learning (AutoML)",
-    paht: "/services/automated-machine-learning",
-    iconSvg: <AutoML />,
+    path: "/services/automated-machine-learning",
+    iconSvg: <AutoML className="w-7 h-7" />,
     cardImg: <ServiceCardAutoML className="w-[80%]" />,
     description:
       "Transform your business with our cutting-edge AutoML solutions. By automating the entire machine learning pipeline—from data preprocessing and model selection to deployment and ongoing optimization—our solutions empower you to unlock valuable insights faster. With AutoML, you can automate decision-making, improve operational efficiency, and scale your business effortlessly. Whether you're looking to predict trends, optimize resources, or enhance customer experiences, AutoML enables data-driven growth. Reach out today to start your journey with AutoML and unlock the full potential of your data!",
@@ -81,7 +82,7 @@ const items = [
     id: 7,
     title: "AI-Powered Data Analytics",
     path: "/services/ai-powered-data-analytics",
-    iconSvg: <ServiceNaturalLanguage />,
+    iconSvg: <ServiceNaturalLanguage className="w-7 h-7" />,
     cardImg: <ServiceCardAIPoweredDataAnalytics className="w-[80%]" />,
     description:
       "Our AI-powered data analytics solutions automate complex data workflows, allowing you to make data-driven decisions faster and more accurately. With AI, you can uncover trends, predict outcomes, and optimize business processes, all while saving time and costs. Let's help you unlock the power of your data and drive better outcomes for your business.",
@@ -90,7 +91,7 @@ const items = [
     id: 8,
     title: "Conversational AI",
     path: "/services/conversational-ai",
-    iconSvg: <ServiceConversationalAI />,
+    iconSvg: <ServiceConversationalAI className="w-7 h-7" />,
     cardImg: <ServiceCardConversationalAI className="w-[80%]" />,
     description:
       "Our conversational AI solutions help businesses automate and enhance customer engagement, deliver personalized experiences, and drive operational efficiency. Whether through chatbots, virtual assistants, or voice solutions, we enable businesses to stay ahead with AI-powered communication systems. Let us show you how conversational AI can revolutionize your customer interactions and business outcomes.",
@@ -99,7 +100,7 @@ const items = [
     id: 9,
     title: "AI for Process Automation",
     path: "/services/ai-for-process-automation",
-    iconSvg: <ServiceAIforProcessAutomation />,
+    iconSvg: <ServiceAIforProcessAutomation className="w-7 h-7" />,
     cardImg: <ServiceCardAIforProcessAutomation className="w-[80%]" />,
     description:
       "Hexylon Analytics is a leading provider of AI-powered process automation solutions designed to revolutionize business operations. In today’s fast-paced world, efficiency and accuracy are crucial to maintaining a competitive edge, and Hexylon Analytics leverages advanced artificial intelligence to streamline workflows, reduce costs, and boost productivity. By automating repetitive tasks, optimizing workflows, and enhancing scalability, businesses can focus on innovation and strategic growth. With solutions that minimize human error, speed up processes, and provide actionable insights, Hexylon Analytics ensures operational excellence across various industries.",
@@ -199,28 +200,30 @@ const OurServices = () => {
   return (
     <>
       <div className="relative bg-black z-10 w-full justify-start hidden lg:flex">
-        <div className="w-[13%]"></div>
-        <div className="sticky top-[70px]  self-start bg-transparent max-w-[520px]  h-screen">
-          <div className="w-full p-2 max-h-[calc(100vh-70px)]  ">
-            <h2 className="text-3xl md:text-4xl font-bold text-orange-600  uppercase mb-10 ml-2">
+        <div className="xl:w-[10%] w-[5%]"></div>
+        <div className="sticky top-[70px] self-start bg-transparent  h-screen overflow-y-auto xl:min-w-[500px] min-w-[400px] scrollbar-hidden ">
+          <div className=" p-2 max-h-[calc(100vh-70px)]  w-full ">
+            <h2 className="text-3xl md:text-4xl font-bold text-orange-600  uppercase mb-4 ml-2">
               OUR SERVICES
             </h2>
             {items.map((item, index) => (
               <div
                 key={index}
-                className={`relative flex items-center gap-4 pb-8`}
+                className={`relative flex items-center gap-3 pb-4`}
               >
-                <div
-                  className={`absolute left-7 top-12 bottom-0 w-1 transition-all duration-300 ease-in-out ${
-                    isActive(item.id) ? "bg-blue-500" : "bg-blue-500/20"
-                  }`}
-                />
+                {item.id !== 9 && (
+                  <div
+                    className={`absolute left-6  bottom-0 h-[30px] w-1 transition-all duration-300 ease-in-out ${
+                      isActive(item.id) ? "bg-blue-500" : "bg-blue-500/20"
+                    }`}
+                  />
+                )}
 
                 <div
-                  className={`flex items-center justify-center relative w-[60px] h-[60px] rounded-full border-2 outline outline-offset-2 outline-[#0A0A0A] bg-[#5F5F5F] shadow-[inset_0px_-6px_4px_rgba(0,0,0,0.25)] transition-all duration-300 ease-in-out ${
+                  className={`flex items-center justify-center relative w-[50px] h-[50px] border  rounded-full bg-[#5F5F5F] shadow-[inset_0px_-6px_4px_rgba(0,0,0,0.25)] transition-all duration-300 ease-in-out ${
                     isActive(item.id)
-                      ? "border-blue-500 scale-110"
-                      : "outline-[#0A0A0A]"
+                      ? "border-blue-500 scale-110 "
+                      : "border-gray-600"
                   } `}
                 >
                   {item.iconSvg}
@@ -228,7 +231,7 @@ const OurServices = () => {
 
                 <div className="flex-1 justify-start">
                   <h3
-                    className={`text-lg font-medium transition-colors duration-300 ${
+                    className={`text-normal font-medium transition-colors duration-300 ${
                       isActive(item.id) ? "text-blue-500" : "text-white"
                     }`}
                   >
@@ -254,7 +257,7 @@ const OurServices = () => {
                   : ""
               }`}
             >
-              <div className="flex flex-col max-w-7xl ml-auto bg-[transparent] shadow-xl  h-full w-full border border-[#374151]">
+              <div className="flex flex-col 4xl:max-w-[1500px] max-w-[1000px] ml-auto bg-[transparent] shadow-xl  h-full w-full border border-[#374151]">
                 <figure className="flex justify-center items-center xl:pl-[5rem] pl-[2rem] py-12 ">
                   {section.cardImg}
                 </figure>
