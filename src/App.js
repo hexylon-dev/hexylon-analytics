@@ -4,17 +4,30 @@ import Home from "./pages/home";
 import ContactUs from "./pages/ContactUs4";
 import Navbar from "./components/Navbar1";
 import Footer from "./components/Footer";
-import CareerPage from './components/CareerPage';
-import ApplyForm from "./components/ApplyForm";
+import CareerPage from "./pages/CareerPageV";
+
+import ApplyForm from "./pages/ApplyForm";
 import NotificationWrapper from "./components/notifiction/notifiction";
 import ServicePageV from "./components/ServicePageV";
-import ServicePageR from "./components/ServicePageR"
-import Header from './components/Blogs/HeaderBlog';
-import ResourceCard from './components/Blogs/ResourceCard';
-import { resources } from './Data/resources';
-import BlogPage from './pages/BlogPage';
+import Header from "./components/Blogs/HeaderBlog";
+import ResourceCard from "./components/Blogs/ResourceCard";
+import { resources } from "./Data/resources";
+import BlogPage from "./pages/BlogPage";
+import { PredictiveAnalytics } from "./pages/PredictiveAnalytics";
+import { NaturalLanguage } from "./pages/NaturalLanguage";
+import { ComputerVision } from "./pages/ComputerVision";
+import { RecommendationSystems } from "./pages/RecommendationSystems";
+import { AutoML } from "./pages/AutoML";
+import { CustomAIModels } from "./pages/CustomAIModels";
+import { AIPoweredDataAnalytics } from "./pages/AIPoweredDataAnalytics";
+import { AIforProcessAutomation } from "./pages/AIforProcessAutomation";
+import { ConversationalAI } from "./pages/ConversationalAI";
+import OurWork from "./pages/OurWork";
+import OurWorkV from "./components/OurWorkV"
+import ParticleAvatar from "./components/avatar"
+import AboutUs from "./pages/AboutUs"
 import BlogList from "./components/BlogList";
-
+// import ApplyForm from "./pages/ApplyForm";
 function App() {
   return (
     <Router>
@@ -37,14 +50,90 @@ function App() {
             <BlogList/>
           </div>
         } />
-        <Route path="/blog/:id" element={<BlogPage />} />
+         <Route path="/blog/:id" element={<BlogPage />} />
+  
         <Route path="/" element={<Home />} />
+        <Route path="/our-work" element={<OurWorkV />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        {/* <Route path="/careers" element={<CareerPage />} /> */}
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/careers" element={<CareerPage />} />
+        {/* <Route path="/careers" element={<CareerPage />} /> */}
+
+        <Route path="/apply-form" element={<ApplyForm />} />
         <Route path="/apply-form/:job_id" element={<ApplyForm />} />
-        <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} />
-        <Route path="/servicesr" element={<ServicePageR/>}/>
+        {/* <Route
+          path="/services"
+          element={
+            <ServicePageV
+              title="AI and ML <br /> Service"
+              description="Anticipating customers needs to improve demand planning and streamline inventory management."
+            />
+          }
+        /> */}
+        <Route
+          path="/services/predictive-analytics"
+          element={
+            <PredictiveAnalytics/>
+          }
+        />
+        <Route
+          path="/services/natural-language"
+          element={
+            <NaturalLanguage />
+          }
+        />
+        <Route
+          path="/services/computer-vision"
+          element={
+            <ComputerVision/>
+          }
+        />
+        <Route
+          path="/services/recommendation-systems"
+          element={
+            <RecommendationSystems/>
+          }
+        />
+        <Route
+          path="/services/automated-machine-learning"
+          element={
+            <AutoML/>
+          }
+        />
+        <Route
+          path="/services/custom-ai-models"
+          element={
+            <CustomAIModels/>
+          }
+        />
+        <Route
+          path="/services/ai-powered-data-analytics"
+          element={
+            <AIPoweredDataAnalytics />
+          }
+        />
+        <Route
+          path="/services/ai-for-process-automation"
+          element={
+            <AIforProcessAutomation />
+          }
+        />
+        <Route
+          path="/services/conversational-ai"
+          element={
+            <ConversationalAI/>
+          }
+        />
+
+        <Route
+          path="*"
+          element={
+            <Home/>
+          }
+        />
+        {/* <Route path="/services" element={<ServicePageV title="AI and ML <br /> Service" description="Anticipating customers needs to improve demand planning and streamline inventory management." />} /> */}
       </Routes>
+      {/* <ParticleAvatar /> */}
       <Footer />
     </Router>
   );

@@ -172,14 +172,14 @@ export default function Component({ handleNavigateToContactPage }) {
         setScrollPercentage(scrollPercentage);
         
         // Check if scroll is at 0% or beyond 8%
-        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.09;
+        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.05;
         
         particles.forEach((particle, i) => {
           if (shouldBeRandom) {
             // Reset to random movement
             if (!particle.velocity) {
               const angle = Math.random() * Math.PI * 2;
-              const speed = 0.5 + Math.random() * 1;
+              const speed = 20 + Math.random() * 1;
               particle.velocity = {
                 x: Math.cos(angle) * speed,
                 y: Math.sin(angle) * speed
@@ -194,7 +194,7 @@ export default function Component({ handleNavigateToContactPage }) {
             if (particle.x < 0 || particle.x > canvas.width) particle.velocity.x *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.velocity.y *= -1;
           } else {
-            // Move towards hexagon formation with increased speed (0.02 -> 0.1)
+            // Move towards hexagon formation
             const targetX = particle.targetX;
             const targetY = particle.targetY + (scrollOffset * 0.5);
   
@@ -272,7 +272,7 @@ export default function Component({ handleNavigateToContactPage }) {
   return (
     <div ref={containerRef} className="bg-black">
       {/* Increased grid size from 4rem to 8rem */}
-      <div 
+      {/* <div 
         className="fixed inset-0 z-0"
         style={{
           backgroundImage: `
@@ -282,7 +282,7 @@ export default function Component({ handleNavigateToContactPage }) {
           `,
           backgroundSize: '8rem 8rem, 8rem 8rem, 100% 100%',
         }}
-      />
+      /> */}
 
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
       
@@ -303,6 +303,7 @@ export default function Component({ handleNavigateToContactPage }) {
             className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 min-h-[120px] sm:min-h-[170px]"
           >
             Unlock Insights with{" "}
+            <br/>
             <TypeWriter
               words={["AI-Powered Analytics", "Hexylon Analytics"]}
               className="text-[#FF6600]"
@@ -334,7 +335,7 @@ export default function Component({ handleNavigateToContactPage }) {
               Get Started
             </button>
             <a
-              href="#why-choose-us"
+              href="/about-us"
               className="border-2 border-[#FF6600] text-[#FF6600] hover:bg-[#FF6600] hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold transition-colors duration-300 w-full sm:w-auto"
             >
               Learn More
@@ -359,7 +360,7 @@ export default function Component({ handleNavigateToContactPage }) {
               <div 
                 className="absolute bottom-0 left-0 w-full h-0.5 bg-white transition-colors duration-300"
                 style={{
-                  backgroundColor: scrollPercentage > 0.04 && scrollPercentage <= 0.15 
+                  backgroundColor: scrollPercentage > 0.04 && scrollPercentage <= 0.15
                     ? '#FF6600' 
                     : '#1a1a1a'
                 }}

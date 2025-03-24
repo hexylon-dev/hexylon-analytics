@@ -1,9 +1,12 @@
 import React from 'react';
 
 const SocialShare = () => {
+  const handleNavigation = (url) => {
+    window.open(url, '_blank');
+  };
   return (
     <div className="flex flex-col gap-4 sticky top-8">
-      <button 
+      <button onClick={() => handleNavigation('https://www.facebook.com/hexylonanalytics/')}
         className="w-12 h-12 flex items-center justify-center rounded-full text-white hover:bg-black transition-all duration-300 bg-[#ff6600] border border-[#ff6600]/20" 
         aria-label="Share on Facebook"
       >
@@ -11,7 +14,7 @@ const SocialShare = () => {
           <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
         </svg>
       </button>
-      <button 
+      <button onClick={() => handleNavigation('https://x.com/Hexylonanalytix')}
         className="w-12 h-12 flex items-center justify-center rounded-full text-white hover:bg-black transition-all duration-300 bg-[#ff6600] border border-[#ff6600]/20" 
         aria-label="Share on X (Twitter)"
       >
@@ -19,7 +22,7 @@ const SocialShare = () => {
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
       </button>
-      <button 
+      <button onClick={() => handleNavigation('https://www.linkedin.com/company/hexylon-analytics/')}
         className="w-12 h-12 flex items-center justify-center rounded-full text-white hover:bg-black transition-all duration-300 bg-[#ff6600] border border-[#ff6600]/20" 
         aria-label="Share on LinkedIn"
       >
