@@ -17,7 +17,7 @@ export const GetCareerApi = () => {
 
 export const GetBlogsApi = (q) => {
     return http.get({
-      url: '/blogs/search',
+      url: '/v1/blogs/search/2d258123-b62f-4662-9a24-145dff11331a',
       messageSettings: { hideSuccessMessage: true },
     });
   };
@@ -38,7 +38,7 @@ export const GetJobsApi = (q) => {
 
 export const GetBlogApi = (id) => {
     return http.get({
-      url: `/blogs/${id}`,
+      url: `/v1/blogs/${id}`,
       messageSettings: { hideSuccessMessage: true },
     });
   };

@@ -2,27 +2,25 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 
-function ResourceCard({ title, description, image, link, date, tag, content }) {
+function ResourceCard({ id,title, description, thumbnail, link, date, tag, content }) {
   const navigate = useNavigate();
 
   // Debug: Log the received props
-  console.log("ResourceCard Props:", { title, description, image, link, date, tag, content });
+  console.log("ResourceCard Props:", { title, description, thumbnail, link, date, tag, content });
 
-  const handleClick = () => {
+  const handleClick = (id) => {
     // Debug: Log what we're passing to navigation
     const stateData = {
       title,
       description,
-      image,
+      thumbnail,
       date,
       tag,
       content
     };
     console.log("Navigating with state:", stateData);
 
-    navigate(link, {
-      state: stateData
-    });
+    navigate(`/blog/${id}`);
   };
 
   return (
@@ -36,7 +34,7 @@ function ResourceCard({ title, description, image, link, date, tag, content }) {
       </div>
 
       <div 
-        onClick={handleClick}
+        onClick={()=>handleClick(id)}
         className="cursor-pointer"
       >
         <div className="group block overflow-hidden rounded-2xl max-w-[400px] relative w-full shadow-lg hover:shadow-2xl transition-all duration-300">
@@ -45,7 +43,7 @@ function ResourceCard({ title, description, image, link, date, tag, content }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           <img
-            src={image}
+            src={thumbnail}
             alt={title}
             className="w-full h-[250px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
           />
