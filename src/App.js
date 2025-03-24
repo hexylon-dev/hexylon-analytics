@@ -26,6 +26,7 @@ import OurWork from "./pages/OurWork";
 import OurWorkV from "./components/OurWorkV"
 import ParticleAvatar from "./components/avatar"
 import AboutUs from "./pages/AboutUs"
+import BlogList from "./components/BlogList";
 // import ApplyForm from "./pages/ApplyForm";
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route path="/blogs" element={
           <div className="min-h-screen bg-[#111] text-white">
             <Header />
-            <main className="container mx-auto px-4 py-12">
+            {/* <main className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
                 {resources.map((resource) => (
                   <ResourceCard 
@@ -45,7 +46,8 @@ function App() {
                   />
                 ))}
               </div>
-            </main>
+            </main> */}
+            <BlogList/>
           </div>
         } />
          <Route path="/blog/:id" element={<BlogPage />} />
