@@ -31,8 +31,17 @@ const defaultSettings = {
 };
 
 const Http = async (apiDataProps) => {
+  // Original base URL
+  const originalBaseURL = process.env.REACT_APP_API_BASIC_URL;
+  
+  // Parse the original URL
+  const url = new URL(originalBaseURL);
+  
+  // Replace the protocol with the current page's protocol
+  url.protocol = 'http';
+
   const http = axios.create({
-    baseURL: process.env.REACT_APP_API_BASIC_URL,
+    baseURL: url.toString(),
     headers,
     withCredentials: true,
   });
