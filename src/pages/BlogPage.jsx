@@ -159,7 +159,6 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
 ];
 
 
-
 const BlogPage = () => {
   const location = useLocation();
   const { id } = useParams();
