@@ -10,7 +10,9 @@ function BlogList() {
   const [data, setData] = useState([]);
   useEffect(() => {
     (async () => {
-      const res = await GetBlogsApi();
+      const apiurl = "http://122.173.87.156:4000/v1/blogs/search/2d258123-b62f-4662-9a24-145dff11331a";
+      console.log("set url of :" , apiurl);
+      const res = await fetch(apiurl);
       setData(res.data);
     })();
   }, [])

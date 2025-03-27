@@ -16,7 +16,8 @@ function CareerPageV() {
   
   useEffect(() => {
     (async () => {
-      const res = await GetJobsApi();
+      const apiurl = 'http://122.173.87.156:4000/v1/list-job-postings';
+      const res = await fetch(apiurl);
       setjobsFiltered(res.data);
       console.log("res.data",res.data)
     })();

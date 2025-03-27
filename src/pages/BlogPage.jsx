@@ -23,12 +23,13 @@ const BlogPage = () => {
         }
         
         // Otherwise fetch from API
-        const response = await GetBlogApi(id);
-        if (response.data) {
-          setBlog(response.data);
-        } else {
+        const response = await fetch(`http://122.173.87.156:4000/v1/blogs/${id}`);
+        if (!response.ok) {
           setError('Blog not found');
+          return;
         }
+        const data = await response.json();
+        setBlog(data);
       } catch (error) {
         console.error('Error fetching blog:', error);
         setError('Failed to load blog content');
