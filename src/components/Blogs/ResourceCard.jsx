@@ -2,19 +2,19 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 
-function ResourceCard({ id,title, description, thumbnail, link, date, tag, content }) {
+function ResourceCard({ id,title, description, cover_image, link, created_at, tag, content }) {
   const navigate = useNavigate();
 
   // Debug: Log the received props
-  console.log("ResourceCard Props:", { title, description, thumbnail, link, date, tag, content });
+  console.log("ResourceCard Props:", { title, description, cover_image, link, created_at, tag, content });
 
   const handleClick = (id) => {
     // Debug: Log what we're passing to navigation
     const stateData = {
       title,
       description,
-      thumbnail,
-      date,
+      cover_image,
+      created_at,
       tag,
       content
     };
@@ -28,7 +28,7 @@ function ResourceCard({ id,title, description, thumbnail, link, date, tag, conte
       <div className="w-full max-w-[400px] flex items-center gap-2">
         <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-[#ff6600]/30 to-transparent"></div>
         <p className="text-[#ff6600] text-sm font-medium px-3 py-1 rounded-full bg-[#ff6600]/10 backdrop-blur-sm border border-[#ff6600]/20">
-          {date}
+          {created_at}
         </p>
         <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-[#ff6600]/30 to-transparent"></div>
       </div>
@@ -43,7 +43,7 @@ function ResourceCard({ id,title, description, thumbnail, link, date, tag, conte
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           <img
-            src={thumbnail}
+            src={cover_image}
             alt={title}
             className="w-full h-[250px] object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
           />

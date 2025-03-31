@@ -69,9 +69,11 @@ const blogdata = [
         ],
       },
       audit_fields: {
-        created_by: "Poojan Khamar",
-        created_at: "Nov 21, 2024",
+        
       },
+      created_at: "Nov 21, 2024",
+      created_by: "Poojan Khamar",
+
     },
     {
       id: 2,
@@ -145,9 +147,10 @@ const blogdata = [
         ],
       },
       audit_fields: {
-        created_by: "Pooojan Khamar",
-        created_at: "Nov 29, 2024",
+        
       },
+      created_by: "Pooojan Khamar",
+        created_at: "Nov 29, 2024",
     },
   ];
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import BlogLayout from '../components/Blogs/BlogLayout';
+import BlogStatic from "../components/BlogStatic"
 import { GetBlogApi } from '../service/api';
 // import { format } from 'date-fns';
 
@@ -10,6 +11,9 @@ const BlogPage = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // console.log(blog.cover_image);
+  
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -23,23 +27,38 @@ const BlogPage = () => {
         }
         
         // Otherwise fetch from API
-        const response = await fetch(`http://122.173.87.156:4000/v1/blogs/${id}`);
+        // Todo : p remove from url
+        
+        const response = await fetch(`htt://122.173.87.156:4000/v1/blogs/${id}`);
         if (!response.ok) {
-          setError('Blog not found');
+          const staticBlog = BlogStatic.find(blog => blog.id == id);
+          setBlog(staticBlog);
           return;
         }
-        const data = await response.json();
-        setBlog(data);
+        // const data = await response.json();
+        // setBlog(data);
       } catch (error) {
-        console.error('Error fetching blog:', error);
-        setError('Failed to load blog content');
+        const staticBlog = BlogStatic.find(blog => { 
+          console.log({
+            blog , id , a: blog.id == id
+          })
+          return blog.id == id});
+        setBlog(staticBlog)
+        
+        
+
+      
+
+  
+        
+        
       } finally {
         setLoading(false);
       }
     };
 
     fetchBlogData();
-  }, [id, location.state]);
+  }, [id,location.state]);
 
   // const formatDate = (dateString) => {
   //   try {
@@ -161,8 +180,8 @@ const BlogPage = () => {
       title={blog.title}
       category={blog.meta_data?.tags?.[0] || "Blog"}
       readTime={calculateReadTime(blog.content)}
-      // date={formatDate(blog.published_at)}
-      image={blog.thumbnail}
+      date={blog.created_at}
+      image={blog.cover_image}
     >
       <div className="prose prose-lg prose-invert max-w-none">
         <h1 className="text-5xl font-bold text-[#ff6600] mb-8">{blog.title}</h1>
