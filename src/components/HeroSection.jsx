@@ -199,7 +199,7 @@ export default function Component({ handleNavigateToContactPage }) {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-bold text-white mb-3 min-h-[170px]"
         >
-          Unlock Insights with{" "}
+            with{" "}
           <br/>
           <TypeWriter
             words={["AI-Powered Analytics", "Hexylon Analytics"]}

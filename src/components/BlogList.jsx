@@ -4,6 +4,7 @@ import Blog1 from "../assets/blog1.jpg";
 import Blog2 from "../assets/blog2.jpg";
 import { GetBlogApi, GetBlogsApi } from "../service/api";
 import ResourceCard from "./Blogs/ResourceCard";
+import { Helmet } from "react-helmet";
 
 function BlogList() {
   const defaultBlogs = [
@@ -190,13 +191,107 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
 
   return (
     <div>
+      (
+      <Helmet>
+        <title>Hexylon Analytics Blog | Insights on Data Analytics, AI & Business Intelligence</title>
+        <meta
+          name="description"
+          content="Stay updated with Hexylon Analytics blog – your source for insights on data analytics, artificial intelligence, machine learning, business intelligence, predictive analytics, and digital transformation strategies."
+        />
+        <meta
+          name="keywords"
+          content="AI in healthcare, AI in manufacturing, predictive maintenance, smart factory automation, Hexylon AI trend analysis, free AI resources for enterprises, AI in pharma, industrial IoT case studies, hospital predictive analytics"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Hexylon AI Resource Library",
+            "description":
+              "Downloadable AI implementation guides, industry case studies, and technical whitepapers for healthcare and manufacturing sectors",
+            "url": "https://hexylonanalytics.com/resources",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Hexylon Analytics",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://hexylonanalytics.com/logo.png",
+                "width": "300",
+                "height": "60"
+              }
+            },
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "TechArticle",
+                  "name": "How AI is Transforming Healthcare: Hexylon's 2024 Solutions",
+                  "url": "https://hexylonanalytics.com/resources/ai-healthcare-2024",
+                  "datePublished": "2024-11-21",
+                  "description":
+                    "Comprehensive analysis of AI applications in medical diagnostics, patient monitoring, and hospital operations",
+                  "genre": "Healthcare Technology",
+                  "keywords": [
+                    "AI diagnostics",
+                    "predictive patient care",
+                    "hospital AI integration"
+                  ],
+                  "proficiencyLevel": "Expert",
+                  "fileFormat": "PDF",
+                  "size": "2.4MB"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "TechArticle",
+                  "name": "AI in Manufacturing: Hexylon's Innovative Approach",
+                  "url": "https://hexylonanalytics.com/resources/ai-manufacturing-2024",
+                  "datePublished": "2024-11-29",
+                  "description":
+                    "Implementation framework for predictive maintenance, quality control, and supply chain optimization using AI",
+                  "genre": "Industrial Automation",
+                  "keywords": [
+                    "smart factory AI",
+                    "production line optimization",
+                    "industrial IoT"
+                  ],
+                  "proficiencyLevel": "Intermediate",
+                  "fileFormat": "PDF+Interactive Dashboard",
+                  "size": "3.1MB"
+                }
+              }
+            ],
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "Artificial Intelligence Implementation",
+                "sameAs": "https://www.wikidata.org/wiki/Q22650"
+              },
+              {
+                "@type": "Thing",
+                "name": "Industry 4.0",
+                "sameAs": "https://www.wikidata.org/wiki/Q24912832"
+              }
+            ],
+            "educationalAlignment": {
+              "@type": "AlignmentObject",
+              "alignmentType": "educationalSubject",
+              "targetName": "AI Engineering",
+              "targetUrl": "https://schema.org/ArtificialIntelligence"
+            }
+          })}
+        </script>
+      </Helmet>
       {error && (
         <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
           <p className="font-bold">Warning</p>
           <p>{error}. Showing default blogs instead.</p>
         </div>
       )}
-      
+
       <main className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
           {data.map((resource) => (

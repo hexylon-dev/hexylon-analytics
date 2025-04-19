@@ -4,7 +4,7 @@ import jobData from '../Data/JobData';
 import JobCard from '../components/JobCard';
 import JobModal from '../components/JobModal';
 import { GetJobsApi } from '../service/api';
-
+import { Helmet } from "react-helmet";
 
 function CareerPageV() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,31 +13,31 @@ function CareerPageV() {
   const [selectedJob, setSelectedJob] = useState(null);
 
   const [jobsFiltered, setjobsFiltered] = useState([]);
-  
+
   useEffect(() => {
     (async () => {
       const res = await GetJobsApi();
       setjobsFiltered(res.data);
-      console.log("res.data",res.data)
+      console.log("res.data", res.data)
     })();
   }, [])
 
-  const departments = useMemo(() => 
+  const departments = useMemo(() =>
     Array.from(new Set(jobsFiltered.map(job => job.department))),
     [jobsFiltered]
   );
 
-  const workspaces = useMemo(() => 
+  const workspaces = useMemo(() =>
     Array.from(new Set(jobsFiltered.map(job => job.workspace_id))),
     [jobsFiltered]
   );
-  console.log("Hello",jobsFiltered)
+  console.log("Hello", jobsFiltered)
 
   const filteredJobs = useMemo(() => {
     if (!searchTerm && !selectedDepartment && !selectedWorkspace) {
       return jobsFiltered;
     }
-    
+
     return jobsFiltered.filter(job => {
       const matchesSearch = job.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.department.toLowerCase().includes(searchTerm.toLowerCase());
@@ -49,12 +49,44 @@ function CareerPageV() {
 
   return (
     <div className="min-h-screen bg-black">
+      <Helmet>
+        <title>AI ML & Data Science Jobs | Hexylon Analytics</title>
+        <meta
+          name="description"
+          content="Build cutting-edge AI solutions with Hexylon Analytics. Explore data science, ML engineering, and analytics careers in a growth-driven environment."
+        />
+        <meta
+          name="keywords"
+          content="AI careers, data science jobs Ahmedabad, machine learning engineer jobs, tech careers India, AI research positions, Hexylon Analytics jobs"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Careers at Hexylon Analytics",
+            "description": "Explore future opportunities to join our AI innovation team.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Hexylon Analytics",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://hexylonanalytics.com/logo.png"
+              }
+            },
+            "potentialAction": {
+              "@type": "SubscribeAction",
+              "target": "https://hexylonanalytics.com/careers#newsletter",
+              "description": " AI/ML job openings"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Header */}
       <div className="relative bg-gradient-to-b from-black to-gray-900 border-b border-[#FF6600]/20 overflow-hidden">
 
-<div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div>
-{/* <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div> */}
-{/* <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div> */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div>
+        {/* <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div> */}
+        {/* <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&h=1000&q=80')] opacity-7"></div> */}
 
 
 

@@ -7,6 +7,8 @@ import HexylonServices from "../components/About Us/weDo";
 import WhyUs from "../components/About Us/whyUs";
 import AboutUsV from "../components/AboutUsV";
 import AboutUs5 from "../components/AboutUs5";
+import { Helmet } from "react-helmet";
+
 const heroSection = {
   title: "Transforming Data into Insightful Solutions",
   tagline:
@@ -65,6 +67,40 @@ export default function HexylonLanding(
   return (
     <>
       <div ref={containerRef} className="relative  overflow-hidden">
+      <Helmet>
+      <title>About Hexylon Analytics | AI & Data Analytics Experts</title>
+      <meta
+        name="description"
+        content="Hexylon Analytics transforms data into actionable insights with AI and machine learning. Empowering businesses with predictive analytics, BI tools, and tailored data solutions."
+      />
+      <meta
+        name="keywords"
+        content="AI analytics company, business intelligence solutions, predictive analytics experts, data-driven decision making, machine learning consulting, Hexylon Analytics"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Hexylon Analytics",
+          "url": "https://hexylonanalytics.com",
+          "logo": "https://hexylonanalytics.com/logo.png",
+          "description":
+            "AI and data analytics firm specializing in predictive modeling and business intelligence",
+          "foundingDate": "2014",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "postalCode": "380009",
+            "addressCountry": "India"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/hexylon-analytics",
+            "https://twitter.com/hexylon_ai"
+          ]
+        })}
+      </script>
+    </Helmet>
         {/* Scoped Background */}
         <div
           className="absolute inset-0 z-0"

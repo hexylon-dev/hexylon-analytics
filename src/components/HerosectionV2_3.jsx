@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Shield, Lightbulb, Users, ChartBar } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const TypeWriter = ({ words, className }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -99,7 +100,7 @@ export default function Component({ handleNavigateToContactPage }) {
           x: centerX - (i / particlesPerLine) * lineLength,
           y: lineY
         });
-        
+
         // Right line (going towards +x)
         rightLine.push({
           x: centerX + (i / particlesPerLine) * lineLength,
@@ -132,7 +133,7 @@ export default function Component({ handleNavigateToContactPage }) {
     // Assign target positions for both formations
     const assignPositions = () => {
       const horizontalLines = generateHorizontalLinePoints();
-      
+
       particles.forEach((particle, index) => {
         // Hexagon formation positions
         if (index < hexagonPoints.length) {
@@ -142,7 +143,7 @@ export default function Component({ handleNavigateToContactPage }) {
           const sideIndex = Math.floor(index / particlesPerSide);
           const pointInSide = index % particlesPerSide;
           const ratio = pointInSide / particlesPerSide;
-          
+
           particle.targetX = startPoint.x + (endPoint.x - startPoint.x) * ratio;
           particle.targetY = startPoint.y + (endPoint.y - startPoint.y) * ratio;
         }
@@ -180,7 +181,7 @@ export default function Component({ handleNavigateToContactPage }) {
 
           if (particle.x < 0 || particle.x > canvas.width) particle.velocity.x *= -1;
           if (particle.y < 0 || particle.y > canvas.height) particle.velocity.y *= -1;
-          
+
           targetX = particle.x;
           targetY = particle.y;
         } else if (transitionProgress > 0) {
@@ -271,9 +272,91 @@ export default function Component({ handleNavigateToContactPage }) {
 
   return (
     <div ref={containerRef} className="bg-black">
+      <Helmet>
+        <title>AI Solutions for Business Growth | Hexylon Analytics</title>
+        <meta
+          name="description"
+          content="Hexylon is a leading AI solutions provider in India offering NLP, Agentic AI, Data Analytics, Process Automation, Recommendation system and Automated ML for global enterprises."
+        />
+        <meta
+          name="keywords"
+          content="custom AI solutions, AI business automation, predictive analytics company, AI consulting services, machine learning integration, AI for manufacturing, data analytics, AI lifecycle, Hexylon Analytics"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://hexylonanalytics.com",
+            "name": "Hexylon Analytics",
+            "url": "https://hexylonanalytics.com",
+            "logo": "https://hexylonanalytics.com/logo.png",
+            "description":
+              "Custom AI solutions for business automation, predictive analytics, and end-to-end AI integration",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "B/410, Ganesh Plaza, Nr. Navrangpura Post Office",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "postalCode": "380009",
+              "addressCountry": "India"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "23.033863",
+              "longitude": "72.585022"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "AI Services",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Custom AI Development",
+                  "itemListElement": {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Custom AI Models",
+                      "description":
+                        "Tailored machine learning solutions for your business workflows"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "AI Integration",
+                  "itemListElement": {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "System Deployment",
+                      "description":
+                        "Seamless integration with ERPs, CRMs, and legacy systems"
+                    }
+                  }
+                }
+              ]
+            },
+            "makesOffer": {
+              "@type": "Offer",
+              "category": "AI Consulting",
+              "eligibleRegion": {
+                "@type": "Country",
+                "name": "IN"
+              }
+            },
+            "knowsAbout": [
+              "Artificial Intelligence",
+              "Predictive Analytics",
+              "Computer Vision",
+              "Natural Language Processing"
+            ]
+          })}
+        </script>
+      </Helmet>
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-        <motion.div 
+        <motion.div
           style={{ scale, opacity, y }}
           className="relative z-10 max-w-5xl mx-auto px-4 text-center"
         >
@@ -290,7 +373,7 @@ export default function Component({ handleNavigateToContactPage }) {
               className="text-[#FF6600]"
             />
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -302,7 +385,7 @@ export default function Component({ handleNavigateToContactPage }) {
             solutions tailored specifically to your company's processes and
             workflow.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

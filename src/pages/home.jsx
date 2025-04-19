@@ -12,6 +12,7 @@ import OurServices from "../components/OurServices";
 import OurWork from "./OurWork";
 import ParticleAvatar from "../components/avatar";
 import CallToAction from "../components/CallToAction";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function Home() {
   return (
     <>
       <div className="bg-black">
+       
         {/* <Navbar handleNavigateToContactPage={handleNavigateToContactPage} /> */}
         <HeroSection
           handleNavigateToContactPage={handleNavigateToContactPage}
@@ -43,6 +45,88 @@ function Home() {
         {/* <OurWorkSection /> */}
         {/* <CommitmentSection handleNavigateToContactPage={handleNavigateToContactPage} /> */}
         {/* <Footer handleNavigateToContactPage={handleNavigateToContactPage} /> */}
+        <Helmet>
+          <title>AI Solutions for Business Growth | Hexylon Analytics</title>
+          <meta
+            name="description"
+            content="Hexylon is a leading AI solutions provider in India offering NLP, Agentic AI, Data Analytics, Process Automation, Recommendation system and Automated ML for global enterprises."
+          />
+          <meta
+            name="keywords"
+            content="custom AI solutions, AI business automation, predictive analytics company, AI consulting services, machine learning integration, AI for manufacturing, data analytics, AI lifecycle, Hexylon Analytics"
+          />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "@id": "https://hexylonanalytics.com",
+              "name": "Hexylon Analytics",
+              "url": "https://hexylonanalytics.com",
+              "logo": "https://hexylonanalytics.com/logo.png",
+              "description":
+                "Custom AI solutions for business automation, predictive analytics, and end-to-end AI integration",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "B/410, Ganesh Plaza, Nr. Navrangpura Post Office",
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "postalCode": "380009",
+                "addressCountry": "India"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "23.033863",
+                "longitude": "72.585022"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "AI Services",
+                "itemListElement": [
+                  {
+                    "@type": "OfferCatalog",
+                    "name": "Custom AI Development",
+                    "itemListElement": {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom AI Models",
+                        "description":
+                          "Tailored machine learning solutions for your business workflows"
+                      }
+                    }
+                  },
+                  {
+                    "@type": "OfferCatalog",
+                    "name": "AI Integration",
+                    "itemListElement": {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "System Deployment",
+                        "description":
+                          "Seamless integration with ERPs, CRMs, and legacy systems"
+                      }
+                    }
+                  }
+                ]
+              },
+              "makesOffer": {
+                "@type": "Offer",
+                "category": "AI Consulting",
+                "eligibleRegion": {
+                  "@type": "Country",
+                  "name": "IN"
+                }
+              },
+              "knowsAbout": [
+                "Artificial Intelligence",
+                "Predictive Analytics",
+                "Computer Vision",
+                "Natural Language Processing"
+              ]
+            })}
+          </script>
+        </Helmet>
       </div>
     </>
   );

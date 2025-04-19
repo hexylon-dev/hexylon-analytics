@@ -6,6 +6,8 @@ import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/nlp.jpg";
 import two from "../assets/2.png"
+import { Helmet } from "react-helmet";
+
 export const NaturalLanguage = () => {
   const naturalLanguage = {
     heroSection: {
@@ -217,8 +219,35 @@ export const NaturalLanguage = () => {
 
   return (
     <div className="relative  min-h-screen overflow-hidden">
-        {/* Scoped Background */}
-        <ServicePageV
+      <Helmet>
+        <title>NLP for Business: Text Analysis & AI Chatbots</title>
+        <meta
+          name="description"
+          content="Boost customer engagement & automate workflows with NLP. Leverage AI for sentiment analysis, multilingual support & document processing."
+        />
+        <meta
+          name="keywords"
+          content="NLP solutions, AI text analysis, sentiment analysis, AI chatbots, natural language understanding, document classification, multilingual NLP, Hexylon Analytics"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Natural Language Processing (NLP) Solutions",
+            "description":
+              "AI-driven text analysis, sentiment detection, and multilingual chatbots for business automation.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Hexylon Analytics",
+              "url": "https://hexylonanalytics.com"
+            },
+            "serviceType": "Text Analytics",
+            "keywords": ["NLP for business", "AI sentiment analysis"]
+          })}
+        </script>
+      </Helmet>
+      {/* Scoped Background */}
+      <ServicePageV
         heroSection={naturalLanguage.heroSection}
         problemStatement={naturalLanguage.problemStatement}
         keyFeatures={naturalLanguage.keyFeatures}
@@ -227,8 +256,8 @@ export const NaturalLanguage = () => {
         technologyStack={naturalLanguage.technologyStack}
         whyHexylon={naturalLanguage.whyHexylon}
         callToAction={naturalLanguage.callToAction}
-        faqs={naturalLanguage.faqs}   
-        />
-      </div>
+        faqs={naturalLanguage.faqs}
+      />
+    </div>
   );
 };

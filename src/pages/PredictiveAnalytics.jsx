@@ -4,10 +4,10 @@ import img1 from "../assets/img1.webp";
 import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
-import one from "../assets/1.png"
-export const PredictiveAnalytics = () => {
+import one from "../assets/1.png";
+import { Helmet } from "react-helmet"; export const PredictiveAnalytics = () => {
   const predictiveAnalytics = {
-// fisrt section
+    // fisrt section
 
     heroSection: {
       title: "Predictive Analytics Solutions Development",
@@ -17,48 +17,47 @@ export const PredictiveAnalytics = () => {
         "Predictive Analytics transforms your business by unlocking actionable insights from data. Our solutions help you forecast trends, optimize processes, and reduce risks with AI-driven tools and machine learning algorithms. Gain a competitive edge with data-powered strategies designed to enhance efficiency, increase profitability, and support sustainable growth.",
     },
 
-// second section
+    // second section
     problemStatement: {
       title: "Why Predictive Analytics is Important",
-      Content:"Predictive Analytics is vital for modern businesses aiming to thrive in a competitive, data-driven world. It helps organizations make informed decisions by:",
+      Content: "Predictive Analytics is vital for modern businesses aiming to thrive in a competitive, data-driven world. It helps organizations make informed decisions by:",
       benefits: [
-        {description:"Anticipating customers needs to improve demand planning and streamline inventory management"},
-        {description:"Boosting operational efficiency by leveraging predictive insights for smarter resource allocation"},
-        {description:"Cutting costs by identifying inefficiencies and optimizing workflows"},
+        { description: "Anticipating customers needs to improve demand planning and streamline inventory management" },
+        { description: "Boosting operational efficiency by leveraging predictive insights for smarter resource allocation" },
+        { description: "Cutting costs by identifying inefficiencies and optimizing workflows" },
       ],
     },
 
-// third section
+    // third section
     keyFeatures: {
       title: "Transform Your Business with Predictive Analytics",
-      features: [
-        {
-          name: "Sales and Market Forecasting",
-          description:
-            "Leverage historical data to predict sales trends, market movements, and customer demands for proactive decision-making",
-        },
-        {
-          name: "Risk Assessment and Management",
-          description:
-            "Identify and mitigate potential risks, ensuring business continuity and stability",
-        },
-        {
-          name: "Resource Optimization",
-          description:
-            "Optimize inventory and resource allocation, reducing waste while enhancing customer satisfaction",
-        },
-        {
-          name: "Customer Behavior Insights",
-          description:
-            "Understand and predict customer preferences and behaviors to personalize services and boost loyalty",
-        },
+      features: [{
+        name: "Sales and Market Forecasting",
+        description:
+          "Leverage historical data to predict sales trends, market movements, and customer demands for proactive decision-making",
+      },
+      {
+        name: "Risk Assessment and Management",
+        description:
+          "Identify and mitigate potential risks, ensuring business continuity and stability",
+      },
+      {
+        name: "Resource Optimization",
+        description:
+          "Optimize inventory and resource allocation, reducing waste while enhancing customer satisfaction",
+      },
+      {
+        name: "Customer Behavior Insights",
+        description:
+          "Understand and predict customer preferences and behaviors to personalize services and boost loyalty",
+      },
       ],
     },
 
-// fourth section
+    // fourth section
     workflow: {
       title: "How Predictive Analytics Works",
-      Content:"Predictive analytics uses data science and machine learning algorithms to predict future outcomes. Here’s how it works:",
+      Content: "Predictive analytics uses data science and machine learning algorithms to predict future outcomes. Here’s how it works:",
       steps: [
         {
           icon: "clipboard",
@@ -217,17 +216,110 @@ export const PredictiveAnalytics = () => {
 
   return (
     <div className="relative  min-h-screen overflow-hidden">
+      <Helmet>
+        <title>Predictive Analytics Solutions | Hexylon Analytics – Data Driven Forecasting</title>
+        <meta
+          name="description"
+          content="Hexylon Analytics develops custom predictive analytics solutions to forecast trends and optimize your business strategy. Unlock actionable insights from your data."
+        />
+        <meta
+          name="keywords"
+          content="predictive analytics, data forecasting, business intelligence, machine learning solutions, data-driven strategy, Hexylon Analytics"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Predictive Analytics Solutions",
+            "provider": {
+              "@type": "Organization",
+              "name": "Hexylon Analytics",
+              "url": "https://hexylonanalytics.com",
+              "logo": "https://hexylonanalytics.com/logo.png",
+              "sameAs": [
+                "https://linkedin.com/company/hexylon-analytics",
+                "https://twitter.com/hexylon_ai"
+              ]
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Predictive Analytics Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sales Forecasting",
+                    "description": "AI-powered sales trend prediction using historical data and market indicators",
+                    "serviceOutput": "12-month demand projections",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Hexylon Analytics"
+                    }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Risk Assessment Models",
+                    "description": "Machine learning algorithms to identify and mitigate business risks",
+                    "serviceOutput": "Risk probability dashboards",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Hexylon Analytics"
+                    }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Customer Behavior Prediction",
+                    "description": "Predictive modeling for customer churn, LTV, and purchase patterns",
+                    "serviceOutput": "Segmented customer insights",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Hexylon Analytics"
+                    }
+                  }
+                }
+              ]
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "India"
+            },
+            "serviceAudience": {
+              "@type": "BusinessAudience",
+              "name": "Enterprise & SMB",
+              "numberofEmployees": {
+                "@type": "QuantitativeValue",
+                "minValue": 10,
+                "maxValue": 5000
+              }
+            },
+            "keywords": [
+              "predictive modeling",
+              "AI forecasting",
+              "demand planning",
+              "risk assessment AI",
+              "customer behavior prediction"
+            ]
+          })}
+        </script>
+      </Helmet>
       {/* Scoped Background */}
       <ServicePageV
-      heroSection={predictiveAnalytics.heroSection}
-      problemStatement={predictiveAnalytics.problemStatement}
-      keyFeatures={predictiveAnalytics.keyFeatures}
-      workflow={predictiveAnalytics.workflow}
-      caseStudies={predictiveAnalytics.caseStudies}
-      technologyStack={predictiveAnalytics.technologyStack}
-      whyHexylon={predictiveAnalytics.whyHexylon}
-      callToAction={predictiveAnalytics.callToAction}
-      faqs={predictiveAnalytics.faqs}
+        heroSection={predictiveAnalytics.heroSection}
+        problemStatement={predictiveAnalytics.problemStatement}
+        keyFeatures={predictiveAnalytics.keyFeatures}
+        workflow={predictiveAnalytics.workflow}
+        caseStudies={predictiveAnalytics.caseStudies}
+        technologyStack={predictiveAnalytics.technologyStack}
+        whyHexylon={predictiveAnalytics.whyHexylon}
+        callToAction={predictiveAnalytics.callToAction}
+        faqs={predictiveAnalytics.faqs}
       />
     </div>
   );

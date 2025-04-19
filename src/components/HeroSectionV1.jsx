@@ -145,7 +145,7 @@ export default function Component({ handleNavigateToContactPage }) {
           className="text-5xl md:text-7xl font-bold text-white mb-3 min-h-[170px]"
 
         >
-          Unlock Insights with{" "}
+          Unloc with{" "}
           <TypeWriter
             words={["AI-Powered Analytics", "Hexylon Analytics"]}
             className="text-[#FF6600]"
