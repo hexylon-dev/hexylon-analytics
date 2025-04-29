@@ -10,7 +10,6 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-
   const navigate = useNavigate();
   const handleNavigateToContactPage = () => {
     window.location.href = "/contact-us";
@@ -22,7 +21,7 @@ function Home() {
 
   const handleNavigateToBlogPage = () => {
     window.location.href = "/blogs";
-  }
+  };
 
   return (
     <>

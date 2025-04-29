@@ -9,42 +9,42 @@ const menuItems = [
   { id: 3, label: "Service", path: "services", isDropdown: true },
   { id: 4, label: "Technologies", path: "technologies" },
   { id: 5, label: "About Us", path: "about" },
-  { id: 6, label: "Our Work", path: "work" },
+  { id: 6, label: "Our Work", path: "our-work" },
 ];
 
 const serviceDropdownItems = [
   {
     id: 1,
     label: "Predictive Analytics Solutions Develpment",
-    path: "services/web-development",
+    path: "services/predictive-analytics",
   },
   {
     id: 2,
     label: "Natural Language Processing (NLP)",
-    path: "services/mobile-app",
+    path: "services/natural-language",
   },
-  { id: 3, label: "Computer Vision", path: "services/ui-ux-design" },
+  { id: 3, label: "Computer Vision", path: "services/computer-vision" },
   {
     id: 4,
     label: "Recommendation Systems",
-    path: "services/digital-marketing",
+    path: "services/recommendation-systems",
   },
-  { id: 5, label: "Custom AI Models", path: "services/cloud-solutions" },
+  { id: 5, label: "Custom AI Models", path: "services/custom-ai-models" },
   {
     id: 5,
     label: "Automated Machine Learning (AutoML)",
-    path: "services/cloud-solutions",
+    path: "services/automated-machine-learning",
   },
   {
     id: 6,
     label: "AI-Powered Data Analytics",
-    path: "services/cloud-solutions",
+    path: "services/ai-powered-data-analytics",
   },
-  { id: 7, label: "Conversational AI", path: "services/cloud-solutions" },
+  { id: 7, label: "Conversational AI", path: "services/conversational-ai" },
   {
     id: 8,
     label: "AI for Process Automation",
-    path: "services/cloud-solutions",
+    path: "services/ai-for-process-automation",
   },
 ];
 

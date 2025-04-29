@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Shield, Lightbulb, Users } from "lucide-react";
+import ContactSection from "./contactSectionR";
 
 const TypeWriter = ({ words, className }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -172,14 +173,14 @@ export default function Component({ handleNavigateToContactPage }) {
         setScrollPercentage(scrollPercentage);
         
         // Check if scroll is at 0% or beyond 8%
-        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.09;
+        const shouldBeRandom = scrollPercentage === 0 || scrollPercentage > 0.05;
         
         particles.forEach((particle, i) => {
           if (shouldBeRandom) {
             // Reset to random movement
             if (!particle.velocity) {
               const angle = Math.random() * Math.PI * 2;
-              const speed = 0.5 + Math.random() * 1;
+              const speed = 20 + Math.random() * 1;
               particle.velocity = {
                 x: Math.cos(angle) * speed,
                 y: Math.sin(angle) * speed
@@ -194,7 +195,7 @@ export default function Component({ handleNavigateToContactPage }) {
             if (particle.x < 0 || particle.x > canvas.width) particle.velocity.x *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.velocity.y *= -1;
           } else {
-            // Move towards hexagon formation with increased speed (0.02 -> 0.1)
+            // Move towards hexagon formation
             const targetX = particle.targetX;
             const targetY = particle.targetY + (scrollOffset * 0.5);
   
@@ -272,7 +273,7 @@ export default function Component({ handleNavigateToContactPage }) {
   return (
     <div ref={containerRef} className="bg-black">
       {/* Increased grid size from 4rem to 8rem */}
-      <div 
+      {/* <div 
         className="fixed inset-0 z-0"
         style={{
           backgroundImage: `
@@ -282,9 +283,9 @@ export default function Component({ handleNavigateToContactPage }) {
           `,
           backgroundSize: '8rem 8rem, 8rem 8rem, 100% 100%',
         }}
-      />
+      /> */}
 
-      <canvas ref={canvasRef} className="fixed inset-0 w-full h-full" />
+      <canvas ref={canvasRef} className="fixed z-0 inset-0 w-full h-full" />
       
       {/* Updated scroll percentage indicator */}
       {/* <div className="fixed bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/80 text-white px-2 sm:px-3 py-1 sm:py-2 rounded-lg z-50 border border-[#FF6600] text-sm sm:text-base">
@@ -359,7 +360,7 @@ export default function Component({ handleNavigateToContactPage }) {
               <div 
                 className="absolute bottom-0 left-0 w-full h-0.5 bg-white transition-colors duration-300"
                 style={{
-                  backgroundColor: scrollPercentage > 0.04 && scrollPercentage <= 0.15 
+                  backgroundColor: scrollPercentage > 0.04 && scrollPercentage <= 0.15
                     ? '#FF6600' 
                     : '#1a1a1a'
                 }}
@@ -386,6 +387,8 @@ export default function Component({ handleNavigateToContactPage }) {
           </div>
         </div>
       </div>
+      <ContactSection/>
     </div>
+    
   );
 }
