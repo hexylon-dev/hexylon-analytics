@@ -157,11 +157,12 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
         created_at: "Nov 29, 2024",
       },
     }
+    // dhaval 
   ];
 
 
   const [data, setData] = useState(defaultBlogs);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -182,7 +183,9 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
       }
     };
 
-    fetchBlogs();
+    // fetchBlogs();
+    setData(defaultBlogs);
+
   }, []);
 
   if (loading) {
@@ -191,7 +194,7 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
 
   return (
     <div>
-      (
+      
       <Helmet>
         <title>Hexylon Analytics Blog | Insights on Data Analytics, AI & Business Intelligence</title>
         <meta

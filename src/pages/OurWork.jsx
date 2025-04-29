@@ -4,7 +4,7 @@ import OurWorkWebDevelopment from "../assets/svgs/OurWorkWebDevelopment";
 import OurWorkAiDriven from "../assets/svgs/OurWorkAiDriven";
 import OurWorkUnique from "../components/OurWorkUnique";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 function OurWork() {
   const navigate = useNavigate();

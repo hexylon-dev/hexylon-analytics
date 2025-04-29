@@ -155,7 +155,8 @@ Ready to revolutionize your factory floor? Contact Hexylon today to unlock the f
       created_by: "Pooojan Khamar",
       created_at: "Nov 29, 2024",
     },
-  }
+  },
+  // dhaval
 ];
 
 
@@ -163,7 +164,7 @@ const BlogPage = () => {
   const location = useLocation();
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -204,7 +205,13 @@ const BlogPage = () => {
       }
     };
 
-    fetchBlogData();
+    // fetchBlogData();
+    if(id == 1){
+      setBlog(defaultBlogs[0]);
+    }else if(id == 2){
+      setBlog(defaultBlogs[1]);
+    }
+    // dhaval
   }, [id, location.state]);
 
   // const formatDate = (dateString) => {

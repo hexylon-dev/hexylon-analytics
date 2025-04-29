@@ -7,7 +7,7 @@ import HexylonServices from "../components/About Us/weDo";
 import WhyUs from "../components/About Us/whyUs";
 import AboutUsV from "../components/AboutUsV";
 import AboutUs5 from "../components/AboutUs5";
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 const heroSection = {
   title: "Transforming Data into Insightful Solutions",

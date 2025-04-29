@@ -4,7 +4,7 @@ import jobData from '../Data/JobData';
 import JobCard from '../components/JobCard';
 import JobModal from '../components/JobModal';
 import { GetJobsApi } from '../service/api';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 function CareerPageV() {
   const [searchTerm, setSearchTerm] = useState('');

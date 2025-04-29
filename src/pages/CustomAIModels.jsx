@@ -6,7 +6,7 @@ import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/coustomeai.jpg";
 import five from "../assets/5.png"
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 export const CustomAIModels = () => {
   const customAIModels = {

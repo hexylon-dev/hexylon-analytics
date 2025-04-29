@@ -6,7 +6,7 @@ import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/comai.jpg";
 import eight from "../assets/8.png"
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 export const ConversationalAI = () => {
   const conversationalAI = {

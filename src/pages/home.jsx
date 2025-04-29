@@ -12,7 +12,7 @@ import OurServices from "../components/OurServices";
 import OurWork from "./OurWork";
 import ParticleAvatar from "../components/avatar";
 import CallToAction from "../components/CallToAction";
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 function Home() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Home() {
   return (
     <>
       <div className="bg-black">
-       
+
         {/* <Navbar handleNavigateToContactPage={handleNavigateToContactPage} /> */}
         <HeroSection
           handleNavigateToContactPage={handleNavigateToContactPage}

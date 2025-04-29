@@ -5,7 +5,9 @@ import img2 from "../assets/img2.webp";
 import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import one from "../assets/1.png";
-import { Helmet } from "react-helmet"; export const PredictiveAnalytics = () => {
+import { Helmet } from 'react-helmet-async'; 
+
+export const PredictiveAnalytics = () => {
   const predictiveAnalytics = {
     // fisrt section
 

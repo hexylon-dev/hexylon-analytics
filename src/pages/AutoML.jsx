@@ -6,7 +6,7 @@ import img3 from "../assets/img3.webp";
 import img4 from "../assets/img4.webp";
 import image from "../assets/automl.jpg";
 import six from "../assets/6.png"
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 export const AutoML = () => {
   const automl = {
