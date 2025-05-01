@@ -60,16 +60,16 @@ function OurWork() {
         </Helmet>
 
         <div className="text-[#2182DF] text-2xl md:text-4xl text-center mt-20 max-w-7xl mx-auto">
-          <h1> Our Work </h1>
+          <h2> Our Work </h2>
           <div className="text-gray-100 text-lg  md:text-2xl text-center mt-5">
             Transforming business operations with automation and real-time dashboards, empowering digital presence through custom websites and platforms like Reequitiz, and delivering personalized education with AI-driven learning paths and career guidance.
           </div>
         </div>
         <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5 pt-28 max-w-[1600px] lg:flex-row flex-col  justify-center m-auto">
           <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
-            <h2 className="mt-2 font-semibold text-2xl text-white">
+            <h3 className="mt-2 font-semibold text-2xl text-white">
               Transforming Business Operations
-            </h2>
+            </h3>
             <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
               <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[350px] w-full xl:text-left text-center ">
                 Our solutions empower businesses to streamline processes across
@@ -85,9 +85,9 @@ function OurWork() {
             </div>
           </div>
           <div className="block rounded-3xl border border-[#2182DF] p-4 max-w-4xl">
-            <h2 className="mt-2 font-semibold text-2xl text-white">
+            <h3 className="mt-2 font-semibold text-2xl text-white">
               Web Development & Empowering Platforms
-            </h2>
+            </h3>
             <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
               <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[350px] w-full xl:text-left text-center ">
                 We create custom websites that elevate your online presence and
@@ -107,9 +107,9 @@ function OurWork() {
 
         <div className="flex gap-4 bg-black md:pl-10 p-2 pb-5  max-w-[1600px] lg:flex-row flex-col justify-center m-auto">
           <div className="block rounded-3xl border border-[#2182DF] p-4 sm:col-span-2 xl:w-[50%] lg:w-[45%] w-[94%]">
-            <h2 className="mt-2 font-semibold text-2xl text-white">
+            <h3 className="mt-2 font-semibold text-2xl text-white">
               AI-Driven Personalized Learning
-            </h2>
+            </h3>
             <div className="flex flex-col-reverse xl:flex-row mt-7 justify-center items-center">
               <p className="sm:mt-1 block text-sm sm:text-base text-[#B6B6B6] xl:max-w-[450px] w-full xl:text-left text-center ">
                 Our Education AI system is designed to create customized learning

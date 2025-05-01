@@ -13,13 +13,13 @@ const Header = () => (
 
     {/* Main content */}
     <div className="relative">
-      <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold mb-6 group-hover:scale-[1.02] transition-transform duration-500">
+      <h2 className="relative text-5xl sm:text-6xl md:text-7xl font-bold mb-6 group-hover:scale-[1.02] transition-transform duration-500">
         {/* Text gradient with animated border */}
         <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#ff6600] via-[#ff8533] to-[#ff4500] animate-gradient-x">
           Our Core Values
           <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-[#ff6600]/0 via-[#ff6600] to-[#ff6600]/0 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></span>
         </span>
-      </h1>
+      </h2>
 
       {/* Enhanced subtitle with gradient and animation */}
       <p className="relative text-lg sm:text-xl md:text-2xl font-light max-w-2xl mx-auto">

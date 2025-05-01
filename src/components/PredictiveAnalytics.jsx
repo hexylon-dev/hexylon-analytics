@@ -57,7 +57,7 @@ const PredictiveAnalytics = ({workflow}) => {
     <div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold mb-4">{title}</h3>
+          <h2 className="text-4xl font-bold mb-4">{title}</h2>
           <p className="text-gray-400">{Content}</p>
         </div>
 
@@ -72,7 +72,7 @@ const PredictiveAnalytics = ({workflow}) => {
                 <div className="p-2 rounded-lg bg-gray-800">
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-xl font-semibold">{card.name}</h2>
+                <h3 className="text-xl font-semibold">{card.name}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {card.description}
                 </p>

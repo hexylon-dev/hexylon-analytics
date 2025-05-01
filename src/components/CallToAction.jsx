@@ -197,14 +197,14 @@ export default function ContactSection() {
 
   return (
     <div className="z-10 relative min-h-screen bg-transparent px-4 sm:p-8 flex flex-col items-center justify-center">
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-4 max-w-3xl leading-tight">
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-4 max-w-3xl leading-tight">
         <span className="bg-gradient-to-r from-[#FF7A33] to-[#FFFFFF] text-transparent bg-clip-text">
           CONTACT US FOR A
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>
           FREE CONSULTATION
         </span>
-      </h1>
+      </h2>
       
       <p className="text-gray-400 text-center mb-6 sm:mb-8 text-sm sm:text-base px-4">
         Generate a stunning website tailored to your needs.

@@ -23,9 +23,9 @@ const HexylonMission = () => {
           {/* Mission Section */}
           <section className="space-y-6">
             <div className="space-y-2">
-              <h2 className="text-4xl font-serif tracking-tight text-gray-300">
+              <h3 className="text-4xl font-serif tracking-tight text-gray-300">
                 Our Mission
-              </h2>
+              </h3>
               <div className="w-24 h-1 bg-orange-500" /> {/* Orange highlight line */}
             </div>
             <p className="text-lg leading-relaxed">
@@ -39,9 +39,9 @@ const HexylonMission = () => {
           {/* Vision Section */}
           <section className="space-y-6">
             <div className="space-y-2">
-              <h2 className="text-4xl font-serif tracking-tight text-gray-300">
+              <h3 className="text-4xl font-serif tracking-tight text-gray-300">
                 Our Vision
-              </h2>
+              </h3>
               <div className="w-24 h-1 bg-orange-500" /> {/* Orange highlight line */}
             </div>
             <p className="text-lg leading-relaxed">

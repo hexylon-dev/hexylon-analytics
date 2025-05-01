@@ -21,9 +21,9 @@ export default function ServicePage2({ problemStatement }) {
         {/* Left Section - Title and Description */}
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:max-w-[60%]">
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8">
               {title}
-            </h1>
+            </h2>
             <p className="text-gray-400 text-base lg:text-lg">{Content}</p>
           </div>
 
@@ -32,11 +32,9 @@ export default function ServicePage2({ problemStatement }) {
             {benefits.map((item, index) => (
               <div
                 key={index}
-                className={`${
-                  index % 2 === 0 ? "lg:col-start-5" : "lg:col-start-9"
-                } col-span-1 lg:col-span-4 ${
-                  index === 1 || index === 2 ? "bg-zinc-900/50" : ""
-                } overflow-hidden relative min-h-[200px]`}
+                className={`${index % 2 === 0 ? "lg:col-start-5" : "lg:col-start-9"
+                  } col-span-1 lg:col-span-4 ${index === 1 || index === 2 ? "bg-zinc-900/50" : ""
+                  } overflow-hidden relative min-h-[200px]`}
               >
                 {/* Grid lines overlay */}
                 <div className="absolute inset-0">
@@ -45,7 +43,7 @@ export default function ServicePage2({ problemStatement }) {
                   <div className="absolute top-1/3 left-0 right-0 h-[1px] bg-white/10" />
                   <div className="absolute bottom-1/3 left-0 right-0 h-[1px] bg-white/10" />
                 </div>
-                
+
                 <svg
                   className="w-5 h-5 text-gray-400 absolute top-4 right-4 transform -rotate-45 z-10"
                   viewBox="0 0 24 24"

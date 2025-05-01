@@ -50,14 +50,14 @@ const ServiceV3 = ({ keyFeatures }) => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-20"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-none tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-none tracking-tight">
             <span className="inline-block bg-gradient-to-r from-[#FF6B2B] via-orange-400 to-yellow-500 bg-clip-text text-transparent">
               {firstWord}
             </span>{" "}
             <span className="inline-block bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
               {restOfTitle}
             </span>
-          </h1>
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#FF6B2B] to-yellow-500 mx-auto rounded-full mb-8" />
         </motion.div>
 

@@ -14,14 +14,14 @@ export default function Carousel({ carouselData }) {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white p-4 sm:p-8">
       <div className="max-w-7xl mx-auto mb-8 sm:mb-16">
-        <motion.h4 
+        <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.02 }}
           className="text-3xl sm:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-[#ff6600] via-[#ff9966] to-[#ff6600] text-transparent bg-clip-text bg-size-200 animate-gradient"
         >
           {title}
-        </motion.h4>
+        </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,9 +59,9 @@ export default function Carousel({ carouselData }) {
                 exit={{ opacity: 0, y: -20 }}
                 className="space-y-4 sm:space-y-6"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-200 to-blue-100 text-transparent bg-clip-text">
+                <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-200 to-blue-100 text-transparent bg-clip-text">
                   {reasons[currentSlide].title}
-                </h2>
+                </h3>
                 <p className="text-gray-300 text-sm sm:text-lg leading-relaxed">
                   {reasons[currentSlide].description}
                 </p>

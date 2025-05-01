@@ -17,9 +17,9 @@ const PosterPage = ({ callToAction }) => {
       <div className="w-full max-w-[1400px] mx-auto py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8 px-4 sm:px-8 lg:px-16 xl:px-24 animate-fadeIn">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-left bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
               {title}
-            </h1>
+            </h2>
           </div>
           <div className="flex flex-col justify-center space-y-6 sm:space-y-8 px-4 sm:px-8 lg:px-16 xl:px-24">
             <p className="text-base sm:text-lg md:text-xl text-left leading-relaxed animate-slideIn text-gray-400">
