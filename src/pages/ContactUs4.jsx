@@ -94,10 +94,9 @@ const ContactPage = () => {
     try {
       await CreateContactUsResponseApi({
         ...formData,
-        description: `${formData.area_of_interest}, ${formData.industry}`
+        description: `${formData.area_of_interest}, ${formData.industry}`,
       });
-    }
-    catch(err) {
+    } catch (err) {
       console.log(err);
     }
     gsap.to(formRef.current, {
@@ -196,7 +195,7 @@ const ContactPage = () => {
         ))}
 
         {/* Main Content */}
-        <div className="relative max-w-7xl mx-auto px-4 py-12 mt-24">
+        <div className="relative max-w-[1700px] mx-auto px-4 py-12 mt-24">
           {/* Hero Section */}
           <div className="text-center mb-16">
             <h1
@@ -320,7 +319,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Section */}
-          <div className="contact-section grid md:grid-cols-2 gap-8">
+          <div className="contact-section grid lg:grid-cols-2 gap-1">
             {/* Contact Information */}
             <div className="space-y-4">
               <h2
@@ -334,7 +333,13 @@ const ContactPage = () => {
                 {[
                   {
                     icon: MapPin,
-                    title: "Visit Us",
+                    title: "Address 1",
+                    content:
+                      "301/2, Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat 380054",
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Address 2",
                     content:
                       "B/410, Ganesh Plaza,Nr. Navrangpura Post Office, Navrangpura, Ahmedabad, Gujarat, India - 380 009",
                   },
@@ -380,20 +385,40 @@ const ContactPage = () => {
             </div>
 
             {/* Map */}
-            <div className="relative h-96">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
-              <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
-                <div className="w-full h-full bg-gray-100 relative">
-                  <div className="absolute inset-0 bg-opacity-50 bg-gray-200">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.684982717429!2d72.55826618629733!3d23.035335962144465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f461610533%3A0xa56a93bc9468d0!2sGanesh%20Plaza%2C%20Navrangpura%20Rd%2C%20Near%20Navrangpura%20Post%20Office%2C%20Shrimali%20Society%2C%20Navrangpura%2C%20Ahmedabad%2C%20Gujarat%20380009!5e0!3m2!1sen!2sin!4v1730131237754!5m2!1sen!2sin"
-                      width="600"
-                      height="450"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
+            <div className="flex lg:min-h-auto md:min-h-[400px]">
+              <div className="relative h-100 w-[50%] ">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
+                <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
+                  <div className="w-full h-full bg-gray-100 relative">
+                    <div className="absolute inset-0 bg-opacity-50 bg-gray-200">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.684982717429!2d72.55826618629733!3d23.035335962144465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f461610533%3A0xa56a93bc9468d0!2sGanesh%20Plaza%2C%20Navrangpura%20Rd%2C%20Near%20Navrangpura%20Post%20Office%2C%20Shrimali%20Society%2C%20Navrangpura%2C%20Ahmedabad%2C%20Gujarat%20380009!5e0!3m2!1sen!2sin!4v1730131237754!5m2!1sen!2sin"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-100 w-[50%]">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl" />
+                <div className="relative rounded-2xl overflow-hidden shadow-lg h-full">
+                  <div className="w-full h-full bg-gray-100 relative">
+                    <div className="absolute inset-0 bg-opacity-50 bg-gray-200">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6201303574985!2d72.5122604!3d23.037715900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b4925401679%3A0x7c61baf906e422c0!2sParshwa%20Tower!5e0!3m2!1sen!2sin!4v1735368831887!5m2!1sen!2sin"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
               </div>

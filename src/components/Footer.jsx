@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Linkedin, Twitter, Github, Instagram } from "lucide-react";
 import logo from "../assets/logo.png";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -121,7 +121,8 @@ const FooterWithTransition = () => {
                     </span>
 
                     <span className="text-gray-400">
-                    301/2 Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy, near Pakwan II, Bodakdev, Ahmedabad, Gujarat - 380054
+                      301/2 Parshwa Tower 2, 901, Sarkhej - Gandhinagar Hwy,
+                      near Pakwan II, Bodakdev, Ahmedabad, Gujarat - 380054
                     </span>
                   </p>
                   <p className="flex items-center text-sm font-medium text-dark dark:text-white mt-2">
@@ -144,9 +145,7 @@ const FooterWithTransition = () => {
                       B/410, Ganesh Plaza,Nr. Navrangpura Post Office,
                       Navrangpura, Ahmedabad, Gujarat, India - 380 009
                     </span>
-
                   </p>
-                
                 </div>
               </div>
               <LinkGroup header="Quick Links">
@@ -191,11 +190,11 @@ const FooterWithTransition = () => {
                     </a>
 
                     <a
-                      href="https://twitter.com"
+                      href="https://www.instagram.com/hexylon_analytics/?igsh=dTJudGRjZjhjaTU5#"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Twitter className="w-5 h-5 hover:text-[#FF6600] cursor-pointer transition-colors" />
+                      <Instagram className="w-5 h-5 hover:text-[#FF6600] cursor-pointer transition-colors" />
                     </a>
 
                     <a
